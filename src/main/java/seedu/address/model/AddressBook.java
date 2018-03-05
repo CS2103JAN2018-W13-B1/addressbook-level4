@@ -17,6 +17,7 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.exceptions.TagNotFoundException;
 
 /**
  * Wraps all data at the address-book level
@@ -152,8 +153,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
         tags.add(t);
     }
-    public void removeTag(Tag t) throws Exception {
 
+    /**
+     * Removes tag from all persons who has the tag
+     * @throws TagNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
+     */
+    public void removeTag(Tag toRemove) throws TagNotFoundException {
+        if(tags.contains(toRemove)) {
+            ObservableList<Person> list = persons.getInternalList();
+            for(Person p: list) {
+                p.removeTag(toRemove);
+            }
+        }
+        else {
+            throw new TagNotFoundException();
+        }
     }
 
     //// util methods
