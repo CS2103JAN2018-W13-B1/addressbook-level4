@@ -152,6 +152,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
         tags.add(t);
     }
+    public void removeTag(Tag t) throws Exception {
+
+    }
 
     //// util methods
 
