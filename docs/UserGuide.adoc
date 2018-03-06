@@ -42,6 +42,14 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
+.  Commands also have alias words so you can execute the same commands in a quicker way.
+.  Some example command aliases you can try:
+
+* *`l`* : lists all contacts
+* **`a`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
+* **`d`**`3` : deletes the 3rd contact shown in the current list
+* *`exit`* : q
+
 .  Refer to <<Features>> for details of each command.
 
 [[Features]]
@@ -59,13 +67,13 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 === Viewing help : `help`
 
 Format: `help` +
-Shorthand: `?`
+Alias: `?`
 
 === Adding a person: `add`
 
 Adds a person to the address book +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-Shorthand: `a`
+Alias: `a`
 
 [TIP]
 A person can have any number of tags (including 0)
@@ -81,13 +89,13 @@ Examples:
 
 Shows a list of all persons in the address book. +
 Format: `list` +
-Shorthand: `l`
+Alias: `l`
 
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
-Shorthand: `e`
+Alias: `e`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -111,7 +119,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 
 Finds persons whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]` +
-Shorthand: `f`
+Alias: `f`
 
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
@@ -135,7 +143,7 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 
 Deletes the specified person from the address book. +
 Format: `delete INDEX` +
-Shorthand: `d INDEX`
+Alias: `d INDEX`
 
 ****
 * Deletes the person at the specified `INDEX`.
@@ -157,7 +165,7 @@ Deletes the 1st person in the results of the `find` command.
 
 Selects the person identified by the index number used in the last person listing. +
 Format: `select INDEX` +
-Shorthand: `s INDEX`
+Alias: `s INDEX`
 
 ****
 * Selects the person and loads the Google search page the person at the specified `INDEX`.
@@ -179,7 +187,7 @@ Selects the 1st person in the results of the `find` command.
 
 Lists all the commands that you have entered in reverse chronological order. +
 Format: `history` +
-Shorthand: `h`
+Alias: `h`
 
 [NOTE]
 ====
@@ -191,7 +199,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 Restores the address book to the state before the previous _undoable_ command was executed. +
 Format: `undo` +
-Shorthand: `u`
+Alias: `u`
 
 [NOTE]
 ====
@@ -241,13 +249,13 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 Clears all entries from the address book. +
 Format: `clear` +
-Shorthand: `c`
+Alias: `c`
 
 === Exiting the program : `exit`
 
 Exits the program. +
 Format: `exit` +
-Shorthand: `q`
+Alias: `q`
 
 === Saving the data
 
@@ -285,7 +293,7 @@ e.g.`select 2`
 * *Redo* : `redo`
 * *Exit* : `exit`
 
-== Command Shorthand Summary
+== Command Alias Summary
 
 * *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
 e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
