@@ -59,6 +59,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 === Viewing help : `help`
 
 Format: `help`
+        `?`
 
 === Adding a person: `add`
 
