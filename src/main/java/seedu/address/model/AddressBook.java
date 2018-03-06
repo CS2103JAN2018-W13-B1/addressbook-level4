@@ -113,6 +113,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         // This can cause the tags master list to have additional tags that are not tagged to any person
         // in the person list.
         persons.setPerson(target, syncedEditedPerson);
+        removeUnusedTags();
     }
 
     /**
@@ -142,6 +143,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean removePerson(Person key) throws PersonNotFoundException {
         if (persons.remove(key)) {
+            removeUnusedTags();
             return true;
         } else {
             throw new PersonNotFoundException();
@@ -164,10 +166,26 @@ public class AddressBook implements ReadOnlyAddressBook {
             for(Person p: list) {
                 p.removeTag(toRemove);
             }
+            tags.remove(toRemove);
         }
         else {
             throw new TagNotFoundException();
         }
+    }
+
+    /**
+     * Solution below adapted from
+     * https://github.com/se-edu/addressbook-level4/pull/790/commits/48ba8e95de5d7eae883504d40e6795c857dae3c2
+     * Removes unused tags in tags.
+     */
+    private void removeUnusedTags() {
+        ObservableList<Person> list = persons.getInternalList();
+        UniqueTagList newList = new UniqueTagList();
+
+        for(Person p: list) {
+            newList.mergeFrom(new UniqueTagList(p.getTags()));
+        }
+        setTags(newList.toSet());
     }
 
     //// util methods
