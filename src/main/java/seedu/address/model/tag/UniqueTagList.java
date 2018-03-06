@@ -97,7 +97,7 @@ public class UniqueTagList implements Iterable<Tag> {
      */
     public void remove(Tag toRemove) {
         requireNonNull(toRemove);
-        if(contains(toRemove)) {
+        if (contains(toRemove)) {
             internalList.remove(toRemove);
         }
     }

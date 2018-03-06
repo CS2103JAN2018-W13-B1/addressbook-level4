@@ -161,14 +161,13 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @throws TagNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
      */
     public void removeTag(Tag toRemove) throws TagNotFoundException {
-        if(tags.contains(toRemove)) {
+        if (tags.contains(toRemove)) {
             ObservableList<Person> list = persons.getInternalList();
-            for(Person p: list) {
+            for (Person p: list) {
                 p.removeTag(toRemove);
             }
             tags.remove(toRemove);
-        }
-        else {
+        } else {
             throw new TagNotFoundException();
         }
     }
@@ -182,7 +181,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         ObservableList<Person> list = persons.getInternalList();
         UniqueTagList newList = new UniqueTagList();
 
-        for(Person p: list) {
+        for (Person p: list) {
             newList.mergeFrom(new UniqueTagList(p.getTags()));
         }
         setTags(newList.toSet());
