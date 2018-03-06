@@ -86,28 +86,26 @@ public class AddressBookTest {
     }
 
     @Test
-    public void removeTag_removeExistingTag_AddressBookChanged() {
+    public void removeTag_removeExistingTag_addressBookNotEqual() {
         AddressBook testAddressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         AddressBook expectedAddressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         try {
             testAddressBook.removeTag(FRIENDS);
-        }
-        catch(TagNotFoundException e) {
+        } catch (TagNotFoundException e) {
             fail("Tag " + FRIENDS.toString() + " should exist in testAddressBook.");
         }
-            assertNotEquals(testAddressBook, expectedAddressBook);
+        assertNotEquals(testAddressBook, expectedAddressBook);
     }
 
     @Test
-    public void removeUnusedTag_removeNonExistentTagsWhenPersonIsDeleted_addressBookChanged() {
+    public void removeUnusedTag_removeNonExistentTagsWhenPersonIsDeleted_addressBookNotEqual() {
         AddressBook testAddressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         AddressBook expectedAddressBook = new AddressBookBuilder().withPerson(ALICE).build();
 
         // When person with tags unique to him is deleted, such tags should not exist anymore in master tag list.
         try {
             testAddressBook.removePerson(BENSON);
-        }
-        catch (PersonNotFoundException e) {
+        } catch (PersonNotFoundException e) {
             fail("Person " + BENSON.getName() + " should exist in testAddressBook.");
         }
         assertEquals(testAddressBook, expectedAddressBook);
@@ -115,7 +113,7 @@ public class AddressBookTest {
     }
 
     @Test
-    public void removeUnusedTag_removeNonExistentTagsWhenPersonIsUpdated_addressBookChanged() {
+    public void removeUnusedTag_removeNonExistentTagsWhenPersonIsUpdated_addressBookNotEqual() {
         Person editedAlice = new PersonBuilder().withTags().build();
         AddressBook testAddressBook = new AddressBookBuilder().withPerson(ALICE).build();
         AddressBook expectedAddressBook = new AddressBookBuilder().withPerson(editedAlice).build();
@@ -123,11 +121,9 @@ public class AddressBookTest {
         // When removing tags while updating a person, such tags should not exist anymore in master tag list.
         try {
             testAddressBook.updatePerson(ALICE, editedAlice);
-        }
-        catch (PersonNotFoundException e) {
+        } catch (PersonNotFoundException e) {
             fail("Person " + ALICE.getName() + " should exist in testAddressBook.");
-        }
-        catch (DuplicatePersonException e) {
+        } catch (DuplicatePersonException e) {
             fail("Duplicate Persons should not exist in testAddressBook.");
         }
         assertEquals(testAddressBook, expectedAddressBook);
