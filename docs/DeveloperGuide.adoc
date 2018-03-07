@@ -1065,9 +1065,9 @@ Use case resumes at step 2.
 1.  User selects contacts to export from the current list of contacts
 2.  AddressBook stores the selection and processes the contacts to export
 3.  User requests to create a file containing the selected contacts
-4.  AddressBook creates the file and adds in contacts
-5.  User specifies location of the file to be saved
-6.  AddressBook saves the file in the location specified and shows a success message
+4.  AddressBook creates the file and prompts for save location of file
+5.  User specifies location of file to be saved
+6.  AddressBook saves the file and shows a success message
 +
 Use case ends.
 
