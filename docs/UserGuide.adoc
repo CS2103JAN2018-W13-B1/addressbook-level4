@@ -64,6 +64,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 ====
 
+[TIP]
+ContactSails will automatically complete the command you want to enter if you press the `TAB` key.
+
 === Viewing help : `help`
 
 Format: `help` +
