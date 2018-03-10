@@ -107,12 +107,14 @@ public class CommandBox extends UiPart<Region> {
      * field with the full command syntax based on {@code text} entered so far.
      */
     private void autocompleteCommand(String text) {
-        ArrayList<String> commandSyntaxList = CommandSyntaxListUtil.getCommandList();
+        ArrayList<String> commandSyntaxList = CommandSyntaxListUtil.getCommandSyntaxList();
 
+        // get list of matches of the input entered so far
         List<String> autocompleteCommandList = commandSyntaxList.stream()
                 .filter(s -> s.startsWith(text))
                 .collect(Collectors.toList());
 
+        // replace input in text field with first match
         if (!(autocompleteCommandList.isEmpty())) {
             replaceText(autocompleteCommandList.get(0));
         }

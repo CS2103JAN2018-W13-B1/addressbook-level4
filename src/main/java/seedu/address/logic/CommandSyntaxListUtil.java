@@ -17,35 +17,41 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 
 /**
- * Returns a list of command words.
+ * Returns the syntax list of existing commands.
  */
 public final class CommandSyntaxListUtil {
-    private static ArrayList<String> commandList;
+    private static ArrayList<String> commandSyntaxList;
 
-    public static ArrayList<String> getCommandList() {
-        commandList = new ArrayList<>();
+    public static ArrayList<String> getCommandSyntaxList() {
+        commandSyntaxList = new ArrayList<>();
         setCommandSyntaxList();
-        return commandList;
+        return commandSyntaxList;
     }
 
+    /**
+     * Constructs commandSyntaxList for existing commands.
+     */
     private static void setCommandSyntaxList() {
-        commandList.add(AddCommand.COMMAND_SYNTAX);
-        commandList.add(ClearCommand.COMMAND_WORD);
-        commandList.add(DeleteCommand.COMMAND_WORD);
-        commandList.add(EditCommand.COMMAND_SYNTAX);
-        commandList.add(ExitCommand.COMMAND_WORD);
-        commandList.add(FindCommand.COMMAND_SYNTAX);
-        commandList.add(HelpCommand.COMMAND_WORD);
-        commandList.add(HistoryCommand.COMMAND_WORD);
-        commandList.add(ListCommand.COMMAND_WORD);
-        commandList.add(RedoCommand.COMMAND_WORD);
-        commandList.add(SelectCommand.COMMAND_SYNTAX);
-        commandList.add(UndoCommand.COMMAND_WORD);
+        commandSyntaxList.add(AddCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(ClearCommand.COMMAND_WORD);
+        commandSyntaxList.add(DeleteCommand.COMMAND_WORD);
+        commandSyntaxList.add(EditCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(ExitCommand.COMMAND_WORD);
+        commandSyntaxList.add(FindCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(HelpCommand.COMMAND_WORD);
+        commandSyntaxList.add(HistoryCommand.COMMAND_WORD);
+        commandSyntaxList.add(ListCommand.COMMAND_WORD);
+        commandSyntaxList.add(RedoCommand.COMMAND_WORD);
+        commandSyntaxList.add(SelectCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(UndoCommand.COMMAND_WORD);
 
         sortCommandList();
     }
 
+    /**
+     * Sorts commandSyntaxList in lexicographical order.
+     */
     private static void sortCommandList() {
-        Collections.sort(commandList);
+        Collections.sort(commandSyntaxList);
     }
 }
