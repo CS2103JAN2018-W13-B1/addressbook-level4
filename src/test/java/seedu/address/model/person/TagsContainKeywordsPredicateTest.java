@@ -13,7 +13,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.PersonBuilder;
 
 
@@ -21,8 +20,8 @@ public class TagsContainKeywordsPredicateTest {
 
     @Test
     public void equals() {
-        Set<Tag> firstPredicateKeywordList = new HashSet<>(Arrays.asList(FRIENDS, BUDDIES));
-        Set<Tag> secondPredicateKeywordList = new HashSet<>(Collections.singletonList(FRIENDS));
+        Set<String> firstPredicateKeywordList = new HashSet<>(Arrays.asList(FRIENDS.tagName, BUDDIES.tagName));
+        Set<String> secondPredicateKeywordList = new HashSet<>(Collections.singletonList(FRIENDS.tagName));
 
         TagsContainKeywordsPredicate firstPredicate = new TagsContainKeywordsPredicate(firstPredicateKeywordList);
         TagsContainKeywordsPredicate secondPredicate = new TagsContainKeywordsPredicate(secondPredicateKeywordList);
@@ -46,17 +45,21 @@ public class TagsContainKeywordsPredicateTest {
 
     @Test
     public void test_tagsContainsKeywords_returnsTrue() {
+        TagsContainKeywordsPredicate predicate;
         // One keyword
-        TagsContainKeywordsPredicate predicate =
-                new TagsContainKeywordsPredicate(new HashSet<>(Collections.singletonList(OWES_MONEY)));
+        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Collections.singletonList(OWES_MONEY.tagName)));
         assertTrue(predicate.test(new PersonBuilder().withTags(OWES_MONEY.tagName).build()));
 
         // Multiple keywords
-        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Arrays.asList(OWES_MONEY, BUDDIES)));
+        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Arrays.asList(OWES_MONEY.tagName, BUDDIES.tagName)));
         assertTrue(predicate.test(new PersonBuilder().withTags(OWES_MONEY.tagName, BUDDIES.tagName).build()));
 
         // Only one matching keyword
-        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Arrays.asList(FRIENDS, BUDDIES)));
+        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Arrays.asList(FRIENDS.tagName, BUDDIES.tagName)));
+        assertTrue(predicate.test(new PersonBuilder().withTags(OWES_MONEY.tagName, BUDDIES.tagName).build()));
+
+        // Mixed-case keywords
+        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Arrays.asList("OWESMONey", "BUDDIes")));
         assertTrue(predicate.test(new PersonBuilder().withTags(OWES_MONEY.tagName, BUDDIES.tagName).build()));
     }
 
@@ -68,7 +71,7 @@ public class TagsContainKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder().withTags(OWES_MONEY.tagName).build()));
 
         // Non-matching keyword
-        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Collections.singletonList(OWES_MONEY)));
+        predicate = new TagsContainKeywordsPredicate(new HashSet<>(Collections.singletonList(OWES_MONEY.tagName)));
         assertFalse(predicate.test(new PersonBuilder().withTags(BUDDIES.tagName, FRIENDS.tagName).build()));
     }
 }
