@@ -1,19 +1,19 @@
 package seedu.address.model.person;
 
+import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.tag.Tag;
 
 /**
  * Tests that a {@code Person} 's {@code Tag}'s names matches any of the keywords given.
  */
 public class TagsContainKeywordsPredicate implements Predicate<Person> {
-    private final Set<String> keywords;
+    private final List<String> keywords;
 
-    public TagsContainKeywordsPredicate(Set<String> keywords) {
+    public TagsContainKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
@@ -28,7 +28,7 @@ public class TagsContainKeywordsPredicate implements Predicate<Person> {
      */
     private boolean personTagsMatchesKeyword(Person person, String keyword) {
         Set<String> tagNames = person.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toSet());
-        for(String tagName: tagNames) {
+        for (String tagName: tagNames) {
             if (StringUtil.containsWordIgnoreCase(tagName, keyword)) {
                 return true;
             }
