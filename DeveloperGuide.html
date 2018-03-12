@@ -5,20 +5,20 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>AddressBook Level 4 - Developer Guide</title>
+<title>ContactSails - Developer Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>AddressBook Level 4 - Developer Guide</h1>
+<h1>ContactSails - Developer Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W13-B1</code>      Since: <code>Mar 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -1903,7 +1903,25 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of contacts</p>
+<p>promotes and sells products or services through social media</p>
+</li>
+<li>
+<p>works in a small company or runs his/her own business</p>
+</li>
+<li>
+<p>has limited applications to support their marketing strategies</p>
+</li>
+<li>
+<p>has a need to manage a large number of contacts</p>
+</li>
+<li>
+<p>has many contacts spread across many social media platforms such as Facebook, Youtube, Twitter</p>
+</li>
+<li>
+<p>has many contacts with volatile details</p>
+</li>
+<li>
+<p>has many contacts that can be grouped together based on type of products purchased by contacts</p>
 </li>
 <li>
 <p>prefer desktop apps over other types</p>
@@ -1920,7 +1938,7 @@ for <code>RemarkCommandParser</code>.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: consolidation platform for all contacts from different platforms for users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.</p>
 </div>
 </div>
 </div>
@@ -1971,10 +1989,166 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep an offline back up</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">download and access a local copy of the application data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use short-forms for commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">execute commands more quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task-oriented user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">implement meetings or deadlines for contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of tasks to do for the contacts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">organized user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete multiple contacts at a time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove the contacts I no longer need quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove a specific tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all contacts with that tag will have the tag removed instead of removing the tag from from every one of them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find contacts based on the group they are in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all contacts belonging to a certain group</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort the contacts by last contacted time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find contacts I corresponded with recently</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view a list of current orders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of which customers I might need to contact at that point in time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see a list of current customers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view necessary information about current customers more quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send promotions to a group of contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ensure my differentiated marketing strategies work</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a list of preferences to contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what my customers are interested in</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit contact’s preferences</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update my customers' changing interests</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the top preference among all contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what products I should focus on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit specific details of contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update my customers' information more conveniently</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see top contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">divide my attention among my customers as needed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share my customers' public details with concerned businesses</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who prefers visual imagery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use a calendar to know if there are any meetings or deadlines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clearer view on how to prioritise my work</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access and change my preferred Email Service provider within the ContactSails</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look at my emails and my contacts at the same time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">synchronise the ContactSails with Google Contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save time importing contacts from Google Contacts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is fast at typing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copy a contact&#8217;s email to the clipboard without using a mouse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save time in emailing a contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add contact details in any order</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need to remember the order to enter the details</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto-completion of commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">execute commands quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add notes to a contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have a clearer description about the contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group contacts using tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">categorize my customers as needed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the theme and font of the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">personalize my AddressBook</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see contact statistics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">more informed about my customer demographic</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -1982,11 +2156,32 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort the list of contacts in alphabetical order</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily find contacts whose names I could not remember</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export contacts in different formats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share contacts to other software</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who likes personalising contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add profile photos to each contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recognise the customer easily based on their photo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see a list of tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need to remember all existing tags</p></td>
+</tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2005,13 +2200,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to list persons</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>ContactSails shows a list of persons</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>ContactSails deletes the person</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2029,12 +2224,16 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Use case ends.</p>
 </div>
 </li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>3a. The given index is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2044,8 +2243,597 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-add-person" class="discrete">Use case: Add person</h3>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add specific person</p>
+</li>
+<li>
+<p>ContactSails adds the person</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters invalid format for the Add feature</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-current-customers" class="discrete">Use case: List current customers</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for current customers</p>
+</li>
+<li>
+<p>ContactSails finds and displays a list of the list of customers whose orders are currently being fulfilled by user</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty as there are no current orders</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-specific-details-of-contacts" class="discrete">Use case: Edit specific details of contacts</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User selects contact to edit from the current list of contacts</p>
+</li>
+<li>
+<p>ContactSails shows the selected contact</p>
+</li>
+<li>
+<p>User requests to edit a certain field of the contact</p>
+</li>
+<li>
+<p>ContactSails updates the contact details and shows contact details after the changes made</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User selects invalid contact</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User selects invalid field to edit</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-notes-to-contacts" class="discrete">Use case: Add notes to contacts</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list persons</p>
+</li>
+<li>
+<p>ContactSails shows a list of persons</p>
+</li>
+<li>
+<p>User requests to add notes to specific person in the list</p>
+</li>
+<li>
+<p>ContactSails adds notes to the specified person</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The given index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-contact-specific-tasks" class="discrete">Use case: Add contact specific tasks</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User selects contact to add a task for</p>
+</li>
+<li>
+<p>ContactSails prompts user to enter the task details</p>
+</li>
+<li>
+<p>User enters task description and task deadline</p>
+</li>
+<li>
+<p>ContactSails adds task to specified contact and shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User selects invalid contact</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. User enters invalid task details</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. ContactSails shows en error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-persons-by-name" class="discrete">Use case: Find persons by name</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find persons with specific names</p>
+</li>
+<li>
+<p>ContactSails shows list of persons with specified names</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User does not specify any name</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. ContactSails does not have any names specified by user</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. ContactSails shows empty list</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-persons-by-tags" class="discrete">Use case: Find persons by tags</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find persons with specific tags</p>
+</li>
+<li>
+<p>ContactSails shows list of persons with specified tags</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User does not specify any tag</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. ContactSails does not have any tags specified by user</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. ContactSails shows empty list</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-remove-specific-tag" class="discrete">Use case: Remove specific tag</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to remove a tag</p>
+</li>
+<li>
+<p>ContactSails shows a list of all the tags used in the application</p>
+</li>
+<li>
+<p>User enters the tag they want to remove</p>
+</li>
+<li>
+<p>ContactSails removes the specific tag from all contacts who have this tag assigned to them</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There are no tags</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. User enters invalid tag</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-export-contacts" class="discrete">Use case: Export contacts</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User selects contacts to export from the current list of contacts</p>
+</li>
+<li>
+<p>ContactSails stores the selection and processes the contacts to export</p>
+</li>
+<li>
+<p>User requests to create a file containing the selected contacts</p>
+</li>
+<li>
+<p>ContactSails creates the file and prompts for save location of file</p>
+</li>
+<li>
+<p>User specifies location of file to be saved</p>
+</li>
+<li>
+<p>ContactSails saves the file and shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User does not select any contact</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. User makes an invalid selection</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. ContactSails is unable to create the file with selected contacts</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>6a. ContactSails is unable to save the file in the specified location</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>6a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 5.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>*a. User cancels the operation at any time</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>*a1. ContactSails shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-store-a-local-backup-of-contacts" class="discrete">Use case: Store a local backup of contacts</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to create a backup file containing all the data stored in the application</p>
+</li>
+<li>
+<p>ContactSails creates the file and adds all the application data</p>
+</li>
+<li>
+<p>User specifies location of file to be saved</p>
+</li>
+<li>
+<p>ContactSails saves the file in the location specified and shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. ContactSails is unable to create the file</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. ContactSails is unable to save the file in the specified location</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. ContactSails shows an error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2063,10 +2851,40 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
+<li>
+<p>The ContactSails should be usable even for users without experience in social media marketing.</p>
+</li>
+<li>
+<p>As ContactSails is modified from an open-source software, users should be able to download it for free.</p>
+</li>
+<li>
+<p>ContactSails should continue to run normally even when problems occur during execution.</p>
+</li>
+<li>
+<p>In case ContactSails has crashed, changes made to it during those sessions should not be lost.</p>
+</li>
+<li>
+<p>Size of ContactSails should not exceed 100 MB even with many contacts stored in it.</p>
+</li>
+<li>
+<p>ContactSails should take up to 2 seconds to execute any command except for commands that are reliant on internet connectivity.</p>
+</li>
+<li>
+<p>ContactSails can still work even if there is limited internet connectivity when executed command opens websites.</p>
+</li>
+<li>
+<p>Users can use ContactSails without requiring an installer.</p>
+</li>
+<li>
+<p>Data of ContactSails should be stored locally and in a human editable text file.</p>
+</li>
+<li>
+<p>Data of ContactSails should be able to be encrypted such that only the user can see it when text file containing the data is directly accessed.</p>
+</li>
+<li>
+<p>ContactSails should not be required to print any detailed reports of contacts.</p>
+</li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2079,9 +2897,49 @@ for <code>RemarkCommandParser</code>.</p>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
+<dt class="hdlist1"><a id="contacts"></a> Contacts</dt>
+<dd>
+<p>People whose details are present in my address book</p>
+</dd>
 <dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
 <dd>
 <p>A contact detail that is not meant to be shared with others</p>
+</dd>
+<dt class="hdlist1"><a id="tags"></a> Tags</dt>
+<dd>
+<p>A label attached to a person&#8217;s contact information for the purpose of grouping or give more details about that person</p>
+</dd>
+<dt class="hdlist1"><a id="tasks"></a> Tasks</dt>
+<dd>
+<p>A deadline, reminder, or a general note that can be added to keep track of things needed to be done</p>
+</dd>
+<dt class="hdlist1"><a id="mss"></a> MSS</dt>
+<dd>
+<p>Represents the most straightforward interaction between System and User where nothing goes wrong, in a use case</p>
+</dd>
+<dt class="hdlist1"><a id="extenstions"></a> Extensions</dt>
+<dd>
+<p>Represents interactions between System and User where something might have gone wrong</p>
+</dd>
+<dt class="hdlist1"><a id="profile-photo"></a> Profile Photo</dt>
+<dd>
+<p>A photograph attached to a certain contact to represent the person</p>
+</dd>
+<dt class="hdlist1"><a id="backup-file"></a> Backup File</dt>
+<dd>
+<p>An XML data file that stores all data in the application in a local copy on my computer</p>
+</dd>
+<dt class="hdlist1"><a id="java-fx"></a> Java FX</dt>
+<dd>
+<p>A software platform that contains a set of packages for graphics that enables developers to develop rich cross-platform applications</p>
+</dd>
+<dt class="hdlist1"><a id="travis"></a> Travis</dt>
+<dd>
+<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Linux virtual machine</p>
+</dd>
+<dt class="hdlist1"><a id="appveyor"></a> AppVeyor</dt>
+<dd>
+<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Windows virtual machine</p>
 </dd>
 </dl>
 </div>
@@ -2237,7 +3095,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 14:13:38 UTC
+Last updated 2018-03-12 16:05:18 UTC
 </div>
 </div>
 </body>

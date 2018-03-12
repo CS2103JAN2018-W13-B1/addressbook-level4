@@ -5,20 +5,20 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>AddressBook Level 4 - User Guide</title>
+<title>ContactSails - User Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>AddressBook Level 4 - User Guide</h1>
+<h1>ContactSails - User Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W13-B1</code>      Since: <code>Mar 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -46,6 +46,7 @@
 </li>
 <li><a href="#faq">4. FAQ</a></li>
 <li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-alias-summary">6. Command Alias Summary</a></li>
 </ul>
 </div>
 </div>
@@ -116,6 +117,28 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
+<p>Commands also have alias words so you can execute the same commands in a quicker way.</p>
+</li>
+<li>
+<p>Some example command aliases you can try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>l</code></strong> : lists all contacts</p>
+</li>
+<li>
+<p><strong><code>a</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+</li>
+<li>
+<p><strong><code>d</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : q</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
 </li>
 </ol>
@@ -151,14 +174,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Format: <code>help</code><br>
+Alias: <code>?</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+Alias: <code>a</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -178,10 +203,12 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> OR<br>
+<code>a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code><br></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code> OR<br>
+<code>a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
 </li>
 </ul>
 </div>
@@ -190,14 +217,16 @@ A person can have any number of tags (including 0)
 <h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+Format: <code>list</code><br>
+Alias: <code>l</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+Alias: <code>e</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -228,11 +257,13 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+<p><code>edit 1 p/91234567 e/johndoe@example.com</code> OR<br>
+<code>e 1 p/91234567 e/johndoe@example.com</code><br>
 Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
+<p><code>edit 2 n/Betsy Crower t/</code> OR<br>
+<code>e 2 n/Betsy Crower t/</code><br>
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
 </li>
 </ul>
@@ -242,7 +273,8 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+Alias: <code>f</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -273,11 +305,13 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
+<p><code>find John</code> OR<br>
+<code>f John</code><br>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
+<p><code>find Betsy Tim John</code> OR<br>
+<code>f Betsy Tim John</code><br>
 Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
 </ul>
@@ -287,7 +321,8 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+Format: <code>delete INDEX</code><br>
+Alias: <code>d INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -313,12 +348,12 @@ Format: <code>delete INDEX</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
-<code>delete 2</code><br>
+<code>delete 2</code> OR <code>d 2</code><br>
 Deletes the 2nd person in the address book.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
-<code>delete 1</code><br>
+<code>delete 1</code>  OR <code>d 1</code><br>
 Deletes the 1st person in the results of the <code>find</code> command.</p>
 </li>
 </ul>
@@ -328,7 +363,8 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 <h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code></p>
+Format: <code>select INDEX</code><br>
+Alias: <code>s INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -354,12 +390,12 @@ Format: <code>select INDEX</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
-<code>select 2</code><br>
+<code>select 2</code> OR <code>s 2</code><br>
 Selects the 2nd person in the address book.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
-<code>select 1</code><br>
+<code>select 1</code> OR <code>s 1</code><br>
 Selects the 1st person in the results of the <code>find</code> command.</p>
 </li>
 </ul>
@@ -369,7 +405,8 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 <h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+Format: <code>history</code><br>
+Alias: <code>h</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -390,7 +427,8 @@ Format: <code>history</code></p>
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+Format: <code>undo</code><br>
+Alias: <code>u</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -414,19 +452,19 @@ Format: <code>undo</code></p>
 <li>
 <p><code>delete 1</code><br>
 <code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> OR <code>u</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
-<code>undo</code><br>
+<code>undo</code> OR <code>u</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
 <code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> OR <code>u</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> OR <code>u</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -445,11 +483,11 @@ Format: <code>redo</code></p>
 <li>
 <p><code>delete 1</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<code>redo</code> OR <code>r</code> (reapplies the <code>delete 1</code> command)<br></p>
 </li>
 <li>
 <p><code>delete 1</code><br>
-<code>redo</code><br>
+<code>redo</code> OR <code>r</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
 <li>
@@ -457,8 +495,8 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<code>redo</code> OR <code>r</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> OR <code>r</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -467,14 +505,16 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+Format: <code>clear</code><br>
+Alias: <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
-Format: <code>exit</code></p>
+Format: <code>exit</code><br>
+Alias: <code>q</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -544,6 +584,59 @@ e.g.<code>select 2</code></p>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-alias-summary"><a class="link" href="#command-alias-summary">6. Command Alias Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>c</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>d INDEX</code><br>
+e.g. <code>d 3</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>e 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>f KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>f James Jake</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>l</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>?</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>s INDEX</code><br>
+e.g. <code>s 2</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>h</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>u</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>r</code></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>q</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -551,7 +644,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 14:13:38 UTC
+Last updated 2018-03-12 16:05:18 UTC
 </div>
 </div>
 </body>
