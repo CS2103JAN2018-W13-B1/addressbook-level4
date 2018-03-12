@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import seedu.address.commons.util.StringUtil;
 
 /**
- * Tests that a {@code Person} 's {@code Tag}'s names matches any of the keywords given.
+ * Tests that a {@code Person} 's {@code Tag}s' names matches any of the keywords given.
  */
 public class TagsContainKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
