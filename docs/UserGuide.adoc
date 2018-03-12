@@ -147,9 +147,9 @@ Alias: `ft`
 
 ****
 * The search is case insensitive. e.g `Friends` will match `friends`
-* Only the tag name is searched.
+* Only the names of tags of a person is searched.
 * Only full words will be matched e.g. `friend` will not match `friends`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `criminal friends` will return `John Doe`, `Betsy Crowe` who has the tags `friends` and `criminal` respectively.
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `criminal friends` will return `John Doe`, `Betsy Crowe` who have the tags `friends` and `criminal` respectively.
 ****
 
 Examples:
