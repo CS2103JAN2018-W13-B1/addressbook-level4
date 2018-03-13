@@ -52,6 +52,7 @@ public class Order {
             return false;
         }
 
+        // TODO: orders can have the same information (just the person associated with them can be diff)
         Order otherOrder = (Order) other;
         return otherOrder.getOrderInformation().equals(this.getOrderInformation())
                 && otherOrder.getPrice().equals(this.getPrice())

@@ -13,7 +13,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.order.Order;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+// import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * Adds an order to a person in the address book.
@@ -61,11 +61,11 @@ public class AddOrderCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             // TODO: update model
-            model.addOrderToPerson(person, orderToAdd);
-            model.addOrderToOrderList(orderToAdd);
+            // model.addOrderToPerson(person, orderToAdd);
+            // model.addOrderToOrderList(orderToAdd);
             return new CommandResult(String.format(MESSAGE_ADD_ORDER_SUCCESS, orderToAdd));
-        } catch (PersonNotFoundException pnfe) {
-            throw new AssertionError("The target person cannot be missing");
+        // } catch (PersonNotFoundException pnfe) {
+            // throw new AssertionError("The target person cannot be missing");
         } catch (Exception e) { // TODO: define more specific exception
             throw new CommandException(MESSAGE_ORDER_NOT_ADDED);
         }
