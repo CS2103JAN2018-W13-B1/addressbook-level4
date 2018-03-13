@@ -58,7 +58,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ===Person Panel for v1.5 'In Development'
 
 This panel will show the contact details when the contact is selected.
-The feature is to show contact details and additionally, their photo. 
+The feature is to show contact details and additionally, their photo.
 
 ====
 *Command Format*
