@@ -9,7 +9,7 @@ https://gitter.im/se-edu/Lobby[image:https://badges.gitter.im/se-edu/Lobby.svg[G
 
 ContactSails is an address book application meant exclusively for salespersons from small businesses with customers from various social media platforms.
 
-In addition to aggregating customer details from these platforms, it can also be used for keeping track of orders and sending relevant promotions to customers.
+In addition to aggregating customer details from these platforms, it can also be used for keeping track of orders of your customers and sending relevant promotions to them.
 
 ifdef::env-github[]
 image::docs/images/Ui.png[width="600"]
@@ -23,6 +23,7 @@ endif::[]
 
 With ContactSails, you can do the following:
 
+* Manage customer contacts: Add, edit and delete contacts.
 * Categorize customers: Group customers according to their preferences, social media platforms, or any other category you want to define.
 * Manage orders: Add, edit, and delete customer orders.
 * Send promotions: Apply differentiated marketing strategies by sending promotions to relevant customers.
