@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -27,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueTagList tags;
+    private final UniqueOrderList orders;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -38,6 +41,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
+        orders = new UniqueOrderList();
     }
 
     public AddressBook() {}
@@ -60,6 +64,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.tags.setTags(tags);
     }
 
+    public void setOrders(Set<Order> orders) {
+        this.orders.setOrders(orders);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -69,6 +77,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         List<Person> syncedPersonList = newData.getPersonList().stream()
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
+
+        setOrders(new HashSet<>(newData.getOrderList()));
 
         try {
             setPersons(syncedPersonList);
@@ -187,12 +197,21 @@ public class AddressBook implements ReadOnlyAddressBook {
         setTags(newList.toSet());
     }
 
+    //// order-level operations
+
+    /**
+     * Adds order to list of orders.
+     */
+    public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
+        orders.add(orderToAdd);
+    }
+
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
-        // TODO: refine later
+        return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags, "
+                + orders.asObservableList().size() + " orders";
     }
 
     @Override
@@ -203,6 +222,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Tag> getTagList() {
         return tags.asObservableList();
+    }
+
+    @Override
+    public ObservableList<Order> getOrderList() {
+        return orders.asObservableList();
     }
 
     @Override

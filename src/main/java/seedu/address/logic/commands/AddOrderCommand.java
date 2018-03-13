@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DELIVERY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORDER_INFORMATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
@@ -62,14 +63,15 @@ public class AddOrderCommand extends UndoableCommand {
         try {
             // TODO: update model
             // model.addOrderToPerson(person, orderToAdd);
-            // model.addOrderToOrderList(orderToAdd);
-            return new CommandResult(String.format(MESSAGE_ADD_ORDER_SUCCESS, person.getName(), orderToAdd));
+            model.addOrderToOrderList(orderToAdd);
         // } catch (PersonNotFoundException pnfe) {
             // throw new AssertionError("The target person cannot be missing");
         } catch (Exception e) { // TODO: define more specific exception
             throw new CommandException(MESSAGE_ORDER_NOT_ADDED);
         }
-        // TODO: update model
+
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        return new CommandResult(String.format(MESSAGE_ADD_ORDER_SUCCESS, person.getName(), orderToAdd));
     }
 
     @Override
