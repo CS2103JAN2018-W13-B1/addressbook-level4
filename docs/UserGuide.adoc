@@ -17,7 +17,7 @@ By: `Team W13-B1`      Since: `Mar 2018`      Licence: `MIT`
 
 == Introduction
 
-ContactSails is for those users who *prefer to use a desktop app for managing contacts*. More importantly, it is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ContactSails can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to <<Quick Start>> to get started. Enjoy!
+ContactSails is for users who *prefer to use a desktop app for managing contacts*. More importantly, it is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ContactSails can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
