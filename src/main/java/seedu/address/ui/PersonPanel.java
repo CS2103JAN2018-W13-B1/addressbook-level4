@@ -52,7 +52,8 @@ public class PersonPanel extends UiPart<Region> {
     }
 
     @Subscribe
-    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) { logger.info(LogsCenter.getEventHandlingLogMessage(event));
-    loadPersonPage(event.getNewSelection().person);
+    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadPersonPage(event.getNewSelection().person);
     }
 }
