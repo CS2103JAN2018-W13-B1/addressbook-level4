@@ -15,7 +15,8 @@ public class DeliveryDate {
     public static final String MESSAGE_DELIVERY_DATE_CONSTRAINTS =
             "Date should be DD-MM-YYYY, and it should not be blank";
 
-    public static final String DELIVERY_DATE_VALIDATION_REGEX = "dd-MM-yyyy";
+    public static final String DELIVERY_DATE_VALIDATION_REGEX = "\\d{2}-\\d{2}-\\d{4}"; // format
+    public static final String DELIVERY_DATE_VALIDATION_DATE_FORMAT = "dd-MM-yyyy"; // legal dates
 
     private final String deliveryDate;
 
@@ -34,7 +35,7 @@ public class DeliveryDate {
      * Returns true if a given string is a valid date.
      */
     public static boolean isValidDeliveryDate(String test) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DELIVERY_DATE_VALIDATION_REGEX);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DELIVERY_DATE_VALIDATION_DATE_FORMAT);
         simpleDateFormat.setLenient(false);
 
         try {
@@ -43,7 +44,7 @@ public class DeliveryDate {
             return false;
         }
 
-        return true;
+        return test.matches(DELIVERY_DATE_VALIDATION_REGEX);
     }
 
     @Override
