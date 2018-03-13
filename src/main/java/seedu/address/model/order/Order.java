@@ -72,7 +72,7 @@ public class Order {
                 .append(" Price: ")
                 .append(getPrice())
                 .append(" Quantity: ")
-                .append(getPrice())
+                .append(getQuantity())
                 .append(" Delivery Date: ")
                 .append(getDeliveryDate());
         return builder.toString();

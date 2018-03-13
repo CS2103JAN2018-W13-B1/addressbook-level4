@@ -263,7 +263,7 @@ public class ParserUtil {
     public static DeliveryDate parseDeliveryDate(String deliveryDate) throws IllegalValueException {
         requireNonNull(deliveryDate);
         String trimmedDeliveryDate = deliveryDate.trim();
-        if (!Quantity.isValidQuantity(trimmedDeliveryDate)) {
+        if (!DeliveryDate.isValidDeliveryDate(trimmedDeliveryDate)) {
             throw new IllegalValueException(DeliveryDate.MESSAGE_DELIVERY_DATE_CONSTRAINTS);
         }
         return new DeliveryDate(trimmedDeliveryDate);

@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -21,6 +23,7 @@ public class Person {
     private final Address address;
 
     private final UniqueTagList tags;
+    private final UniqueOrderList orders;
 
     /**
      * Every field must be present and not null.
@@ -33,6 +36,19 @@ public class Person {
         this.address = address;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
+        this.orders = new UniqueOrderList();
+    }
+
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Order> orders) {
+        requireAllNonNull(name, phone, email, address, tags, orders);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        // protect internal tags from changes in the arg list
+        this.tags = new UniqueTagList(tags);
+        // protect internal orders from changes in the arg list
+        this.orders = new UniqueOrderList(orders);
     }
 
     public Name getName() {
@@ -64,6 +80,21 @@ public class Person {
      */
     public void removeTag(Tag tagToRemove) {
         tags.remove(tagToRemove);
+    }
+
+    /**
+     * Returns an immutable order set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Order> getOrders() {
+        return Collections.unmodifiableSet(orders.toSet());
+    }
+
+    /**
+     * Removes given order if found in order set.
+     */
+    public void removeOrder(Order orderToRemove) {
+        orders.remove(orderToRemove);
     }
 
     @Override

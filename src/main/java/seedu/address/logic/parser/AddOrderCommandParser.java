@@ -44,14 +44,13 @@ public class AddOrderCommandParser implements Parser<AddOrderCommand> {
         }
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ORDER_INFORMATION, PREFIX_PRICE,
-                PREFIX_QUANTITY, PREFIX_DELIVERY_DATE)
-                || !argMultimap.getPreamble().isEmpty()) {
+                PREFIX_QUANTITY, PREFIX_DELIVERY_DATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddOrderCommand.MESSAGE_USAGE));
         }
 
         try {
-            OrderInformation orderInformation = ParserUtil.parseOrderInformation(argMultimap.getValue(
-                    PREFIX_ORDER_INFORMATION)).get();
+            OrderInformation orderInformation = ParserUtil.parseOrderInformation(argMultimap
+                    .getValue(PREFIX_ORDER_INFORMATION)).get();
             Price price = ParserUtil.parsePrice(argMultimap.getValue(PREFIX_PRICE)).get();
             Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY)).get();
             DeliveryDate deliveryDate = ParserUtil.parseDeliveryDate(argMultimap.getValue(PREFIX_DELIVERY_DATE)).get();

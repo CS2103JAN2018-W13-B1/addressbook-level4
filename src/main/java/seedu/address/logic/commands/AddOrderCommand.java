@@ -36,7 +36,7 @@ public class AddOrderCommand extends UndoableCommand {
             + PREFIX_QUANTITY + "2 "
             + PREFIX_DELIVERY_DATE + "12/12/2018\n";
 
-    public static final String MESSAGE_ADD_ORDER_SUCCESS = "Added order to Person: %1$s";
+    public static final String MESSAGE_ADD_ORDER_SUCCESS = "Added order to %1$s:\n[%2$s]";
     public static final String MESSAGE_ORDER_NOT_ADDED = "Could not add order to Person.";
 
     private final Index index;
@@ -63,7 +63,7 @@ public class AddOrderCommand extends UndoableCommand {
             // TODO: update model
             // model.addOrderToPerson(person, orderToAdd);
             // model.addOrderToOrderList(orderToAdd);
-            return new CommandResult(String.format(MESSAGE_ADD_ORDER_SUCCESS, orderToAdd));
+            return new CommandResult(String.format(MESSAGE_ADD_ORDER_SUCCESS, person.getName(), orderToAdd));
         // } catch (PersonNotFoundException pnfe) {
             // throw new AssertionError("The target person cannot be missing");
         } catch (Exception e) { // TODO: define more specific exception
