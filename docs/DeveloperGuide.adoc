@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+= ContactSails - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -12,7 +12,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/se-edu/addressbook-level4/tree/master
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team W13-B1`      Since: `Mar 2018`      Licence: `MIT`
 
 == Setting up
 
@@ -782,13 +782,19 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
+* promotes and sells products or services through social media
+* works in a small company or runs his/her own business
+* has limited applications to support their marketing strategies
+* has a need to manage a large number of contacts
+* has many contacts spread across many social media platforms such as Facebook, Youtube, Twitter
+* has many contacts with volatile details
+* has many contacts that can be grouped together based on type of products purchased by contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: consolidation platform for all contacts from different platforms for users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.
 
 [appendix]
 == User Stories
@@ -806,12 +812,71 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |keep an offline back up |download and access a local copy of the application data
+
+|`* * *` |lazy user |use short-forms for commands |execute commands more quickly
+
+|`* * *` |task-oriented user |implement meetings or deadlines for contacts |keep track of tasks to do for the contacts
+
+|`* * *` |organized user |delete multiple contacts at a time |remove the contacts I no longer need quickly
+
+|`* * *` |user with many contacts |remove a specific tag |all contacts with that tag will have the tag removed instead of removing the tag from from every one of them
+
+|`* * *` |user with many contacts |find contacts based on the group they are in |see all contacts belonging to a certain group
+
+|`* * *` |user with many contacts |sort the contacts by last contacted time |find contacts I corresponded with recently
+
+|`* * *` |salesperson |view a list of current orders| keep track of which customers I might need to contact at that point in time
+
+|`* * *` |salesperson |see a list of current customers |view necessary information about current customers more quickly
+
+|`* * *` |salesperson |send promotions to a group of contacts |ensure my differentiated marketing strategies work
+
+|`* * *` |salesperson |add a list of preferences to contact |know what my customers are interested in
+
+|`* * *` |salesperson |edit contact’s preferences |update my customers' changing interests
+
+|`* * *` |salesperson |see the top preference among all contacts |know what products I should focus on
+
+|`* * *` |salesperson |edit specific details of contacts |update my customers' information more conveniently
+
+|`* * *` |salesperson |see top contacts |divide my attention among my customers as needed
+
+|`* *` |salesperson |export contacts |share my customers' public details with concerned businesses
+
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
-|=======================================================================
+|`* *` |user who prefers visual imagery |use a calendar to know if there are any meetings or deadlines |clearer view on how to prioritise my work
 
-_{More to be added}_
+|`* *` |user |access and change my preferred Email Service provider within the ContactSails |look at my emails and my contacts at the same time
+
+|`* *` |user with many contacts |synchronise the ContactSails with Google Contacts |save time importing contacts from Google Contacts
+
+|`* *` |user who is fast at typing |copy a contact's email to the clipboard without using a mouse |save time in emailing a contact
+
+|`* *` |lazy user |add contact details in any order |don't need to remember the order to enter the details
+
+|`* *` |lazy user |auto-completion of commands |execute commands quickly
+
+|`* *` |user |add notes to a contact |have a clearer description about the contact
+
+|`* *` |user |group contacts using tags |categorize my customers as needed
+
+|`* *` |user |change the theme and font of the application |personalize my AddressBook
+
+|`* *` |salesperson |see contact statistics |more informed about my customer demographic
+
+|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`*` |user |sort the list of contacts in alphabetical order |easily find contacts whose names I could not remember
+
+|`*` |user |export contacts in different formats |share contacts to other software
+
+|`*` |user who likes personalising contacts |add profile photos to each contact |recognise the customer easily based on their photo
+
+|`*` |user |see a list of tags |don't need to remember all existing tags
+
+|=======================================================================
 
 [appendix]
 == Use Cases
@@ -824,9 +889,9 @@ _{More to be added}_
 *MSS*
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  ContactSails shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  ContactSails deletes the person
 +
 Use case ends.
 
@@ -837,14 +902,311 @@ Use case ends.
 +
 Use case ends.
 
+[none]
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. ContactSails shows an error message.
 +
 Use case resumes at step 2.
 
-_{More to be added}_
+[discrete]
+=== Use case: Add person
+
+*MSS*
+
+1.	User requests to add specific person
+2.	ContactSails adds the person
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User enters invalid format for the Add feature
++
+[none]
+** 1a1. ContactSails shows an error message
++
+Use case ends.
+
+[discrete]
+=== Use case: List current customers
+
+*MSS*
+
+1.  User requests for current customers
+2.  ContactSails finds and displays a list of the list of customers whose orders are currently being fulfilled by user
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty as there are no current orders
++
+[none]
+** 2a1. ContactSails shows an error message
++
+Use case ends.
+
+[discrete]
+=== Use case: Edit specific details of contacts
+
+*MSS*
+
+1.  User selects contact to edit from the current list of contacts
+2.  ContactSails shows the selected contact
+3.  User requests to edit a certain field of the contact
+4.  ContactSails updates the contact details and shows contact details after the changes made
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User selects invalid contact
++
+[none]
+** 1a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 2a. User selects invalid field to edit
++
+[none]
+** 2a1. ContactSails shows an error message
++
+Use case resumes at step 2.
+
+[discrete]
+=== Use case: Add notes to contacts
+
+*MSS*
+
+1. User requests to list persons
+2. ContactSails shows a list of persons
+3. User requests to add notes to specific person in the list
+4. ContactSails adds notes to the specified person
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+[none]
+* 3a. The given index is invalid
++
+[none]
+** 3a1. ContactSails shows an error message
++
+Use case resumes at step 2.
+
+[discrete]
+=== Use case: Add contact specific tasks
+
+*MSS*
+
+1.  User selects contact to add a task for
+2.  ContactSails prompts user to enter the task details
+3.  User enters task description and task deadline
+4.  ContactSails adds task to specified contact and shows a success message.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User selects invalid contact
++
+[none]
+** 1a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 3a. User enters invalid task details
++
+[none]
+** 3a1. ContactSails shows en error message
++
+Use case resumes at step 2.
+
+[discrete]
+=== Use case: Find persons by name
+
+*MSS*
+
+1.	User requests to find persons with specific names
+2.	ContactSails shows list of persons with specified names
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User does not specify any name
++
+[none]
+** 1a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 1b. ContactSails does not have any names specified by user
++
+** 1b1. ContactSails shows empty list
++
+Use case ends.
+
+[discrete]
+=== Use case: Find persons by tags
+
+*MSS*
+
+1.	User requests to find persons with specific tags
+2.	ContactSails shows list of persons with specified tags
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User does not specify any tag
++
+[none]
+** 1a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 1b. ContactSails does not have any tags specified by user
++
+[none]
+** 1b1. ContactSails shows empty list
++
+Use case ends.
+
+[discrete]
+=== Use case: Remove specific tag
+
+*MSS*
+
+1.  User requests to remove a tag
+2.  ContactSails shows a list of all the tags used in the application
+3.  User enters the tag they want to remove
+4.  ContactSails removes the specific tag from all contacts who have this tag assigned to them
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. There are no tags
++
+[none]
+** 2a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 3a. User enters invalid tag
++
+[none]
+** 3a1. ContactSails shows an error message
++
+Use case resumes at step 2.
+
+[discrete]
+=== Use case: Export contacts
+
+*MSS*
+
+1.  User selects contacts to export from the current list of contacts
+2.  ContactSails stores the selection and processes the contacts to export
+3.  User requests to create a file containing the selected contacts
+4.  ContactSails creates the file and prompts for save location of file
+5.  User specifies location of file to be saved
+6.  ContactSails saves the file and shows a success message
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User does not select any contact
++
+[none]
+** 1a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 1b. User makes an invalid selection
++
+[none]
+** 1b1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 4a. ContactSails is unable to create the file with selected contacts
++
+[none]
+** 4a1. ContactSails shows an error message
++
+Use case resumes at step 1.
+
+[none]
+* 6a. ContactSails is unable to save the file in the specified location
++
+[none]
+** 6a1. ContactSails shows an error message
++
+Use case resumes at step 5.
+
+[none]
+* *a. User cancels the operation at any time
++
+[none]
+** *a1. ContactSails shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: Store a local backup of contacts
+
+*MSS*
+
+1.  User requests to create a backup file containing all the data stored in the application
+2.  ContactSails creates the file and adds all the application data
+3.  User specifies location of file to be saved
+4.  ContactSails saves the file in the location specified and shows a success message
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. ContactSails is unable to create the file
++
+[none]
+** 2a1. ContactSails shows an error message
++
+Use case ends.
+
+[none]
+* 4a. ContactSails is unable to save the file in the specified location
++
+[none]
+** 4a1. ContactSails shows an error message
++
+Use case resumes at step 3.
 
 [appendix]
 == Non Functional Requirements
@@ -852,8 +1214,17 @@ _{More to be added}_
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-_{More to be added}_
+.  The ContactSails should be usable even for users without experience in social media marketing.
+.  As ContactSails is modified from an open-source software, users should be able to download it for free.
+.  ContactSails should continue to run normally even when problems occur during execution.
+.  In case ContactSails has crashed, changes made to it during those sessions should not be lost.
+.  Size of ContactSails should not exceed 100 MB even with many contacts stored in it.
+.  ContactSails should take up to 2 seconds to execute any command except for commands that are reliant on internet connectivity.
+.  ContactSails can still work even if there is limited internet connectivity when executed command opens websites.
+.  Users can use ContactSails without requiring an installer.
+.  Data of ContactSails should be stored locally and in a human editable text file.
+.  Data of ContactSails should be able to be encrypted such that only the user can see it when text file containing the data is directly accessed.
+.  ContactSails should not be required to print any detailed reports of contacts.
 
 [appendix]
 == Glossary
@@ -861,8 +1232,38 @@ _{More to be added}_
 [[mainstream-os]] Mainstream OS::
 Windows, Linux, Unix, OS-X
 
+[[contacts]] Contacts::
+People whose details are present in my address book
+
 [[private-contact-detail]] Private contact detail::
 A contact detail that is not meant to be shared with others
+
+[[tags]] Tags::
+A label attached to a person's contact information for the purpose of grouping or give more details about that person
+
+[[tasks]] Tasks::
+A deadline, reminder, or a general note that can be added to keep track of things needed to be done
+
+[[mss]] MSS::
+Represents the most straightforward interaction between System and User where nothing goes wrong, in a use case
+
+[[extenstions]] Extensions::
+Represents interactions between System and User where something might have gone wrong
+
+[[profile-photo]] Profile Photo::
+A photograph attached to a certain contact to represent the person
+
+[[backup-file]] Backup File::
+An XML data file that stores all data in the application in a local copy on my computer
+
+[[java-fx]] Java FX::
+A software platform that contains a set of packages for graphics that enables developers to develop rich cross-platform applications
+
+[[travis]] Travis::
+A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Linux virtual machine
+
+[[appveyor]] AppVeyor::
+A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Windows virtual machine
 
 [appendix]
 == Product Survey

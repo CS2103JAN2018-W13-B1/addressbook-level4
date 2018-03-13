@@ -1,25 +1,19 @@
 package seedu.address.ui.testutil;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 import guitests.guihandles.PersonCardHandle;
 import guitests.guihandles.PersonListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import seedu.address.model.person.Person;
-import seedu.address.ui.PersonCard;
 
 /**
  * A set of assertion methods useful for writing GUI tests.
  */
 public class GuiTestAssert {
-
-    private static final String LABEL_DEFAULT_STYLE = "label";
-
     /**
      * Asserts that {@code actualCard} displays the same values as {@code expectedCard}.
      */
@@ -27,9 +21,6 @@ public class GuiTestAssert {
         assertEquals(expectedCard.getId(), actualCard.getId());
         assertEquals(expectedCard.getName(), actualCard.getName());
         assertEquals(expectedCard.getTags(), actualCard.getTags());
-
-        expectedCard.getTags().forEach(tag ->
-                assertEquals(expectedCard.getTagsStyleClasses(tag), actualCard.getTagsStyleClasses(tag)));
     }
 
     /**
@@ -90,6 +81,9 @@ public class GuiTestAssert {
         expectedTags.forEach(tag ->
                 assertEquals(Arrays.asList(LABEL_DEFAULT_STYLE, getTagColourStyleFor(tag)),
                         actualCard.getTagsStyleClasses(tag)));
+
+        assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
+                actualCard.getTags());
     }
 
     /**
