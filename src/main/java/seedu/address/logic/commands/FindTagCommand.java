@@ -16,15 +16,15 @@ public class FindTagCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " friends colleagues neighbours";
 
-    private final TagsContainKeywordsPredicate predicate;
+    private final TagsContainKeywordsPredicate tagsContainKeywordsPredicate;
 
     public FindTagCommand(TagsContainKeywordsPredicate predicate) {
-        this.predicate = predicate;
+        this.tagsContainKeywordsPredicate = predicate;
     }
 
     @Override
     public CommandResult execute() {
-        model.updateFilteredPersonList(predicate);
+        model.updateFilteredPersonList(tagsContainKeywordsPredicate);
         return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
     }
 
@@ -32,6 +32,7 @@ public class FindTagCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof FindTagCommand // instanceof handles nulls
-                && this.predicate.equals(((FindTagCommand) other).predicate)); // state check
+                && this.tagsContainKeywordsPredicate.equals
+                (((FindTagCommand) other).tagsContainKeywordsPredicate)); // state check
     }
 }
