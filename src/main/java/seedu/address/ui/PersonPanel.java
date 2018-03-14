@@ -42,6 +42,7 @@ public class PersonPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
+    @Subscribe
     private void loadPersonPage(Person person) {
         name.setText(person.getName().fullName);
         phone.setText("Phone: " + person.getPhone().toString());
