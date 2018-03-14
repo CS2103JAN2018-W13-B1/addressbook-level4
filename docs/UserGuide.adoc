@@ -65,7 +65,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ====
 
 [TIP]
-ContactSails will automatically complete the command you want to enter if you press the `TAB` key.
+ContactSails will automatically complete the command you want to enter if you press the `TAB` key. +
+For example, typing `ad` in the command box and then pressing `TAB` will automatically fill `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` in the command box.
 
 === Viewing help : `help`
 
