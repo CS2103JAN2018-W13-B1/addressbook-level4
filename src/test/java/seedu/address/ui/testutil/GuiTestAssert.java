@@ -48,30 +48,30 @@ public class GuiTestAssert {
      */
     private static String getTagColourStyleFor(String tagName) {
         switch(tagName) {
-            case "young":
-                return "red";
+        case "young":
+            return "red";
 
-            case "teenager":
-                return "orange";
+        case "teenager":
+            return "orange";
 
-            case "female adult":
-                return "yellow";
+        case "female adult":
+            return "yellow";
 
-            case "male adult":
-                return "green";
+        case "male adult":
+            return "green";
 
-            case "old lady":
-                return "blue";
+        case "old lady":
+            return "blue";
 
-            case "old man":
-                return "violet";
+        case "old man":
+            return "violet";
 
-            case "baby":
-                return "purple";
+        case "baby":
+            return "purple";
 
-            default:
-                fail(tagName + "does not have a colour assigned");
-                return "";
+        default:
+            fail(tagName + "does not have a colour assigned");
+            return "";
         }
     }
 
