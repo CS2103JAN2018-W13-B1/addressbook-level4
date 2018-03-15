@@ -147,7 +147,7 @@ Returns `john` and `John Doe`
 `f Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by tags: `findtag`
+=== Locating persons by tags: `findtag` `v1.1`
 
 Finds persons whose tags matches any of the given keywords. +
 Format: `findtag KEYWORD [MORE_KEYWORDS]` +
