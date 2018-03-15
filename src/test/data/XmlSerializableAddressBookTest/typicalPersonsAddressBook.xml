@@ -7,15 +7,15 @@
         <phone>85355255</phone>
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
-        <tagged>friends</tagged>
+        <groups>friends</groups>
     </persons>
     <persons>
         <name>Benson Meier</name>
         <phone>98765432</phone>
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
-        <tagged>owesMoney</tagged>
-        <tagged>friends</tagged>
+        <groups>owesMoney</groups>
+        <groups>friends</groups>
     </persons>
     <persons>
         <name>Carl Kurz</name>
@@ -34,8 +34,8 @@
         <phone>9482224</phone>
         <email>werner@example.com</email>
         <address>michegan ave</address>
-        <tagged>owesMoney</tagged>
-        <tagged>neighbours</tagged>
+        <groups>owesMoney</groups>
+        <groups>neighbours</groups>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
