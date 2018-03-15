@@ -8,7 +8,6 @@ import java.util.Set;
 
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueGroupList;
 import seedu.address.model.tag.UniquePreferenceList;
 

@@ -13,7 +13,7 @@ import seedu.address.commons.exceptions.DuplicateDataException;
 import seedu.address.commons.util.CollectionUtil;
 
 /**
- * A list of group tags that enforces no nulls and uniqueness between its elements.
+ * A list of preference tags that enforces no nulls and uniqueness between its elements.
  *
  * Supports minimal set of list operations for the app's features.
  *
@@ -24,23 +24,23 @@ public class UniquePreferenceList implements Iterable<Preference> {
     private final ObservableList<Preference> internalList = FXCollections.observableArrayList();
 
     /**
-     * Constructs empty GroupList.
+     * Constructs empty PreferenceList.
      */
     public UniquePreferenceList() {}
 
     /**
-     * Creates a UniqueTagList using given tags.
+     * Creates a UniquePreferenceList using given preference tags.
      * Enforces no nulls.
      */
-    public UniquePreferenceList(Set<Preference> groupTags) {
-        requireAllNonNull(groupTags);
-        internalList.addAll(groupTags);
+    public UniquePreferenceList(Set<Preference> preferenceTags) {
+        requireAllNonNull(preferenceTags);
+        internalList.addAll(preferenceTags);
 
         assert CollectionUtil.elementsAreUnique(internalList);
     }
 
     /**
-     * Returns all tags in this list as a Set.
+     * Returns all preference tags in this list as a Set.
      * This set is mutable and change-insulated against the internal list.
      */
     public Set<Preference> toSet() {
@@ -49,11 +49,11 @@ public class UniquePreferenceList implements Iterable<Preference> {
     }
 
     /**
-     * Replaces the Tags in this list with those in the argument tag list.
+     * Replaces the Preferences in this list with those in the argument preference tag list.
      */
-    public void setTags(Set<Preference> groupTags) {
-        requireAllNonNull(groupTags);
-        internalList.setAll(groupTags);
+    public void setTags(Set<Preference> preferenceTags) {
+        requireAllNonNull(preferenceTags);
+        internalList.setAll(preferenceTags);
         assert CollectionUtil.elementsAreUnique(internalList);
     }
 
@@ -63,7 +63,7 @@ public class UniquePreferenceList implements Iterable<Preference> {
     public void mergeFrom(UniquePreferenceList from) {
         final Set<Preference> alreadyInside = this.toSet();
         from.internalList.stream()
-                .filter(groupTag -> !alreadyInside.contains(groupTag))
+                .filter(preferenceTag -> !alreadyInside.contains(preferenceTag))
                 .forEach(internalList::add);
 
         assert CollectionUtil.elementsAreUnique(internalList);

@@ -15,7 +15,8 @@ import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Group;
+import seedu.address.model.tag.Preference;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -100,8 +101,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void deleteTag(Tag targetTag) throws Exception {
-        addressBook.removeTag(targetTag);
+    public void deleteGroup(Group targetGroup) throws Exception {
+        addressBook.removeGroup(targetGroup);
+    }
+
+    @Override
+    public void deletePreference(Preference targetPreference) throws Exception {
+        addressBook.removePreference(targetPreference);
     }
 
     @Override

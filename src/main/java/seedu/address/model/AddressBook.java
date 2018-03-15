@@ -17,9 +17,8 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
-import seedu.address.model.tag.Tag;
+
 import seedu.address.model.tag.UniqueGroupList;
-import seedu.address.model.tag.UniquePreferenceList;
 import seedu.address.model.tag.UniquePreferenceList;
 import seedu.address.model.tag.exceptions.TagNotFoundException;
 

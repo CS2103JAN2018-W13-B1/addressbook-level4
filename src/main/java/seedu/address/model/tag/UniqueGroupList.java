@@ -29,7 +29,7 @@ public class UniqueGroupList implements Iterable<Group> {
     public UniqueGroupList() {}
 
     /**
-     * Creates a UniqueTagList using given tags.
+     * Creates a UniqueGroupList using given group tags.
      * Enforces no nulls.
      */
     public UniqueGroupList(Set<Group> groupTags) {
@@ -40,7 +40,7 @@ public class UniqueGroupList implements Iterable<Group> {
     }
 
     /**
-     * Returns all tags in this list as a Set.
+     * Returns all group tags in this list as a Set.
      * This set is mutable and change-insulated against the internal list.
      */
     public Set<Group> toSet() {
@@ -49,7 +49,7 @@ public class UniqueGroupList implements Iterable<Group> {
     }
 
     /**
-     * Replaces the Tags in this list with those in the argument tag list.
+     * Replaces the Groups in this list with those in the argument group list.
      */
     public void setTags(Set<Group> groupTags) {
         requireAllNonNull(groupTags);
@@ -93,7 +93,7 @@ public class UniqueGroupList implements Iterable<Group> {
     }
 
     /**
-     * Removes group from list if it exists
+     * Removes group from list if it exists.
      */
     public void remove(Group toRemove) {
         requireNonNull(toRemove);
