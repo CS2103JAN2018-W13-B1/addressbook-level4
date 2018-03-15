@@ -6,7 +6,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
-import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building Addressbook objects.

@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,8 +15,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.model.AddressBook;
-import seedu.address.storage.XmlAdaptedPerson;
 import seedu.address.storage.XmlAdaptedGroup;
+import seedu.address.storage.XmlAdaptedPerson;
 import seedu.address.storage.XmlAdaptedPreference;
 import seedu.address.storage.XmlSerializableAddressBook;
 import seedu.address.testutil.AddressBookBuilder;
@@ -41,8 +40,10 @@ public class XmlUtilTest {
     private static final String VALID_PHONE = "9482424";
     private static final String VALID_EMAIL = "hans@example";
     private static final String VALID_ADDRESS = "4th street";
-    private static final List<XmlAdaptedGroup> VALID_GROUPS = Collections.singletonList(new XmlAdaptedGroup("friends"));
-    private static final List<XmlAdaptedPreference> VALID_PREFERENCES = Collections.singletonList(new XmlAdaptedPreference("shoes"));
+    private static final List<XmlAdaptedGroup> VALID_GROUPS =
+            Collections.singletonList(new XmlAdaptedGroup("friends"));
+    private static final List<XmlAdaptedPreference> VALID_PREFERENCES =
+            Collections.singletonList(new XmlAdaptedPreference("shoes"));
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -135,7 +136,7 @@ public class XmlUtilTest {
         AddressBookBuilder builder = new AddressBookBuilder(new AddressBook());
         dataToWrite = new XmlSerializableAddressBook(
                 builder.withPerson(new PersonBuilder().build()).withGroup("Friends")
-                        .withPreference("computers").build());
+                        .withPreference("shoes").build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
         dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAddressBook.class);

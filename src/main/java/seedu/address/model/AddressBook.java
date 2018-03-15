@@ -125,9 +125,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     *  Updates the master tag list to include tags in {@code person} that are not in the list.
-     *  @return a copy of this {@code person} such that every tag in this person points to a Tag object in the master
-     *  list.
+     *  Updates the master group list and master preference list to include groups and preferences
+     *  in {@code person} that are not in the lists.
+     *  @return a copy of this {@code person} such that every group and every preference in this person
+     *  points to a Group object and Preference in the respective master list.
      */
     private Person syncWithMasterTagList(Person person) {
         final UniqueGroupList personGroups = new UniqueGroupList(person.getGroupTags());
@@ -151,7 +152,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         final Set<Group> correctGroupReferences = new HashSet<>();
         final Set<Preference> correctPreferenceReferences = new HashSet<>();
         personGroups.forEach(group -> correctGroupReferences.add(masterGroupObjects.get(group)));
-        personGroups.forEach(pref -> correctPreferenceReferences.add(masterPreferenceObjects.get(pref)));
+        personPreferences.forEach(pref -> correctPreferenceReferences.add(masterPreferenceObjects.get(pref)));
         return new Person(
                 person.getName(), person.getPhone(), person.getEmail(), person.getAddress(),
                 correctGroupReferences, correctPreferenceReferences);

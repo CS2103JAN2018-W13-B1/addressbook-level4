@@ -6,7 +6,6 @@ import static seedu.address.testutil.TypicalGroups.BUDDIES;
 import static seedu.address.testutil.TypicalGroups.COLLEAGUES;
 import static seedu.address.testutil.TypicalGroups.FRIENDS;
 
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

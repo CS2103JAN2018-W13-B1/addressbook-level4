@@ -35,7 +35,7 @@ public class PersonUtil {
             s -> sb.append(PREFIX_GROUP + s.tagName + " ")
         );
         person.getPreferenceTags().stream().forEach(
-                s -> sb.append(PREFIX_PREFERENCE + s.tagName + " ")
+            s -> sb.append(PREFIX_PREFERENCE + s.tagName + " ")
         );
         return sb.toString();
     }

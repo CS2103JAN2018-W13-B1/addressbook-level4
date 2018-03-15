@@ -62,7 +62,8 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_GROUP_DESC = " " + PREFIX_GROUP + "hubby*"; // '*' not allowed in groups
-    public static final String INVALID_PREFERENCE_DESC = " " + PREFIX_PREFERENCE + "computers*"; // '*' not allowed in groups
+    public static final String INVALID_PREFERENCE_DESC =
+            " " + PREFIX_PREFERENCE + "computers*"; // '*' not allowed in preferences
 
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

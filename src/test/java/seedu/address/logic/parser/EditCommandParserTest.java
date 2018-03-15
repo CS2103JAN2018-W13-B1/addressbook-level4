@@ -6,27 +6,26 @@ import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.GROUP_DESC_COLLEAGUES;
+import static seedu.address.logic.commands.CommandTestUtil.GROUP_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GROUP_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GROUP_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERENCE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.GROUP_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.PREFERENCE_DESC_COMPUTERS;
 import static seedu.address.logic.commands.CommandTestUtil.PREFERENCE_DESC_SHOES;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GROUP_COLLEAGUES;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GROUP_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GROUP_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERENCE_COMPUTERS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERENCE_SHOES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GROUP;
@@ -135,8 +134,8 @@ public class EditCommandParserTest {
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withGroups(VALID_GROUP_COLLEAGUES, VALID_GROUP_FRIEND)
-                .withPreferences(VALID_PREFERENCE_SHOES, VALID_PREFERENCE_COMPUTERS).build();
+                .withGroups(VALID_GROUP_FRIEND)
+                .withPreferences(VALID_PREFERENCE_COMPUTERS).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -203,8 +202,8 @@ public class EditCommandParserTest {
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withGroups(VALID_GROUP_FRIEND, VALID_GROUP_COLLEAGUES)
-                .withPreferences(VALID_PREFERENCE_COMPUTERS, VALID_PREFERENCE_SHOES).build();
+                .withGroups(VALID_GROUP_FRIEND)
+                .withPreferences(VALID_PREFERENCE_COMPUTERS).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

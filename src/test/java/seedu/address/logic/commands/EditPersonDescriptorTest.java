@@ -9,7 +9,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GROUP_COLLEAGUES;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GROUP_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERENCE_COMPUTERS;
 
 import org.junit.Test;
