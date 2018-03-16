@@ -40,8 +40,8 @@ public class FindPreferenceCommandTest {
         assertTrue(findPreferenceFirstCommand.equals(findPreferenceFirstCommand));
 
         // same values -> returns true
-        FindPreferenceCommand findTagFirstCommandCopy = new FindPreferenceCommand(firstPredicate);
-        assertTrue(findPreferenceFirstCommand.equals(findTagFirstCommandCopy));
+        FindPreferenceCommand findPreferenceFirstCommandCopy = new FindPreferenceCommand(firstPredicate);
+        assertTrue(findPreferenceFirstCommand.equals(findPreferenceFirstCommandCopy));
 
         // different types -> returns false
         assertFalse(findPreferenceFirstCommand.equals(1));

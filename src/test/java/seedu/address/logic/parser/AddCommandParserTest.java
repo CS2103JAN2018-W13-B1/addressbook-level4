@@ -11,6 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GROUP_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERENCE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
@@ -142,9 +143,14 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC
                 + PREFERENCE_DESC_COMPUTERS + GROUP_DESC_FRIEND, Address.MESSAGE_ADDRESS_CONSTRAINTS);
 
-        // invalid tag
+        // invalid group
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + INVALID_GROUP_DESC + VALID_GROUP_FRIEND, Tag.MESSAGE_TAG_CONSTRAINTS);
+                + INVALID_GROUP_DESC + VALID_PREFERENCE_COMPUTERS, Tag.MESSAGE_TAG_CONSTRAINTS);
+
+        // invalid preference
+        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                + GROUP_DESC_FRIEND + INVALID_PREFERENCE_DESC, Tag.MESSAGE_TAG_CONSTRAINTS);
+
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC,

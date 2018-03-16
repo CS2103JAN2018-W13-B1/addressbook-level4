@@ -41,8 +41,8 @@ public class FindGroupCommandTest {
         assertTrue(findGroupFirstCommand.equals(findGroupFirstCommand));
 
         // same values -> returns true
-        FindGroupCommand findTagFirstCommandCopy = new FindGroupCommand(firstPredicate);
-        assertTrue(findGroupFirstCommand.equals(findTagFirstCommandCopy));
+        FindGroupCommand findGroupFirstCommandCopy = new FindGroupCommand(firstPredicate);
+        assertTrue(findGroupFirstCommand.equals(findGroupFirstCommandCopy));
 
         // different types -> returns false
         assertFalse(findGroupFirstCommand.equals(1));

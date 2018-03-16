@@ -63,14 +63,14 @@ This section describes each command in ContactSails in detail.
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items in square brackets are optional e.g `n/NAME [g/GROUP]` can be used as `n/John Doe g/friend` or as `n/John Doe`.
+* Items with `…`​ after them can be used multiple times including zero times e.g. `[g/GROUP]...` `[pr/PREFERENCE]...` can be used as `{nbsp}` (i.e. 0 times), `g/friend`, `g/friend g/family` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 ====
 
 [TIP]
 ContactSails will automatically complete the command you want to enter if you press the `TAB` key. +
-For example, typing `ad` in the command box and then pressing `TAB` will automatically fill `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` in the command box.
+For example, typing `ad` in the command box and then pressing `TAB` will automatically fill `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]...[pr/PREFERENCE]` in the command box.
 
 === Viewing help : `help`
 
@@ -80,7 +80,7 @@ Alias: `?`
 === Adding a person: `add`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP] [pr/PREFERENCE]...` +
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
 Alias: `a`
 
 [TIP]
@@ -102,7 +102,7 @@ Alias: `l`
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP] [pr/PREFERENCE]...` +
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 Alias: `e`
 
 ****
@@ -323,12 +323,12 @@ There is no need to save manually.
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP] [pr/PREFERENCE]...` +
+* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers`
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP] [pr/PREFERENCE]...` +
+* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
@@ -347,12 +347,12 @@ e.g.`select 2`
 
 == Command Alias Summary
 
-* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP] [pr/PREFERENCE]...` +
+* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers`
 * *Clear* : `c`
 * *Delete* : `d INDEX` +
 e.g. `d 3`
-* *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP] [pr/PREFERENCE]...` +
+* *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `e 2 n/James Lee e/jameslee@example.com`
 * *Find* : `f KEYWORD [MORE_KEYWORDS]` +
 e.g. `f James Jake`
