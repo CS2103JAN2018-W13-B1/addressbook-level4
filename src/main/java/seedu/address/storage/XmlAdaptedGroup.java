@@ -39,7 +39,7 @@ public class XmlAdaptedGroup {
     /**
      * Converts this jaxb-friendly adapted group object into the model's Group object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person
+     * @throws IllegalValueException if there were any data constraints violated in the adapted group
      */
     public Group toModelType() throws IllegalValueException {
         if (!Tag.isValidTagName(groupName)) {
@@ -53,11 +53,9 @@ public class XmlAdaptedGroup {
         if (other == this) {
             return true;
         }
-
         if (!(other instanceof XmlAdaptedGroup)) {
             return false;
         }
-
         return groupName.equals(((XmlAdaptedGroup) other).groupName);
     }
 }

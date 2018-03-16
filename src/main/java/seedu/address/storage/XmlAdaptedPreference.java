@@ -38,7 +38,7 @@ public class XmlAdaptedPreference {
     /**
      * Converts this jaxb-friendly adapted preference object into the model's Preference object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person
+     * @throws IllegalValueException if there were any data constraints violated in the adapted preference
      */
     public Preference toModelType() throws IllegalValueException {
         if (!Tag.isValidTagName(preferenceName)) {
@@ -52,11 +52,9 @@ public class XmlAdaptedPreference {
         if (other == this) {
             return true;
         }
-
         if (!(other instanceof XmlAdaptedPreference)) {
             return false;
         }
-
         return preferenceName.equals(((XmlAdaptedPreference) other).preferenceName);
     }
 }
