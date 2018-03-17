@@ -27,7 +27,6 @@ public class Person {
 
     private final UniqueGroupList groupTags;
     private final UniquePreferenceList prefTags;
-  
     private final UniqueOrderList orders;
 
     /**
@@ -41,16 +40,16 @@ public class Person {
         this.email = email;
         this.address = address;
         // protect internal groups from changes in the arg list
-        this.orders = new UniqueOrderList(groupTags);
+        this.groupTags = new UniqueGroupList(groupTags);
         // protect internal preferences from changes in the arg list
-        this.orders = new UniqueOrderList(prefTags);
+        this.prefTags = new UniquePreferenceList(prefTags);
         // protect internal orders from changes in the arg list
         this.orders = new UniqueOrderList();
     }
 
     public Person(Name name, Phone phone, Email email, Address address, Set<Group> groupTags,
                   Set<Preference> prefTags, Set<Order> orders) {
-        requireAllNonNull(name, phone, email, address, tags, orders);
+        requireAllNonNull(name, phone, email, address, groupTags, prefTags, orders);
         this.name = name;
         this.phone = phone;
         this.email = email;

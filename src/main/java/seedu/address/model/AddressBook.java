@@ -32,10 +32,8 @@ import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-  
     private final UniquePreferenceList prefTags;
     private final UniqueGroupList groupTags;
-  
     private final UniqueOrderList orders;
 
     /*
@@ -47,10 +45,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
-        
         prefTags = new UniquePreferenceList();
         groupTags = new UniqueGroupList();
-
         orders = new UniqueOrderList();
     }
 

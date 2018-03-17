@@ -198,10 +198,8 @@ public class AddressBookTest {
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
-      
         private final ObservableList<Group> groupTags = FXCollections.observableArrayList();
         private final ObservableList<Preference> prefTags = FXCollections.observableArrayList();
-      
         private final ObservableList<Order> orders = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons, Collection<? extends Group> groups,
@@ -225,7 +223,7 @@ public class AddressBookTest {
         public ObservableList<Preference> getPreferenceList() {
             return prefTags;
         }
-      
+
         @Override
         public ObservableList<Order> getOrderList() {
             return orders;

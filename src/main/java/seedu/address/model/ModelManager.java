@@ -96,7 +96,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void deletePreference(Preference targetPreference) throws PreferenceNotFoundException {
         addressBook.removePreference(targetPreference);
     }
-  
+
     @Override
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         addressBook.addOrderToOrderList(orderToAdd);
@@ -118,7 +118,8 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
-  
+
+    @Override
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {

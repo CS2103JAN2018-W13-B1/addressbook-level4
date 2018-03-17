@@ -28,7 +28,7 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate preferences.
      */
     ObservableList<Preference> getPreferenceList();
-  
+
     /**
      * Returns an unmodifiable view of the orders list.
      * This list will not contain any duplicate orders.
