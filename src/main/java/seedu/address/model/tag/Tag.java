@@ -26,13 +26,6 @@ public abstract class Tag {
     }
 
     /**
-     * This Constructor should not be called.
-     */
-    private Tag() {
-        tagName = null;
-    }
-
-    /**
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidTagName(String test) {

@@ -20,7 +20,8 @@ import seedu.address.model.tag.Preference;
 
 import seedu.address.model.tag.UniqueGroupList;
 import seedu.address.model.tag.UniquePreferenceList;
-import seedu.address.model.tag.exceptions.TagNotFoundException;
+import seedu.address.model.tag.exceptions.GroupNotFoundException;
+import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 
 /**
  * Wraps all data at the address-book level
@@ -184,9 +185,9 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Removes group from all persons who has the group
-     * @throws TagNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
+     * @throws GroupNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
      */
-    public void removeGroup(Group toRemove) throws TagNotFoundException {
+    public void removeGroup(Group toRemove) throws GroupNotFoundException {
         if (groupTags.contains(toRemove)) {
             ObservableList<Person> list = persons.getInternalList();
             for (Person p: list) {
@@ -194,15 +195,15 @@ public class AddressBook implements ReadOnlyAddressBook {
             }
             groupTags.remove(toRemove);
         } else {
-            throw new TagNotFoundException();
+            throw new GroupNotFoundException();
         }
     }
 
     /**
      * Removes preference from all persons who has the preference
-     * @throws TagNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
+     * @throws PreferenceNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
      */
-    public void removePreference(Preference toRemove) throws TagNotFoundException {
+    public void removePreference(Preference toRemove) throws PreferenceNotFoundException {
         if (prefTags.contains(toRemove)) {
             ObservableList<Person> list = persons.getInternalList();
             for (Person p: list) {
@@ -210,7 +211,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             }
             prefTags.remove(toRemove);
         } else {
-            throw new TagNotFoundException();
+            throw new PreferenceNotFoundException();
         }
     }
 

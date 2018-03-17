@@ -28,7 +28,8 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
-import seedu.address.model.tag.exceptions.TagNotFoundException;
+import seedu.address.model.tag.exceptions.GroupNotFoundException;
+import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.Assert;
 import seedu.address.testutil.PersonBuilder;
@@ -91,9 +92,9 @@ public class AddressBookTest {
     }
 
     @Test
-    public void removeGroup_removeNonExistentGroup_throwsTagNotFoundException() {
+    public void removeGroup_removeNonExistentGroup_throwsGroupNotFoundException() {
         AddressBook testAddressBook = new AddressBookBuilder().withPerson(ALICE).build();
-        Assert.assertThrows(TagNotFoundException.class, () -> testAddressBook.removeGroup(FAMILY));
+        Assert.assertThrows(GroupNotFoundException.class, () -> testAddressBook.removeGroup(FAMILY));
     }
 
     @Test
@@ -102,7 +103,7 @@ public class AddressBookTest {
         AddressBook expectedAddressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         try {
             testAddressBook.removeGroup(FRIENDS);
-        } catch (TagNotFoundException e) {
+        } catch (GroupNotFoundException e) {
             fail("Group " + FRIENDS.toString() + " should exist in testAddressBook.");
         }
         assertNotEquals(testAddressBook, expectedAddressBook);
@@ -140,9 +141,9 @@ public class AddressBookTest {
     }
 
     @Test
-    public void removePreference_removeNonExistentPreference_throwsTagNotFoundException() {
+    public void removePreference_removeNonExistentPreference_throwsPreferenceNotFoundException() {
         AddressBook testAddressBook = new AddressBookBuilder().withPerson(ALICE).build();
-        Assert.assertThrows(TagNotFoundException.class, () -> testAddressBook.removePreference(COMPUTERS));
+        Assert.assertThrows(PreferenceNotFoundException.class, () -> testAddressBook.removePreference(COMPUTERS));
     }
 
     @Test
@@ -151,7 +152,7 @@ public class AddressBookTest {
         AddressBook expectedAddressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         try {
             testAddressBook.removePreference(SHOES);
-        } catch (TagNotFoundException e) {
+        } catch (PreferenceNotFoundException e) {
             fail("Preference " + SHOES.toString() + " should exist in testAddressBook.");
         }
         assertNotEquals(testAddressBook, expectedAddressBook);

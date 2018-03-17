@@ -29,9 +29,11 @@ public class XmlAdaptedPersonTest {
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
+    private static final String VALID_GROUP = "friends"; // A valid group that BENSON has.
     private static final List<XmlAdaptedGroup> VALID_GROUPS = BENSON.getGroupTags().stream()
             .map(XmlAdaptedGroup::new)
             .collect(Collectors.toList());
+    private static final String VALID_PREFERENCE = "computers"; // A valid preference that BENSON has.
     private static final List<XmlAdaptedPreference> VALID_PREFERENCES = BENSON.getPreferenceTags().stream()
             .map(XmlAdaptedPreference::new)
             .collect(Collectors.toList());
@@ -115,7 +117,7 @@ public class XmlAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_invalidGroups_throwsIllegalValueException() {
+    public void toModelType_invalidGroupName_throwsIllegalValueException() {
         List<XmlAdaptedGroup> invalidGroups = new ArrayList<>(VALID_GROUPS);
         invalidGroups.add(new XmlAdaptedGroup(INVALID_GROUP));
         XmlAdaptedPerson person =
@@ -125,9 +127,29 @@ public class XmlAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_invalidPreferences_throwsIllegalValueException() {
+    public void toModelType_duplicateGroups_throwsIllegalValueException() {
+        List<XmlAdaptedGroup> invalidGroups = new ArrayList<>(VALID_GROUPS);
+        invalidGroups.add(new XmlAdaptedGroup(VALID_GROUP));
+        XmlAdaptedPerson person =
+                new XmlAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        invalidGroups, VALID_PREFERENCES);
+        Assert.assertThrows(IllegalValueException.class, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidPreferenceName_throwsIllegalValueException() {
         List<XmlAdaptedPreference> invalidPreferences = new ArrayList<>(VALID_PREFERENCES);
         invalidPreferences.add(new XmlAdaptedPreference(INVALID_PREFERENCE));
+        XmlAdaptedPerson person =
+                new XmlAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_GROUPS, invalidPreferences);
+        Assert.assertThrows(IllegalValueException.class, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_duplicatePreferences_throwsIllegalValueException() {
+        List<XmlAdaptedPreference> invalidPreferences = new ArrayList<>(VALID_PREFERENCES);
+        invalidPreferences.add(new XmlAdaptedPreference(VALID_PREFERENCE));
         XmlAdaptedPerson person =
                 new XmlAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         VALID_GROUPS, invalidPreferences);

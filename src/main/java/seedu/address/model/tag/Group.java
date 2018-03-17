@@ -5,6 +5,7 @@ package seedu.address.model.tag;
  * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)} in parent class.
  */
 public class Group extends Tag {
+
     public Group(String groupTagName) {
         super(groupTagName);
     }

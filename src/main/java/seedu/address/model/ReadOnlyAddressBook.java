@@ -17,10 +17,14 @@ public interface ReadOnlyAddressBook {
     ObservableList<Person> getPersonList();
 
     /**
-     * Returns an unmodifiable view of the tags list.
-     * This list will not contain any duplicate tags.
+     * Returns an unmodifiable view of the groups list.
+     * This list will not contain any duplicate groups.
      */
     ObservableList<Group> getGroupList();
 
+    /**
+     * Returns an unmodifiable view of the preferences list.
+     * This list will not contain any duplicate preferences.
+     */
     ObservableList<Preference> getPreferenceList();
 }

@@ -23,6 +23,8 @@ import seedu.address.model.tag.Preference;
 public class XmlAdaptedPerson {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String DUPLICATE_GROUPS_MESSAGE_FORMAT = "Person has duplicate groups!";
+    public static final String DUPLICATE_PREFERENCES_MESSAGE_FORMAT = "Person has duplicate preferences!";
 
     @XmlElement(required = true)
     private String name;
@@ -89,12 +91,20 @@ public class XmlAdaptedPerson {
     public Person toModelType() throws IllegalValueException {
         final List<Group> personGroups = new ArrayList<>();
         for (XmlAdaptedGroup group : groups) {
+            Group groupToAdd = group.toModelType();
+            if (personGroups.contains(groupToAdd)) {
+                throw new IllegalValueException(DUPLICATE_GROUPS_MESSAGE_FORMAT);
+            }
             personGroups.add(group.toModelType());
         }
 
         final List<Preference> personPreferences = new ArrayList<>();
         for (XmlAdaptedPreference pref: preferences) {
-            personPreferences.add(pref.toModelType());
+            Preference prefToAdd = pref.toModelType();
+            if (personPreferences.contains(prefToAdd)) {
+                throw new IllegalValueException(DUPLICATE_PREFERENCES_MESSAGE_FORMAT);
+            }
+            personPreferences.add(prefToAdd);
         }
 
         if (this.name == null) {
