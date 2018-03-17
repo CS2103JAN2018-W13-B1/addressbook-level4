@@ -149,5 +149,4 @@ public class UniquePreferenceList implements Iterable<Preference> {
             super("Operation would result in duplicate preferences");
         }
     }
-
 }

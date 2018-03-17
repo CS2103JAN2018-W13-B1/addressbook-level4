@@ -148,5 +148,4 @@ public class UniqueGroupList implements Iterable<Group> {
             super("Operation would result in duplicate groups");
         }
     }
-
 }
