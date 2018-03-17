@@ -46,8 +46,12 @@ public class CommandTestUtil {
 
     public static final String VALID_ORDER_INFORMATION_CHOC = "Chocolates";
     public static final String VALID_PRICE_CHOC = "10.00";
-    public static final String VALID_QUANTITY_CHOC = "3";
+    public static final String VALID_QUANTITY_CHOC = "15";
     public static final String VALID_DELIVERY_DATE_CHOC = "12-08-2018";
+    public static final String VALID_ORDER_INFORMATION_BOOKS = "Books";
+    public static final String VALID_PRICE_BOOKS = "15.00";
+    public static final String VALID_QUANTITY_BOOKS = "3";
+    public static final String VALID_DELIVERY_DATE_BOOKS = "04-12-2018";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -60,10 +64,16 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
-    public static final String ORDER_INFORMATION_DESC_CHOC = PREFIX_ORDER_INFORMATION + VALID_ORDER_INFORMATION_CHOC;
-    public static final String PRICE_DESC_CHOC = PREFIX_PRICE + VALID_PRICE_CHOC;
-    public static final String QUANTITY_DESC_CHOC = PREFIX_QUANTITY + VALID_QUANTITY_CHOC;
-    public static final String DELIVERY_DESC_DATE = PREFIX_DELIVERY_DATE + VALID_DELIVERY_DATE_CHOC;
+    public static final String ORDER_INFORMATION_DESC_CHOC = " " + PREFIX_ORDER_INFORMATION
+            + VALID_ORDER_INFORMATION_CHOC;
+    public static final String PRICE_DESC_CHOC = " " + PREFIX_PRICE + VALID_PRICE_CHOC;
+    public static final String QUANTITY_DESC_CHOC = " " + PREFIX_QUANTITY + VALID_QUANTITY_CHOC;
+    public static final String DELIVERY_DATE_DESC_CHOC = " " + PREFIX_DELIVERY_DATE + VALID_DELIVERY_DATE_CHOC;
+    public static final String ORDER_INFORMATION_DESC_BOOKS = " " + PREFIX_ORDER_INFORMATION
+            + VALID_ORDER_INFORMATION_BOOKS;
+    public static final String PRICE_DESC_BOOKS = " " + PREFIX_PRICE + VALID_PRICE_BOOKS;
+    public static final String QUANTITY_DESC_BOOKS = " " + PREFIX_QUANTITY + VALID_QUANTITY_BOOKS;
+    public static final String DELIVERY_DATE_DESC_BOOKS = " " + PREFIX_DELIVERY_DATE + VALID_DELIVERY_DATE_BOOKS;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
