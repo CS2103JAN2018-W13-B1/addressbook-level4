@@ -100,6 +100,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         addressBook.addOrderToOrderList(orderToAdd);
+        indicateAddressBookChanged();
     }
 
     //=========== Filtered Person List Accessors =============================================================
