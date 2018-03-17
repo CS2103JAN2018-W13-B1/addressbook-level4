@@ -143,7 +143,7 @@ public class UniqueOrderList implements Iterable<Order> {
      * Signals that an operation would have violated the 'no duplicates' property of the list.
      */
     public static class DuplicateOrderException extends DuplicateDataException {
-        protected DuplicateOrderException() {
+        public DuplicateOrderException() {
             super("Operation would result in duplicate orders");
         }
     }
