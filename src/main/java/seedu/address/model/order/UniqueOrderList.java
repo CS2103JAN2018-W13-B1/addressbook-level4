@@ -62,7 +62,7 @@ public class UniqueOrderList implements Iterable<Order> {
     public void mergeFrom(UniqueOrderList from) {
         final Set<Order> alreadyInside = this.toSet();
         from.internalList.stream()
-                .filter(tag -> !alreadyInside.contains(tag))
+                .filter(order -> !alreadyInside.contains(order))
                 .forEach(internalList::add);
 
         assert CollectionUtil.elementsAreUnique(internalList);
