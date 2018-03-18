@@ -798,8 +798,7 @@ A typical user from our target user profile:
 
 *Value proposition*: consolidation platform for all contacts from different platforms for users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.
 
-[discrete]
-===Feature Contribution
+*Feature Contribution*
 
 1. Aadyaa Maddi
 * Major Feature: Ability to manage customer orders.
@@ -825,6 +824,7 @@ If customers have any issues regarding their orders, salespersons will be able t
 It provides a quicker way to manage events compared to using other calendar applications that mainly relies on GUI input.
 ** Minor Feature: Groups can be used to indicate which social media platform does the salesperson use to communicate with a particular contact, while preferences indicates the products and services a contact usually purchases.
 Using separate labels for groups and preferences placed at separate locations in the Ui display gives a more organised display of a contact's information, allowing salespersons to derive important information of their contacts quickly.
+
 [appendix]
 == User Stories
 
