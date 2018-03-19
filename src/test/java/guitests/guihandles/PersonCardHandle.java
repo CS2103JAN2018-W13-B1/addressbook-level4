@@ -29,7 +29,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final List<Label> preferenceLabels;
     private final List<Label> tagLabels;
 
-
     public PersonCardHandle(Node cardNode) {
         super(cardNode);
 

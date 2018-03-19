@@ -5,8 +5,6 @@ import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
-import java.util.stream.Collectors;
-
 import org.junit.Before;
 import org.junit.Test;
 
