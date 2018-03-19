@@ -51,13 +51,9 @@ public class PersonPanelHandle extends NodeHandle<Node> {
         return address.getText();
     }
 
-    public List<String> getTags() {
-        return tagLabels
-                .stream()
-                .map(Label::getText)
-                .collect(Collectors.toList());
-    }
-
+    /**
+    * Update tag of each person
+    */
     public void updateTags() {
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
 
