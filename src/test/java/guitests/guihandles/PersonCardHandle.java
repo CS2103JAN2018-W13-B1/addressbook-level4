@@ -89,6 +89,9 @@ public class PersonCardHandle extends NodeHandle<Node> {
 
     public List<String> getTags() {
         return tagLabels
+                .stream()
+                .map(Label::getText)
+                .collect(Collectors.toList());
     }
 
     public List<String> getTagStyleClasses(String tag) {
