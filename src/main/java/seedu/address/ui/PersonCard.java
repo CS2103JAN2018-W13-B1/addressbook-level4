@@ -54,7 +54,6 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         person.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
         person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
-        initTags(person);
     }
 
     /**
@@ -65,16 +64,7 @@ public class PersonCard extends UiPart<Region> {
         // between different runs of the program while still making it random enough between tags.
         return TAG_COLOUR_STYLES[Math.abs(tagName.hashCode()) % TAG_COLOUR_STYLES.length];
     }
-    /**
-    * Creates the tag labels for {@code person}.
-    */
-    private void initTags(Person person) {
-        person.getTags().forEach(tag -> {
-            Label tagLabel = new Label(tag.tagName);
-            tagLabel.getStyleClass().add(getTagColorStyleFor(tag.tagName));
-            tags.getChildren().add(tagLabel);
-        });
-    }
+
 
     @Override
     public boolean equals(Object other) {

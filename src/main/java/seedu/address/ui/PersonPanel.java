@@ -49,7 +49,6 @@ public class PersonPanel extends UiPart<Region> {
         address.setText("Address: " + person.getAddress().toString());
         email.setText("Email: " + person.getEmail().toString());
         tags.getChildren().clear();
-        person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Subscribe
