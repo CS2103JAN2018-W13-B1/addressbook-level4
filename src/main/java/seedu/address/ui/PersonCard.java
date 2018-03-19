@@ -55,16 +55,6 @@ public class PersonCard extends UiPart<Region> {
         person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
     }
 
-    /**
-     *Returns the color style for {@code tagName}'s label.
-     */
-    private String getTagColorStyleFor(String tagName) {
-        // we use the hash code of the tag name to generate a random color, so that the color remain consistent
-        // between different runs of the program while still making it random enough between tags.
-        return TAG_COLOUR_STYLES[Math.abs(tagName.hashCode()) % TAG_COLOUR_STYLES.length];
-    }
-
-
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
