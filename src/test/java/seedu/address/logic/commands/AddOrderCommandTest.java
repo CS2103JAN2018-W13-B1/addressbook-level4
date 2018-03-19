@@ -153,6 +153,11 @@ public class AddOrderCommandTest {
         }
 
         @Override
+        public ObservableList<Order> getFilteredOrderList() {
+            return model.getFilteredOrderList();
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             filteredPersons.setPredicate(predicate);
         }
