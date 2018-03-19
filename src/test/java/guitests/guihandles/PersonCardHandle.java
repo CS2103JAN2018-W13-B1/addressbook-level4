@@ -14,7 +14,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
     private static final String NAME_FIELD_ID = "#name";
 
-   
+
     private final List<Label> tagLabels;
 
     private static final String ADDRESS_FIELD_ID = "#address";
@@ -86,7 +86,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 .map(Label::getText)
                 .collect(Collectors.toList());
     }
-  
+
     public List<String> getTags() {
         return tagLabels
     }
