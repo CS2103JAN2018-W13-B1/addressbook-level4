@@ -56,14 +56,12 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 [[Features]]
 == Features
-
-=======
-This section describes each command in ContactSails in detail.
-
 === "Person Panel for v1.5.."
 
 This panel will show the contact details when the contact is selected.
 The feature is to show contact details and additionally, their photo.
+=======
+This section describes each command in ContactSails in detail.
 ====
 *Command Format*
 
