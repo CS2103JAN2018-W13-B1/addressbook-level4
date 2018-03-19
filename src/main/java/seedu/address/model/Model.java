@@ -3,10 +3,13 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Group;
+import seedu.address.model.tag.Preference;
 
 /**
  * The API of the Model component.
@@ -46,9 +49,18 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    /**
+     * Deletes given Group
+     */
+    void deleteGroup(Group targetGroup) throws Exception;
 
     /**
-     * Deletes given Tag
+     * Deletes given Preference
      */
-    void deleteTag(Tag targetTag) throws Exception;
+    void deletePreference(Preference targetPreference) throws Exception;
+
+    /**
+     * Adds order to list of orders.
+     */
+    void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException;
 }

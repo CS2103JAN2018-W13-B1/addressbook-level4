@@ -17,9 +17,11 @@ By: `Team W13-B1`      Since: `Mar 2018`      Licence: `MIT`
 
 == Introduction
 
-AddressBook Level 4 (AB4) is for those who *prefer to use a desktop app for managing contacts*. More importantly, AB4 is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+ContactSails is for users who *prefer to use a desktop app for managing contacts*. More importantly, it is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ContactSails can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
+
+To set up and start using ContactSails, do the following:
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
 +
@@ -55,19 +57,25 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 [[Features]]
 == Features
 
+=======
+This section describes each command in ContactSails in detail.
+
 === "Person Panel for v1.5.."
 
 This panel will show the contact details when the contact is selected.
 The feature is to show contact details and additionally, their photo.
-
 ====
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items in square brackets are optional e.g `n/NAME [g/GROUP]` can be used as `n/John Doe g/friend` or as `n/John Doe`.
+* Items with `…`​ after them can be used multiple times including zero times e.g. `[g/GROUP]...` `[pr/PREFERENCE]...` can be used as `{nbsp}` (i.e. 0 times), `g/friend`, `g/friend g/family` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 ====
+
+[TIP]
+ContactSails will automatically complete the command you want to enter if you press the `TAB` key. +
+For example, typing `ad` in the command box and then pressing `TAB` will automatically fill `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]...[pr/PREFERENCE]` in the command box.
 
 === Viewing help : `help`
 
@@ -77,18 +85,18 @@ Alias: `?`
 === Adding a person: `add`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
 Alias: `a`
 
 [TIP]
-A person can have any number of tags (including 0)
+A person can have any number of groups and preferences (including 0)
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` OR +
-`a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` +
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal` OR +
-`a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` OR +
+`a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` +
+* `add n/Betsy Crowe g/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/criminal` OR +
+`a n/Betsy Crowe g/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/criminal`
 
 === Listing all persons : `list`
 
@@ -99,15 +107,15 @@ Alias: `l`
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 Alias: `e`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person's tags by typing `t/` without specifying any tags after it.
+* When editing groups or preferences, the existing groups and preferences of the person will be removed i.e adding of groups and preferences is not cumulative.
+* You can remove all the person's groups and preferences by typing `g/` and `pr/` without specifying any groups and preferences after it respectively.
 ****
 
 Examples:
@@ -116,9 +124,9 @@ Examples:
 `e 1 p/91234567 e/johndoe@example.com` +
 Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
-* `edit 2 n/Betsy Crower t/` OR +
-`e 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `edit 2 n/Betsy Crower g/` OR +
+`e 2 n/Betsy Crower g/` +
+Edits the name of the 2nd person to be `Betsy Crower` and clears all existing groups.
 
 === Locating persons by name: `find`
 
@@ -143,6 +151,52 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` OR +
 `f Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
+
+=== Locating persons by groups: `findgroup` `v1.2`
+
+Finds persons whose groups matches any of the given keywords. +
+Format: `findgroup KEYWORD [MORE_KEYWORDS]` +
+Alias: `fg`
+
+****
+* The search is case insensitive. e.g `Friends` will match `friends`
+* Only the names of groups of a person is searched.
+* Only full words will be matched e.g. `friend` will not match `friends`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `criminal friends` will return `John Doe`, `Betsy Crowe` who have the groups `friends` and `criminal` respectively.
+****
+
+Examples:
+
+* `findgroup friends` OR +
+`fg friends` +
+Returns `John Doe`
+
+* `findgroup neighbours friends colleagues` OR +
+`fg neighbours friends colleagues` +
+Returns any person having groups `neighbours`, `friends`, or `colleagues`
+
+=== Locating persons by preferences: `findpref` `v1.2`
+
+Finds persons whose preferences matches any of the given keywords. +
+Format: `findpref KEYWORD [MORE_KEYWORDS]` +
+Alias: `fp`
+
+****
+* The search is case insensitive. e.g `Computers` will match `computers`
+* Only the names of preferences of a person is searched.
+* Only full words will be matched e.g. `computer` will not match `computers`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `computers knives` will return `John Doe`, `Betsy Crowe` who have the preferences `computers` and `knives` respectively.
+****
+
+Examples:
+
+* `findpref computers` OR +
+`fp computers` +
+Returns `John Doe`
+
+* `findpref computers shoes necklaces` OR +
+`fp computers shoes necklaces` +
+Returns any person having preferences `computers`, `shoes`, or `necklaces`
 
 === Deleting a person : `delete`
 
@@ -267,12 +321,6 @@ Alias: `q`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-// tag::dataencryption[]
-=== Encrypting data files `[coming in v2.0]`
-
-_{explain how the user can enable/disable data encryption}_
-// end::dataencryption[]
-
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -280,15 +328,19 @@ _{explain how the user can enable/disable data encryption}_
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
+e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers`
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
+* *Findgroup* : findgroup KEYWORD [MORE_KEYWORDS]` +
+e.g. `findgroup friends`
+* *Findpref* : findpref KEYWORD [MORE_KEYWORDS]` +
+e.g. `findpref computers`
 * *List* : `list`
 * *Help* : `help`
 * *Select* : `select INDEX` +
@@ -300,15 +352,19 @@ e.g.`select 2`
 
 == Command Alias Summary
 
-* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
+e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers`
 * *Clear* : `c`
 * *Delete* : `d INDEX` +
 e.g. `d 3`
-* *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+* *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `e 2 n/James Lee e/jameslee@example.com`
 * *Find* : `f KEYWORD [MORE_KEYWORDS]` +
 e.g. `f James Jake`
+* *Findgroup* : fg KEYWORD [MORE_KEYWORDS]` +
+e.g. `fg friends`
+* *Findpref* : fp KEYWORD [MORE_KEYWORDS]` +
+e.g. `fp computers`
 * *List* : `l`
 * *Help* : `?`
 * *Select* : `s INDEX` +
@@ -317,3 +373,11 @@ e.g. `s 2`
 * *Undo* : `u`
 * *Redo* : `r`
 * *Exit* : `q`
+
+== Coming in v2.0
+
+* Encrypting data files
+* Adding, editing, and deleting orders
+* Reminders
+* Viewing schedule in integrated calendar
+* Sending promotions to target groups
