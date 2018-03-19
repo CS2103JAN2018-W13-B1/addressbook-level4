@@ -5,6 +5,8 @@ import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.util.stream.Collectors;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,15 +44,24 @@ public class PersonPanelTest extends GuiUnitTest {
         assertEquals(expectedPerson.getEmail().toString(), personPanelHandle.getEmail());
         assertEquals(expectedPerson.getAddress().toString(), personPanelHandle.getAddress());
 
-        personPanelHandle.updateTags();
-        assertTagsAreDisplayed(expectedPerson, personPanelHandle);
+        personPanelHandle.updateGroups();
+        assertGroupsAreDisplayed(expectedPerson, personPanelHandle);
+        assertPreferencesAreDisplayed(expectedPerson, personPanelHandle);
     }
 
     /*
-     * Asserts that {@code personPanelHandle} displays the tags of {@code expectedPerson} correctly
+     * Asserts that {@code personPanelHandle} displays the groups of {@code expectedPerson} correctly
      */
-    private void assertTagsAreDisplayed(Person expectedPerson, PersonPanelHandle personPanelHandle) {
-        assertEquals(expectedPerson.getGroupTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
-                personPanelHandle.getGroupTags());
+    private void assertGroupsAreDisplayed(Person expectedPerson, PersonPanelHandle personPanelHandle) {
+        assertEquals(expectedPerson.getGroupTags().stream().map(groupLabels -> groupLabels.tagName).collect(Collectors.toList()),
+                personPanelHandle.getGroups());
+    }
+
+    /*
+     * Asserts that {@code personPanelHandle} displays the preferences of {@code expectedPerson} correctly
+     */
+    private void assertPreferencesAreDisplayed(Person expectedPerson, PersonPanelHandle personPanelHandle) {
+        assertEquals(expectedPerson.getPreferenceTags().stream().map(preferenceLabels -> preferenceLabels.tagName).collect(Collectors.toList()),
+                personPanelHandle.getPreferences());
     }
 }
