@@ -41,8 +41,7 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane groups;
     @FXML
     private FlowPane preferences;
-    @FXML
-    private FlowPane tags;
+
 
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
