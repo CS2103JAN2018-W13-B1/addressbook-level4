@@ -10,10 +10,16 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.order.DeliveryDate;
+import seedu.address.model.order.OrderInformation;
+import seedu.address.model.order.Price;
+import seedu.address.model.order.Quantity;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Group;
+import seedu.address.model.tag.Preference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -140,29 +146,168 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String tag} into a {@code Tag}.
+     * Parses a {@code String group} into a {@code Group}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws IllegalValueException if the given {@code tag} is invalid.
+     * @throws IllegalValueException if the given {@code group} is invalid.
      */
-    public static Tag parseTag(String tag) throws IllegalValueException {
-        requireNonNull(tag);
-        String trimmedTag = tag.trim();
-        if (!Tag.isValidTagName(trimmedTag)) {
+    public static Group parseGroup(String group) throws IllegalValueException {
+        requireNonNull(group);
+        String trimmedGroup = group.trim();
+        if (!Tag.isValidTagName(trimmedGroup)) {
             throw new IllegalValueException(Tag.MESSAGE_TAG_CONSTRAINTS);
         }
-        return new Tag(trimmedTag);
+        return new Group(trimmedGroup);
     }
 
     /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     * Parses {@code Collection<String> groups} into a {@code Set<Group>}.
      */
-    public static Set<Tag> parseTags(Collection<String> tags) throws IllegalValueException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName));
+    public static Set<Group> parseGroups(Collection<String> groups) throws IllegalValueException {
+        requireNonNull(groups);
+        final Set<Group> groupSet = new HashSet<>();
+        for (String groupName : groups) {
+            groupSet.add(parseGroup(groupName));
         }
-        return tagSet;
+        return groupSet;
+    }
+
+    /**
+     * Parses a {@code String pref} into a {@code Preference}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code preference} is invalid.
+     */
+    public static Preference parsePreference(String pref) throws IllegalValueException {
+        requireNonNull(pref);
+        String trimmedPreference = pref.trim();
+        if (!Tag.isValidTagName(trimmedPreference)) {
+            throw new IllegalValueException(Tag.MESSAGE_TAG_CONSTRAINTS);
+        }
+        return new Preference(trimmedPreference);
+    }
+
+    /**
+     * Parses {@code Collection<String> preferences} into a {@code Set<Perference>}.
+     */
+    public static Set<Preference> parsePreferences(Collection<String> preferences) throws IllegalValueException {
+        requireNonNull(preferences);
+        final Set<Preference> preferenceSet = new HashSet<>();
+        for (String prefName : preferences) {
+            preferenceSet.add(parsePreference(prefName));
+        }
+        return preferenceSet;
+    }
+
+    /**
+     * Parses a {@code String orderInformation} into a {@code OrderInformation}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code orderInformation} is invalid.
+     */
+    public static OrderInformation parseOrderInformation(String orderInformation) throws IllegalValueException {
+        requireNonNull(orderInformation);
+        String trimmedOrderInformation = orderInformation.trim();
+        if (!OrderInformation.isValidOrderInformation(trimmedOrderInformation)) {
+            throw new IllegalValueException(OrderInformation.MESSAGE_ORDER_INFORMATION_CONSTRAINTS);
+        }
+        return new OrderInformation(trimmedOrderInformation);
+    }
+
+    /**
+     * Parses a {@code Optional<String> orderInformation} into an {@code Optional<OrderInformation>}
+     * if {@code orderInformation} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<OrderInformation> parseOrderInformation(Optional<String> orderInformation)
+            throws IllegalValueException {
+        requireNonNull(orderInformation);
+        return orderInformation.isPresent()
+                ? Optional.of(parseOrderInformation(orderInformation.get()))
+                : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String price} into a {@code Price}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code price} is invalid.
+     */
+    public static Price parsePrice(String price) throws IllegalValueException {
+        requireNonNull(price);
+        String trimmedPrice = price.trim();
+        if (!Price.isValidPrice(trimmedPrice)) {
+            throw new IllegalValueException(Price.MESSAGE_PRICE_CONSTRAINTS);
+        }
+        return new Price(trimmedPrice);
+    }
+
+    /**
+     * Parses a {@code Optional<String> price} into an {@code Optional<Price>}
+     * if {@code price} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Price> parsePrice(Optional<String> price)
+            throws IllegalValueException {
+        requireNonNull(price);
+        return price.isPresent()
+                ? Optional.of(parsePrice(price.get()))
+                : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String quantity} into a {@code Quantity}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code quantity} is invalid.
+     */
+    public static Quantity parseQuantity(String quantity) throws IllegalValueException {
+        requireNonNull(quantity);
+        String trimmedQuantity = quantity.trim();
+        if (!Quantity.isValidQuantity(trimmedQuantity)) {
+            throw new IllegalValueException(Quantity.MESSAGE_QUANTITY_CONSTRAINTS);
+        }
+        return new Quantity(trimmedQuantity);
+    }
+
+    /**
+     * Parses a {@code Optional<String> quantity} into an {@code Optional<Quantity>}
+     * if {@code quantity} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Quantity> parseQuantity(Optional<String> quantity)
+            throws IllegalValueException {
+        requireNonNull(quantity);
+        return quantity.isPresent()
+                ? Optional.of(parseQuantity(quantity.get()))
+                : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String deliveryDate} into a {@code DeliveryDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code deliveryDate} is invalid.
+     */
+    public static DeliveryDate parseDeliveryDate(String deliveryDate) throws IllegalValueException {
+        requireNonNull(deliveryDate);
+        String trimmedDeliveryDate = deliveryDate.trim();
+        if (!DeliveryDate.isValidDeliveryDate(trimmedDeliveryDate)) {
+            throw new IllegalValueException(DeliveryDate.MESSAGE_DELIVERY_DATE_CONSTRAINTS);
+        }
+        return new DeliveryDate(trimmedDeliveryDate);
+    }
+
+    /**
+     * Parses a {@code Optional<String> deliveryDate} into an {@code Optional<DeliveryDate>}
+     * if {@code deliveryDate} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<DeliveryDate> parseDeliveryDate(Optional<String> deliveryDate)
+            throws IllegalValueException {
+        requireNonNull(deliveryDate);
+        return deliveryDate.isPresent()
+                ? Optional.of(parseDeliveryDate(deliveryDate.get()))
+                : Optional.empty();
     }
 }

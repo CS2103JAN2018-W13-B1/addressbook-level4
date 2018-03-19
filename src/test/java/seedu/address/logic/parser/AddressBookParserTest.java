@@ -16,12 +16,15 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddOrderCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindGroupCommand;
+import seedu.address.logic.commands.FindPreferenceCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
@@ -29,9 +32,14 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.order.Order;
+import seedu.address.model.person.GroupsContainKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PreferencesContainKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.OrderBuilder;
+import seedu.address.testutil.OrderUtil;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
@@ -54,6 +62,22 @@ public class AddressBookParserTest {
         AddCommand command = (AddCommand) parser.parseCommand(AddCommand.COMMAND_ALIAS
                 + " " + PersonUtil.getPersonDetails(person));
         assertEquals(new AddCommand(person), command);
+    }
+
+    @Test
+    public void parseCommand_addOrder() throws Exception {
+        Order order = new OrderBuilder().build();
+        AddOrderCommand command = (AddOrderCommand) parser.parseCommand(OrderUtil
+                .getAddOrderCommand(INDEX_FIRST_PERSON.getOneBased(), order));
+        assertEquals(new AddOrderCommand(INDEX_FIRST_PERSON, order), command);
+    }
+
+    @Test
+    public void parseCommand_addOrderAlias() throws Exception {
+        Order order = new OrderBuilder().build();
+        AddOrderCommand command = (AddOrderCommand) parser.parseCommand(AddOrderCommand.COMMAND_ALIAS
+                + " " + INDEX_FIRST_PERSON.getOneBased() + " " + OrderUtil.getOrderDetails(order));
+        assertEquals(new AddOrderCommand(INDEX_FIRST_PERSON, order), command);
     }
 
     @Test
@@ -126,6 +150,42 @@ public class AddressBookParserTest {
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_ALIAS + " " + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findGroups() throws Exception {
+        List<String> keywords = Arrays.asList("friends", "family", "neighbours");
+        FindGroupCommand command = (FindGroupCommand) parser.parseCommand(
+                FindGroupCommand.COMMAND_WORD + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindGroupCommand(new GroupsContainKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findGroupAlias() throws Exception {
+        List<String> keywords = Arrays.asList("friends", "family", "neighbours");
+        FindGroupCommand command = (FindGroupCommand) parser.parseCommand(
+                FindGroupCommand.COMMAND_ALIAS + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindGroupCommand(new GroupsContainKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findPreference() throws Exception {
+        List<String> keywords = Arrays.asList("shoes", "computers", "necklaces");
+        FindPreferenceCommand command = (FindPreferenceCommand) parser.parseCommand(
+                FindPreferenceCommand.COMMAND_WORD + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindPreferenceCommand(new PreferencesContainKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findPreferenceAlias() throws Exception {
+        List<String> keywords = Arrays.asList("shoes", "computers", "necklaces");
+        FindPreferenceCommand command = (FindPreferenceCommand) parser.parseCommand(
+                FindPreferenceCommand.COMMAND_ALIAS + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindPreferenceCommand(new PreferencesContainKeywordsPredicate(keywords)), command);
     }
 
     @Test
