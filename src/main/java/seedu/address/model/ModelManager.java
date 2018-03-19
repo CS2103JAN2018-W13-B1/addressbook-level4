@@ -14,6 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -102,6 +103,12 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         addressBook.addOrderToOrderList(orderToAdd);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
+        addressBook.deleteOrder(targetOrder);
         indicateAddressBookChanged();
     }
 

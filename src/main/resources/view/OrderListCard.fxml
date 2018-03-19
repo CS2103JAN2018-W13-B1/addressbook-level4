@@ -27,8 +27,7 @@
                 </Label>
                 <Label fx:id="orderInformation" styleClass="cell_big_label" text="\$first" />
             </HBox>
-            <Label fx:id="price" styleClass="cell_small_label" text="\$price" />
-            <Label fx:id="quantity" styleClass="cell_small_label" text="\$quantity" />
+            <Label fx:id="priceAndQuantity" styleClass="cell_small_label" text="\$priceAndQuantity" />
             <Label fx:id="totalPrice" styleClass="cell_small_label" text="\$totalPrice" />
             <Label fx:id="deliveryDate" styleClass="cell_small_label" text="\$deliveryDate" />
         </VBox>

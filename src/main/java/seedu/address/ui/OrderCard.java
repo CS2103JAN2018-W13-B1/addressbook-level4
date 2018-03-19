@@ -22,14 +22,12 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label orderInformation;
 
+
     @FXML
     private Label id;
 
     @FXML
-    private Label price;
-
-    @FXML
-    private Label quantity;
+    private Label priceAndQuantity;
 
     @FXML
     private Label totalPrice;
@@ -42,10 +40,9 @@ public class OrderCard extends UiPart<Region> {
         this.order = order;
         id.setText(displayedIndex + ". ");
         orderInformation.setText(order.getOrderInformation().toString());
-        price.setText(order.getPrice().toString());
-        quantity.setText(order.getQuantity().toString());
-        totalPrice.setText(getTotalPrice(order.getPrice(), order.getQuantity()));
-        deliveryDate.setText(order.getDeliveryDate().toString());
+        priceAndQuantity.setText("S$" + order.getPrice().toString() + " X " + order.getQuantity().toString());
+        totalPrice.setText("Total: S$" + getTotalPrice(order.getPrice(), order.getQuantity()));
+        deliveryDate.setText("Deliver By: " + order.getDeliveryDate().toString());
     }
 
     private String getTotalPrice(Price price, Quantity quantity) {
