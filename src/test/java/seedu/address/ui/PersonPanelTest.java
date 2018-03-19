@@ -62,8 +62,8 @@ public class PersonPanelTest extends GuiUnitTest {
      * Asserts that {@code personPanelHandle} displays the preferences of {@code expectedPerson} correctly
      */
     private void assertPreferencesAreDisplayed(Person expectedPerson, PersonPanelHandle personPanelHandle) {
-        assertEquals(expectedPerson.getPreferenceTags().stream().
-                        map(preferenceLabels -> preferenceLabels.tagName).collect(Collectors.toList()),
+        assertEquals(expectedPerson.getPreferenceTags().stream()
+                        .map(preferenceLabels -> preferenceLabels.tagName).collect(Collectors.toList()),
                 personPanelHandle.getPreferences());
     }
 }
