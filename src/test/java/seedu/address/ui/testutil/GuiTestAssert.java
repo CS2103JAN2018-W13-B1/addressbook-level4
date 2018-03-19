@@ -11,6 +11,7 @@ import guitests.guihandles.PersonCardHandle;
 import guitests.guihandles.PersonListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import seedu.address.model.person.Person;
+import seedu.address.ui.PersonCard;
 
 /**
  * A set of assertion methods useful for writing GUI tests.
@@ -82,24 +83,6 @@ public class GuiTestAssert {
             fail(tagName + "does not have a colour assigned");
             return "";
         }
-    }
-
-    /*
-     * Asserts that the tags in {@code actualCard} matches all the tags in {@code expectedPerson}
-     * with the correct colour.
-     */
-
-    private static void assertTagsEqual(Person expectedPerson, PersonCardHandle actualCard) {
-        List<String> expectedTags = expectedPerson.getTags().stream().map(tag -> tag.tagName)
-                .collect(Collectors.toList());
-
-        assertEquals(expectedTags, actualCard.getTags());
-        expectedTags.forEach(tag ->
-                assertEquals(Arrays.asList(LABEL_DEFAULT_STYLE, getTagColourStyleFor(tag)),
-                        actualCard.getTagStyleClasses(tag)));
-
-        assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
-                actualCard.getTags());
     }
 
     /**
