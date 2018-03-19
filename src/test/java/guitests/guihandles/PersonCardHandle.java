@@ -37,6 +37,16 @@ public class PersonCardHandle extends NodeHandle<Node> {
 
         this.idLabel = getChildNode(ID_FIELD_ID);
         this.nameLabel = getChildNode(NAME_FIELD_ID);
+        this.addressLabel = getChildNode(ADDRESS_FIELD_ID);
+        this.phoneLabel = getChildNode(PHONE_FIELD_ID);
+        this.emailLabel = getChildNode(EMAIL_FIELD_ID);
+
+        Region tagsContainer = getChildNode(TAGS_FIELD_ID);
+        this.tagLabels = tagsContainer
+                .getChildrenUnmodifiable()
+                .stream()
+                .map(Label.class::cast)
+                .collect(Collectors.toList());
 
         Region groupsContainer = getChildNode(GROUPS_FIELD_ID);
         this.groupLabels = groupsContainer
