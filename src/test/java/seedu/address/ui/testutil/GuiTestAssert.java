@@ -45,7 +45,6 @@ public class GuiTestAssert {
                 actualCard.getGroups());
         assertEquals(expectedPerson.getPreferenceTags().stream().map(pref -> pref.tagName).collect(Collectors.toList()),
                 actualCard.getPreferences());
-        assertTagsEqual(expectedPerson, actualCard);
     }
 
     /*

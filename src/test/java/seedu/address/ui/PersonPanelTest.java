@@ -47,12 +47,4 @@ public class PersonPanelTest extends GuiUnitTest {
         personPanelHandle.updateTags();
         assertTagsAreDisplayed(expectedPerson, personPanelHandle);
     }
-
-    /*
-     * Asserts that {@code personPanelHandle} displays the tags of {@code expectedPerson} correctly
-     */
-    private void assertTagsAreDisplayed(Person expectedPerson, PersonPanelHandle personPanelHandle) {
-        assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
-                personPanelHandle.getTags());
-    }
 }
