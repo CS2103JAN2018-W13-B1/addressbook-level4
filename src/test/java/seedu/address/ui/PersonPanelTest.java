@@ -45,6 +45,5 @@ public class PersonPanelTest extends GuiUnitTest {
         assertEquals(expectedPerson.getAddress().toString(), personPanelHandle.getAddress());
 
         personPanelHandle.updateTags();
-        assertTagsAreDisplayed(expectedPerson, personPanelHandle);
     }
 }
