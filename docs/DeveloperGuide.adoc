@@ -539,12 +539,10 @@ public class EditOrderCommand extends UndoableCommand {
     private static Order createEditedOrder(Person orderToEdit, EditOrderDescriptor editOrderDescriptor) {
         assert orderToEdit != null;
 
-        OrderInformation updatedOrderInformation = editOrderDescriptor.getOrderInformation()
-                                                                .orElse(orderToEdit.getOrderInformation());
-        OrderStatus updatedOrderStatus = editOrderDescriptor.getOrderStatus()
-                                                                .orElse(orderToEdit.getOrderStatus());
-        Price updatedPrice = editOrderDescriptor.getPrice().orElse(orderToEdit.getPrice());
-        Quantity updatedQuantity = editOrderDescriptor.getQuantity().orElse(orderToEdit.getQuantity());
+        OrderInformation updatedOrderInformation = editOrderDescriptor.getOrderInformation().orElse(orderToEdit.getOrderInformation());
+
+        // ... OrderStatus, Price, and Quantity ...
+
         DeliveryDate updatedDeliveryDate = editOrderDescriptor.getDeliveryDate().orElse(orderToEdit.getDeliveryDate());
 
         return new Order(updatedOrderInformation, updatedOrderStatus, updatedPrice, updatedQuantity, updatedDeliveryDate);
@@ -576,6 +574,28 @@ The new order returned is now stored in the address book in the place of the old
 
 ===== Deleting Orders
 
+The `DeleteOrderCommand` deletes the order specified by its `index` in the last shown listing of orders.
+
+The code snippet below shows the `executeUndoableMethod()` of the `DeleteOrderCommand` class:
+
+[source,java]
+----
+public class DeleteOrderCommand extends UndoableCommand {
+    public CommandResult executeUndoableCommand() {
+        requireNonNull(orderToDelete);
+        try {
+            model.deleteOrder(orderToDelete);
+        } catch (OrderNotFoundException onfe) {
+            throw new AssertionError("The target order cannot be missing");
+        }
+
+        // ... display updated address book ...
+    }
+}
+----
+
+The above method deletes `orderToDelete` from the `model` of the address book and the resulting list of orders is displayed.
+
 ===== Displaying Orders
 
 ==== Design Considerations
@@ -598,7 +618,6 @@ the same order.
 ==== Current Implementation
 
 ==== Design Considerations
-
 // end::dataencryption[]
 
 === Logging
