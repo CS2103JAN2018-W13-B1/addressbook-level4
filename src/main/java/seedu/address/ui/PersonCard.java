@@ -79,7 +79,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     public void setNode(Node node) {
-        cardPane = (HBox)node;
+        cardPane = (HBox) node;
     }
 
 }
