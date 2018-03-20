@@ -240,7 +240,7 @@ Selects the 1st person in the results of the `find` command.
 === Adding an order : `orderadd` `since v1.2`
 
 Adds an order to the person specified by the index number used in the last person listing. +
-Format: `orderadd i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
+Format: `orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
 Alias: `oa`
 
 [NOTE]
@@ -398,8 +398,8 @@ e.g. `findpref computers`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
-* *OrderAdd* : `orderadd i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
-e.g. `orderadd i/NBA 2k18 pr/229.99 q/1 d/11-09-2018`
+* *OrderAdd* : `orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
+e.g. `orderadd 1 i/NBA 2k18 pr/229.99 q/1 d/11-09-2018`
 * *OrderEdit* : `orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]` +
 e.g. `orderedit 1 pr/15.00 d/05-03-2018`
 * *OrderDelete* : `orderdelete INDEX` +
@@ -428,8 +428,8 @@ e.g. `fp computers`
 * *Help* : `?`
 * *Select* : `s INDEX` +
 e.g. `s 2`
-* *OrderAdd* : `oa i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
-e.g. `oa i/NBA 2k18 pr/229.99 q/1 d/11-09-2018`
+* *OrderAdd* : `oa INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
+e.g. `oa 1 i/NBA 2k18 pr/229.99 q/1 d/11-09-2018`
 * *OrderEdit* : `oe [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]` +
 e.g. `oe 1 pr/15.00 d/05-03-2018`
 * *OrderDelete* : `od INDEX` +
