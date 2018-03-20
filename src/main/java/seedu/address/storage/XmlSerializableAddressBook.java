@@ -23,6 +23,8 @@ public class XmlSerializableAddressBook {
     private List<XmlAdaptedGroup> groups;
     @XmlElement
     private List<XmlAdaptedPreference> preferences;
+    @XmlElement
+    private List<XmlAdaptedOrder> orders;
 
     /**
      * Creates an empty XmlSerializableAddressBook.
@@ -43,6 +45,7 @@ public class XmlSerializableAddressBook {
         groups.addAll(src.getGroupList().stream().map(XmlAdaptedGroup::new).collect(Collectors.toList()));
         preferences.addAll(src.getPreferenceList().stream().map(XmlAdaptedPreference::new)
                 .collect(Collectors.toList()));
+        orders.addAll(src.getOrderList().stream().map(XmlAdaptedOrder::new).collect(Collectors.toList()));
     }
 
     /**
