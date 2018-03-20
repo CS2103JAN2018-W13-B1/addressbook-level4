@@ -33,16 +33,19 @@
 <li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
 <li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
 <li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#locating-persons-by-groups-code-findgroup-code-code-v1-2-code">3.6. Locating persons by groups: <code>findgroup</code> <code>v1.2</code></a></li>
-<li><a href="#locating-persons-by-preferences-code-findpref-code-code-v1-2-code">3.7. Locating persons by preferences: <code>findpref</code> <code>v1.2</code></a></li>
+<li><a href="#locating-persons-by-groups-code-findgroup-code-code-since-v1-2-code">3.6. Locating persons by groups: <code>findgroup</code> <code>since v1.2</code></a></li>
+<li><a href="#locating-persons-by-preferences-code-findpref-code-code-since-v1-2-code">3.7. Locating persons by preferences: <code>findpref</code> <code>since v1.2</code></a></li>
 <li><a href="#deleting-a-person-code-delete-code">3.8. Deleting a person : <code>delete</code></a></li>
 <li><a href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.15. Saving the data</a></li>
+<li><a href="#adding-an-order-code-orderadd-code-code-since-v1-2-code">3.10. Adding an order : <code>orderadd</code> <code>since v1.2</code></a></li>
+<li><a href="#editing-an-order-code-orderedit-code-code-since-v1-2-code">3.11. Editing an order : <code>orderedit</code> <code>since v1.2</code></a></li>
+<li><a href="#deleting-an-order-code-orderdelete-code-code-since-v1-2-code">3.12. Deleting an order : <code>orderdelete</code> <code>since v1.2</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.18. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -339,7 +342,7 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-groups-code-findgroup-code-code-v1-2-code"><a class="link" href="#locating-persons-by-groups-code-findgroup-code-code-v1-2-code">3.6. Locating persons by groups: <code>findgroup</code> <code>v1.2</code></a></h3>
+<h3 id="locating-persons-by-groups-code-findgroup-code-code-since-v1-2-code"><a class="link" href="#locating-persons-by-groups-code-findgroup-code-code-since-v1-2-code">3.6. Locating persons by groups: <code>findgroup</code> <code>since v1.2</code></a></h3>
 <div class="paragraph">
 <p>Finds persons whose groups matches any of the given keywords.<br>
 Format: <code>findgroup KEYWORD [MORE_KEYWORDS]</code><br>
@@ -384,7 +387,7 @@ Returns any person having groups <code>neighbours</code>, <code>friends</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-preferences-code-findpref-code-code-v1-2-code"><a class="link" href="#locating-persons-by-preferences-code-findpref-code-code-v1-2-code">3.7. Locating persons by preferences: <code>findpref</code> <code>v1.2</code></a></h3>
+<h3 id="locating-persons-by-preferences-code-findpref-code-code-since-v1-2-code"><a class="link" href="#locating-persons-by-preferences-code-findpref-code-code-since-v1-2-code">3.7. Locating persons by preferences: <code>findpref</code> <code>since v1.2</code></a></h3>
 <div class="paragraph">
 <p>Finds persons whose preferences matches any of the given keywords.<br>
 Format: <code>findpref KEYWORD [MORE_KEYWORDS]</code><br>
@@ -513,7 +516,121 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
+<h3 id="adding-an-order-code-orderadd-code-code-since-v1-2-code"><a class="link" href="#adding-an-order-code-orderadd-code-code-since-v1-2-code">3.10. Adding an order : <code>orderadd</code> <code>since v1.2</code></a></h3>
+<div class="paragraph">
+<p>Adds an order to the person specified by the index number used in the last person listing.<br>
+Format: <code>orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE</code><br>
+Alias: <code>oa</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For now, orders are added to the list of all orders and not the person selected.
+We are planning to implement this aspect by <code>v1.3</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>orderadd 1 i/Chocolates pr/10.00 q/5 d/12-08-2018</code> OR<br>
+<code>oa 1 i/Chocolates pr/10.00 q/5 d/12-08-2018</code><br>
+Adds the 'Chocolates' order to the 1st person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>orderadd 2 i/Books pr/20.00 q/2 d/04-11-2018</code> OR<br>
+<code>oa 2 i/Books pr/20.00 q/2 d/04-11-2018</code><br>
+Adds the 'Books' order to 2nd person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-order-code-orderedit-code-code-since-v1-2-code"><a class="link" href="#editing-an-order-code-orderedit-code-code-since-v1-2-code">3.11. Editing an order : <code>orderedit</code> <code>since v1.2</code></a></h3>
+<div class="paragraph">
+<p>Edits the order specified by the index number used in the order listing.<br>
+Format: <code>orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]</code><br>
+Alias: <code>oe</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the order at the specified <code>INDEX</code>. The index refers to the index number shown in the last order listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orderedit 1 q/10</code> OR<br>
+<code>or 1 q/10</code>
+Edits the quantity field of the 1st order to be 10.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-order-code-orderdelete-code-code-since-v1-2-code"><a class="link" href="#deleting-an-order-code-orderdelete-code-code-since-v1-2-code">3.12. Deleting an order : <code>orderdelete</code> <code>since v1.2</code></a></h3>
+<div class="paragraph">
+<p>Deletes the order specified by the index number used in the order listing.<br>
+Format: <code>orderdelete INDEX</code><br>
+Alias: <code>od</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the order at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent order listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orderdelete 3</code> OR<br>
+<code>od 3</code>
+Deletes the 3rd order of the order list in the address book.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code><br>
@@ -535,7 +652,7 @@ Alias: <code>h</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code><br>
@@ -581,7 +698,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -613,7 +730,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code><br>
@@ -621,7 +738,7 @@ Alias: <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code><br>
@@ -629,7 +746,7 @@ Alias: <code>q</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -687,6 +804,18 @@ e.g. <code>findpref computers</code></p>
 <li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
 e.g.<code>select 2</code></p>
+</li>
+<li>
+<p><strong>OrderAdd</strong> : <code>orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE</code><br>
+e.g. <code>orderadd 1 i/NBA 2k18 pr/229.99 q/1 d/11-09-2018</code></p>
+</li>
+<li>
+<p><strong>OrderEdit</strong> : <code>orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]</code><br>
+e.g. <code>orderedit 1 pr/15.00 d/05-03-2018</code></p>
+</li>
+<li>
+<p><strong>OrderDelete</strong> : <code>orderdelete INDEX</code><br>
+e.g. <code>orderdelete 5</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
@@ -747,6 +876,18 @@ e.g. <code>fp computers</code></p>
 e.g. <code>s 2</code></p>
 </li>
 <li>
+<p><strong>OrderAdd</strong> : <code>oa INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE</code><br>
+e.g. <code>oa 1 i/NBA 2k18 pr/229.99 q/1 d/11-09-2018</code></p>
+</li>
+<li>
+<p><strong>OrderEdit</strong> : <code>oe [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]</code><br>
+e.g. <code>oe 1 pr/15.00 d/05-03-2018</code></p>
+</li>
+<li>
+<p><strong>OrderDelete</strong> : <code>od INDEX</code><br>
+e.g. <code>od 5</code></p>
+</li>
+<li>
 <p><strong>History</strong> : <code>h</code></p>
 </li>
 <li>
@@ -771,9 +912,6 @@ e.g. <code>s 2</code></p>
 <p>Encrypting data files</p>
 </li>
 <li>
-<p>Adding, editing, and deleting orders</p>
-</li>
-<li>
 <p>Reminders</p>
 </li>
 <li>
@@ -789,7 +927,7 @@ e.g. <code>s 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-19 15:32:34 UTC
+Last updated 2018-03-20 11:57:22 UTC
 </div>
 </div>
 </body>
