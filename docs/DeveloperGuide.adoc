@@ -596,7 +596,13 @@ public class DeleteOrderCommand extends UndoableCommand {
 
 The above method deletes `orderToDelete` from the `model` of the address book and the resulting list of orders is displayed.
 
-===== Displaying Orders
+===== Displaying Orders In GUI
+
+A single `Order` is displayed using an `OrderListCard` (refer to Figure 13 below). The list of all orders in the address book is then displayed in a list
+using the `OrderListPanel`.
+
+.OrderListCard FXML Render
+image::OrderListCardFXMLRender.png[width="150" align="center"]
 
 ==== Design Considerations
 
@@ -617,8 +623,24 @@ the same order.
 
 ==== Current Implementation
 
+The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
+being stored.
+
+The secret key for encryption/decryption is generated using the `javax.crypto` library.
+
+The actual encryption/decryption is done using the `org.apache.xml.security` library, specifically the `XMLCipher` class.
+
 ==== Design Considerations
 // end::dataencryption[]
+
+===== Aspect: Time of encryption of XML data file
+
+* **Alternative 1 (current choice):** Encrypt/decrypt the whole file each time there is an update to what information needs to stored.
+** Pros: A new secret key can be used for each encryption/decryption, which would make it more secure against tampering or outsider access.
+** Cons: Encryption of data file for every minor change can reduce the performance of the application.
+* **Alternative 2:** Encrypt/decrypt the file only after a set time interval.
+** Pros: Performance will be improved.
+** Cons: Approach might be less secure. Implementation can also be harder.
 
 === Logging
 
