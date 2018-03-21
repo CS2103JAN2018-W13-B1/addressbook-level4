@@ -41,6 +41,7 @@ public class PersonPanel extends UiPart<Region> {
 
     public PersonPanel() {
         super(FXML);
+        getRoot();
         registerAsAnEventHandler(this);
     }
 
