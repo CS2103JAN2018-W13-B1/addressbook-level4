@@ -2,10 +2,15 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Objects;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.exceptions.GroupNotFoundException;
 
+/**
+ * Deletes a group specified by user from address book.
+ */
 public class DeleteGroupCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "deletegroup";
@@ -35,5 +40,12 @@ public class DeleteGroupCommand extends UndoableCommand {
         } catch (GroupNotFoundException e) {
             throw new CommandException(MESSAGE_GROUP_NOT_FOUND);
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof DeleteGroupCommand // instanceof handles nulls
+                && Objects.equals(this.groupToDelete, ((DeleteGroupCommand) other).groupToDelete)); // state check
     }
 }
