@@ -34,9 +34,6 @@ public class PersonPanelHandle extends NodeHandle<Node> {
         this.phone = getChildNode(PHONE_FIELD_ID);
         this.address = getChildNode(ADDRESS_FIELD_ID);
         this.email = getChildNode(EMAIL_FIELD_ID);
-
-        updateGroups();
-        updatePreferences();
     }
 
     public String getName() {

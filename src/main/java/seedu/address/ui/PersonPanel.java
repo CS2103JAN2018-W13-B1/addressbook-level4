@@ -41,18 +41,15 @@ public class PersonPanel extends UiPart<Region> {
 
     public PersonPanel() {
         super(FXML);
-        getRoot();
         registerAsAnEventHandler(this);
     }
 
     @Subscribe
     private void loadPersonPage(Person person) {
         name.setText(person.getName().fullName);
-        phone.setText("Phone: " + person.getPhone().toString());
-        address.setText("Address: " + person.getAddress().toString());
-        email.setText("Email: " + person.getEmail().toString());
-        groups.getChildren().clear();
-        preferences.getChildren().clear();
+        phone.setText(person.getPhone().toString());
+        address.setText(person.getAddress().toString());
+        email.setText(person.getEmail().toString());
     }
 
     @Subscribe
