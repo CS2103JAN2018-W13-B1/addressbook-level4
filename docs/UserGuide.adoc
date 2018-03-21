@@ -215,6 +215,42 @@ Deletes the 2nd person in the address book.
 `delete 1`  OR `d 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Deleting a group : `deletegroup` `Since V1.2`
+
+Deletes the specified group from the address book. +
+Format: `deletegroup GROUP_NAME` +
+Alias: `dg GROUP_NAME`
+
+****
+* Deletes the group specified by `GROUP_NAME`.
+* The group name must be alphanumeric.
+* All persons with specified group will have their group tag removed.
+****
+
+Examples:
+
+* `deletegroup friends` OR+
+`dg friends`+
+All persons in ContactSails with the group [friends] will have the group removed.
+
+=== Deleting a preference : `deletepref` `Since V1.2`
+
+Deletes the specified preference from the address book. +
+Format: `deletepref PREFERENCE_NAME` +
+Alias: `dp PREFERENCE_NAME`
+
+****
+* Deletes the preference specified by `PREFERENCE_NAME`.
+* The preference name must be alphanumeric.
+* All persons with specified preference will have their preference tag removed.
+****
+
+Examples:
+
+* `deletepref computers` OR+
+`dp computers`+
+All persons in ContactSails with the preference [computers] will have the preference removed.
+
 === Selecting a person : `select`
 
 Selects the person identified by the index number used in the last person listing. +
@@ -328,6 +364,10 @@ e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 123466
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
+* *Delete Group* : `deletegroup GROUP_NAME` +
+e.g. `deletegroup friends`
+* *Delete Preference*: `deletepref PREFERENCE_NAME` +
+e.g. `deletepref computers`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
@@ -352,6 +392,10 @@ e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 
 * *Clear* : `c`
 * *Delete* : `d INDEX` +
 e.g. `d 3`
+* *Delete Group* : `dg GROUP_NAME` +
+e.g. `dg friends`
+* *Delete Preference*: `dp PREFERENCE_NAME` +
+e.g. `dp computers`
 * *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `e 2 n/James Lee e/jameslee@example.com`
 * *Find* : `f KEYWORD [MORE_KEYWORDS]` +
