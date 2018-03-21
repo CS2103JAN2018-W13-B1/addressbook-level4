@@ -539,9 +539,23 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="data-encryption"><a class="link" href="#data-encryption">Data Encryption</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
+being stored.</p>
+</div>
+<div class="paragraph">
+<p>The secret key for encryption/decryption is generated using the <code>javax.crypto</code> library.</p>
+</div>
+<div class="paragraph">
+<p>The actual encryption/decryption is done using the <code>org.apache.xml.security</code> library, specifically the <code>XMLCipher</code> class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+
 </div>
 </div>
 </div>
@@ -558,7 +572,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 11:57:22 UTC
+Last updated 2018-03-21 01:02:19 UTC
 </div>
 </div>
 </body>
