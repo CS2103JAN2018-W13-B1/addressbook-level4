@@ -402,6 +402,33 @@ The sequence diagram below shows how add event operation works:
 
 image::AddEventSD.png[width="800"]
 
+A `CalendarEvent` is implemented in the following manner:
+[source,java]
+----
+public class CalendarEvent {
+
+    private final String eventTitle;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
+    private final EventTime startTime;
+    private final EventTime endTime;
+    private final List<Person> taggedPersons;
+
+    // ... Order attribute getters and setters ...
+
+}
+----
+
+The following is a brief description of the attributes of `CalendarEvent`:
+
+* eventTitle: Represents title of event.
+* startDate: Represents starting date of the event in DD-MM-YYYY format.
+* endDate: Represents ending date of the event in DD-MM-YYYY format.
+* startTime: Represents starting time of the event in HHMM format (24-Hour format).
+* endTime: Represents ending time of the event in HHMM format (24-Hour format).
+* taggedPerson: Represents list of Persons in address book that are tagged to the event.
+
+
 Events added, removed or modified by users will have their intended results displayed by the `CalendarUi` residing inside `Ui` Component, which displays a calendar showing any future events.
 The `CalendarUi` can display dates in a week, month and year format, depending on user inputs. +
 Storing of `CalendarEvent` data is managed by `CalendarStorage` within `Storage` Component, converting `CalendarEvent` to `XmlAdaptedEvent` to store in a .xml file.
