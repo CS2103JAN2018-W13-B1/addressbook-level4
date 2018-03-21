@@ -2,12 +2,16 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DATE_BOOKS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DATE_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DATE_COMPUTER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_INFORMATION_BOOKS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_INFORMATION_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_INFORMATION_COMPUTER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_BOOKS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_COMPUTER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_BOOKS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_COMPUTER;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 
 import java.util.ArrayList;
@@ -50,6 +54,20 @@ public class TypicalOrders {
             .withPrice(VALID_PRICE_CHOC)
             .withQuantity(VALID_QUANTITY_CHOC)
             .withDeliveryDate(VALID_DELIVERY_DATE_CHOC)
+            .build();
+
+    public static final Order COMPUTER = new OrderBuilder()
+            .withOrderInformation(VALID_ORDER_INFORMATION_COMPUTER)
+            .withPrice(VALID_PRICE_COMPUTER)
+            .withQuantity(VALID_QUANTITY_COMPUTER)
+            .withDeliveryDate(VALID_DELIVERY_DATE_COMPUTER)
+            .build();
+
+    public static final Order COMICBOOK = new OrderBuilder()
+            .withOrderInformation("Comic Book")
+            .withPrice("17.99")
+            .withQuantity("1")
+            .withDeliveryDate("01-01-2018")
             .build();
 
     private TypicalOrders() {} // prevents instantiation
