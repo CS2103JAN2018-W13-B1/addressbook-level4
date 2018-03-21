@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -42,7 +41,7 @@ public class DeletePreferenceCommandTest {
     }
 
     @Test
-    public void execute_UnexistingPreference_throwsCommandException() throws Exception {
+    public void execute_unexistingPreference_throwsCommandException() throws Exception {
         Preference prefToDelete = new Preference("shoe");
         DeletePreferenceCommand deletePrefCommand = prepareCommand(prefToDelete);
 

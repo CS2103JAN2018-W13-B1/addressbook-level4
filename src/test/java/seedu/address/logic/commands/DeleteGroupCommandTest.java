@@ -40,7 +40,7 @@ public class DeleteGroupCommandTest {
     }
 
     @Test
-    public void execute_UnexistingGroup_throwsCommandException() throws Exception {
+    public void execute_unexistingGroup_throwsCommandException() throws Exception {
         Group groupToDelete = new Group("friend");
         DeleteGroupCommand deleteGroupCommand = prepareCommand(groupToDelete);
 
