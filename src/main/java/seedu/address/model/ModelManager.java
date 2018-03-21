@@ -12,10 +12,15 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Group;
+import seedu.address.model.tag.Preference;
+import seedu.address.model.tag.exceptions.GroupNotFoundException;
+import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -82,6 +87,24 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    @Override
+    public void deleteGroup(Group targetGroup) throws GroupNotFoundException {
+        addressBook.removeGroup(targetGroup);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public void deletePreference(Preference targetPreference) throws PreferenceNotFoundException {
+        addressBook.removePreference(targetPreference);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
+        addressBook.addOrderToOrderList(orderToAdd);
+        indicateAddressBookChanged();
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -97,11 +120,6 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
-    }
-
-    @Override
-    public void deleteTag(Tag targetTag) throws Exception {
-        addressBook.removeTag(targetTag);
     }
 
     @Override

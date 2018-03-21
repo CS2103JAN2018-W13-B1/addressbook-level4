@@ -63,14 +63,14 @@ This section describes each command in ContactSails in detail.
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items in square brackets are optional e.g `n/NAME [g/GROUP]` can be used as `n/John Doe g/friend` or as `n/John Doe`.
+* Items with `…`​ after them can be used multiple times including zero times e.g. `[g/GROUP]...` `[pr/PREFERENCE]...` can be used as `{nbsp}` (i.e. 0 times), `g/friend`, `g/friend g/family` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 ====
 
 [TIP]
 ContactSails will automatically complete the command you want to enter if you press the `TAB` key. +
-For example, typing `ad` in the command box and then pressing `TAB` will automatically fill `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` in the command box.
+For example, typing `ad` in the command box and then pressing `TAB` will automatically fill `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]...[pr/PREFERENCE]` in the command box.
 
 === Viewing help : `help`
 
@@ -80,18 +80,18 @@ Alias: `?`
 === Adding a person: `add`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
 Alias: `a`
 
 [TIP]
-A person can have any number of tags (including 0)
+A person can have any number of groups and preferences (including 0)
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` OR +
-`a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` +
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal` OR +
-`a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` OR +
+`a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` +
+* `add n/Betsy Crowe g/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/criminal` OR +
+`a n/Betsy Crowe g/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/criminal`
 
 === Listing all persons : `list`
 
@@ -108,15 +108,15 @@ Alias: `exVCF`
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 Alias: `e`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person's tags by typing `t/` without specifying any tags after it.
+* When editing groups or preferences, the existing groups and preferences of the person will be removed i.e adding of groups and preferences is not cumulative.
+* You can remove all the person's groups and preferences by typing `g/` and `pr/` without specifying any groups and preferences after it respectively.
 ****
 
 Examples:
@@ -125,15 +125,15 @@ Examples:
 `e 1 p/91234567 e/johndoe@example.com` +
 Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
-* `edit 2 n/Betsy Crower t/` OR +
-`e 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `edit 2 n/Betsy Crower g/` OR +
+`e 2 n/Betsy Crower g/` +
+Edits the name of the 2nd person to be `Betsy Crower` and clears all existing groups.
 
 === Locating persons by name: `find`
 
 Finds persons whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]` +
-Alias: `f`
+Alias: `f KEYWORD [MORE KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
@@ -153,28 +153,51 @@ Returns `john` and `John Doe`
 `f Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by tags: `findtag`
+=== Locating persons by groups: `findgroup` `since v1.2`
 
-Finds persons whose tags matches any of the given keywords. +
-Format: `findtag KEYWORD [MORE_KEYWORDS]` +
-Alias: `ft`
+Finds persons whose groups matches any of the given keywords. +
+Format: `findgroup KEYWORD [MORE_KEYWORDS]` +
+Alias: `fg KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `Friends` will match `friends`
-* Only the names of tags of a person is searched.
+* Only the names of groups of a person is searched.
 * Only full words will be matched e.g. `friend` will not match `friends`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `criminal friends` will return `John Doe`, `Betsy Crowe` who have the tags `friends` and `criminal` respectively.
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `criminal friends` will return `John Doe`, `Betsy Crowe` who have the groups `friends` and `criminal` respectively.
 ****
 
 Examples:
 
-* `findtag friends` OR +
-`ft friends` +
+* `findgroup friends` OR +
+`fg friends` +
 Returns `John Doe`
 
-* `findtag neighbours friends owesMoney` OR +
-`ft neighbours friends owesMoney` +
-Returns any person having tags `neighbours`, `friends`, or `owesMoney`
+* `findgroup neighbours friends colleagues` OR +
+`fg neighbours friends colleagues` +
+Returns any person having groups `neighbours`, `friends`, or `colleagues`
+
+=== Locating persons by preferences: `findpref` `since v1.2`
+
+Finds persons whose preferences matches any of the given keywords. +
+Format: `findpref KEYWORD [MORE_KEYWORDS]` +
+Alias: `fp KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g `Computers` will match `computers`
+* Only the names of preferences of a person is searched.
+* Only full words will be matched e.g. `computer` will not match `computers`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `computers knives` will return `John Doe`, `Betsy Crowe` who have the preferences `computers` and `knives` respectively.
+****
+
+Examples:
+
+* `findpref computers` OR +
+`fp computers` +
+Returns `John Doe`
+
+* `findpref computers shoes necklaces` OR +
+`fp computers shoes necklaces` +
+Returns any person having preferences `computers`, `shoes`, or `necklaces`
 
 === Deleting a person : `delete`
 
@@ -198,6 +221,42 @@ Deletes the 2nd person in the address book.
 `delete 1`  OR `d 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Deleting a group : `deletegroup` `Since V1.2`
+
+Deletes the specified group from the address book. +
+Format: `deletegroup GROUP_NAME` +
+Alias: `dg GROUP_NAME`
+
+****
+* Deletes the group specified by `GROUP_NAME`.
+* The group name must be alphanumeric.
+* All persons with specified group will have their group tag removed.
+****
+
+Examples:
+
+* `deletegroup friends` OR+
+`dg friends`+
+All persons in ContactSails with the group [friends] will have the group removed.
+
+=== Deleting a preference : `deletepref` `Since V1.2`
+
+Deletes the specified preference from the address book. +
+Format: `deletepref PREFERENCE_NAME` +
+Alias: `dp PREFERENCE_NAME`
+
+****
+* Deletes the preference specified by `PREFERENCE_NAME`.
+* The preference name must be alphanumeric.
+* All persons with specified preference will have their preference tag removed.
+****
+
+Examples:
+
+* `deletepref computers` OR+
+`dp computers`+
+All persons in ContactSails with the preference [computers] will have the preference removed.
+
 === Selecting a person : `select`
 
 Selects the person identified by the index number used in the last person listing. +
@@ -219,6 +278,64 @@ Selects the 2nd person in the address book.
 * `find Betsy` +
 `select 1` OR `s 1` +
 Selects the 1st person in the results of the `find` command.
+
+=== Adding an order : `orderadd` `since v1.2`
+
+Adds an order to the person specified by the index number used in the last person listing. +
+Format: `orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
+Alias: `oa`
+
+[NOTE]
+For now, orders are added to the list of all orders and not the person selected.
+We are planning to implement this aspect by `v1.3`.
+
+Examples:
+
+* `list` +
+`orderadd 1 i/Chocolates pr/10.00 q/5 d/12-08-2018` OR +
+`oa 1 i/Chocolates pr/10.00 q/5 d/12-08-2018` +
+Adds the 'Chocolates' order to the 1st person in the address book.
+
+* `find Betsy` +
+`orderadd 2 i/Books pr/20.00 q/2 d/04-11-2018` OR +
+`oa 2 i/Books pr/20.00 q/2 d/04-11-2018` +
+Adds the 'Books' order to 2nd person in the results of the `find` command.
+
+=== Editing an order : `orderedit` `since v1.2`
+
+Edits the order specified by the index number used in the order listing. +
+Format: `orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]` +
+Alias: `oe`
+
+****
+* Edits the order at the specified `INDEX`. The index refers to the index number shown in the last order listing. The index *must be a positive integer* 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+****
+
+Examples:
+
+* `orderedit 1 q/10` OR +
+`or 1 q/10`
+Edits the quantity field of the 1st order to be 10.
+
+=== Deleting an order : `orderdelete` `since v1.2`
+
+Deletes the order specified by the index number used in the order listing. +
+Format: `orderdelete INDEX` +
+Alias: `od`
+
+****
+* Deletes the order at the specified `INDEX`.
+* The index refers to the index number shown in the most recent order listing.
+* The index *must be a positive integer* 1, 2, 3, ...
+****
+
+Examples:
+
+* `orderdelete 3` OR +
+`od 3`
+Deletes the 3rd order of the order list in the address book.
 
 === Listing entered commands : `history`
 
@@ -282,6 +399,118 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `redo` OR `r` (reapplies the `clear` command) +
 // end::undoredo[]
 
+=== Displaying Calendar in specified format : `calendar` `Coming in V1.5`
+
+Displays the Calendar at centre of window, in a specified viewing format, such as Week, Month or Year. +
+Format: `calendar [VIEW_FORMAT]` +
+Alias: `cal [VIEW_FORMAT]` +
+
+****
+* VIEW_FORMAT refers to a specific viewing format the Calendar will display in.
+* There are 3 viewing formats available, Week-View, Month-View and Year-View.
+* Calendar shows the current week, current month and current year depending on which viewing format it is using.
+* If no format is given, the Calendar will appear in Month-View by default.
+* VIEW_FORMAT *only accepts "week", "month" or "year".
+* The VIEW_FORMAT is case-insensitve. E.g. `cal WEEK` will display the Calendar in Week-View.
+* Calendar will display all incoming events within timeframe of the current View.
+****
+
+Examples:
+
+* `calendar year` OR +
+`cal year` +
+Shows Calendar in Year-View.
+
+* `calendar` OR `calendar month` OR +
+`cal` OR `cal month` +
+Shows Calendar in Month-View
+
+* `calendar week` OR +
+`cal week` +
+Shows Calendar in Week-View
+
+=== Listing all events : `listevent` `Coming in V1.5`
+
+Shows a list of all events in the address book. +
+Format: `listevents` +
+Alias: `le`
+
+=== Adding events to Event list : `addevent` `Coming in V1.5`
+
+Adds an event to the Event list. +
+Format: `addevent t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]...` +
+Alias: `ae t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]...` +
+
+****
+* If input does not contain START_DATE but contains START_TIME, it is assumed that event starts and ends on END_DATE.
+* TITLE is alphanumeric and accepts white space. TITLE accepts maximum of 20 characters.
+* Person at the specified INDEX shown in the last person listing will be tagged to the event.
+* START_DATE and END_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
+* START_TIME and END_TIME must follow the 24-Hour format: HHMM (E.g. 2359)
+****
+
+Examples:
+
+* `addevent t/meet with boss` OR +
+`ae t/meet with boss ed/05-05-2020 st/1000 et/1200` +
+Creates an event with listed title, starts from 1000 and ends at 1200 on 5 May 2020. +
+Event appears on specified date in the Calendar.
+
+* `addevent t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800` OR +
+`ae t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800` +
+Event starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at the specified time period in Calendar.
+
+=== editing events in Event list : `editevent` `Coming in V1.5`
+
+Edits an existing event in the Event List. +
+Format: `editevent e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]...` +
+Alias: `ee e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]...` +
+
+****
+* Edits the event at specified EVENT_INDEX. The index refers to the index number shown in the last event listing. The index *must be a positive integer* 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Person at the specified INDEX shown in the last person listing will be tagged to the event.
+* When editing INDEX, the existing persons tagged to the event will be removed i.e adding of person indexes is not cumulative.
+* You can remove all persons tagged to the event by typing `i/` without specifying any positive integer after it.
+****
+
+Examples:
+
+* `editevent e/1 t/meet with bosses et/1400` OR +
+`ee e/1 t/meet with bosses et/1400` +
+Edits title and end time of 1st event in Event list to "meet with bosses" and 1400 respectively. +
+Changes reflect on the Calendar.
+
+* `editevent e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800 i/` OR +
+`ee e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800 i/` +
+Edits starting date and time, ending date and time of the 3rd event in Event list. +
+Removes all persons tagged to the event.
+
+=== Deleting events in Event list : `deleteevent` `Coming in V1.5`
+
+Deletes an existing event in Event list. +
+Format: `deleteevent EVENT_INDEX` +
+Alias: `de EVENT_INDEX` +
+
+****
+* Deletes event at specified EVENT_INDEX of Event list.
+* The index refers to index number shown in the most recent event listing.
+* The index *must be a positive integer* 1, 2, 3, ...
+****
+
+Examples:
+
+* `deleteevent 1` OR +
+`de 1` +
+Deletes the event at index 1 of most recent event listing. +
+Event is removed from the Calendar.
+
+=== Clearing all entries in Event List : `clearevent` `Coming in V1.5`
+
+Clears all event list entries from the address book. +
+Format: `clearevent` +
+Alias: `ce`
+
 === Clearing all entries : `clear`
 
 Clears all entries from the address book. +
@@ -306,21 +535,42 @@ There is no need to save manually.
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
+e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers`
+* *Add Event [Coming in V1.5]* : `addevent t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]...` +
+e.g. `addevent t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800`
+* *Calendar [Coming in V1.5]* : `calendar [VIEW_FORMAT]` +
+e.g. `calendar year`
 * *Clear* : `clear`
+* *Clear Event list [Coming in V1.5]* : `clearevent`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+* *Delete Event [Coming in V1.5]* : `deleteevent INDEX` +
+e.g. `deleteevent 2`
+* *Delete Group* : `deletegroup GROUP_NAME` +
+e.g. `deletegroup friends`
+* *Delete Preference*: `deletepref PREFERENCE_NAME` +
+e.g. `deletepref computers`
+* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
+* *Edit Event [Coming in V1.5]* : `editevent e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]...` +
+e.g. `editevent e/2 t/meeting with Jason ed/20-20-2020 i/2`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
-* *Findtag* : findtag KEYWORD [MORE_KEYWORDS]` +
-e.g. `findtag friends`
+* *Findgroup* : findgroup KEYWORD [MORE_KEYWORDS]` +
+e.g. `findgroup friends`
+* *Findpref* : findpref KEYWORD [MORE_KEYWORDS]` +
+e.g. `findpref computers`
 * *List* : `list`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *OrderAdd* : `orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
+e.g. `orderadd 1 i/NBA 2k18 pr/229.99 q/1 d/11-09-2018`
+* *OrderEdit* : `orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]` +
+e.g. `orderedit 1 pr/15.00 d/05-03-2018`
+* *OrderDelete* : `orderdelete INDEX` +
+e.g. `orderdelete 5`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
@@ -328,21 +578,42 @@ e.g.`select 2`
 
 == Command Alias Summary
 
-* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* *Add* `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
+e.g. `a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers`
+* *Add Event [Coming in V1.5]* : `ae t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]...` +
+e.g. `ae t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800`
+* *Calendar [Coming in V1.5]* : `cal [VIEW_FORMAT]` +
+e.g. `cal year`
 * *Clear* : `c`
+* *Clear Event list [Coming in V1.5]* : `ce`
 * *Delete* : `d INDEX` +
 e.g. `d 3`
-* *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+* *Delete Event [Coming in V1.5]* : `de INDEX` +
+e.g. `de 2`
+* *Delete Group* : `dg GROUP_NAME` +
+e.g. `dg friends`
+* *Delete Preference*: `dp PREFERENCE_NAME` +
+e.g. `dp computers`
+* *Edit* : `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
 e.g. `e 2 n/James Lee e/jameslee@example.com`
+* *Edit Event [Coming in V1.5]* : `ee e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]...` +
+e.g. `ee e/2 t/meeting with Jason ed/20-20-2020 i/2`
 * *Find* : `f KEYWORD [MORE_KEYWORDS]` +
 e.g. `f James Jake`
-* *Findtag* : ft KEYWORD [MORE_KEYWORDS]` +
-e.g. `ft friends`
+* *Findgroup* : fg KEYWORD [MORE_KEYWORDS]` +
+e.g. `fg friends`
+* *Findpref* : fp KEYWORD [MORE_KEYWORDS]` +
+e.g. `fp computers`
 * *List* : `l`
 * *Help* : `?`
 * *Select* : `s INDEX` +
 e.g. `s 2`
+* *OrderAdd* : `oa INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
+e.g. `oa 1 i/NBA 2k18 pr/229.99 q/1 d/11-09-2018`
+* *OrderEdit* : `oe [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]` +
+e.g. `oe 1 pr/15.00 d/05-03-2018`
+* *OrderDelete* : `od INDEX` +
+e.g. `od 5`
 * *History* : `h`
 * *Undo* : `u`
 * *Redo* : `r`
@@ -351,7 +622,6 @@ e.g. `s 2`
 == Coming in v2.0
 
 * Encrypting data files
-* Adding, editing, and deleting orders
 * Reminders
 * Viewing schedule in integrated calendar
 * Sending promotions to target groups

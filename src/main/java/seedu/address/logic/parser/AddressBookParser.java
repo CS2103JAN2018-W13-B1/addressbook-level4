@@ -7,13 +7,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddOrderCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteGroupCommand;
+import seedu.address.logic.commands.DeletePreferenceCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FindTagCommand;
+import seedu.address.logic.commands.FindGroupCommand;
+import seedu.address.logic.commands.FindPreferenceCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
@@ -54,6 +58,10 @@ public class AddressBookParser {
         case AddCommand.COMMAND_ALIAS:
             return new AddCommandParser().parse(arguments);
 
+        case AddOrderCommand.COMMAND_WORD:
+        case AddOrderCommand.COMMAND_ALIAS:
+            return new AddOrderCommandParser().parse(arguments);
+
         case EditCommand.COMMAND_WORD:
         case EditCommand.COMMAND_ALIAS:
             return new EditCommandParser().parse(arguments);
@@ -66,6 +74,14 @@ public class AddressBookParser {
         case DeleteCommand.COMMAND_ALIAS:
             return new DeleteCommandParser().parse(arguments);
 
+        case DeleteGroupCommand.COMMAND_WORD:
+        case DeleteGroupCommand.COMMAND_ALIAS:
+            return new DeleteGroupCommandParser().parse(arguments);
+
+        case DeletePreferenceCommand.COMMAND_WORD:
+        case DeletePreferenceCommand.COMMAND_ALIAS:
+            return new DeletePreferenceCommandParser().parse(arguments);
+
         case ClearCommand.COMMAND_WORD:
         case ClearCommand.COMMAND_ALIAS:
             return new ClearCommand();
@@ -74,9 +90,13 @@ public class AddressBookParser {
         case FindCommand.COMMAND_ALIAS:
             return new FindCommandParser().parse(arguments);
 
-        case FindTagCommand.COMMAND_WORD:
-        case FindTagCommand.COMMAND_ALIAS:
-            return new FindTagCommandParser().parse(arguments);
+        case FindGroupCommand.COMMAND_WORD:
+        case FindGroupCommand.COMMAND_ALIAS:
+            return new FindGroupCommandParser().parse(arguments);
+
+        case FindPreferenceCommand.COMMAND_WORD:
+        case FindPreferenceCommand.COMMAND_ALIAS:
+            return new FindPreferenceCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
         case ListCommand.COMMAND_ALIAS:

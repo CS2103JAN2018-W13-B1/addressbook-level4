@@ -5,7 +5,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.testutil.TypicalGroups.FRIENDS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalPreferences.COMPUTERS;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,13 +18,17 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddOrderCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteGroupCommand;
+import seedu.address.logic.commands.DeletePreferenceCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FindTagCommand;
+import seedu.address.logic.commands.FindGroupCommand;
+import seedu.address.logic.commands.FindPreferenceCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
@@ -30,10 +36,14 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.order.Order;
+import seedu.address.model.person.GroupsContainKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.TagsContainKeywordsPredicate;
+import seedu.address.model.person.PreferencesContainKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.OrderBuilder;
+import seedu.address.testutil.OrderUtil;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
@@ -56,6 +66,22 @@ public class AddressBookParserTest {
         AddCommand command = (AddCommand) parser.parseCommand(AddCommand.COMMAND_ALIAS
                 + " " + PersonUtil.getPersonDetails(person));
         assertEquals(new AddCommand(person), command);
+    }
+
+    @Test
+    public void parseCommand_addOrder() throws Exception {
+        Order order = new OrderBuilder().build();
+        AddOrderCommand command = (AddOrderCommand) parser.parseCommand(OrderUtil
+                .getAddOrderCommand(INDEX_FIRST_PERSON.getOneBased(), order));
+        assertEquals(new AddOrderCommand(INDEX_FIRST_PERSON, order), command);
+    }
+
+    @Test
+    public void parseCommand_addOrderAlias() throws Exception {
+        Order order = new OrderBuilder().build();
+        AddOrderCommand command = (AddOrderCommand) parser.parseCommand(AddOrderCommand.COMMAND_ALIAS
+                + " " + INDEX_FIRST_PERSON.getOneBased() + " " + OrderUtil.getOrderDetails(order));
+        assertEquals(new AddOrderCommand(INDEX_FIRST_PERSON, order), command);
     }
 
     @Test
@@ -82,6 +108,34 @@ public class AddressBookParserTest {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_deleteGroup() throws Exception {
+        DeleteGroupCommand command = (DeleteGroupCommand) parser.parseCommand(
+                DeleteGroupCommand.COMMAND_WORD + " " + "friends");
+        assertEquals(new DeleteGroupCommand(FRIENDS), command);
+    }
+
+    @Test
+    public void parseCommand_deleteGroupAlias() throws Exception {
+        DeleteGroupCommand command = (DeleteGroupCommand) parser.parseCommand(
+                DeleteGroupCommand.COMMAND_ALIAS + " " + "friends");
+        assertEquals(new DeleteGroupCommand(FRIENDS), command);
+    }
+
+    @Test
+    public void parseCommand_deletePreference() throws Exception {
+        DeletePreferenceCommand command = (DeletePreferenceCommand) parser.parseCommand(
+                DeletePreferenceCommand.COMMAND_WORD + " " + "computers");
+        assertEquals(new DeletePreferenceCommand(COMPUTERS), command);
+    }
+
+    @Test
+    public void parseCommand_deletePreferenceAlias() throws Exception {
+        DeletePreferenceCommand command = (DeletePreferenceCommand) parser.parseCommand(
+                DeletePreferenceCommand.COMMAND_ALIAS + " " + "computers");
+        assertEquals(new DeletePreferenceCommand(COMPUTERS), command);
     }
 
     @Test
@@ -131,20 +185,41 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_findtag() throws Exception {
+    public void parseCommand_findGroups() throws Exception {
         List<String> keywords = Arrays.asList("friends", "family", "neighbours");
-        FindTagCommand command = (FindTagCommand) parser.parseCommand(
-                FindTagCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindTagCommand(new TagsContainKeywordsPredicate(keywords)), command);
+        FindGroupCommand command = (FindGroupCommand) parser.parseCommand(
+                FindGroupCommand.COMMAND_WORD + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindGroupCommand(new GroupsContainKeywordsPredicate(keywords)), command);
     }
 
     @Test
-    public void parseCommand_findtagAlias() throws Exception {
+    public void parseCommand_findGroupAlias() throws Exception {
         List<String> keywords = Arrays.asList("friends", "family", "neighbours");
-        FindTagCommand command = (FindTagCommand) parser.parseCommand(
-                FindTagCommand.COMMAND_ALIAS + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindTagCommand(new TagsContainKeywordsPredicate(keywords)), command);
+        FindGroupCommand command = (FindGroupCommand) parser.parseCommand(
+                FindGroupCommand.COMMAND_ALIAS + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindGroupCommand(new GroupsContainKeywordsPredicate(keywords)), command);
     }
+
+    @Test
+    public void parseCommand_findPreference() throws Exception {
+        List<String> keywords = Arrays.asList("shoes", "computers", "necklaces");
+        FindPreferenceCommand command = (FindPreferenceCommand) parser.parseCommand(
+                FindPreferenceCommand.COMMAND_WORD + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindPreferenceCommand(new PreferencesContainKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findPreferenceAlias() throws Exception {
+        List<String> keywords = Arrays.asList("shoes", "computers", "necklaces");
+        FindPreferenceCommand command = (FindPreferenceCommand) parser.parseCommand(
+                FindPreferenceCommand.COMMAND_ALIAS + " " + keywords.stream()
+                        .collect(Collectors.joining(" ")));
+        assertEquals(new FindPreferenceCommand(new PreferencesContainKeywordsPredicate(keywords)), command);
+    }
+
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
