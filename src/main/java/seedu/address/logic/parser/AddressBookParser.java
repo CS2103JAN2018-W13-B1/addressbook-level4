@@ -73,11 +73,11 @@ public class AddressBookParser {
         case DeleteCommand.COMMAND_WORD:
         case DeleteCommand.COMMAND_ALIAS:
             return new DeleteCommandParser().parse(arguments);
-            
+
         case DeleteGroupCommand.COMMAND_WORD:
         case DeleteGroupCommand.COMMAND_ALIAS:
             return new DeleteGroupCommandParser().parse(arguments);
-            
+
         case DeleteOrderCommand.COMMAND_WORD:
         case DeleteOrderCommand.COMMAND_ALIAS:
             return new DeleteOrderCommandParser().parse(arguments);
