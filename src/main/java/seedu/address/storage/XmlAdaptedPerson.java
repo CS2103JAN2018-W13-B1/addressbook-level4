@@ -95,7 +95,7 @@ public class XmlAdaptedPerson {
             if (personGroups.contains(groupToAdd)) {
                 throw new IllegalValueException(DUPLICATE_GROUPS_MESSAGE_FORMAT);
             }
-            personGroups.add(group.toModelType());
+            personGroups.add(groupToAdd);
         }
 
         final List<Preference> personPreferences = new ArrayList<>();
