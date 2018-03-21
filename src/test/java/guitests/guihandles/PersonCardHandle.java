@@ -18,7 +18,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private static final String EMAIL_FIELD_ID = "#email";
     private static final String GROUPS_FIELD_ID = "#groups";
     private static final String PREFERENCES_FIELD_ID = "#preferences";
-    private static final String TAGS_FIELD_ID = "#tags";
 
     private final Label idLabel;
     private final Label nameLabel;
@@ -27,7 +26,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label emailLabel;
     private final List<Label> groupLabels;
     private final List<Label> preferenceLabels;
-    private final List<Label> tagLabels;
 
     public PersonCardHandle(Node cardNode) {
         super(cardNode);
@@ -37,13 +35,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
         this.addressLabel = getChildNode(ADDRESS_FIELD_ID);
         this.phoneLabel = getChildNode(PHONE_FIELD_ID);
         this.emailLabel = getChildNode(EMAIL_FIELD_ID);
-
-        Region tagsContainer = getChildNode(TAGS_FIELD_ID);
-        this.tagLabels = tagsContainer
-                .getChildrenUnmodifiable()
-                .stream()
-                .map(Label.class::cast)
-                .collect(Collectors.toList());
 
         Region groupsContainer = getChildNode(GROUPS_FIELD_ID);
         this.groupLabels = groupsContainer
@@ -92,21 +83,5 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 .stream()
                 .map(Label::getText)
                 .collect(Collectors.toList());
-    }
-
-    public List<String> getTags() {
-        return tagLabels
-                .stream()
-                .map(Label::getText)
-                .collect(Collectors.toList());
-    }
-
-    public List<String> getTagStyleClasses(String tag) {
-        return tagLabels
-                .stream()
-                .filter(label -> label.getText().equals(tag))
-                .map(Label::getStyleClass)
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("No such tag."));
     }
 }
