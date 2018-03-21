@@ -34,6 +34,7 @@ public class XmlSerializableAddressBook {
         persons = new ArrayList<>();
         groups = new ArrayList<>();
         preferences = new ArrayList<>();
+        orders = new ArrayList<>();
     }
 
     /**
@@ -67,6 +68,11 @@ public class XmlSerializableAddressBook {
         for (XmlAdaptedPerson p : persons) {
             addressBook.addPerson(p.toModelType());
         }
+
+        for (XmlAdaptedOrder o : orders) {
+            addressBook.addOrderToOrderList(o.toOrderType());
+        }
+
         return addressBook;
     }
 
@@ -81,6 +87,9 @@ public class XmlSerializableAddressBook {
         }
 
         XmlSerializableAddressBook otherAb = (XmlSerializableAddressBook) other;
-        return persons.equals(otherAb.persons) && groups.equals(otherAb.groups);
+        return persons.equals(otherAb.persons)
+                && groups.equals(otherAb.groups)
+                && preferences.equals(otherAb.preferences)
+                && orders.equals(otherAb.orders);
     }
 }
