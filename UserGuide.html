@@ -43,9 +43,15 @@
 <li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.18. Saving the data</a></li>
+<li><a href="#displaying-calendar-in-specified-format-code-calendar-code-code-coming-in-v1-5-code">3.16. Displaying Calendar in specified format : <code>calendar</code> <code>Coming in V1.5</code></a></li>
+<li><a href="#listing-all-events-code-listevent-code-code-coming-in-v1-5-code">3.17. Listing all events : <code>listevent</code> <code>Coming in V1.5</code></a></li>
+<li><a href="#adding-events-to-event-list-code-addevent-code-code-coming-in-v1-5-code">3.18. Adding events to Event list : <code>addevent</code> <code>Coming in V1.5</code></a></li>
+<li><a href="#editing-events-in-event-list-code-editevent-code-code-coming-in-v1-5-code">3.19. editing events in Event list : <code>editevent</code> <code>Coming in V1.5</code></a></li>
+<li><a href="#deleting-events-in-event-list-code-deleteevent-code-code-coming-in-v1-5-code">3.20. Deleting events in Event list : <code>deleteevent</code> <code>Coming in V1.5</code></a></li>
+<li><a href="#clearing-all-entries-in-event-list-code-clearevent-code-code-coming-in-v1-5-code">3.21. Clearing all entries in Event List : <code>clearevent</code> <code>Coming in V1.5</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.22. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.24. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -298,7 +304,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-Alias: <code>f</code></p>
+Alias: <code>f KEYWORD [MORE KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -346,7 +352,7 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <div class="paragraph">
 <p>Finds persons whose groups matches any of the given keywords.<br>
 Format: <code>findgroup KEYWORD [MORE_KEYWORDS]</code><br>
-Alias: <code>fg</code></p>
+Alias: <code>fg KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -391,7 +397,7 @@ Returns any person having groups <code>neighbours</code>, <code>friends</code>, 
 <div class="paragraph">
 <p>Finds persons whose preferences matches any of the given keywords.<br>
 Format: <code>findpref KEYWORD [MORE_KEYWORDS]</code><br>
-Alias: <code>fp</code></p>
+Alias: <code>fp KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -730,7 +736,219 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="displaying-calendar-in-specified-format-code-calendar-code-code-coming-in-v1-5-code"><a class="link" href="#displaying-calendar-in-specified-format-code-calendar-code-code-coming-in-v1-5-code">3.16. Displaying Calendar in specified format : <code>calendar</code> <code>Coming in V1.5</code></a></h3>
+<div class="paragraph">
+<p>Displays the Calendar at centre of window, in a specified viewing format, such as Week, Month or Year.<br>
+Format: <code>calendar [VIEW_FORMAT]</code><br>
+Alias: <code>cal [VIEW_FORMAT]</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>VIEW_FORMAT refers to a specific viewing format the Calendar will display in.</p>
+</li>
+<li>
+<p>There are 3 viewing formats available, Week-View, Month-View and Year-View.</p>
+</li>
+<li>
+<p>Calendar shows the current week, current month and current year depending on which viewing format it is using.</p>
+</li>
+<li>
+<p>If no format is given, the Calendar will appear in Month-View by default.</p>
+</li>
+<li>
+<p>VIEW_FORMAT *only accepts "week", "month" or "year".</p>
+</li>
+<li>
+<p>The VIEW_FORMAT is case-insensitve. E.g. <code>cal WEEK</code> will display the Calendar in Week-View.</p>
+</li>
+<li>
+<p>Calendar will display all incoming events within timeframe of the current View.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar year</code> OR<br>
+<code>cal year</code><br>
+Shows Calendar in Year-View.</p>
+</li>
+<li>
+<p><code>calendar</code> OR <code>calendar month</code> OR<br>
+<code>cal</code> OR <code>cal month</code><br>
+Shows Calendar in Month-View</p>
+</li>
+<li>
+<p><code>calendar week</code> OR<br>
+<code>cal week</code><br>
+Shows Calendar in Week-View</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-events-code-listevent-code-code-coming-in-v1-5-code"><a class="link" href="#listing-all-events-code-listevent-code-code-coming-in-v1-5-code">3.17. Listing all events : <code>listevent</code> <code>Coming in V1.5</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of all events in the address book.<br>
+Format: <code>listevents</code><br>
+Alias: <code>le</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-events-to-event-list-code-addevent-code-code-coming-in-v1-5-code"><a class="link" href="#adding-events-to-event-list-code-addevent-code-code-coming-in-v1-5-code">3.18. Adding events to Event list : <code>addevent</code> <code>Coming in V1.5</code></a></h3>
+<div class="paragraph">
+<p>Adds an event to the Event list.<br>
+Format: <code>addevent t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]&#8230;&#8203;</code><br>
+Alias: <code>ae t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]&#8230;&#8203;</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If input does not contain START_DATE but contains START_TIME, it is assumed that event starts and ends on END_DATE.</p>
+</li>
+<li>
+<p>TITLE is alphanumeric and accepts white space. TITLE accepts maximum of 20 characters.</p>
+</li>
+<li>
+<p>Person at the specified INDEX shown in the last person listing will be tagged to the event.</p>
+</li>
+<li>
+<p>START_DATE and END_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
+</li>
+<li>
+<p>START_TIME and END_TIME must follow the 24-Hour format: HHMM (E.g. 2359)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addevent t/meet with boss</code> OR<br>
+<code>ae t/meet with boss ed/05-05-2020 st/1000 et/1200</code><br>
+Creates an event with listed title, starts from 1000 and ends at 1200 on 5 May 2020.<br>
+Event appears on specified date in the Calendar.</p>
+</li>
+<li>
+<p><code>addevent t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800</code> OR<br>
+<code>ae t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800</code><br>
+Event starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at the specified time period in Calendar.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-events-in-event-list-code-editevent-code-code-coming-in-v1-5-code"><a class="link" href="#editing-events-in-event-list-code-editevent-code-code-coming-in-v1-5-code">3.19. editing events in Event list : <code>editevent</code> <code>Coming in V1.5</code></a></h3>
+<div class="paragraph">
+<p>Edits an existing event in the Event List.<br>
+Format: <code>editevent e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]&#8230;&#8203;</code><br>
+Alias: <code>ee e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]&#8230;&#8203;</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the event at specified EVENT_INDEX. The index refers to the index number shown in the last event listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Person at the specified INDEX shown in the last person listing will be tagged to the event.</p>
+</li>
+<li>
+<p>When editing INDEX, the existing persons tagged to the event will be removed i.e adding of person indexes is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all persons tagged to the event by typing <code>i/</code> without specifying any positive integer after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editevent e/1 t/meet with bosses et/1400</code> OR<br>
+<code>ee e/1 t/meet with bosses et/1400</code><br>
+Edits title and end time of 1st event in Event list to "meet with bosses" and 1400 respectively.<br>
+Changes reflect on the Calendar.</p>
+</li>
+<li>
+<p><code>editevent e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800 i/</code> OR<br>
+<code>ee e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800 i/</code><br>
+Edits starting date and time, ending date and time of the 3rd event in Event list.<br>
+Removes all persons tagged to the event.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-events-in-event-list-code-deleteevent-code-code-coming-in-v1-5-code"><a class="link" href="#deleting-events-in-event-list-code-deleteevent-code-code-coming-in-v1-5-code">3.20. Deleting events in Event list : <code>deleteevent</code> <code>Coming in V1.5</code></a></h3>
+<div class="paragraph">
+<p>Deletes an existing event in Event list.<br>
+Format: <code>deleteevent EVENT_INDEX</code><br>
+Alias: <code>de EVENT_INDEX</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes event at specified EVENT_INDEX of Event list.</p>
+</li>
+<li>
+<p>The index refers to index number shown in the most recent event listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteevent 1</code> OR<br>
+<code>de 1</code><br>
+Deletes the event at index 1 of most recent event listing.<br>
+Event is removed from the Calendar.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-in-event-list-code-clearevent-code-code-coming-in-v1-5-code"><a class="link" href="#clearing-all-entries-in-event-list-code-clearevent-code-code-coming-in-v1-5-code">3.21. Clearing all entries in Event List : <code>clearevent</code> <code>Coming in V1.5</code></a></h3>
+<div class="paragraph">
+<p>Clears all event list entries from the address book.<br>
+Format: <code>clearevent</code><br>
+Alias: <code>ce</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.22. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code><br>
@@ -738,7 +956,7 @@ Alias: <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code><br>
@@ -746,7 +964,7 @@ Alias: <code>q</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.24. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -773,15 +991,34 @@ There is no need to save manually.</p>
 e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers</code></p>
 </li>
 <li>
+<p><strong>Add Event [Coming in V1.5]</strong> : <code>addevent t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]&#8230;&#8203;</code><br>
+e.g. <code>addevent t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800</code></p>
+</li>
+<li>
+<p><strong>Calendar [Coming in V1.5]</strong> : <code>calendar [VIEW_FORMAT]</code><br>
+e.g. <code>calendar year</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Clear Event list [Coming in V1.5]</strong> : <code>clearevent</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 3</code></p>
 </li>
 <li>
+<p><strong>Delete Event [Coming in V1.5]</strong> : <code>deleteevent INDEX</code><br>
+e.g. <code>deleteevent 2</code></p>
+</li>
+<li>
 <p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Edit Event [Coming in V1.5]</strong> : <code>editevent e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]&#8230;&#8203;</code><br>
+e.g. <code>editevent e/2 t/meeting with Jason ed/20-20-2020 i/2</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
@@ -843,15 +1080,34 @@ e.g. <code>orderdelete 5</code></p>
 e.g. <code>a n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/friend g/colleague pr/computers</code></p>
 </li>
 <li>
+<p><strong>Add Event [Coming in V1.5]</strong> : <code>ae t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME [i/INDEX]&#8230;&#8203;</code><br>
+e.g. <code>ae t/roadshow sd/01-01-2019 ed/10-01-2019 st/0900 et/1800</code></p>
+</li>
+<li>
+<p><strong>Calendar [Coming in V1.5]</strong> : <code>cal [VIEW_FORMAT]</code><br>
+e.g. <code>cal year</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>c</code></p>
+</li>
+<li>
+<p><strong>Clear Event list [Coming in V1.5]</strong> : <code>ce</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>d INDEX</code><br>
 e.g. <code>d 3</code></p>
 </li>
 <li>
+<p><strong>Delete Event [Coming in V1.5]</strong> : <code>de INDEX</code><br>
+e.g. <code>de 2</code></p>
+</li>
+<li>
 <p><strong>Edit</strong> : <code>e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br>
 e.g. <code>e 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Edit Event [Coming in V1.5]</strong> : <code>ee e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]&#8230;&#8203;</code><br>
+e.g. <code>ee e/2 t/meeting with Jason ed/20-20-2020 i/2</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>f KEYWORD [MORE_KEYWORDS]</code><br>
@@ -927,7 +1183,7 @@ e.g. <code>od 5</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 01:02:19 UTC
+Last updated 2018-03-21 02:52:59 UTC
 </div>
 </div>
 </body>

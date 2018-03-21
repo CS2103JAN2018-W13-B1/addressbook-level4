@@ -48,7 +48,8 @@
 <li><a href="#orders">3.2. Orders</a></li>
 <li><a href="#data-encryption">3.3. Data Encryption</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#calendar-and-events-tracking-feature-coming-in-v1-5">3.5. Calendar and events tracking feature "Coming in V1.5"</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1266,7 +1267,7 @@ being stored.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1297,7 +1298,124 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="calendar-and-events-tracking-feature-coming-in-v1-5"><a class="link" href="#calendar-and-events-tracking-feature-coming-in-v1-5">3.5. Calendar and events tracking feature "Coming in V1.5"</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The event tracking feature is facilitated by <code>UserEvents</code>, which resides inside <code>Model</code>.
+It is supported by <code>UserEventsManager</code> residing inside <code>UserEvents</code>, which supports the adding, removing and editing of <code>CalendarEvent</code>(e.g. <code>addEvent</code>, <code>deleteEvent</code>).
+Orders of a person will also appear as <code>CalendarEvent</code> based on the <code>DeliveryDate</code> attribute of the Order.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>UserEvents</code> and <code>CalendarEvent</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CalendarClassDiagram.png" alt="CalendarClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>In the diagram, <code>ModelManager</code> creates an instance of <code>UserEvents</code> interface, which provides the <code>UserEvents</code> API for <code>ModelManager</code> to use.
+<code>UserEventsManager</code> implements methods used by users to add, edit or delete <code>CalendarEvent</code>, which contains information of an event. <code>CalendarEvent</code> is stored in the <code>UniqueEventList</code>.<br>
+<code>Logic</code> Components contains the commands required to manage user&#8217;s events (e.g. <code>AddEventCommand</code>, <code>deleteEventCommand</code>) and to change display format of the calendar ui (e.g. <code>ShowCalendarCommand</code>).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows how add event operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddEventSD.png" alt="AddEventSD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>CalendarEvent</code> is implemented in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarEvent</span> {
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> eventTitle;
+    <span class="directive">private</span> <span class="directive">final</span> LocalDate startDate;
+    <span class="directive">private</span> <span class="directive">final</span> LocalDate endDate;
+    <span class="directive">private</span> <span class="directive">final</span> EventTime startTime;
+    <span class="directive">private</span> <span class="directive">final</span> EventTime endTime;
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">List</span>&lt;Person&gt; taggedPersons;
+
+    <span class="comment">// ... Order attribute getters and setters ...</span>
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is a brief description of the attributes of <code>CalendarEvent</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>eventTitle: Represents title of event.</p>
+</li>
+<li>
+<p>startDate: Represents starting date of the event in DD-MM-YYYY format.</p>
+</li>
+<li>
+<p>endDate: Represents ending date of the event in DD-MM-YYYY format.</p>
+</li>
+<li>
+<p>startTime: Represents starting time of the event in HHMM format (24-Hour format).</p>
+</li>
+<li>
+<p>endTime: Represents ending time of the event in HHMM format (24-Hour format).</p>
+</li>
+<li>
+<p>taggedPerson: Represents list of Persons in address book that are tagged to the event.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Events added, removed or modified by users will have their intended results displayed by the <code>CalendarUi</code> residing inside <code>Ui</code> Component, which displays a calendar showing any future events.
+The <code>CalendarUi</code> can display dates in a week, month and year format, depending on user inputs.<br>
+Storing of <code>CalendarEvent</code> data is managed by <code>CalendarStorage</code> within <code>Storage</code> Component, converting <code>CalendarEvent</code> to <code>XmlAdaptedEvent</code> to store in a .xml file.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-feature-as-a-whole"><a class="link" href="#aspect-implementation-of-feature-as-a-whole">Aspect: Implementation of feature as a whole</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Creates a localised version of Calendar where all data related to it is stored locally.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require constant Internet access to manage data of Calendar.</p>
+</li>
+<li>
+<p>Cons: Disallows quick synchronisation between this Calendar and other Calendar applications, such as Google Calendar, that users might use. There are much more areas in the code that potentially contains hidden bugs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Uses a third-party library such as Google Calendar API to manage.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require substantial maintenance of related code as less code is required to implement the feature. Some third-party libraries allows users to access some existing calendar applications, saving time required to transfer their calendar events.</p>
+</li>
+<li>
+<p>Cons: Some third-party libraries use REST APIs, which would require users to have Internet access to edit their Calendars. Some libraries will periodically prompt for authentication of user to continue to use their API, which can be a problematic if authentication process is changed in the future.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2607,14 +2725,14 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">remove a specific tag</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all contacts with that tag will have the tag removed instead of removing the tag from from every one of them</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find contacts based on the group they are in</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see all contacts belonging to a certain group</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2649,14 +2767,14 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a list of preferences to contact</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know what my customers are interested in</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit contact’s preferences</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">update my customers' changing interests</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -3831,7 +3949,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 01:02:19 UTC
+Last updated 2018-03-21 02:52:59 UTC
 </div>
 </div>
 </body>
