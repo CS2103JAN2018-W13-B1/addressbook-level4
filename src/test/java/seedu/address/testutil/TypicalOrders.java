@@ -25,7 +25,7 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 public class TypicalOrders {
 
     public static final Order SHOES = new OrderBuilder()
-            .withOrderInformation("Books")
+            .withOrderInformation("Shoes")
             .withPrice("129.99")
             .withQuantity("3")
             .withDeliveryDate("10-09-2018")

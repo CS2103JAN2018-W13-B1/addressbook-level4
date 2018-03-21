@@ -70,7 +70,7 @@ public class XmlSerializableAddressBook {
         }
 
         for (XmlAdaptedOrder o : orders) {
-            addressBook.addOrderToOrderList(o.toOrderType());
+            addressBook.addOrderToOrderList(o.toModelType());
         }
 
         return addressBook;

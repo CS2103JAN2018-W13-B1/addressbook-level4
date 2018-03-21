@@ -59,7 +59,7 @@ public class XmlAdaptedOrder {
      *
      * @throws IllegalValueException if any data constraints are violated in the adapted order's fields.
      */
-    public Order toOrderType() throws IllegalValueException {
+    public Order toModelType() throws IllegalValueException {
         if (this.orderInformation == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     OrderInformation.class.getSimpleName()));
