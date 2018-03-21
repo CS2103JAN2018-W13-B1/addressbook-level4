@@ -118,27 +118,27 @@ public class FindPreferenceCommandSystemTest extends AddressBookSystemTest {
         assertSelectedCardUnchanged();
 
         /* Case: find name of person in address book with FindPreferenceCommand -> 0 persons found */
-        command = FindPreferenceCommand.COMMAND_WORD + " " + BENSON.getName().toString();
+        command = FindPreferenceCommand.COMMAND_WORD + " " + ELLE.getName().toString();
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find phone number of person in address book -> 0 persons found */
-        command = FindPreferenceCommand.COMMAND_WORD + " " + BENSON.getPhone().value;
+        command = FindPreferenceCommand.COMMAND_WORD + " " + ELLE.getPhone().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find address of person in address book -> 0 persons found */
-        command = FindPreferenceCommand.COMMAND_WORD + " " + BENSON.getAddress().value;
+        command = FindPreferenceCommand.COMMAND_WORD + " " + ELLE.getAddress().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find email of person in address book -> 0 persons found */
-        command = FindPreferenceCommand.COMMAND_WORD + " " + BENSON.getEmail().value;
+        command = FindPreferenceCommand.COMMAND_WORD + " " + ELLE.getEmail().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find groups of person in address book -> 0 persons found */
-        List<Group> groups = new ArrayList<>(BENSON.getGroupTags());
+        List<Group> groups = new ArrayList<>(ELLE.getGroupTags());
         command = FindPreferenceCommand.COMMAND_WORD + " " + groups.get(0).tagName;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
@@ -146,7 +146,7 @@ public class FindPreferenceCommandSystemTest extends AddressBookSystemTest {
         /* Case: find via preferences while a person is selected -> selected card deselected */
         showAllPersons();
         selectPerson(Index.fromOneBased(1));
-        assertFalse(getPersonListPanel().getHandleToSelectedCard().getName().equals(BENSON.getName().fullName));
+        assertFalse(getPersonListPanel().getHandleToSelectedCard().getName().equals(ELLE.getName().fullName));
         command = FindPreferenceCommand.COMMAND_WORD + " videoGames";
         ModelHelper.setFilteredList(expectedModel, BENSON, GEORGE);
         assertCommandSuccess(command, expectedModel);

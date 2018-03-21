@@ -37,6 +37,7 @@ public class XmlAdaptedPerson {
 
     @XmlElement
     private List<XmlAdaptedGroup> groups = new ArrayList<>();
+    @XmlElement
     private List<XmlAdaptedPreference> preferences = new ArrayList<>();
 
     /**
