@@ -19,7 +19,8 @@ public class Theme {
     public static final ArrayList<String> VALID_THEMES = new ArrayList<>(
             Arrays.asList(DARK_THEME_KEYWORD, LIGHT_THEME_KEYWORD));
 
-    public static final String MESSAGE_THEME_CONSTRAINTS = getMessageThemeConstraints();
+    public static final String MESSAGE_THEME_CONSTRAINTS = "Theme can only be \'"
+            + DARK_THEME_KEYWORD + "\', or \'" + LIGHT_THEME_KEYWORD + "\'";
 
     public static final String DARK_THEME_CSS_FILE_PATH = "view/DarkTheme.css";
     public static final String LIGHT_THEME_CSS_FILE_PATH = "view/LightTheme.css";
@@ -37,7 +38,11 @@ public class Theme {
         this.currentTheme = currentTheme;
     }
 
+    /**
+     * Returns true if the given string is a valid theme.
+     */
     public static boolean isValidTheme(String test) {
+        requireNonNull(test);
         return VALID_THEMES.contains(test);
     }
 
@@ -58,18 +63,6 @@ public class Theme {
         }
     }
 
-    private static String getMessageThemeConstraints() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Themes can only be ");
-        for (String s : VALID_THEMES) {
-            sb.append(s).append(", ");
-        }
-
-        String message = sb.toString();
-
-        return message.substring(0, message.length() - 1);
-    }
-
     @Override
     public String toString() {
         return currentTheme;
@@ -78,8 +71,7 @@ public class Theme {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Theme // instanceof handles nulls
-                && this.currentTheme.equals(((Theme) other).currentTheme)); // state check
+                || (other instanceof Theme); // instanceof handles nulls
     }
 
     @Override
