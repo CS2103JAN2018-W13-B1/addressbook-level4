@@ -19,8 +19,8 @@ public class Theme {
     public static final ArrayList<String> VALID_THEMES = new ArrayList<>(
             Arrays.asList(DARK_THEME_KEYWORD, LIGHT_THEME_KEYWORD));
 
-    public static final String MESSAGE_THEME_CONSTRAINTS = "Theme can only be \'"
-            + DARK_THEME_KEYWORD + "\', or \'" + LIGHT_THEME_KEYWORD + "\'";
+    public static final String MESSAGE_THEME_CONSTRAINTS = "Theme can only be "
+            + DARK_THEME_KEYWORD + " or " + LIGHT_THEME_KEYWORD;
 
     public static final String DARK_THEME_CSS_FILE_PATH = "view/DarkTheme.css";
     public static final String LIGHT_THEME_CSS_FILE_PATH = "view/LightTheme.css";
@@ -90,7 +90,7 @@ public class Theme {
             scene.getStylesheets().clear();
 
             // new theme file path
-            String newThemeCssFilePath = null;
+            String newThemeCssFilePath;
 
             switch (newTheme) {
             case DARK_THEME_KEYWORD:
