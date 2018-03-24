@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -199,10 +200,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeGroup(Group toRemove) throws GroupNotFoundException {
         if (groupTags.contains(toRemove)) {
-            ObservableList<Person> list = persons.getInternalList();
-            for (Person p: list) {
-                p.removeGroupTag(toRemove);
-            }
+            persons.removeGroupFromAllPersons(toRemove);
             groupTags.remove(toRemove);
         } else {
             throw new GroupNotFoundException();
@@ -215,10 +213,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removePreference(Preference toRemove) throws PreferenceNotFoundException {
         if (prefTags.contains(toRemove)) {
-            ObservableList<Person> list = persons.getInternalList();
-            for (Person p: list) {
-                p.removePreferenceTag(toRemove);
-            }
+            persons.removePrefFromAllPersons(toRemove);
             prefTags.remove(toRemove);
         } else {
             throw new PreferenceNotFoundException();
@@ -262,6 +257,13 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         orders.add(orderToAdd);
+    }
+
+    /**
+     * Removes order from list of orders.
+     */
+    public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
+        orders.remove(targetOrder);
     }
 
     //// util methods
