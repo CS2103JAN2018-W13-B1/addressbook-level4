@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalOrders.BOOKS;
 import static seedu.address.testutil.TypicalOrders.CHOCOLATES;
 import static seedu.address.testutil.TypicalOrders.FACEWASH;
 import static seedu.address.testutil.TypicalOrders.SHOES;
-import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
 
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
