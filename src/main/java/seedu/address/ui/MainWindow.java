@@ -163,7 +163,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setTheme() {
-        Theme.changeTheme(primaryStage, Theme.getCurrentTheme());
+        Theme.changeTheme(primaryStage, Theme.DARK_THEME_KEYWORD);
     }
 
     /**
