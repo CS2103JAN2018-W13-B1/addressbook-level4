@@ -659,25 +659,14 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 
 // tag::calendarEvents[]
-=== Calendar and events tracking feature "Coming in V1.5"
+=== Calendar and Event tracking
+
+Events refer to meetings, deadlines and order deliveries created by users in ContactSails.
+Users can create, edit and delete events, and existing events are displayed in a calendar interface within the application.
 
 ==== Current Implementation
 
-The event tracking feature is facilitated by `UserEvents`, which resides inside `Model`.
-It is supported by `UserEventsManager` residing inside `UserEvents`, which supports the adding, removing and editing of `CalendarEvent`(e.g. `addEvent`, `deleteEvent`).
-Orders of a person will also appear as `CalendarEvent` based on the `DeliveryDate` attribute of the Order.
-
-The following diagram shows class diagram of `Model` Component related to `UserEvents` and `CalendarEvent`.
-
-image::CalendarClassDiagram.png[width="800"]
-
-In the diagram, `ModelManager` creates an instance of `UserEvents` interface, which provides the `UserEvents` API for `ModelManager` to use.
-`UserEventsManager` implements methods used by users to add, edit or delete `CalendarEvent`, which contains information of an event. `CalendarEvent` is stored in the `UniqueEventList`. +
-`Logic` Components contains the commands required to manage user's events (e.g. `AddEventCommand`, `deleteEventCommand`) and to change display format of the calendar ui (e.g. `ShowCalendarCommand`).
-
-The sequence diagram below shows how add event operation works:
-
-image::AddEventSD.png[width="800"]
+`CalendarEvent` represents an event created by users.
 
 A `CalendarEvent` is implemented in the following manner:
 [source,java]
@@ -705,8 +694,30 @@ The following is a brief description of the attributes of `CalendarEvent`:
 * endTime: Represents ending time of the event in HHMM format (24-Hour format).
 * taggedPerson: Represents list of Persons in address book that are tagged to the event.
 
+Events management is facilitated by `UserEvents`, which resides inside `Model`.
+It is supported by `UserEventsManager` residing inside `UserEvents`, which supports the adding, removing and editing of `CalendarEvent`(e.g. `addEvent`, `deleteEvent`).
+Orders of a person will also appear as `CalendarEvent` based on the `DeliveryDate` attribute of the `Order`.
 
-Events added, removed or modified by users will have their intended results displayed by the `CalendarUi` residing inside `Ui` Component, which displays a calendar showing any future events.
+The following diagram shows class diagram of `Model` Component related to `UserEvents` and `CalendarEvent`.
+
+.`Model` Component showing classes related to events management
+image::UserEventClassDiagram.png[width="800" align="center"]
+
+In the diagram, `ModelManager` creates an instance of `UserEvents` interface, which provides the `UserEvents` API for `ModelManager` to implement.
+`UserEventsManager` implements methods used by users to add, edit or delete `CalendarEvent`, which contains information of an event. `CalendarEvent` is stored in the `UniqueEventList`. +
+
+`Logic` Component contains the commands required to manage user's events (e.g. `AddEventCommand`, `deleteEventCommand`).
+
+The sequence diagram below shows how add event operation works:
+
+.Sequence Diagram for adding of an event into ContactSails
+image::AddEventSD.png[width="800"]
+
+In Figure 15, when a user enters the command to add an event, `AddEventCommand` will call `addEvent()` in `ModelManager`.
+`ModelManager` in turn calls `addEvent()` in `UserEventsManager`, which creates a new `CalendarEvent` containing the information given by user.
+`UserEventsManager` will then add `CalendarEvent` to `UniqueEventList`. If addition of event is a success, control is eventually returned from `UserEventsManager` to `AddEventCommand`.
+
+Events added, removed or modified by users will have their intended results displayed by the `CalendarUi` residing inside `Ui` Component.
 The `CalendarUi` can display dates in a week, month and year format, depending on user inputs. +
 Storing of `CalendarEvent` data is managed by `CalendarStorage` within `Storage` Component, converting `CalendarEvent` to `XmlAdaptedEvent` to store in a .xml file.
 
