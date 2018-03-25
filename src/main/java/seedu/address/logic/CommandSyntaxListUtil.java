@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddOrderCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteGroupCommand;
+import seedu.address.logic.commands.DeleteOrderCommand;
+import seedu.address.logic.commands.DeletePreferenceCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -35,8 +39,12 @@ public final class CommandSyntaxListUtil {
      */
     private static void setCommandSyntaxList() {
         commandSyntaxList.add(AddCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(AddOrderCommand.COMMAND_SYNTAX);
         commandSyntaxList.add(ClearCommand.COMMAND_WORD);
         commandSyntaxList.add(DeleteCommand.COMMAND_WORD);
+        commandSyntaxList.add(DeleteGroupCommand.COMMAND_WORD);
+        commandSyntaxList.add(DeleteOrderCommand.COMMAND_WORD);
+        commandSyntaxList.add(DeletePreferenceCommand.COMMAND_WORD);
         commandSyntaxList.add(EditCommand.COMMAND_SYNTAX);
         commandSyntaxList.add(ExitCommand.COMMAND_WORD);
         commandSyntaxList.add(FindCommand.COMMAND_SYNTAX);

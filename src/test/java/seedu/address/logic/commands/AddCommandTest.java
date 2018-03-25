@@ -22,11 +22,14 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.order.Order;
+import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
+import seedu.address.model.tag.exceptions.GroupNotFoundException;
+import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -133,22 +136,33 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Order> getFilteredOrderList() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             fail("This method should not be called.");
         }
 
         @Override
-        public void deleteGroup(Group targetGroup) throws Exception {
+        public void deleteGroup(Group targetGroup) throws GroupNotFoundException {
             fail("This method should not be called.");
         }
 
         @Override
-        public void deletePreference(Preference targetPreference) throws Exception {
+        public void deletePreference(Preference targetPreference) throws PreferenceNotFoundException {
             fail("This method should not be called.");
         }
 
         @Override
         public void addOrderToOrderList(Order orderToAdd) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
             fail("This method should not be called.");
         }
     }

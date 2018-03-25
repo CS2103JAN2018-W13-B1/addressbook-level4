@@ -5,11 +5,14 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
+import seedu.address.model.tag.exceptions.GroupNotFoundException;
+import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 
 /**
  * The API of the Model component.
@@ -49,15 +52,25 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    /** Returns an unmodifiable view of the filtered order list */
+    ObservableList<Order> getFilteredOrderList();
+
+    /**
+     * Deletes given Order
+     */
+    void deleteOrder(Order targetOrder) throws OrderNotFoundException;
+
     /**
      * Deletes given Group
+     * @throws GroupNotFoundException if {@code targetGroup} could not be found in group list.
      */
-    void deleteGroup(Group targetGroup) throws Exception;
+    void deleteGroup(Group targetGroup) throws GroupNotFoundException;
 
     /**
      * Deletes given Preference
+     * @throws PreferenceNotFoundException if {@code targetPreference} could not be found in preference list.
      */
-    void deletePreference(Preference targetPreference) throws Exception;
+    void deletePreference(Preference targetPreference) throws PreferenceNotFoundException;
 
     /**
      * Adds order to list of orders.
