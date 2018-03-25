@@ -645,18 +645,22 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.1. Undo/Redo feature</a></h3>
+<div class="paragraph">
+<p>This feature allows users to undo and redo certain commands executed in the current session.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
+<div class="title">Figure 11. Inheritance Diagram for commands in <code>Logic</code> Component</div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
@@ -706,6 +710,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
+<div class="title">Figure 12. UndoRedoStack before and after executing 1 Delete Command</div>
 </div>
 <div class="paragraph">
 <p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
@@ -714,6 +719,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
+<div class="title">Figure 13. UndoRedoStack before and after Executing 1 Add Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -737,6 +743,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
+<div class="title">Figure 14. UndoRedoStack before and after executing Undo Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -757,6 +764,7 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
+<div class="title">Figure 15. Sequence Diagram for executing Undo Command</div>
 </div>
 <div class="paragraph">
 <p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
@@ -780,6 +788,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
+<div class="title">Figure 16. UndoRedoStack before and after executing Clear Command</div>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
@@ -788,6 +797,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
 </div>
+<div class="title">Figure 17. UndoRedoStack before and after executing List Command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
@@ -796,6 +806,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
+<div class="title">Figure 18. Execution Path when Undoable Commands</div>
 </div>
 </div>
 <div class="sect3">
@@ -951,7 +962,7 @@ After being added, orders can be edited and deleted.</p>
 <div class="content">
 <img src="images/OrderUMLDiagram.png" alt="OrderUMLDiagram" width="500">
 </div>
-<div class="title">Figure 11. UML Diagram for Order</div>
+<div class="title">Figure 19. UML Diagram for Order</div>
 </div>
 <div class="paragraph">
 <p>A brief description of each of the attributes of an <code>Order</code> is given below:<br></p>
@@ -977,13 +988,13 @@ After being added, orders can be edited and deleted.</p>
 </div>
 <div class="paragraph">
 <p>As orders are added to a particular person, there exists an association between a <code>Person</code> object and an <code>Order</code> object.
-This relationship is shown in <em>Figure 12</em> given below.</p>
+This relationship is shown in <em>Figure 20</em> given below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/PersonOrderAssociationUMLDiagram.png" alt="PersonOrderAssociationUMLDiagram" width="500">
 </div>
-<div class="title">Figure 12. UML Diagram showing association between a Person and an Order</div>
+<div class="title">Figure 20. UML Diagram showing association between a Person and an Order</div>
 </div>
 <div class="paragraph">
 <p>The association is implemented in the following manner:</p>
@@ -1137,14 +1148,14 @@ for getting the edited order and updates the <code>model</code> of the applicati
 <div class="sect4">
 <h5 id="displaying-orders-in-gui"><a class="link" href="#displaying-orders-in-gui">Displaying Orders In GUI</a></h5>
 <div class="paragraph">
-<p>A single <code>Order</code> is displayed using an <code>OrderListCard</code> (refer to Figure 13 below). The list of all orders in the address book is then displayed in a list
+<p>A single <code>Order</code> is displayed using an <code>OrderListCard</code> (refer to Figure 21 below). The list of all orders in the address book is then displayed in a list
 using the <code>OrderListPanel</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/OrderListCardFXMLRender.png" alt="OrderListCardFXMLRender" width="150">
 </div>
-<div class="title">Figure 13. OrderListCard FXML Render</div>
+<div class="title">Figure 21. OrderListCard FXML Render</div>
 </div>
 </div>
 </div>
@@ -1344,10 +1355,10 @@ Orders of a person will also appear as <code>CalendarEvent</code> based on the <
 <div class="content">
 <img src="images/UserEventClassDiagram.png" alt="UserEventClassDiagram" width="800">
 </div>
-<div class="title">Figure 14. <code>Model</code> Component showing classes related to events management</div>
+<div class="title">Figure 22. <code>Model</code> Component showing classes related to events management</div>
 </div>
 <div class="paragraph">
-<p>In the Figure 14, <code>ModelManager</code> creates an instance of <code>UserEvents</code> interface, which provides the <code>UserEvents</code> API for <code>ModelManager</code> to implement.
+<p>In the Figure 22, <code>ModelManager</code> creates an instance of <code>UserEvents</code> interface, which provides the <code>UserEvents</code> API for <code>ModelManager</code> to implement.
 <code>UserEventsManager</code> implements methods used by users to add, edit or delete <code>CalendarEvent</code>, which contains information of an event. <code>CalendarEvent</code> is stored in the <code>UniqueEventList</code>.<br></p>
 </div>
 <div class="paragraph">
@@ -1360,10 +1371,10 @@ Orders of a person will also appear as <code>CalendarEvent</code> based on the <
 <div class="content">
 <img src="images/AddEventSD.png" alt="AddEventSD" width="800">
 </div>
-<div class="title">Figure 15. Sequence Diagram for adding of an event into ContactSails</div>
+<div class="title">Figure 23. Sequence Diagram for adding of an event into ContactSails</div>
 </div>
 <div class="paragraph">
-<p>In Figure 15, when a user enters the command to add an event, <code>AddEventCommand</code> will call <code>addEvent()</code> in <code>ModelManager</code>.
+<p>In Figure 23, when a user enters the command to add an event, <code>AddEventCommand</code> will call <code>addEvent()</code> in <code>ModelManager</code>.
 <code>ModelManager</code> in turn calls <code>addEvent()</code> in <code>UserEventsManager</code>, which creates a new <code>CalendarEvent</code> containing the information given by user.
 <code>UserEventsManager</code> will then add <code>CalendarEvent</code> to <code>UniqueEventList</code>. If addition of event is a success, control is eventually returned from <code>UserEventsManager</code> to <code>AddEventCommand</code>.</p>
 </div>
@@ -1477,7 +1488,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 24. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3659,7 +3670,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 15:10:57 UTC
+Last updated 2018-03-25 15:59:47 UTC
 </div>
 </div>
 </body>
