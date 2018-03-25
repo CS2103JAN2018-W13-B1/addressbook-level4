@@ -20,8 +20,8 @@ ContactSails is a desktop application targeted at salespersons who want to manag
 and calendar events in an efficient manner. +
 
 This guide provides the necessary technical information for those
-who might want to join our team as a software developer or tester, or who want to develop an entirely different product
-while using ContactSails as a base. +
+who might want to join our team as a software developer or a tester,
+or for those who want to develop an entirely different product by using ContactSails as a base. +
 
 The following points illustrate what information this guide provides:
 
@@ -90,7 +90,8 @@ This section provides information on the additional configurations that you need
 
 ==== Configuring the coding style
 
-This project follows https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc[oss-generic coding standards]. IntelliJ's default style is mostly compliant with ours but it uses a different import order from ours.
+This project follows https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc[oss-generic coding standards]. IntelliJ's default style is mostly compliant with ours but it uses a different import order from ours. +
+
 To use the correct coding style, follow these steps:
 
 . Go to `File` > `Settings...` (Windows/Linux), or `IntelliJ IDEA` > `Preferences...` (macOS).
@@ -100,7 +101,7 @@ To use the correct coding style, follow these steps:
 * For `Class count to use import with '\*'` and `Names count to use static import with '*'`: Set to `999` to prevent IntelliJ from contracting the import statements.
 * For `Import Layout`: The order is `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`.
 
-Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
+Optionally, you can follow the https://github.com/CS2103JAN2018-W13-B1/main/blob/master/docs/UsingCheckstyle.adoc[UsingCheckstyle.adoc] document to configure Intellij to check style-compliance as you write code.
 
 ==== Updating documentation to match your fork
 
@@ -108,14 +109,14 @@ After forking the repo, links in the documentation will still point to the `CS21
 
 ==== Setting up CI
 
-Set up Travis to perform Continuous Integration (CI) for your fork. See <<UsingTravis#, UsingTravis.adoc>> to learn how to set it up.
+Set up Travis to perform Continuous Integration (CI) for your fork. See https://github.com/CS2103JAN2018-W13-B1/main/blob/master/docs/UsingTravis.adoc[UsingTravis.adoc] to learn how to set it up.
 
-After setting up Travis, you can optionally set up coverage reporting for your team fork (see <<UsingCoveralls#, UsingCoveralls.adoc>>).
+After setting up Travis, you can optionally set up coverage reporting for your team fork see https://github.com/CS2103JAN2018-W13-B1/main/blob/master/docs/UsingCoveralls.adoc[UsingCoveralls.adoc].
 
 [NOTE]
 Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
 
-Optionally, you can set up AppVeyor as a second CI (see <<UsingAppVeyor#, UsingAppVeyor.adoc>>).
+Optionally, you can set up AppVeyor as a second CI see https://github.com/CS2103JAN2018-W13-B1/main/blob/master/docs/UsingAppVeyor.adoc[UsingAppVeyor.adoc].
 
 [NOTE]
 Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
