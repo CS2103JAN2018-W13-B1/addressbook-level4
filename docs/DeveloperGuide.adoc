@@ -696,7 +696,6 @@ Storing of `CalendarEvent` data is managed by `CalendarStorage` within `Storage`
 * **Alternative 2:** Uses a third-party library such as Google Calendar API to manage.
 ** Pros: Does not require substantial maintenance of related code as less code is required to implement the feature. Some third-party libraries allows users to access some existing calendar applications, saving time required to transfer their calendar events.
 ** Cons: Some third-party libraries use REST APIs, which would require users to have Internet access to edit their Calendars. Some libraries will periodically prompt for authentication of user to continue to use their API, which can be a problematic if authentication process is changed in the future.
-
 // end::calendarEvents[]
 
 [[Implementation-Configuration]]
