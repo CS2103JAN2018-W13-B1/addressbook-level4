@@ -711,7 +711,7 @@ In the diagram, `ModelManager` creates an instance of `UserEvents` interface, wh
 The sequence diagram below shows how add event operation works:
 
 .Sequence Diagram for adding of an event into ContactSails
-image::AddEventSD.png[width="800"]
+image::AddEventSD.png[width="800" align="center]
 
 In Figure 15, when a user enters the command to add an event, `AddEventCommand` will call `addEvent()` in `ModelManager`.
 `ModelManager` in turn calls `addEvent()` in `UserEventsManager`, which creates a new `CalendarEvent` containing the information given by user.
