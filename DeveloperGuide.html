@@ -49,7 +49,7 @@
 <li><a href="#orders">4.2. Orders</a></li>
 <li><a href="#data-encryption">4.3. Data Encryption</a></li>
 <li><a href="#logging">4.4. Logging</a></li>
-<li><a href="#calendar-and-events-tracking-feature-coming-in-v1-5">4.5. Calendar and events tracking feature "Coming in V1.5"</a></li>
+<li><a href="#calendar-and-event-tracking">4.5. Calendar and Event tracking</a></li>
 <li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
 </ul>
 </li>
@@ -79,8 +79,7 @@
 </li>
 <li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
 <ul class="sectlevel2">
-<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
-<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
+<li><a href="#GetStartedProgramming-RemarkCommand">A.1. Creating a new command: <code>remark</code></a></li>
 </ul>
 </li>
 <li><a href="#product-scope">Appendix B: Product Scope</a></li>
@@ -1279,34 +1278,15 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-and-events-tracking-feature-coming-in-v1-5"><a class="link" href="#calendar-and-events-tracking-feature-coming-in-v1-5">4.5. Calendar and events tracking feature "Coming in V1.5"</a></h3>
+<h3 id="calendar-and-event-tracking"><a class="link" href="#calendar-and-event-tracking">4.5. Calendar and Event tracking</a></h3>
+<div class="paragraph">
+<p>Events refer to meetings, deadlines and order deliveries created by users in ContactSails.
+Users can create, edit and delete events, and existing events are displayed in a calendar interface within the application.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The event tracking feature is facilitated by <code>UserEvents</code>, which resides inside <code>Model</code>.
-It is supported by <code>UserEventsManager</code> residing inside <code>UserEvents</code>, which supports the adding, removing and editing of <code>CalendarEvent</code>(e.g. <code>addEvent</code>, <code>deleteEvent</code>).
-Orders of a person will also appear as <code>CalendarEvent</code> based on the <code>DeliveryDate</code> attribute of the Order.</p>
-</div>
-<div class="paragraph">
-<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>UserEvents</code> and <code>CalendarEvent</code>.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/CalendarClassDiagram.png" alt="CalendarClassDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>In the diagram, <code>ModelManager</code> creates an instance of <code>UserEvents</code> interface, which provides the <code>UserEvents</code> API for <code>ModelManager</code> to use.
-<code>UserEventsManager</code> implements methods used by users to add, edit or delete <code>CalendarEvent</code>, which contains information of an event. <code>CalendarEvent</code> is stored in the <code>UniqueEventList</code>.<br>
-<code>Logic</code> Components contains the commands required to manage user&#8217;s events (e.g. <code>AddEventCommand</code>, <code>deleteEventCommand</code>) and to change display format of the calendar ui (e.g. <code>ShowCalendarCommand</code>).</p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below shows how add event operation works:</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/AddEventSD.png" alt="AddEventSD" width="800">
-</div>
+<p><code>CalendarEvent</code> represents an event created by users.</p>
 </div>
 <div class="paragraph">
 <p>A <code>CalendarEvent</code> is implemented in the following manner:</p>
@@ -1353,7 +1333,42 @@ Orders of a person will also appear as <code>CalendarEvent</code> based on the <
 </ul>
 </div>
 <div class="paragraph">
-<p>Events added, removed or modified by users will have their intended results displayed by the <code>CalendarUi</code> residing inside <code>Ui</code> Component, which displays a calendar showing any future events.
+<p>Events management is facilitated by <code>UserEvents</code>, which resides inside <code>Model</code>.
+It is supported by <code>UserEventsManager</code> residing inside <code>UserEvents</code>, which supports the adding, removing and editing of <code>CalendarEvent</code>(e.g. <code>addEvent</code>, <code>deleteEvent</code>).
+Orders of a person will also appear as <code>CalendarEvent</code> based on the <code>DeliveryDate</code> attribute of the <code>Order</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>UserEvents</code> and <code>CalendarEvent</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/UserEventClassDiagram.png" alt="UserEventClassDiagram" width="800">
+</div>
+<div class="title">Figure 14. <code>Model</code> Component showing classes related to events management</div>
+</div>
+<div class="paragraph">
+<p>In the Figure 14, <code>ModelManager</code> creates an instance of <code>UserEvents</code> interface, which provides the <code>UserEvents</code> API for <code>ModelManager</code> to implement.
+<code>UserEventsManager</code> implements methods used by users to add, edit or delete <code>CalendarEvent</code>, which contains information of an event. <code>CalendarEvent</code> is stored in the <code>UniqueEventList</code>.<br></p>
+</div>
+<div class="paragraph">
+<p><code>Logic</code> Component contains the commands required to manage user&#8217;s events (e.g. <code>AddEventCommand</code>, <code>deleteEventCommand</code>).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows how add event operation works:</p>
+</div>
+<div class="imageblock" style="text-align: "center">
+<div class="content">
+<img src="images/AddEventSD.png" alt="AddEventSD" width="800">
+</div>
+<div class="title">Figure 15. Sequence Diagram for adding of an event into ContactSails</div>
+</div>
+<div class="paragraph">
+<p>In Figure 15, when a user enters the command to add an event, <code>AddEventCommand</code> will call <code>addEvent()</code> in <code>ModelManager</code>.
+<code>ModelManager</code> in turn calls <code>addEvent()</code> in <code>UserEventsManager</code>, which creates a new <code>CalendarEvent</code> containing the information given by user.
+<code>UserEventsManager</code> will then add <code>CalendarEvent</code> to <code>UniqueEventList</code>. If addition of event is a success, control is eventually returned from <code>UserEventsManager</code> to <code>AddEventCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Events added, removed or modified by users will have their intended results displayed by the <code>CalendarUi</code> residing inside <code>Ui</code> Component.
 The <code>CalendarUi</code> can display dates in a week, month and year format, depending on user inputs.<br>
 Storing of <code>CalendarEvent</code> data is managed by <code>CalendarStorage</code> within <code>Storage</code> Component, converting <code>CalendarEvent</code> to <code>XmlAdaptedEvent</code> to store in a .xml file.</p>
 </div>
@@ -1462,7 +1477,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1595,6 +1610,10 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect1">
 <h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section covers the build automation tools, coverage reporting tools and other tools used in ContactSails.
+It also covers the steps required to create new releases and manage dependencies.</p>
+</div>
 <div class="sect2">
 <h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
 <div class="paragraph">
@@ -1644,9 +1663,17 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect2">
 <h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">7.6. Managing Dependencies</a></h3>
 <div class="paragraph">
-<p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
-a. Include those libraries in the repo (this bloats the repo size)<br>
-b. Require developers to download those libraries manually (this creates extra work for developers)</p>
+<p>A project often depends on third-party libraries. For example, ContactSails depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Include those libraries in the repo. (this bloats the repo size)<br></p>
+</li>
+<li>
+<p>Require developers to download those libraries manually. (this creates extra work for developers)</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1660,435 +1687,15 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time. Some suggestions are given in <a href="#GetStartedProgramming-EachComponent">Section A.1, &#8220;Improving each component&#8221;</a>.</p>
+<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time.</p>
 </li>
 <li>
-<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Section A.2, &#8220;Creating a new command: <code>remark</code>&#8221;</a> explains how to go about adding such a feature.</p>
+<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Section A.1, &#8220;Creating a new command: <code>remark</code>&#8221;</a> explains how to go about adding such a feature.</p>
 </li>
 </ol>
 </div>
 <div class="sect2">
-<h3 id="GetStartedProgramming-EachComponent"><a class="link" href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></h3>
-<div class="paragraph">
-<p>Each individual exercise in this section is component-based (i.e. you would not need to modify the other components to get it to work).</p>
-</div>
-<h4 id="code-logic-code-component" class="discrete"><code>Logic</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>logic</code>. During dog-fooding, your team realize that it is troublesome for the user to type the whole command in order to execute a command. Your team devise some strategies to help cut down the amount of typing necessary, and one of the suggestions was to implement aliases for the command words. Your job is to implement such aliases.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Logic">Section 3.3, &#8220;Logic component&#8221;</a> before attempting to modify the <code>Logic</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all persons in the list.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Modify the switch statement in <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
-</li>
-<li>
-<p>Add new tests for each of the aliases that you have added.</p>
-</li>
-<li>
-<p>Update the user guide to document the new aliases.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/785">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h4 id="code-model-code-component" class="discrete"><code>Model</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>model</code>. One day, the <code>logic</code>-in-charge approaches you for help. He wants to implement a command such that the user is able to remove a particular tag from everyone in the address book, but the model API does not support such a functionality at the moment. Your job is to implement an API method, so that your teammate can use your API to implement his command.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Model">Section 3.4, &#8220;Model component&#8221;</a> before attempting to modify the <code>Model</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a <code>removeTag(Tag)</code> method. The specified tag will be removed from everyone in the address book.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
-</li>
-<li>
-<p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
-</li>
-<li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
-</li>
-<li>
-<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
-</li>
-<li>
-<p>Add new tests for each of the new public methods that you have added.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/790">PR</a> for the full solution.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. This may cause some tests to fail. See issue  <a href="https://github.com/se-edu/addressbook-level4/issues/753"><code>#753</code></a> for more information about this flaw.</p>
-</li>
-<li>
-<p>The solution PR has a temporary fix for the flaw mentioned above in its first commit.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h4 id="code-ui-code-component" class="discrete"><code>Ui</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last person in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</a> before attempting to modify the <code>UI</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Use different colors for different tags inside person cards. For example, <code>friends</code> tags can be all in brown, and <code>colleagues</code> tags can be all in yellow.</p>
-<div class="paragraph">
-<p><strong>Before</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-tag-before.png" alt="getting started ui tag before" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>After</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-tag-after.png" alt="getting started ui tag after" width="300">
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The tag labels are created inside <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.groupName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
-</li>
-<li>
-<p>Use the .css attribute <code>-fx-background-color</code> to add a color.</p>
-</li>
-<li>
-<p>You may wish to modify <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>You can modify the existing test methods for <code>PersonCard</code> 's to include testing the tag&#8217;s color as well.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/798">PR</a> for the full solution.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The PR uses the hash code of the tag names to generate a color. This is deliberately designed to ensure consistent colors each time the application runs. You may wish to expand on this design to include additional features, such as allowing users to set their own tag colors, and directly saving the colors to storage, so that tags retain their colors even if the hash code algorithm changes.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
-<div class="paragraph">
-<p><strong>Before</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-result-before.png" alt="getting started ui result before" width="200">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>After</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-result-after.png" alt="getting started ui result after" width="200">
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
-</li>
-<li>
-<p>Refer to <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
-</li>
-<li>
-<p>Modify <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
-</li>
-<li>
-<p>You can write two different kinds of tests to ensure that the functionality works:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The unit tests for <code>ResultDisplay</code> can be modified to include verification of the color.</p>
-</li>
-<li>
-<p>The system tests <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/799">PR</a> for the full solution.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Do read the commits one at a time if you feel overwhelmed.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Modify the <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
-<div class="paragraph">
-<p><strong>Before</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-status-before.png" alt="getting started ui status before" width="500">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>After</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getting-started-ui-status-after.png" alt="getting started ui status after" width="500">
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hints</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Modify the constructor of <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
-</li>
-<li>
-<p>Use <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
-</li>
-<li>
-<p>For tests, modify <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
-</li>
-<li>
-<p>For system tests, modify <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
-</li>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h4 id="code-storage-code-component" class="discrete"><code>Storage</code> component</h4>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>storage</code>. For your next project milestone, your team plans to implement a new feature of saving the address book to the cloud. However, the current implementation of the application constantly saves the address book after the execution of each command, which is not ideal if the user is working on limited internet connection. Your team decided that the application should instead save the changes to a temporary local backup file first, and only upload to the cloud after the user closes the application. Your job is to implement a backup API for the address book storage.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Do take a look at <a href="#Design-Storage">Section 3.5, &#8220;Storage component&#8221;</a> before attempting to modify the <code>Storage</code> component.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a new method <code>backupAddressBook(ReadOnlyAddressBook)</code>, so that the address book can be saved in a fixed temporary location.</p>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Hint</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Add the API method in <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
-</li>
-<li>
-<p>Implement the logic in <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Solution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/594">PR</a> for the full solution.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></h3>
+<h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">A.1. Creating a new command: <code>remark</code></a></h3>
 <div class="paragraph">
 <p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
 </div>
@@ -2096,7 +1703,7 @@ Do take a look at <a href="#Design-Storage">Section 3.5, &#8220;Storage componen
 <p><strong>Scenario:</strong> You are a software maintainer for <code>addressbook</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular contact, by providing a flexible <code>remark</code> field for each contact, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
 </div>
 <div class="sect3">
-<h4 id="description"><a class="link" href="#description">A.2.1. Description</a></h4>
+<h4 id="description"><a class="link" href="#description">A.1.1. Description</a></h4>
 <div class="paragraph">
 <p>Edits the remark for a person specified in the <code>INDEX</code>.<br>
 Format: <code>remark INDEX r/[REMARK]</code></p>
@@ -2118,7 +1725,7 @@ Removes the remark for the first person.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="step-by-step-instructions"><a class="link" href="#step-by-step-instructions">A.2.2. Step-by-step Instructions</a></h4>
+<h4 id="step-by-step-instructions"><a class="link" href="#step-by-step-instructions">A.1.2. Step-by-step Instructions</a></h4>
 <div class="sect4">
 <h5 id="step-1-logic-teach-the-app-to-accept-remark-which-does-nothing"><a class="link" href="#step-1-logic-teach-the-app-to-accept-remark-which-does-nothing">[Step 1] Logic: Teach the app to accept 'remark' which does nothing</a></h5>
 <div class="paragraph">
@@ -2369,7 +1976,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="full-solution"><a class="link" href="#full-solution">A.2.3. Full Solution</a></h4>
+<h4 id="full-solution"><a class="link" href="#full-solution">A.1.3. Full Solution</a></h4>
 <div class="paragraph">
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/599">PR</a> for the step-by-step solution.</p>
 </div>
@@ -2381,7 +1988,11 @@ for <code>RemarkCommandParser</code>.</p>
 <h2 id="product-scope"><a class="link" href="#product-scope">Appendix B: Product Scope</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Target user profile</strong>: Salespersons from small companies or home-grown businesses with customers from various social media platforms.</p>
+<p>This section states the intended users of ContactSails, the value ContactSails should bring to them and
+contributions of every developer in the team in regards to developing ContactSails to meet the proposed value.</p>
+</div>
+<div class="paragraph">
+<p><strong>Target user profile</strong>: ContactSails is meant for salespersons from small companies or home-grown businesses with customers from various social media platforms.</p>
 </div>
 <div class="paragraph">
 <p>A typical user from our target user profile:</p>
@@ -2424,19 +2035,20 @@ for <code>RemarkCommandParser</code>.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: consolidation platform for all contacts from different platforms for users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.</p>
+<p><strong>Value proposition</strong>: ContactSails serve as the consolidation platform for all contacts from different platforms for
+ users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.</p>
 </div>
 <div class="paragraph">
-<p><strong>Feature Contribution</strong></p>
+<p><strong>Feature Contribution:</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Aadyaa Maddi</p>
+<p><strong>Aadyaa Maddi</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: Ability to manage customer orders.</p>
+<p><strong>Major Feature</strong>: Ability to manage customer orders.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2452,18 +2064,18 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 <li>
-<p>Minor Feature: Encryption of application data.</p>
+<p><strong>Minor Feature</strong>: Encryption of application data.</p>
 </li>
 <li>
-<p>How the above features fit into the product scope:</p>
+<p><strong>How the above features fit into the product scope:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: For salespersons, this feature will be essential to have as they would want to keep track of what their customers are ordering and what they have ordered already.
+<p><strong>Major Feature</strong>: For salespersons, this feature will be essential to have as they would want to keep track of what their customers are ordering and what they have ordered already.
 If customers have any issues regarding their orders, salespersons will be able to view all the relevant information in a single place.</p>
 </li>
 <li>
-<p>Minor Feature: Since ContactSails has a lot of personal details of customers, the owner of the address book would want to encrypt the application data file to prevent outside access to sensitive information.</p>
+<p><strong>Minor Feature</strong>: Since ContactSails has a lot of personal details of customers, the owner of the address book would want to encrypt the application data file to prevent outside access to sensitive information.</p>
 </li>
 </ul>
 </div>
@@ -2472,11 +2084,11 @@ If customers have any issues regarding their orders, salespersons will be able t
 </div>
 </li>
 <li>
-<p>Alicia Ho Sor Sian</p>
+<p><strong>Alicia Ho Sor Sian</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: Ability to manage events which are displayed in a calendar.</p>
+<p><strong>Major Feature</strong>: Ability to manage events which are displayed in a calendar.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2492,7 +2104,7 @@ If customers have any issues regarding their orders, salespersons will be able t
 </div>
 </li>
 <li>
-<p>Minor Feature: Classifying tags into two categories, groups and preferences</p>
+<p><strong>Minor Feature</strong>: Classifying tags into two categories, groups and preferences.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2505,15 +2117,15 @@ If customers have any issues regarding their orders, salespersons will be able t
 </div>
 </li>
 <li>
-<p>How the above features fit into the product scope:</p>
+<p><strong>How the above features fit into the product scope:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: The calendar can remind salespersons any impending meetings or deadlines especially order deliveries to save time in planning their next course of action carefully.
+<p><strong>Major Feature</strong>: The calendar can remind salespersons any impending meetings or deadlines especially order deliveries to save time in planning their next course of action carefully.
 It provides a quicker way to manage events compared to using other calendar applications that mainly relies on GUI input.</p>
 </li>
 <li>
-<p>Minor Feature: Groups can be used to indicate which social media platform does the salesperson use to communicate with a particular contact, while preferences indicates the products and services a contact usually purchases.
+<p><strong>Minor Feature</strong>: Groups can be used to indicate which social media platform does the salesperson use to communicate with a particular contact, while preferences indicates the products and services a contact usually purchases.
 Using separate labels for groups and preferences placed at separate locations in the Ui display gives a more organised display of a contact&#8217;s information, allowing salespersons to derive important information of their contacts quickly.</p>
 </li>
 </ul>
@@ -2523,47 +2135,41 @@ Using separate labels for groups and preferences placed at separate locations in
 </div>
 </li>
 <li>
-<p>Ang Jing Zhe</p>
+<p><strong>Ang Jing Zhe</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: Add a person panel to the user interface.</p>
+<p><strong>Major Feature</strong>: Addition of person panel to the user interface.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>It allows users to see their contacts in a nicer way.</p>
+<p>It allows users to see their contacts' information in a neater and more detailed manner.</p>
 </li>
 <li>
-<p>It is implemented by adding a people&#8217;s panel code.</p>
-</li>
-<li>
-<p>Alternative considerations is to vary the amount of information put up at the panel.</p>
+<p>An alternative consideration is to vary the amount of information put up at the panel.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Minor Feature: Adding colours to tags</p>
+<p><strong>Minor Feature</strong>: Adding colours to tags.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Putting colours to tag so that it looks more user friendly.</p>
-</li>
-<li>
-<p>It is implemented by adding colours to java fx.</p>
+<p>Putting colours to tags so that it looks more user friendly.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>How the above features fit into the product scope:</p>
+<p><strong>How the above features fit into the product scope:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: Users can see the contact more clearly.</p>
+<p><strong>Major Feature</strong>: Users can see their contacts' information more clearly and neatly.</p>
 </li>
 <li>
-<p>Minor Feature: Colours are more eye-catching.</p>
+<p><strong>Minor Feature</strong>: Colours are more eye-catching and help users to identify different tags.</p>
 </li>
 </ul>
 </div>
@@ -2572,24 +2178,24 @@ Using separate labels for groups and preferences placed at separate locations in
 </div>
 </li>
 <li>
-<p>Kevin Yeong Yu Heng</p>
+<p><strong>Kevin Yeong Yu Heng</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: Ability to import and export contacts from and to other formats.</p>
+<p><strong>Major Feature</strong>: Ability to import and export contacts from and to other formats.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Allows user to export contacts to a local contact files and import contacts from local contact files.</p>
 </li>
 <li>
-<p>The exported file can integrate in the users workflow which might include external manipulation of the data such as printing a hardcopy of the contact list or using it in an external spreadsheet software.</p>
+<p>The exported file can integrate in the users' workflow which might include external manipulation of the data such as printing a hardcopy of the contact list or using it in an external spreadsheet software.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Minor Feature: Ability to generate and display a list of relevant fields of multiple contacts.</p>
+<p><strong>Minor Feature</strong>: Ability to generate and display a list of relevant fields of multiple contacts.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2602,14 +2208,14 @@ Using separate labels for groups and preferences placed at separate locations in
 </div>
 </li>
 <li>
-<p>How the above features fit into the product scope:</p>
+<p><strong>How the above features fit into the product scope:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: The export and import facility enables users to help salespersons to use the data from ContactSails solely as an addressbook, but gives them the option to more easily integrate it to their current application processes which might allow them to be more efficient in their work.</p>
+<p><strong>Major Feature</strong>: The export and import facility enables users to use the data from ContactSails solely as an addressbook, but gives them the option to more easily integrate it to their current application processes which might allow them to be more efficient in their work.</p>
 </li>
 <li>
-<p>Minor Feature: The more targeted listing feature allows users fit more relevant data into their screen which helps them to focus on the data they need while minimising other non essential information.</p>
+<p><strong>Minor Feature</strong>: The more targeted listing feature allows users fit more relevant data into their screen which helps them to focus on the data they need while minimising other non essential information.</p>
 </li>
 </ul>
 </div>
@@ -2624,6 +2230,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="sect1">
 <h2 id="user-stories"><a class="link" href="#user-stories">Appendix C: User Stories</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The following table shows all user stories collected thus far.
+Priority indicates importance of implementing the user story.
+Release indicates the version of ContactSails that has already implemented the user story.</p>
+</div>
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
@@ -2692,7 +2303,7 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">task-oriented user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">implement meetings or deadlines for contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of tasks to do for the contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2797,7 +2408,7 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who prefers visual imagery</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use a calendar to know if there are any tasks or deadlines</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clearer view on how to prioritise my work</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2825,7 +2436,7 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add contact details in any order</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need to remember the order to enter the details</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2846,14 +2457,14 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">group contacts using tags</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">categorize my customers as needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">change the theme and font of the application</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">personalize my AddressBook</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2867,14 +2478,7 @@ Using separate labels for groups and preferences placed at separate locations in
 <td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort the list of contacts in alphabetical order</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">easily find contacts whose names I could not remember</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -2905,7 +2509,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>The below use cases indicate how ContactSails and its users should interact in each use case.</p>
+</div>
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>ContactSails</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
 <div class="paragraph">
@@ -2914,16 +2521,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list persons.</p>
 </li>
 <li>
-<p>ContactSails shows a list of persons</p>
+<p>ContactSails shows a list of persons.</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User requests to delete a specific person in the list.</p>
 </li>
 <li>
-<p>ContactSails deletes the person</p>
+<p>ContactSails deletes the person.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2967,10 +2574,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add specific person</p>
+<p>User requests to add specific person.</p>
 </li>
 <li>
-<p>ContactSails adds the person</p>
+<p>ContactSails adds the person.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2983,11 +2590,28 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User enters invalid format for the Add feature</p>
+<p>1a. User enters invalid format for the Add feature.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. User enters exact details of person existing in ContactSails.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3004,10 +2628,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests for current customers</p>
+<p>User requests for current customers.</p>
 </li>
 <li>
-<p>ContactSails finds and displays a list of the list of customers whose orders are currently being fulfilled by user</p>
+<p>ContactSails finds and displays a list of the list of customers whose orders are currently being fulfilled by user.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3020,11 +2644,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty as there are no current orders</p>
+<p>2a. The list is empty as there are no current orders.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3041,16 +2665,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects contact to edit from the current list of contacts</p>
+<p>User selects contact to edit from the current list of contacts.</p>
 </li>
 <li>
-<p>ContactSails shows the selected contact</p>
+<p>ContactSails shows the selected contact.</p>
 </li>
 <li>
-<p>User requests to edit a certain field of the contact</p>
+<p>User requests to edit a certain field of the contact.</p>
 </li>
 <li>
-<p>ContactSails updates the contact details and shows contact details after the changes made</p>
+<p>ContactSails updates the contact details and shows contact details after the changes made.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3063,11 +2687,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User selects invalid contact</p>
+<p>1a. User selects invalid contact.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3080,11 +2704,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. User selects invalid field to edit</p>
+<p>2a. User selects invalid field to edit.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -3101,16 +2725,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list persons.</p>
 </li>
 <li>
-<p>ContactSails shows a list of persons</p>
+<p>ContactSails shows a list of persons.</p>
 </li>
 <li>
-<p>User requests to add notes to specific person in the list</p>
+<p>User requests to add notes to specific person in the list.</p>
 </li>
 <li>
-<p>ContactSails adds notes to the specified person</p>
+<p>ContactSails adds notes to the specified person.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3133,11 +2757,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. The given index is invalid</p>
+<p>3a. The given index is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. ContactSails shows an error message</p>
+<p>3a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -3154,13 +2778,7 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects contact to add a task for</p>
-</li>
-<li>
-<p>ContactSails prompts user to enter the task details</p>
-</li>
-<li>
-<p>User enters task description and task deadline</p>
+<p>User selects contact to add a task for and enters task description and deadline.</p>
 </li>
 <li>
 <p>ContactSails adds task to specified contact and shows a success message.</p>
@@ -3176,11 +2794,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User selects invalid contact</p>
+<p>1a. User selects invalid contact.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3193,13 +2811,13 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. User enters invalid task details</p>
+<p>1b. User enters invalid task details.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. ContactSails shows en error message</p>
+<p>1b1. ContactSails shows en error message.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
@@ -3214,10 +2832,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find persons with specific names</p>
+<p>User requests to find persons with specific names.</p>
 </li>
 <li>
-<p>ContactSails shows list of persons with specified names</p>
+<p>ContactSails shows list of persons with specified names.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3230,11 +2848,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User does not specify any name</p>
+<p>1a. User does not specify any name.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3247,11 +2865,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. ContactSails does not have any names specified by user</p>
+<p>1b. ContactSails does not have any names specified by user.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. ContactSails shows empty list</p>
+<p>1b1. ContactSails shows empty list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3268,10 +2886,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find persons with specific groups</p>
+<p>User requests to find persons with specific groups.</p>
 </li>
 <li>
-<p>ContactSails shows list of persons with specified groups</p>
+<p>ContactSails shows list of persons with specified groups.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3284,11 +2902,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User does not specify any group</p>
+<p>1a. User does not specify any group.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3301,11 +2919,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. ContactSails does not have any groups specified by user</p>
+<p>1b. ContactSails does not have any groups specified by user.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. ContactSails shows empty list</p>
+<p>1b1. ContactSails shows empty list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3322,10 +2940,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find persons with specific preferences</p>
+<p>User requests to find persons with specific preferences.</p>
 </li>
 <li>
-<p>ContactSails shows list of persons with specified preferences</p>
+<p>ContactSails shows list of persons with specified preferences.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3338,11 +2956,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User does not specify any preference</p>
+<p>1a. User does not specify any preference.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3355,11 +2973,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. ContactSails does not have any preference specified by user</p>
+<p>1b. ContactSails does not have any preference specified by user.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. ContactSails shows empty list</p>
+<p>1b1. ContactSails shows empty list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3376,10 +2994,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to remove a group and enters group they want to remove</p>
+<p>User requests to remove a group and enters group they want to remove.</p>
 </li>
 <li>
-<p>ContactSails removes the specific group from all contacts who have this group assigned to them</p>
+<p>ContactSails removes the specific group from all contacts who have this group assigned to them.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3392,11 +3010,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. There are no group</p>
+<p>2a. There are no groups.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3409,11 +3027,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. User enters invalid group</p>
+<p>2a. User enters invalid group.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -3430,10 +3048,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to remove a preference enters the preference they want to remove</p>
+<p>User requests to remove a preference enters the preference they want to remove.</p>
 </li>
 <li>
-<p>ContactSails removes the specific preference from all contacts who have this group assigned to them</p>
+<p>ContactSails removes the specific preference from all contacts who have this group assigned to them.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3446,11 +3064,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. There are no preference</p>
+<p>2a. There are no preferences.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3463,11 +3081,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. User enters invalid preference</p>
+<p>2a. User enters invalid preference.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -3484,10 +3102,10 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add order to a specific person</p>
+<p>User requests to add order to a specific person.</p>
 </li>
 <li>
-<p>ContactSails adds the order</p>
+<p>ContactSails adds the order.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3500,11 +3118,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User enters invalid format for the AddOrder command</p>
+<p>1a. User enters invalid format for the AddOrder command.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3517,11 +3135,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User adds a duplicate order</p>
+<p>1a. User adds a duplicate order.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3538,16 +3156,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list orders</p>
+<p>User requests to list orders.</p>
 </li>
 <li>
-<p>ContactSails shows a list of orders</p>
+<p>ContactSails shows a list of orders.</p>
 </li>
 <li>
-<p>User requests to delete a specific order in the list</p>
+<p>User requests to delete a specific order in the list.</p>
 </li>
 <li>
-<p>ContactSails deletes the order from the application</p>
+<p>ContactSails deletes the order from the application.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3591,22 +3209,22 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects contacts to export from the current list of contacts</p>
+<p>User selects contacts to export from the current list of contacts.</p>
 </li>
 <li>
-<p>ContactSails stores the selection and processes the contacts to export</p>
+<p>ContactSails stores the selection and processes the contacts to export.</p>
 </li>
 <li>
-<p>User requests to create a file containing the selected contacts</p>
+<p>User requests to create a file containing the selected contacts.</p>
 </li>
 <li>
-<p>ContactSails creates the file and prompts for save location of file</p>
+<p>ContactSails creates the file and prompts for save location of file.</p>
 </li>
 <li>
-<p>User specifies location of file to be saved</p>
+<p>User specifies location of file to be saved.</p>
 </li>
 <li>
-<p>ContactSails saves the file and shows a success message</p>
+<p>ContactSails saves the file and shows a success message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3619,11 +3237,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User does not select any contact</p>
+<p>1a. User does not select any contact.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ContactSails shows an error message</p>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3636,11 +3254,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. User makes an invalid selection</p>
+<p>1b. User makes an invalid selection.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. ContactSails shows an error message</p>
+<p>1b1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3653,11 +3271,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a. ContactSails is unable to create the file with selected contacts</p>
+<p>4a. ContactSails is unable to create the file with selected contacts.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. ContactSails shows an error message</p>
+<p>4a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -3670,11 +3288,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>6a. ContactSails is unable to save the file in the specified location</p>
+<p>6a. ContactSails is unable to save the file in the specified location.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>6a1. ContactSails shows an error message</p>
+<p>6a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 5.</p>
 </div>
@@ -3687,7 +3305,7 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>*a. User cancels the operation at any time</p>
+<p>*a. User cancels the operation at any time.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -3708,16 +3326,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to create a backup file containing all the data stored in the application</p>
+<p>User requests to create a backup file containing all the data stored in the application.</p>
 </li>
 <li>
-<p>ContactSails creates the file and adds all the application data</p>
+<p>ContactSails prompts user to indicate save location.</p>
 </li>
 <li>
-<p>User specifies location of file to be saved</p>
+<p>User specifies location of file to be saved.</p>
 </li>
 <li>
-<p>ContactSails saves the file in the location specified and shows a success message</p>
+<p>ContactSails saves the file in the location specified and shows a success message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3730,11 +3348,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. ContactSails is unable to create the file</p>
+<p>2a. ContactSails is unable to create the file.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. ContactSails shows an error message</p>
+<p>2a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3747,11 +3365,11 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a. ContactSails is unable to save the file in the specified location</p>
+<p>4a. ContactSails is unable to save the file in the specified location.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. ContactSails shows an error message</p>
+<p>4a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 3.</p>
 </div>
@@ -3766,13 +3384,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="sect1">
 <h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The requirements indicate the constraints that ContactSails have to be developed with.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
+<p>ContactSails should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>ContactSails should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -3781,16 +3402,16 @@ Using separate labels for groups and preferences placed at separate locations in
 <p>ContactSails should be usable even for users without experience in using command line applications.</p>
 </li>
 <li>
-<p>As ContactSails is modified from an open-source software, users should be able to download it for free.</p>
+<p>Users should be able to download ContactSails for free as ContactSails is modified from an open-source software.</p>
 </li>
 <li>
 <p>ContactSails should continue to run the original, intended functions, even when problems occur during execution.</p>
 </li>
 <li>
-<p>In case ContactSails has crashed, changes made to it during those sessions should not be lost.</p>
+<p>In sessions when ContactSails has crashed, changes made to it during those sessions should not be lost.</p>
 </li>
 <li>
-<p>Size of ContactSails should not exceed 100 MB even with many contacts stored in it (maximum number of contacts allowed is 1000)</p>
+<p>Size of ContactSails should not exceed 1GB even with many contacts stored in it (maximum number of contacts allowed is 1000)</p>
 </li>
 <li>
 <p>ContactSails should take up to 2 seconds to execute any command except for commands that are reliant on internet connectivity.</p>
@@ -3825,51 +3446,51 @@ Using separate labels for groups and preferences placed at separate locations in
 </dd>
 <dt class="hdlist1"><a id="contacts"></a> Contacts</dt>
 <dd>
-<p>People whose details are present in my address book</p>
+<p>People whose details are present in ContactSails.</p>
 </dd>
 <dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
 <dd>
-<p>A contact detail that is not meant to be shared with others</p>
+<p>A contact detail that is not meant to be shared with others.</p>
 </dd>
 <dt class="hdlist1"><a id="groups"></a> Group</dt>
 <dd>
-<p>A label attached to a person&#8217;s contact information for the purpose of grouping persons</p>
+<p>A label attached to a person&#8217;s contact information for the purpose of grouping persons.</p>
 </dd>
 <dt class="hdlist1"><a id="preferences"></a> Preference</dt>
 <dd>
-<p>A label attached to a person&#8217;s contact information for the purpose of providing more specific details of person&#8217;s interests</p>
+<p>A label attached to a person&#8217;s contact information for the purpose of providing more specific details of person&#8217;s interests.</p>
 </dd>
 <dt class="hdlist1"><a id="tasks"></a> Tasks</dt>
 <dd>
-<p>A deadline, reminder, or a general note that can be added to keep track of things needed to be done</p>
+<p>A deadline, reminder, or a general note that can be added to keep track of things needed to be done.</p>
 </dd>
 <dt class="hdlist1"><a id="mss"></a> MSS</dt>
 <dd>
-<p>Represents the most straightforward interaction between System and User where nothing goes wrong, in a use case</p>
+<p>Represents the most straightforward interaction between System and User where nothing goes wrong, in a use case.</p>
 </dd>
 <dt class="hdlist1"><a id="extenstions"></a> Extensions</dt>
 <dd>
-<p>Represents interactions between System and User where something might have gone wrong</p>
+<p>Represents interactions between System and User where something might have gone wrong.</p>
 </dd>
 <dt class="hdlist1"><a id="profile-photo"></a> Profile Photo</dt>
 <dd>
-<p>A photograph attached to a certain contact to represent the person</p>
+<p>A photograph attached to a certain contact to represent the person.</p>
 </dd>
 <dt class="hdlist1"><a id="backup-file"></a> Backup File</dt>
 <dd>
-<p>An XML data file that stores all data in the application in a local copy on my computer</p>
+<p>An XML data file that stores all data in the application in a local copy on my computer.</p>
 </dd>
 <dt class="hdlist1"><a id="java-fx"></a> Java FX</dt>
 <dd>
-<p>A software platform that contains a set of packages for graphics that enables developers to develop rich cross-platform applications</p>
+<p>A software platform that contains a set of packages for graphics that enables developers to develop rich cross-platform applications.</p>
 </dd>
 <dt class="hdlist1"><a id="travis"></a> Travis</dt>
 <dd>
-<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Linux virtual machine</p>
+<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Linux virtual machine.</p>
 </dd>
 <dt class="hdlist1"><a id="appveyor"></a> AppVeyor</dt>
 <dd>
-<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Windows virtual machine</p>
+<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Windows virtual machine.</p>
 </dd>
 </dl>
 </div>
@@ -3878,6 +3499,9 @@ Using separate labels for groups and preferences placed at separate locations in
 <div class="sect1">
 <h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The following indicates the structure that product surveys should have.</p>
+</div>
 <div class="paragraph">
 <p><strong>Product Name</strong></p>
 </div>
@@ -3935,21 +3559,21 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Initial launch</p>
+<p><strong>Initial launch</strong></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file and copy into an empty folder.</p>
 </li>
 <li>
-<p>Double-click the jar file<br>
+<p>Double-click the jar file.<br>
 Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Saving window preferences</p>
+<p><strong>Saving window preferences</strong></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -3973,11 +3597,21 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p><strong>Deleting a person while all persons are listed</strong></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all persons using the <code>list</code> command.</p>
+</li>
+<li>
+<p>There should be multiple persons in the list.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
@@ -4005,7 +3639,7 @@ Expected: Similar to previous.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p><strong>Dealing with missing/corrupted data files</strong></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -4025,7 +3659,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 08:42:37 UTC
+Last updated 2018-03-25 09:47:00 UTC
 </div>
 </div>
 </body>
