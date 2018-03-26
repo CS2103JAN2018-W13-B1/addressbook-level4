@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
+import com.google.common.eventbus.Subscribe;
+
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -16,6 +18,7 @@ import javafx.scene.layout.Region;
 
 import javafx.scene.layout.VBox;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 
 /**
  * Calendar Panel displaying calendar in Month-View Format.
@@ -145,6 +148,10 @@ public class CalendarPanel extends UiPart<Region> {
         cell.getStyleClass().add("cell");
 
         return cell;
+    }
+
+    public void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
     }
 
 }
