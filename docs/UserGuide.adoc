@@ -345,7 +345,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 === Changing the theme : `theme` `since v1.3`
 
 Changes the theme of the application. +
-Format: `theme` +
+Format: `theme THEME_TYPE` +
 Alias: `t`
 
 ****
@@ -582,7 +582,7 @@ e.g. `orderedit 1 pr/15.00 d/05-03-2018`
 * *OrderDelete* : `orderdelete INDEX` +
 e.g. `orderdelete 5`
 * *History* : `history`
-* *Theme* : `theme`
+* *Theme* : `theme THEME_TYPE`
 * *Undo* : `undo`
 * *Redo* : `redo`
 * *Exit* : `exit`
@@ -626,7 +626,7 @@ e.g. `oe 1 pr/15.00 d/05-03-2018`
 * *OrderDelete* : `od INDEX` +
 e.g. `od 5`
 * *History* : `h`
-* *Theme* : `t`
+* *Theme* : `t THEME_TYPE`
 * *Undo* : `u`
 * *Redo* : `r`
 * *Exit* : `q`
