@@ -2,109 +2,107 @@ package systemtests;
 
 import static org.junit.Assert.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.DeleteGroupCommand.MESSAGE_DELETE_GROUP_SUCCESS;
-import static seedu.address.logic.commands.DeleteGroupCommand.MESSAGE_GROUP_NOT_FOUND;
-import static seedu.address.testutil.TypicalGroups.BUDDIES;
-import static seedu.address.testutil.TypicalGroups.FRIENDS;
-import static seedu.address.testutil.TypicalGroups.NEIGHBOURS;
-import static seedu.address.testutil.TypicalGroups.TWITTER;
+import static seedu.address.logic.commands.DeletePreferenceCommand.MESSAGE_DELETE_PREFERENCE_SUCCESS;
+import static seedu.address.logic.commands.DeletePreferenceCommand.MESSAGE_PREFERENCE_NOT_FOUND;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
+import static seedu.address.testutil.TypicalPreferences.COMPUTERS;
+import static seedu.address.testutil.TypicalPreferences.NECKLACES;
+import static seedu.address.testutil.TypicalPreferences.VIDEO_GAMES;
 
 import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteGroupCommand;
+import seedu.address.logic.commands.DeletePreferenceCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.tag.Group;
-import seedu.address.model.tag.exceptions.GroupNotFoundException;
+import seedu.address.model.tag.Preference;
+import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 
-public class DeleteGroupCommandSystemTest extends AddressBookSystemTest {
-
-    private static final String MESSAGE_INVALID_DELETE_GROUP_COMMAND_FORMAT =
-            String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteGroupCommand.MESSAGE_USAGE);
+public class DeletePreferenceCommandSystemTest extends AddressBookSystemTest {
+    private static final String MESSAGE_INVALID_DELETE_PREFERENCE_COMMAND_FORMAT =
+            String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeletePreferenceCommand.MESSAGE_USAGE);
 
     @Test
-    public void deleteGroup() {
-        /* ------------- Performing delete group operation while an unfiltered list is being shown -------------- */
+    public void deletePreference() {
+        /* ------------ Performing delete preference operation while an unfiltered list is being shown -------------- */
 
-        /* Case: delete the group "twitter" in the list, command with leading spaces and trailing spaces ->
+        /* Case: delete the preference "videoGames" in the list, command with leading spaces and trailing spaces ->
         deleted */
         Model expectedModel = getModel();
         Model modelBeforeDeletingLast = getModel();
-        String command = "     " + DeleteGroupCommand.COMMAND_WORD + "      " + TWITTER.tagName + "       ";
-        Group deletedGroup = TWITTER;
-        removeGroup(expectedModel, TWITTER);
-        String expectedResultMessage = String.format(MESSAGE_DELETE_GROUP_SUCCESS, deletedGroup);
+        String command = "     " + DeletePreferenceCommand.COMMAND_WORD + "      " + VIDEO_GAMES.tagName + "       ";
+        Preference deletedPreference = VIDEO_GAMES;
+        removePreference(expectedModel, VIDEO_GAMES);
+        String expectedResultMessage = String.format(MESSAGE_DELETE_PREFERENCE_SUCCESS, deletedPreference);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
 
-        /* Case: undo deleting the group "twitter" in the list -> group "twitter" restored */
+        /* Case: undo deleting the preference "videoGames" in the list -> preference "videoGames" restored */
         command = UndoCommand.COMMAND_WORD;
         expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, modelBeforeDeletingLast, expectedResultMessage);
 
-        /* Case: redo deleting the group "twitter" in the list -> "twitter" deleted again */
+        /* Case: redo deleting the preference "videoGames" in the list -> "videoGames" deleted again */
         command = RedoCommand.COMMAND_WORD;
-        removeGroup(modelBeforeDeletingLast, TWITTER);
+        removePreference(modelBeforeDeletingLast, VIDEO_GAMES);
         expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, modelBeforeDeletingLast, expectedResultMessage);
 
         assertEquals(expectedModel, modelBeforeDeletingLast);
-        /* -------------- Performing delete group operation while a filtered list is being shown ------------------ */
+        /* ------------ Performing delete preference operation while a filtered list is being shown ---------------- */
 
-        /* Case: filtered person list, delete existing group but not in filtered person list -> deleted */
+        /* Case: filtered person list, delete existing preference but not in filtered person list -> deleted */
         showPersonsWithName(KEYWORD_MATCHING_MEIER);
         expectedModel = getModel();
-        deletedGroup = FRIENDS;
-        removeGroup(expectedModel, FRIENDS);
-        command = DeleteGroupCommand.COMMAND_WORD + " " + FRIENDS.tagName;
-        expectedResultMessage = String.format(MESSAGE_DELETE_GROUP_SUCCESS, deletedGroup);
+        deletedPreference = NECKLACES;
+        removePreference(expectedModel, NECKLACES);
+        command = DeletePreferenceCommand.COMMAND_WORD + " " + NECKLACES.tagName;
+        expectedResultMessage = String.format(MESSAGE_DELETE_PREFERENCE_SUCCESS, deletedPreference);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
 
-        /* Case: filtered person list, delete non-existing group in address book -> rejected */
+        /* Case: filtered person list, delete non-existing preference in address book -> rejected */
         showPersonsWithName(KEYWORD_MATCHING_MEIER);
-        Group invalidGroup = BUDDIES;
-        command = DeleteGroupCommand.COMMAND_WORD + " " + invalidGroup.tagName;
-        assertCommandFailure(command, MESSAGE_GROUP_NOT_FOUND);
+        Preference invalidPref = NECKLACES;
+        command = DeletePreferenceCommand.COMMAND_WORD + " " + invalidPref.tagName;
+        assertCommandFailure(command, MESSAGE_PREFERENCE_NOT_FOUND);
 
-        /* ----------------- Performing delete group operation while a person card is selected -------------------- */
+        /* --------------- Performing delete preference operation while a person card is selected ------------------ */
 
-        /* Case: delete group existing in the selected person -> person list panel still selects the person */
+        /* Case: delete preference existing in the selected person -> person list panel still selects the person */
         showAllPersons();
         expectedModel = getModel();
-        deletedGroup = NEIGHBOURS;
-        Index selectedIndex = Index.fromOneBased(5);
+        deletedPreference = COMPUTERS;
+        Index selectedIndex = Index.fromOneBased(2);
         Index expectedIndex = selectedIndex;
         selectPerson(selectedIndex);
-        command = DeleteGroupCommand.COMMAND_WORD + " " + NEIGHBOURS.tagName;
-        removeGroup(expectedModel, NEIGHBOURS);
-        expectedResultMessage = String.format(MESSAGE_DELETE_GROUP_SUCCESS, deletedGroup);
+        command = DeletePreferenceCommand.COMMAND_WORD + " " + COMPUTERS.tagName;
+        removePreference(expectedModel, COMPUTERS);
+        expectedResultMessage = String.format(MESSAGE_DELETE_PREFERENCE_SUCCESS, deletedPreference);
         assertCommandSuccess(command, expectedModel, expectedResultMessage, expectedIndex);
 
         /* --------------------------- Performing invalid delete preference operation ------------------------------ */
 
         /* Case: invalid arguments (non-alphanumeric arguments) -> rejected */
-        assertCommandFailure(DeleteGroupCommand.COMMAND_WORD + " fr!end3",
-                MESSAGE_INVALID_DELETE_GROUP_COMMAND_FORMAT);
+        assertCommandFailure(DeletePreferenceCommand.COMMAND_WORD + " sh!es",
+                MESSAGE_INVALID_DELETE_PREFERENCE_COMMAND_FORMAT);
 
         /* Case: invalid arguments (extra argument) -> rejected */
-        assertCommandFailure(DeleteGroupCommand.COMMAND_WORD + " friends twitter",
-                MESSAGE_INVALID_DELETE_GROUP_COMMAND_FORMAT);
+        assertCommandFailure(DeletePreferenceCommand.COMMAND_WORD + " shoes computers",
+                MESSAGE_INVALID_DELETE_PREFERENCE_COMMAND_FORMAT);
 
         /* Case: mixed case command word -> rejected */
-        assertCommandFailure("DelETEGrouP neighbours", MESSAGE_UNKNOWN_COMMAND);
+        assertCommandFailure("DelETEpREF shoes", MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**
-     * Removes the {@code Group} in {@code model}'s address book.
+     * Removes the {@code Preference} in {@code model}'s address book.
      */
-    private void removeGroup(Model model, Group toDelete) {
+    private void removePreference(Model model, Preference toDelete) {
         try {
-            model.deleteGroup(toDelete);
-        } catch (GroupNotFoundException gnfe) {
-            throw new AssertionError("Group should exist in address book.");
+            model.deletePreference(toDelete);
+        } catch (PreferenceNotFoundException pnfe) {
+            throw new AssertionError("Preference should exist in address book.");
         }
     }
 
@@ -127,7 +125,7 @@ public class DeleteGroupCommandSystemTest extends AddressBookSystemTest {
     /**
      * Performs the same verification as {@code assertCommandSuccess(String, Model, String)} except that the browser url
      * and selected card are expected to update accordingly depending on the card at {@code expectedSelectedCardIndex}.
-     * @see DeleteGroupCommandSystemTest#assertCommandSuccess(String, Model, String)
+     * @see DeletePreferenceCommandSystemTest#assertCommandSuccess(String, Model, String)
      * @see AddressBookSystemTest#assertSelectedCardChanged(Index)
      */
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage,
@@ -166,5 +164,3 @@ public class DeleteGroupCommandSystemTest extends AddressBookSystemTest {
         assertStatusBarUnchanged();
     }
 }
-
-
