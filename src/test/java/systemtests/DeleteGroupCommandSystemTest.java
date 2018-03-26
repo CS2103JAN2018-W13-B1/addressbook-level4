@@ -94,7 +94,7 @@ public class DeleteGroupCommandSystemTest extends AddressBookSystemTest {
                 MESSAGE_INVALID_DELETE_GROUP_COMMAND_FORMAT);
 
         /* Case: mixed case command word -> rejected */
-        assertCommandFailure("DelETEGrouP neighbours", MESSAGE_UNKNOWN_COMMAND);
+        assertCommandFailure("GrouPDeletE neighbours", MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**

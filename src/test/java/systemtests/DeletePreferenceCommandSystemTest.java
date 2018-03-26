@@ -92,7 +92,7 @@ public class DeletePreferenceCommandSystemTest extends AddressBookSystemTest {
                 MESSAGE_INVALID_DELETE_PREFERENCE_COMMAND_FORMAT);
 
         /* Case: mixed case command word -> rejected */
-        assertCommandFailure("DelETEpREF shoes", MESSAGE_UNKNOWN_COMMAND);
+        assertCommandFailure("pREFDelEte shoes", MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**
