@@ -3,6 +3,8 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.event.CalendarEvent;
+import seedu.address.model.event.UniqueCalendarEventList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -76,4 +78,12 @@ public interface Model {
      * Adds order to list of orders.
      */
     void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException;
+
+    /**
+     * Adds event to list of calendar events.
+     */
+    void addCalendarEvent(CalendarEvent toAdd) throws UniqueCalendarEventList.DuplicateCalendarEventException;
+
+    /** Returns an unmodifiable view of the filtered order list */
+    ObservableList<CalendarEvent> getFilteredCalendarEventList();
 }
