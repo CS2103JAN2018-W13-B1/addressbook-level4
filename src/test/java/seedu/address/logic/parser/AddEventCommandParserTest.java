@@ -195,7 +195,7 @@ public class AddEventCommandParserTest {
 
         // Start Date later than End Date
         assertParseFailure(parser, EVENT_TITLE_DESC_MEET_BOSS + INVALID_START_DATE_LATER_THAN_END_DATE_DESC
-        + END_DATE_DESC_MEET_BOSS + START_TIME_DESC_MEET_BOSS + END_TIME_DESC_MEET_BOSS,
+                        + END_DATE_DESC_MEET_BOSS + START_TIME_DESC_MEET_BOSS + END_TIME_DESC_MEET_BOSS,
                 AddEventCommandParser.START_AND_END_DATE_CONSTRAINTS);
 
         // Start Time later than End Time for same Start Date and End Date

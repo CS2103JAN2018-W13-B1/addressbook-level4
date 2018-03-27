@@ -8,7 +8,7 @@ import javafx.scene.Node;
 public class CentrePanelHandle extends NodeHandle<Node> {
     public static final String CENTRE_PANEL_ID = "#centrePlaceholder";
 
-    private final BrowserPanelHandle browserPanel;
+    public final BrowserPanelHandle browserPanel;
     //private final CalendarPanelHandle calendarPanel;
 
     protected CentrePanelHandle(Node rootNode) {
@@ -17,4 +17,7 @@ public class CentrePanelHandle extends NodeHandle<Node> {
         browserPanel = new BrowserPanelHandle(getChildNode(BrowserPanelHandle.BROWSER_ID));
     }
 
+    public BrowserPanelHandle getBrowserPanelHandle() {
+        return browserPanel;
+    }
 }

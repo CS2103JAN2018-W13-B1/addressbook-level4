@@ -133,8 +133,8 @@ public class CommandTestUtil {
             + PREFIX_QUANTITY + "-11"; // '-' sign not allowed in quantities
     public static final String INVALID_DELIVERY_DATE_DESC = " " + PREFIX_DELIVERY_DATE + "20-45-10000"; // illegal date
 
-    public static final String INVALID_EVENT_TITLE_DESC = " " +
-            PREFIX_EVENT_TITLE + "M@@ting with the boss, "; // '@' and ',' are not allowed in event title.
+    public static final String INVALID_EVENT_TITLE_DESC = " "
+            + PREFIX_EVENT_TITLE + "M@@ting with the boss, "; // '@' and ',' are not allowed in event title.
     public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "31-02-2018"; // Illegal date
     public static final String INVALID_END_DATE_DESC = " " + PREFIX_END_DATE + "23-20-20000"; // Illegal date
     public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME + "12-30"; //Illegal time format
