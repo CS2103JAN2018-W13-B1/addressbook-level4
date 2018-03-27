@@ -82,27 +82,22 @@ public class CalendarPanel extends UiPart<Region> {
         int control = getColumn(ldtIterator);
         int control2 = 0;
         int i = 0;
-        while(ldtIterator.getMonth() == givenLdt.getMonth())
-        {
-            if( i == 0 || i == 1 && control2 <= control)
-            {
+        while(ldtIterator.getMonth() == givenLdt.getMonth()) {
+            if( i == 0 || i == 1 && control2 <= control) {
                 i = 1;
                 control2++;
             }
-            else
-            {
+            else {
                 i = ((control2 - (control + 1)) / 7) + 2;
                 control2++;
             }
 
             Label tempLabel = new Label(Integer.toString(ldtIterator.getDayOfMonth()));
 
-
             daysOfMonth.add(createCell(tempLabel, ldtIterator), ldtIterator.getDayOfWeek().getValue() - 1, i);
 
             ldtIterator = ldtIterator.plusDays(1);
         }
-
     }
 
     /**
@@ -120,8 +115,6 @@ public class CalendarPanel extends UiPart<Region> {
 
     /**
      * Returns the starting column number in GridPane based on givenLdt.
-     * @param givenLdt
-     * @return
      */
     private int getColumn (LocalDateTime givenLdt) {
 
@@ -134,6 +127,9 @@ public class CalendarPanel extends UiPart<Region> {
         return i;
     }
 
+    /**
+     * Creates a date cell for the given date.
+     */
     private BorderPane createCell(Label label, LocalDateTime ldt) {
 
         BorderPane cell = new BorderPane();
@@ -145,7 +141,7 @@ public class CalendarPanel extends UiPart<Region> {
 
         BorderPane.setAlignment(label, Pos.TOP_RIGHT);
         cell.setTop(label);
-        cell.getStyleClass().add("cell");
+        cell.getStyleClass().add("cell-cal-label");
 
         return cell;
     }
