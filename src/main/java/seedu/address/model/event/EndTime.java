@@ -16,7 +16,7 @@ public class EndTime {
             "End Time should be HH:mm (24Hour Format), and it should not be blank";
 
     public static final String END_TIME_VALIDATION_REGEX = "\\d{2}:\\d{2}"; // format
-    public static final String END_TIME_VALIDATION_DATE_FORMAT = "HH:mm"; // legal dates
+    public static final String END_TIME_VALIDATION_FORMAT = "HH:mm"; // legal dates
 
     private final String endTime;
 
@@ -34,7 +34,7 @@ public class EndTime {
      * Returns true if given string is a valid end time.
      */
     public static boolean isValidEndTime(String endTime) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(END_TIME_VALIDATION_DATE_FORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(END_TIME_VALIDATION_FORMAT);
         simpleDateFormat.setLenient(false);
 
         try {

@@ -15,7 +15,7 @@ public class EndDate {
             "End Date should be DD-MM-YYYY, and it should not be blank";
 
     public static final String END_DATE_VALIDATION_REGEX = "\\d{2}-\\d{2}-\\d{4}"; // format
-    public static final String END_DATE_VALIDATION_DATE_FORMAT = "dd-MM-yyyy"; // legal dates
+    public static final String END_DATE_VALIDATION_FORMAT = "dd-MM-yyyy"; // legal dates
 
     private final String endDate;
 
@@ -35,7 +35,7 @@ public class EndDate {
      * Returns true if given string is a valid end date.
      */
     public static boolean isValidEndDate(String test) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(END_DATE_VALIDATION_DATE_FORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(END_DATE_VALIDATION_FORMAT);
         simpleDateFormat.setLenient(false);
 
         try {

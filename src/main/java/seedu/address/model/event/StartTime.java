@@ -15,7 +15,7 @@ public class StartTime {
             "Start Time should be HH:mm (24Hour Format), and it should not be blank";
 
     public static final String START_TIME_VALIDATION_REGEX = "\\d{2}:\\d{2}"; // format
-    public static final String START_TIME_VALIDATION_DATE_FORMAT = "HH:mm"; // legal dates
+    public static final String START_TIME_VALIDATION_FORMAT = "HH:mm"; // legal dates
 
     private final String startTime;
 
@@ -34,7 +34,7 @@ public class StartTime {
      * Returns true if given string is a valid start time.
      */
     public static boolean isValidStartTime(String startTime) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(START_TIME_VALIDATION_DATE_FORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(START_TIME_VALIDATION_FORMAT);
         simpleDateFormat.setLenient(false);
 
         try {
