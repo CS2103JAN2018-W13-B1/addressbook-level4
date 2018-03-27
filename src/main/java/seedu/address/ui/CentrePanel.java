@@ -55,14 +55,20 @@ public class CentrePanel extends UiPart<Region> {
 
     @Subscribe
     private void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
-        centrePlaceholder.getChildren().clear();
+        if (!centrePlaceholder.getChildren().equals(calendarPanel.getRoot())) {
+            centrePlaceholder.getChildren().clear();
+        }
+
         displayCalendarPanel();
         calendarPanel.handleDisplayCalendarRequestEvent(event);
     }
 
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
-        centrePlaceholder.getChildren().clear();
+        if (!centrePlaceholder.getChildren().equals(browserPanel.getRoot())) {
+            centrePlaceholder.getChildren().clear();
+        }
+
         displayBrowserPanel();
         browserPanel.handlePersonPanelSelectionChangedEvent(event);
     }

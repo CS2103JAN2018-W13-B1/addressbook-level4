@@ -9,7 +9,7 @@ public class CentrePanelHandle extends NodeHandle<Node> {
     public static final String CENTRE_PANEL_ID = "#centrePlaceholder";
 
     private final BrowserPanelHandle browserPanel;
-    private final CalendarPanelHandle calendarPanel;
+    //private final CalendarPanelHandle calendarPanel;
 
     protected CentrePanelHandle(Node rootNode) {
         super(rootNode);

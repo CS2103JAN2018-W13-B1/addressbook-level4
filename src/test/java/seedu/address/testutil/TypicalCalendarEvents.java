@@ -27,7 +27,7 @@ public class TypicalCalendarEvents {
             .withStartDate("01-07-2018")
             .withEndDate("01-07-2018")
             .withStartTime("08:00")
-            .withEndTime("12:00").build();
+            .withEndTime("12:30").build();
 
     public static final CalendarEvent ROAD_SHOW = new CalendarEventBuilder()
             .withEventTitle("Road Show at Orchard")
