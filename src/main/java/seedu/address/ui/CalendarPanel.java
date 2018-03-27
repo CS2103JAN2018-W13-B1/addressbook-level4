@@ -1,12 +1,9 @@
 package seedu.address.ui;
 
-
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
-
-import com.google.common.eventbus.Subscribe;
 
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -82,12 +79,11 @@ public class CalendarPanel extends UiPart<Region> {
         int control = getColumn(ldtIterator);
         int control2 = 0;
         int i = 0;
-        while(ldtIterator.getMonth() == givenLdt.getMonth()) {
-            if( i == 0 || i == 1 && control2 <= control) {
+        while (ldtIterator.getMonth() == givenLdt.getMonth()) {
+            if (i == 0 || i == 1 && control2 <= control) {
                 i = 1;
                 control2++;
-            }
-            else {
+            } else {
                 i = ((control2 - (control + 1)) / 7) + 2;
                 control2++;
             }
@@ -119,7 +115,7 @@ public class CalendarPanel extends UiPart<Region> {
     private int getColumn (LocalDateTime givenLdt) {
 
         int i = 0;
-        while(givenLdt.getDayOfWeek() != DayOfWeek.SUNDAY) {
+        while (givenLdt.getDayOfWeek() != DayOfWeek.SUNDAY) {
             i++;
             givenLdt = givenLdt.plusDays(1);
         }
