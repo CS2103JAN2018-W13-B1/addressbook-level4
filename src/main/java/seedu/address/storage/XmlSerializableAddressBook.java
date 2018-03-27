@@ -26,7 +26,7 @@ public class XmlSerializableAddressBook {
     @XmlElement
     private List<XmlAdaptedOrder> orders;
     @XmlElement
-    private List<XmlAdaptedCalendarEvent> calEvents;
+    private List<XmlAdaptedCalendarEvent> calendarEvents;
 
     /**
      * Creates an empty XmlSerializableAddressBook.
@@ -37,7 +37,7 @@ public class XmlSerializableAddressBook {
         groups = new ArrayList<>();
         preferences = new ArrayList<>();
         orders = new ArrayList<>();
-        calEvents = new ArrayList<>();
+        calendarEvents = new ArrayList<>();
     }
 
     /**
@@ -50,7 +50,8 @@ public class XmlSerializableAddressBook {
         preferences.addAll(src.getPreferenceList().stream().map(XmlAdaptedPreference::new)
                 .collect(Collectors.toList()));
         orders.addAll(src.getOrderList().stream().map(XmlAdaptedOrder::new).collect(Collectors.toList()));
-        calEvents.addAll(src.getEventList().stream().map(XmlAdaptedCalendarEvent::new).collect(Collectors.toList()));
+        calendarEvents.addAll(src.getEventList().stream().map(XmlAdaptedCalendarEvent::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -78,7 +79,7 @@ public class XmlSerializableAddressBook {
             addressBook.addOrderToOrderList(o.toModelType());
         }
 
-        for (XmlAdaptedCalendarEvent e: calEvents) {
+        for (XmlAdaptedCalendarEvent e: calendarEvents) {
             addressBook.addCalendarEvent(e.toModelType());
         }
 
@@ -100,6 +101,6 @@ public class XmlSerializableAddressBook {
                 && groups.equals(otherAb.groups)
                 && preferences.equals(otherAb.preferences)
                 && orders.equals(otherAb.orders)
-                && calEvents.equals(otherAb.calEvents);
+                && calendarEvents.equals(otherAb.calendarEvents);
     }
 }

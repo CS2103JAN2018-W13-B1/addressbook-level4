@@ -9,12 +9,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class EventTitle {
     public static final String MESSAGE_EVENT_TITLE_CONSTRAINTS =
-            "Event title should only contain alphanumeric characters and spaces of up to 20 characters, "
+            "Event title should only contain alphanumeric characters and spaces of up to 40 characters, "
                     + "and it should not be blank";
 
     public static final String EVENT_TITLE_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public static final int CHARACTER_LIMIT = 20;
+    public static final int CHARACTER_LIMIT = 40;
 
     private final String eventTitle;
 
