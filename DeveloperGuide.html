@@ -1324,11 +1324,11 @@ Users can create, edit and delete events, and existing events are displayed in a
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarEvent</span> {
 
     <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> eventTitle;
-    <span class="directive">private</span> <span class="directive">final</span> LocalDate startDate;
-    <span class="directive">private</span> <span class="directive">final</span> LocalDate endDate;
-    <span class="directive">private</span> <span class="directive">final</span> EventTime startTime;
-    <span class="directive">private</span> <span class="directive">final</span> EventTime endTime;
-    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">List</span>&lt;Person&gt; taggedPersons;
+    <span class="directive">private</span> <span class="directive">final</span> StartDate startDate;
+    <span class="directive">private</span> <span class="directive">final</span> EndDate endDate;
+    <span class="directive">private</span> <span class="directive">final</span> StartTime startTime;
+    <span class="directive">private</span> <span class="directive">final</span> EndTime endTime;
+
 
     <span class="comment">// ... Order attribute getters and setters ...</span>
 
@@ -1350,23 +1350,20 @@ Users can create, edit and delete events, and existing events are displayed in a
 <p>endDate: Represents ending date of the event in DD-MM-YYYY format.</p>
 </li>
 <li>
-<p>startTime: Represents starting time of the event in HHMM format (24-Hour format).</p>
+<p>startTime: Represents starting time of the event in HH:MM format (24-Hour format).</p>
 </li>
 <li>
-<p>endTime: Represents ending time of the event in HHMM format (24-Hour format).</p>
-</li>
-<li>
-<p>taggedPerson: Represents list of Persons in address book that are tagged to the event.</p>
+<p>endTime: Represents ending time of the event in HH:MM format (24-Hour format).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Events management is facilitated by <code>UserEvents</code>, which resides inside <code>Model</code>.
+<p>Events management is facilitated by <code>ModelManager</code>, which resides inside <code>Model</code>.
 It is supported by <code>UserEventsManager</code> residing inside <code>UserEvents</code>, which supports the adding, removing and editing of <code>CalendarEvent</code>(e.g. <code>addEvent</code>, <code>deleteEvent</code>).
 Orders of a person will also appear as <code>CalendarEvent</code> based on the <code>DeliveryDate</code> attribute of the <code>Order</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>UserEvents</code> and <code>CalendarEvent</code>.</p>
+<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>CalendarEvent</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -3687,7 +3684,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-28 03:33:43 UTC
+Last updated 2018-03-28 04:08:35 UTC
 </div>
 </div>
 </body>
