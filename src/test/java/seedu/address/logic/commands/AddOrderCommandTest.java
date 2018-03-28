@@ -181,7 +181,7 @@ public class AddOrderCommandTest {
         public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
             fail("This method should not be called.");
         }
-      
+
         @Override
         public void updateFilteredOrderList(Predicate<Order> predicate) {
             fail("This method should not be called.");

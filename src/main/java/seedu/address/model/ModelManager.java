@@ -167,8 +167,6 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-
     public void updateFilteredOrderList(Predicate<Order> predicate) {
 
         requireNonNull(predicate);
