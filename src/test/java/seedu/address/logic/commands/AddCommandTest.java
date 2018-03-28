@@ -24,6 +24,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.event.CalendarEvent;
 import seedu.address.model.event.UniqueCalendarEventList;
 import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -132,6 +133,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateOrder(Order target, Order editedOrder) throws UniqueOrderList.DuplicateOrderException {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             fail("This method should not be called.");
             return null;
@@ -156,6 +162,11 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+            fail("This method should not be called.");
+        }
+      
+        @Override
+        public void updateFilteredOrderList(Predicate<Order> predicate) {
             fail("This method should not be called.");
         }
 

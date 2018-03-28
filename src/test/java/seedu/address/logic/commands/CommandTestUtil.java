@@ -32,6 +32,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.testutil.EditOrderDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -125,7 +126,6 @@ public class CommandTestUtil {
     public static final String INVALID_PREFERENCE_DESC =
             " " + PREFIX_PREFERENCE + "computers*"; // '*' not allowed in preferences
 
-
     public static final String INVALID_ORDER_INFORMATION_DESC = " "
             + PREFIX_ORDER_INFORMATION + "&Books"; // '&' not allowed in order information
     public static final String INVALID_PRICE_DESC = " " + PREFIX_PRICE + "jdw11"; // 'jdw' not allowed in prices
@@ -148,8 +148,13 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
+    public static final String INVALID_THEME = "day791";
+
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
+    public static final EditOrderCommand.EditOrderDescriptor DESC_COMPUTER;
+    public static final EditOrderCommand.EditOrderDescriptor DESC_COMICBOOK;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -159,6 +164,16 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withGroups(VALID_GROUP_COLLEAGUES, VALID_GROUP_FRIEND)
                 .withPreferences(VALID_PREFERENCE_COMPUTERS).build();
+    }
+
+    static {
+        DESC_COMPUTER = new EditOrderDescriptorBuilder().withOrderInformation(VALID_ORDER_INFORMATION_COMPUTER)
+                .withPrice(VALID_PRICE_COMPUTER).withQuantity(VALID_QUANTITY_COMPUTER)
+                .withDeliveryDate(VALID_DELIVERY_DATE_COMPUTER).build();
+        DESC_COMICBOOK = new EditOrderDescriptorBuilder().withOrderInformation("Comic Book").withPrice("17.99")
+                .withQuantity("1")
+                .withDeliveryDate("01-01-2018")
+                .build();
     }
 
     /**

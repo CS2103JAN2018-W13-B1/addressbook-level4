@@ -153,6 +153,11 @@ public class AddOrderCommandTest {
         }
 
         @Override
+        public void updateOrder(Order target, Order editedOrder) throws UniqueOrderList.DuplicateOrderException {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             return model.getFilteredPersonList();
         }
@@ -174,6 +179,11 @@ public class AddOrderCommandTest {
 
         @Override
         public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+            fail("This method should not be called.");
+        }
+      
+        @Override
+        public void updateFilteredOrderList(Predicate<Order> predicate) {
             fail("This method should not be called.");
         }
 
