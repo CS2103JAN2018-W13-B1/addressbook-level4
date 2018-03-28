@@ -98,6 +98,7 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered order list */
     ObservableList<CalendarEvent> getFilteredCalendarEventList();
 
+    /**
      * Replaces the given order {@code target} with {@code editedOrder}.
      *
      * @throws UniqueOrderList.DuplicateOrderException if updating the order's details causes the order to be
