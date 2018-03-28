@@ -36,7 +36,7 @@ public class ViewCalendarCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
 
-        EventsCenter.getInstance().post(new DisplayCalendarRequestEvent());
+        EventsCenter.getInstance().post(new DisplayCalendarRequestEvent(model.getFilteredCalendarEventList()));
         return new CommandResult(MESSAGE_SHOW_CALENDAR_SUCCESS);
     }
 

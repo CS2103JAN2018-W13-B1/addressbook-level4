@@ -155,6 +155,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void deleteGroup(Group targetGroup) throws GroupNotFoundException {
             fail("This method should not be called.");
         }

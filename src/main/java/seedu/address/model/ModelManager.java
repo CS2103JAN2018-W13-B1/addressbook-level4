@@ -121,6 +121,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addCalendarEvent(CalendarEvent toAdd) throws UniqueCalendarEventList.DuplicateCalendarEventException {
         addressBook.addCalendarEvent(toAdd);
+        updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_EVENTS);
         indicateAddressBookChanged();
     }
 
@@ -154,6 +155,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+        requireNonNull(predicate);
+        filteredEvents.setPredicate(predicate);
     }
 
     @Override

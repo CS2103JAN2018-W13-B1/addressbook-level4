@@ -122,7 +122,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        centrePanel = new CentrePanel();
+        centrePanel = new CentrePanel(logic.getCalendarEventList());
         centrePlaceholder.getChildren().add(centrePanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());

@@ -1,10 +1,17 @@
 package seedu.address.ui;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.eventbus.Subscribe;
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -16,6 +23,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
+import seedu.address.model.event.CalendarEvent;
 
 /**
  * Calendar Panel displaying calendar in Month-View Format.
@@ -23,8 +31,15 @@ import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
  */
 public class CalendarPanel extends UiPart<Region> {
 
+
+    public static final String DATE_VALIDATION_FORMAT = "dd MM yyyy";
+    public static final String DEFAULT_TIME = "00:00";
+    public static final LocalTime DEFAULT_TIME_AT_CALENDAR = LocalTime.parse(DEFAULT_TIME);
+
     private static final String FXML = "CalendarPanel.fxml";
     private static final String MONTH = "Month";
+
+    private static ObservableList<CalendarEvent> eventList;
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
@@ -37,18 +52,16 @@ public class CalendarPanel extends UiPart<Region> {
     @FXML
     private GridPane daysOfMonth;
 
-    public CalendarPanel() {
+    public CalendarPanel(ObservableList<CalendarEvent> calendarEventsList) {
         super(FXML);
 
+        initialiseCalendarEventList(calendarEventsList);
         initialiseCalendar(LocalDateTime.now());
         registerAsAnEventHandler(this);
     }
 
-    public CalendarPanel(LocalDateTime currentLdt) {
-        super(FXML);
-
-        initialiseCalendar(currentLdt);
-        registerAsAnEventHandler(this);
+    private void initialiseCalendarEventList(ObservableList<CalendarEvent> calendarEventsList) {
+        eventList = calendarEventsList;
     }
 
     private void initialiseCalendar(LocalDateTime givenLdt) {
@@ -131,7 +144,7 @@ public class CalendarPanel extends UiPart<Region> {
         BorderPane cell = new BorderPane();
 
         VBox vbox = new VBox();
-        //vbox.getChildren().addAll(loadNotesForDate(ldt)); To be implemented later when Events are ready
+        vbox.getChildren().addAll(loadEventsForDate(ldt));
         BorderPane.setAlignment(vbox, Pos.CENTER);
         cell.setCenter(vbox);
 
@@ -142,6 +155,34 @@ public class CalendarPanel extends UiPart<Region> {
         return cell;
     }
 
+
+    /**
+     * Returns List of Label, each Label containing Event title of Events occurring during ldt time.
+     */
+    private List<Label> loadEventsForDate(LocalDateTime ldt) {
+        List<Label> labelList = new ArrayList<>();
+
+        for (CalendarEvent ce: eventList) {
+            DateTimeFormatter format = DateTimeFormatter.ofPattern(DATE_VALIDATION_FORMAT);
+            LocalDate startDateWithoutTime = LocalDate.parse(ce.getStartDate().toString() , format);
+            LocalDate endDateWithoutTime = LocalDate.parse(ce.getEndDate().toString(), format);
+            LocalDateTime startDate = LocalDateTime.of(startDateWithoutTime, DEFAULT_TIME_AT_CALENDAR);
+            LocalDateTime endDate = LocalDateTime.of(endDateWithoutTime, DEFAULT_TIME_AT_CALENDAR);
+
+            // Checks if ldt is within start date and end date of Event
+            if (ldt.isAfter(startDate) || ldt.equals(startDate) && ldt.isBefore(endDate) || ldt.equals(endDate)) {
+                String eventTitle = ce.getEventTitle().toString().substring(0, 15); //Set limit to characters displayed
+                Label eventLabel = new Label(eventTitle);
+                eventLabel.getStyleClass().add("cell-cal-event");
+                eventLabel.setText(eventTitle);
+                labelList.add(eventLabel);
+            }
+
+        }
+        return labelList;
+    }
+
+    @Subscribe
     public void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
     }

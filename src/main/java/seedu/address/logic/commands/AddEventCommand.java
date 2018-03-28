@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.event.CalendarEvent;
 import seedu.address.model.event.UniqueCalendarEventList;
@@ -57,6 +59,7 @@ public class AddEventCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             model.addCalendarEvent(calEventToAdd);
+            EventsCenter.getInstance().post(new DisplayCalendarRequestEvent(model.getFilteredCalendarEventList()));
             return new CommandResult(String.format(MESSAGE_ADD_EVENT_SUCCESS, calEventToAdd));
         } catch (UniqueCalendarEventList.DuplicateCalendarEventException dcee) {
             throw new CommandException(MESSAGE_DUPLICATE_EVENT);

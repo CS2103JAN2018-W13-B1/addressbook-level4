@@ -155,6 +155,11 @@ public class AddEventCommandTest {
         }
 
         @Override
+        public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void deleteGroup(Group targetGroup) throws GroupNotFoundException {
             fail("This method should not be called.");
         }
@@ -211,6 +216,12 @@ public class AddEventCommandTest {
                 throws UniqueCalendarEventList.DuplicateCalendarEventException {
             requireNonNull(calendarEvent);
             calendarEventsAdded.add(calendarEvent);
+        }
+
+        /* To fix later on */
+        @Override
+        public ObservableList<CalendarEvent> getFilteredCalendarEventList() {
+            return null;
         }
 
         @Override
