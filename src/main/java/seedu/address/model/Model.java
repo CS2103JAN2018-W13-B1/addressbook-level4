@@ -57,7 +57,6 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-
     void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate);
 
     /**
@@ -65,7 +64,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredOrderList(Predicate<Order> predicate);
-
 
     /** Returns an unmodifiable view of the filtered order list */
     ObservableList<Order> getFilteredOrderList();
@@ -93,7 +91,6 @@ public interface Model {
     void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException;
 
     /**
-
      * Adds event to list of calendar events.
      */
     void addCalendarEvent(CalendarEvent toAdd) throws UniqueCalendarEventList.DuplicateCalendarEventException;
