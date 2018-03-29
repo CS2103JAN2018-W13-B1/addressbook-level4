@@ -36,15 +36,14 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private CentrePanel centrePanel;
-
+    private PersonPanel personPanel;
     private PersonListPanel personListPanel;
     private OrderListPanel orderListPanel;
     private Config config;
     private UserPrefs prefs;
 
     @FXML
-    private StackPane centrePlaceholder;
+    private StackPane personPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -124,9 +123,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-
-        centrePanel = new CentrePanel(logic.getCalendarEventList());
-        centrePlaceholder.getChildren().add(centrePanel.getRoot());
+        personPanel = new PersonPanel();
+        personPlaceholder.getChildren().add(personPanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -211,10 +209,6 @@ public class MainWindow extends UiPart<Stage> {
 
     public OrderListPanel getOrderListPanel() {
         return this.orderListPanel;
-    }
-
-    void releaseResources() {
-        centrePanel.freeResources();
     }
 
     @Subscribe

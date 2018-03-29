@@ -1,6 +1,7 @@
 package seedu.address.ui.testutil;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,13 +17,13 @@ import seedu.address.model.person.Person;
  * A set of assertion methods useful for writing GUI tests.
  */
 public class GuiTestAssert {
+
+    private static final String LABEL_DEFAULT_STYLE = "label";
     /**
      * Asserts that {@code actualCard} displays the same values as {@code expectedCard}.
      */
     public static void assertCardEquals(PersonCardHandle expectedCard, PersonCardHandle actualCard) {
         assertEquals(expectedCard.getId(), actualCard.getId());
-        assertEquals(expectedCard.getAddress(), actualCard.getAddress());
-        assertEquals(expectedCard.getEmail(), actualCard.getEmail());
         assertEquals(expectedCard.getName(), actualCard.getName());
         assertEquals(expectedCard.getPhone(), actualCard.getPhone());
         assertEquals(expectedCard.getGroups(), actualCard.getGroups());
@@ -41,6 +42,43 @@ public class GuiTestAssert {
                 actualCard.getGroups());
         assertEquals(expectedPerson.getPreferenceTags().stream().map(pref -> pref.tagName).collect(Collectors.toList()),
                 actualCard.getPreferences());
+    }
+
+    /*
+     * Code adopted from PR CS2103T Appendix A UI component
+     */
+    /* Returns the color style for {@code tagName}'s label. The tag's color is determined by
+     * looking up the color in {@code PersonCard#TAG_COLOUR_STYLES}, using an index generated
+     * by the hash code of the tag's content
+     * @see PersonCard#getTagColourStyleFor(String)
+     */
+    private static String getTagColourStyleFor(String tagName) {
+        switch(tagName) {
+        case "young":
+            return "red";
+
+        case "teenager":
+            return "orange";
+
+        case "female adult":
+            return "yellow";
+
+        case "male adult":
+            return "green";
+
+        case "old lady":
+            return "blue";
+
+        case "old man":
+            return "violet";
+
+        case "baby":
+            return "purple";
+
+        default:
+            fail(tagName + "does not have a colour assigned");
+            return "";
+        }
     }
 
     /**

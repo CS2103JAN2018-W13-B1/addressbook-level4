@@ -38,7 +38,8 @@
             <Insets bottom="5" left="10" right="10" top="5" />
           </padding>
         </StackPane>
-
+        <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
+                   minHeight="130" prefHeight="130" maxHeight="130">
         <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
           <padding>
             <Insets bottom="5" left="10" right="10" top="5" />
@@ -52,8 +53,7 @@
             </padding>
             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
-
-          <StackPane fx:id="centrePlaceholder" prefWidth="340" SplitPane.resizableWithParent="false">
+          <StackPane fx:id="personPlaceholder" prefWidth="340" ></StackPane>
             <padding>
               <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
