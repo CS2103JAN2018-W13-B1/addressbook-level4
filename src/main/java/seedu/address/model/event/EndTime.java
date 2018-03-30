@@ -2,23 +2,24 @@ package seedu.address.model.event;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.TimeUtil.convertStringToTime;
+import static seedu.address.commons.util.TimeUtil.isValidTime;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 
 /**
- * Represents ending Time of a {@code CalendarEvent}.
- * Guarantees: immutable; is valid as declared in {@link #isValidEndTime(String)}
+ * Represents ending Time of a {@code CalendarEntry}.
+ * Guarantees: immutable; is valid as declared in {@link seedu.address.commons.util.TimeUtil#isValidTime(String)}
  */
 public class EndTime {
 
     public static final String MESSAGE_END_TIME_CONSTRAINTS =
             "End Time should be HH:mm (24Hour Format), and it should not be blank";
 
-    public static final String END_TIME_VALIDATION_REGEX = "\\d{2}:\\d{2}"; // format
-    public static final String END_TIME_VALIDATION_FORMAT = "HH:mm"; // legal dates
-
-    private final String endTime;
+    private final LocalTime endTime;
 
     /**
      * Constructs {@code EndTime}.
@@ -26,29 +27,17 @@ public class EndTime {
      */
     public EndTime (String endTime) {
         requireNonNull(endTime);
-        checkArgument(isValidEndTime(endTime), MESSAGE_END_TIME_CONSTRAINTS);
-        this.endTime = endTime;
-    }
-
-    /**
-     * Returns true if given string is a valid end time.
-     */
-    public static boolean isValidEndTime(String endTime) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(END_TIME_VALIDATION_FORMAT);
-        simpleDateFormat.setLenient(false);
-
+        checkArgument(isValidTime(endTime), MESSAGE_END_TIME_CONSTRAINTS);
         try {
-            simpleDateFormat.parse(endTime);
-        } catch (ParseException e) {
-            return false;
+            this.endTime = convertStringToTime(endTime);
+        } catch (DateTimeParseException dtpe) {
+            throw new AssertionError("Given start time should be valid for conversion.");
         }
-
-        return endTime.matches(END_TIME_VALIDATION_REGEX);
     }
 
     @Override
     public String toString() {
-        return endTime;
+        return endTime.toString();
     }
 
     @Override

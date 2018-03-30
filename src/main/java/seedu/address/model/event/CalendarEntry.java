@@ -1,4 +1,4 @@
-package seedu.address.model.event;
+package seedu.address.model.calendarEntry;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -8,7 +8,7 @@ import java.util.Objects;
  * Represents a Calendar Event in address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class CalendarEvent {
+public class CalendarEntry {
 
     private final EventTitle eventTitle;
     private final StartDate startDate;
@@ -20,8 +20,8 @@ public class CalendarEvent {
     /**
      * Every field must be present, and not null.
      */
-    public CalendarEvent (EventTitle eventTitle, StartDate startDate, EndDate endDate,
-                          StartTime startTime, EndTime endTime) {
+    public CalendarEntry(EventTitle eventTitle, StartDate startDate, EndDate endDate,
+                         StartTime startTime, EndTime endTime) {
         requireAllNonNull(eventTitle, startDate, endDate, startTime, endTime);
         this.eventTitle = eventTitle;
         this.startDate = startDate;
@@ -57,11 +57,11 @@ public class CalendarEvent {
             return true;
         }
 
-        if (!(other instanceof CalendarEvent)) {
+        if (!(other instanceof CalendarEntry)) {
             return false;
         }
 
-        CalendarEvent otherCalEvent = (CalendarEvent) other;
+        CalendarEntry otherCalEvent = (CalendarEntry) other;
         return otherCalEvent.getEventTitle().equals(this.getEventTitle())
                 && otherCalEvent.getStartDate().equals(this.getStartDate())
                 && otherCalEvent.getEndDate().equals(this.getEndDate())

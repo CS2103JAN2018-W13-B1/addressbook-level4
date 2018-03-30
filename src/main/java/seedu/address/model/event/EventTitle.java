@@ -4,17 +4,15 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents Title of a {@code CalendarEvent} in Event list of Address Book.
+ * Represents Title of a {@code CalendarEntry} in Event list of Address Book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEventTitle(String)}
  */
 public class EventTitle {
     public static final String MESSAGE_EVENT_TITLE_CONSTRAINTS =
-            "Event title should only contain alphanumeric characters and spaces of up to 40 characters, "
+            "Event title should only contain alphanumeric characters and spaces"
                     + "and it should not be blank";
 
     public static final String EVENT_TITLE_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
-    public static final int CHARACTER_LIMIT = 40;
 
     private final String eventTitle;
 
@@ -33,7 +31,7 @@ public class EventTitle {
      * Returns true if a given string is a valid event title.
      */
     public static boolean isValidEventTitle(String test) {
-        return test.matches(EVENT_TITLE_VALIDATION_REGEX) && test.length() <= CHARACTER_LIMIT;
+        return test.matches(EVENT_TITLE_VALIDATION_REGEX);
     }
 
 
