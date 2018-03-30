@@ -5,8 +5,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.DateUtil.convertStringToDate;
 import static seedu.address.commons.util.DateUtil.isValidDate;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -35,6 +33,9 @@ public class StartDate {
         }
     }
 
+    public LocalDate getLocalDate() {
+        return startDate;
+    }
 
     @Override
     public String toString() {

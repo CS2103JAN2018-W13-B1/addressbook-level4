@@ -1,4 +1,4 @@
-package seedu.address.model.calendarEntry;
+package seedu.address.model.event;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 

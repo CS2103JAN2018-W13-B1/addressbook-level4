@@ -2,17 +2,17 @@ package seedu.address.commons.events.ui;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.event.CalendarEvent;
+import seedu.address.model.event.CalendarEntry;
 
 /**
  * Indicates request to display calendar.
  */
 public class DisplayCalendarRequestEvent extends BaseEvent {
 
-    private final ObservableList<CalendarEvent> calendarEvents;
+    private final ObservableList<CalendarEntry> calendarEntries;
 
-    public DisplayCalendarRequestEvent(ObservableList<CalendarEvent> calendarEvents) {
-        this.calendarEvents = calendarEvents;
+    public DisplayCalendarRequestEvent(ObservableList<CalendarEntry> calendarEntries) {
+        this.calendarEntries = calendarEntries;
     }
 
     @Override
@@ -20,8 +20,8 @@ public class DisplayCalendarRequestEvent extends BaseEvent {
         return this.getClass().getSimpleName();
     }
 
-    public ObservableList<CalendarEvent> getCalendarEvents() {
-        return calendarEvents;
+    public ObservableList<CalendarEntry> getCalendarEntries() {
+        return calendarEntries;
     }
 
 }

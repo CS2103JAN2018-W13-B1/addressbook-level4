@@ -5,8 +5,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.DateUtil.convertStringToDate;
 import static seedu.address.commons.util.DateUtil.isValidDate;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -34,6 +32,10 @@ public class EndDate {
         } catch (DateTimeParseException dtpe) {
             throw new AssertionError("Given End date should be valid for conversion.");
         }
+    }
+
+    public LocalDate getLocalDate() {
+        return endDate;
     }
 
     @Override

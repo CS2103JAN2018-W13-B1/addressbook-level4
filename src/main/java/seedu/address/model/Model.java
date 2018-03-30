@@ -3,8 +3,8 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.event.CalendarEvent;
-import seedu.address.model.event.UniqueCalendarEventList;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -23,8 +23,7 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Order> PREDICATE_SHOW_ALL_ORDERS = unused -> true;
-
-    Predicate<CalendarEvent> PREDICATE_SHOW_ALL_CALENDAR_EVENTS = unused -> true;
+    Predicate<CalendarEntry> PREDICATE_SHOW_ALL_CALENDAR_EVENTS = unused -> true;
 
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyAddressBook newData);
@@ -57,7 +56,7 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate);
+    void updateFilteredCalendarEventList(Predicate<CalendarEntry> predicate);
 
     /**
      * Updates the filter of the filtered order list to filter by the given {@code predicate}.
@@ -93,10 +92,10 @@ public interface Model {
     /**
      * Adds event to list of calendar events.
      */
-    void addCalendarEvent(CalendarEvent toAdd) throws UniqueCalendarEventList.DuplicateCalendarEventException;
+    void addCalendarEntry(CalendarEntry toAdd) throws DuplicateCalendarEntryException;
 
     /** Returns an unmodifiable view of the filtered order list */
-    ObservableList<CalendarEvent> getFilteredCalendarEventList();
+    ObservableList<CalendarEntry> getFilteredCalendarEventList();
 
     /**
      * Replaces the given order {@code target} with {@code editedOrder}.

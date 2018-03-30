@@ -5,8 +5,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.TimeUtil.convertStringToTime;
 import static seedu.address.commons.util.TimeUtil.isValidTime;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
@@ -34,6 +32,10 @@ public class StartTime {
         } catch (DateTimeParseException dtpe) {
             throw new AssertionError("Given start time should be valid for conversion.");
         }
+    }
+
+    public LocalTime getLocalTime() {
+        return startTime;
     }
 
     @Override

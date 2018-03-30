@@ -5,12 +5,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.commons.exceptions.DuplicateDataException;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
 /**
  * A list of {@code CalendarEntry} that enforces no nulls and uniqueness between its elements.
@@ -39,7 +40,7 @@ public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
     }
 
     /**
-     * Returns all orders in this list as a Set.
+     * Returns all calendar entries in this list as a Set.
      * This set is mutable and change-insulated against the internal list.
      */
     public Set<CalendarEntry> toSet() {
@@ -48,12 +49,21 @@ public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
     }
 
     /**
-     * Replaces the CalendarEntry in this list with those in the argument calendar event list.
+     * Replaces the CalendarEntries in internal list with those in the argument calendar entry list.
      */
-    public void setCalEvents(Set<CalendarEntry> calendarEntries) {
+    public void setCalEntryList(List<CalendarEntry> calendarEntries) throws DuplicateCalendarEntryException {
         requireAllNonNull(calendarEntries);
-        internalList.setAll(calendarEntries);
-        assert CollectionUtil.elementsAreUnique(internalList);
+        final UniqueCalendarEntryList replacement = new UniqueCalendarEntryList();
+        for (CalendarEntry ce: calendarEntries) {
+            replacement.add(ce);
+        }
+
+        setCalendarEntries(replacement);
+
+    }
+
+    public void setCalendarEntries(UniqueCalendarEntryList replacement) {
+        internalList.setAll(replacement.internalList);
     }
 
     /**
@@ -79,13 +89,13 @@ public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
     /**
      * Adds an CalendarEntry to the list.
      *
-     * @throws DuplicateCalendarEventException if the CalendarEntry to add
+     * @throws DuplicateCalendarEntryException if the CalendarEntry to add
      * is a duplicate of an existing CalendarEntry in the list.
      */
-    public void add(CalendarEntry toAdd) throws DuplicateCalendarEventException {
+    public void add(CalendarEntry toAdd) throws DuplicateCalendarEntryException {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateCalendarEventException();
+            throw new DuplicateCalendarEntryException();
         }
         internalList.add(toAdd);
 
@@ -138,15 +148,6 @@ public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
     public int hashCode() {
         assert CollectionUtil.elementsAreUnique(internalList);
         return internalList.hashCode();
-    }
-
-    /**
-     * Signals that an operation would have violated the 'no duplicates' property of the list.
-     */
-    public static class DuplicateCalendarEventException extends DuplicateDataException {
-        public DuplicateCalendarEventException() {
-            super("Operation would result in duplicate events");
-        }
     }
 
 }
