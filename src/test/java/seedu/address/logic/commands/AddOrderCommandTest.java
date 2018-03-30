@@ -30,8 +30,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.event.CalendarEvent;
-import seedu.address.model.event.UniqueCalendarEventList;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.UniqueCalendarEntryList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -168,7 +168,7 @@ public class AddOrderCommandTest {
         }
 
         @Override
-        public ObservableList<CalendarEvent> getFilteredCalendarEventList() {
+        public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
             return model.getFilteredCalendarEventList();
         }
 
@@ -178,7 +178,7 @@ public class AddOrderCommandTest {
         }
 
         @Override
-        public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+        public void updateFilteredCalendarEventList(Predicate<CalendarEntry> predicate) {
             fail("This method should not be called.");
         }
 
@@ -208,8 +208,8 @@ public class AddOrderCommandTest {
         }
 
         @Override
-        public void addCalendarEvent(CalendarEvent toAdd)
-                throws UniqueCalendarEventList.DuplicateCalendarEventException {
+        public void addCalendarEntry(CalendarEntry toAdd)
+                throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
             fail("This method should not be called.");
         }
     }

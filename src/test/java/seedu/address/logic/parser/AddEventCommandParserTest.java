@@ -31,7 +31,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import org.junit.Test;
 
 import seedu.address.logic.commands.AddEventCommand;
-import seedu.address.model.event.CalendarEvent;
+import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
 import seedu.address.model.event.EventTitle;
@@ -48,7 +48,7 @@ public class AddEventCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        CalendarEvent expectedCalEvent = new CalendarEventBuilder()
+        CalendarEntry expectedCalEvent = new CalendarEventBuilder()
                 .withEventTitle(VALID_EVENT_TITLE_MEET_BOSS)
                 .withStartDate(VALID_START_DATE_MEET_BOSS)
                 .withEndDate(VALID_END_DATE_MEET_BOSS)
@@ -95,7 +95,7 @@ public class AddEventCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // No start Date - Start Date should match End Date
-        CalendarEvent expectedCalEvent = new CalendarEventBuilder()
+        CalendarEntry expectedCalEvent = new CalendarEventBuilder()
                 .withEventTitle(VALID_EVENT_TITLE_MEET_BOSS)
                 .withStartDate(VALID_END_DATE_MEET_BOSS)
                 .withEndDate(VALID_END_DATE_MEET_BOSS)

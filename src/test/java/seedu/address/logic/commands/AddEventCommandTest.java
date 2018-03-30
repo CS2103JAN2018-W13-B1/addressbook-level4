@@ -21,8 +21,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.event.CalendarEvent;
-import seedu.address.model.event.UniqueCalendarEventList;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.UniqueCalendarEntryList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -48,7 +48,7 @@ public class AddEventCommandTest {
     @Test
     public void execute_calendarEventAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingCalendarEventAdded modelStub = new ModelStubAcceptingCalendarEventAdded();
-        CalendarEvent validEvent = new CalendarEventBuilder().build();
+        CalendarEntry validEvent = new CalendarEventBuilder().build();
 
         CommandResult commandResult = getAddEventCommandForCalendarEvent(validEvent, modelStub).execute();
 
@@ -60,7 +60,7 @@ public class AddEventCommandTest {
     @Test
     public void execute_duplicateEvent_throwsCommandException() throws Exception {
         ModelStub modelStub = new ModelStubThrowingDuplicateCalendarEventException();
-        CalendarEvent validEvent = new CalendarEventBuilder().build();
+        CalendarEntry validEvent = new CalendarEventBuilder().build();
 
         thrown.expect(CommandException.class);
         thrown.expectMessage(AddEventCommand.MESSAGE_DUPLICATE_EVENT);
@@ -70,8 +70,8 @@ public class AddEventCommandTest {
 
     @Test
     public void equals() {
-        CalendarEvent meetBoss = new CalendarEventBuilder().withEventTitle("Meeting with boss").build();
-        CalendarEvent getSupplies = new CalendarEventBuilder().withEventTitle("Get supplies").build();
+        CalendarEntry meetBoss = new CalendarEventBuilder().withEventTitle("Meeting with boss").build();
+        CalendarEntry getSupplies = new CalendarEventBuilder().withEventTitle("Get supplies").build();
         AddEventCommand addMeetBossCommand = new AddEventCommand(meetBoss);
         AddEventCommand addGetSuppliesCommand = new AddEventCommand(getSupplies);
 
@@ -95,7 +95,7 @@ public class AddEventCommandTest {
     /**
      * Generates a new AddEventCommand with the details of the given calendar event.
      */
-    private AddEventCommand getAddEventCommandForCalendarEvent(CalendarEvent calEvent, Model model) {
+    private AddEventCommand getAddEventCommandForCalendarEvent(CalendarEntry calEvent, Model model) {
         AddEventCommand command = new AddEventCommand(calEvent);
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
@@ -145,7 +145,7 @@ public class AddEventCommandTest {
         }
 
         @Override
-        public ObservableList<CalendarEvent> getFilteredCalendarEventList() {
+        public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
             fail("This method should not be called.");
             return null;
         }
@@ -162,7 +162,7 @@ public class AddEventCommandTest {
         }
 
         @Override
-        public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+        public void updateFilteredCalendarEventList(Predicate<CalendarEntry> predicate) {
             fail("This method should not be called.");
         }
 
@@ -192,22 +192,22 @@ public class AddEventCommandTest {
         }
 
         @Override
-        public void addCalendarEvent(CalendarEvent toAdd)
-                throws UniqueCalendarEventList.DuplicateCalendarEventException {
+        public void addCalendarEntry(CalendarEntry toAdd)
+                throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
             fail("This method should not be called.");
         }
     }
 
     /**
-     * A Model stub that always throws a DuplicateCalendarEventException when trying to add a calendar event.
+     * A Model stub that always throws a DuplicateCalendarEntryException when trying to add a calendar event.
      */
     private class ModelStubThrowingDuplicateCalendarEventException extends ModelStub {
 
         @Override
-        public void addCalendarEvent(CalendarEvent toAdd)
-                throws UniqueCalendarEventList.DuplicateCalendarEventException {
+        public void addCalendarEntry(CalendarEntry toAdd)
+                throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
 
-            throw new UniqueCalendarEventList.DuplicateCalendarEventException();
+            throw new UniqueCalendarEntryList.DuplicateCalendarEntryException();
         }
 
         @Override
@@ -221,18 +221,18 @@ public class AddEventCommandTest {
      * A Model stub that always accepts the calendarEvent being added.
      */
     private class ModelStubAcceptingCalendarEventAdded extends ModelStub {
-        final ArrayList<CalendarEvent> calendarEventsAdded = new ArrayList<>();
+        final ArrayList<CalendarEntry> calendarEventsAdded = new ArrayList<>();
 
         @Override
-        public void addCalendarEvent(CalendarEvent calendarEvent)
-                throws UniqueCalendarEventList.DuplicateCalendarEventException {
-            requireNonNull(calendarEvent);
-            calendarEventsAdded.add(calendarEvent);
+        public void addCalendarEntry(CalendarEntry calendarEntry)
+                throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
+            requireNonNull(calendarEntry);
+            calendarEventsAdded.add(calendarEntry);
         }
 
         /* To fix later on */
         @Override
-        public ObservableList<CalendarEvent> getFilteredCalendarEventList() {
+        public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
             return null;
         }
 

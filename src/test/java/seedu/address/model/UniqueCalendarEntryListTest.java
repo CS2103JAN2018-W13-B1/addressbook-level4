@@ -9,17 +9,17 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.address.model.event.UniqueCalendarEventList;
+import seedu.address.model.event.UniqueCalendarEntryList;
 
-public class UniqueCalendarEventListTest {
+public class UniqueCalendarEntryListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void equals() throws UniqueCalendarEventList.DuplicateCalendarEventException {
-        UniqueCalendarEventList firstEventsList =  new UniqueCalendarEventList();
+    public void equals() throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
+        UniqueCalendarEntryList firstEventsList =  new UniqueCalendarEntryList();
         firstEventsList.add(MEETING_BOSS);
-        UniqueCalendarEventList secondEventsList = new UniqueCalendarEventList();
+        UniqueCalendarEntryList secondEventsList = new UniqueCalendarEntryList();
         secondEventsList.add(GET_STOCKS);
 
         // Same object -> True
@@ -34,12 +34,12 @@ public class UniqueCalendarEventListTest {
 
     @Test
     public void asOrderInsensitiveList_compareListsWithSameItemsInDiffOrder_assertEqual()
-            throws UniqueCalendarEventList.DuplicateCalendarEventException {
+            throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
 
-        UniqueCalendarEventList firstEventsList =  new UniqueCalendarEventList();
+        UniqueCalendarEntryList firstEventsList =  new UniqueCalendarEntryList();
         firstEventsList.add(MEETING_BOSS);
         firstEventsList.add(GET_STOCKS);
-        UniqueCalendarEventList secondEventsList = new UniqueCalendarEventList();
+        UniqueCalendarEntryList secondEventsList = new UniqueCalendarEntryList();
         secondEventsList.add(GET_STOCKS);
         secondEventsList.add(MEETING_BOSS);
 
@@ -48,17 +48,17 @@ public class UniqueCalendarEventListTest {
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        UniqueCalendarEventList calendarEventList = new UniqueCalendarEventList();
+        UniqueCalendarEntryList calendarEventList = new UniqueCalendarEntryList();
         thrown.expect(UnsupportedOperationException.class);
         calendarEventList.asObservableList().remove(0);
     }
 
     @Test
     public void asUniqueList_addDuplicateCalendarEvents_throwsDuplicateCalendarEventException()
-            throws UniqueCalendarEventList.DuplicateCalendarEventException {
+            throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
 
-        UniqueCalendarEventList calendarEventList = new UniqueCalendarEventList();
-        thrown.expect(UniqueCalendarEventList.DuplicateCalendarEventException.class);
+        UniqueCalendarEntryList calendarEventList = new UniqueCalendarEntryList();
+        thrown.expect(UniqueCalendarEntryList.DuplicateCalendarEntryException.class);
         calendarEventList.add(MEETING_BOSS);
         calendarEventList.add(MEETING_BOSS);
     }

@@ -6,17 +6,17 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
-import seedu.address.model.event.CalendarEvent;
+import seedu.address.model.event.CalendarEntry;
 
 /**
- * A utility class for {@code CalendarEvent}.
+ * A utility class for {@code CalendarEntry}.
  */
 public class CalendarEventUtil {
 
     /**
      * returns part of command string for the given {@code calEvent}'s details.
      */
-    public static String getCalendarEventDetails(CalendarEvent calEvent) {
+    public static String getCalendarEventDetails(CalendarEntry calEvent) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_EVENT_TITLE + calEvent.getEventTitle().toString() + " ");
         sb.append(PREFIX_START_DATE + calEvent.getStartDate().toString() + " ");
