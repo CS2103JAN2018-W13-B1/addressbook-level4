@@ -22,6 +22,7 @@ public class CalendarManager implements ReadOnlyCalendarManager {
 
     public CalendarManager() {
         calendar = new Calendar();
+        calendar.setStyle(Calendar.Style.STYLE1);
     }
 
     public CalendarManager(ReadOnlyCalendarManager toBeCopied) {
@@ -56,6 +57,10 @@ public class CalendarManager implements ReadOnlyCalendarManager {
     @Override
     public ObservableList<CalendarEntry> getCalendarEntryList() {
         return calendarEntryList.asObservableList();
+    }
+
+    public Calendar getCalendar() {
+        return calendar;
     }
 
     // Managing CalendarEntries operations

@@ -12,6 +12,7 @@ import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyCalendarManager;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -22,6 +23,7 @@ public class StorageManager extends ComponentManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
+    private CalendarManagerStorage calendarManagerStorage;
 
 
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
@@ -77,6 +79,37 @@ public class StorageManager extends ComponentManager implements Storage {
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
 
+    // ================== CalendarManager methods ==============================
+
+    @Override
+    public String getCalendarManagerFilePath() {
+        return calendarManagerStorage.getCalendarManagerFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyCalendarManager> readCalendarManager() throws DataConversionException, IOException {
+        return readCalendarManager(calendarManagerStorage.getCalendarManagerFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyCalendarManager> readCalendarManager(String filePath)
+            throws DataConversionException, IOException {
+
+        logger.fine("Attempting to read calendar data from file: " + filePath);
+        return calendarManagerStorage.readCalendarManager(filePath);
+    }
+
+    @Override
+    public void saveCalendarManager(ReadOnlyCalendarManager calendarManager) throws IOException {
+        saveCalendarManager(calendarManager, calendarManagerStorage.getCalendarManagerFilePath());
+    }
+
+    @Override
+    public void saveCalendarManager(ReadOnlyCalendarManager calendarManager, String filePath) throws IOException {
+        logger.fine("Attempting to write to calendar data file: " + filePath);
+        calendarManagerStorage.saveCalendarManager(calendarManager, filePath);
+    }
+
 
     @Override
     @Subscribe
@@ -88,5 +121,4 @@ public class StorageManager extends ComponentManager implements Storage {
             raise(new DataSavingExceptionEvent(e));
         }
     }
-
 }

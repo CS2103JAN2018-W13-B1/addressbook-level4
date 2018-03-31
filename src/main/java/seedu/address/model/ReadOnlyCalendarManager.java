@@ -9,8 +9,8 @@ import seedu.address.model.event.CalendarEntry;
 public interface ReadOnlyCalendarManager {
 
     /**
-     * Returns an unmodifiable view of the calendar events list.
-     * This list will not contain any duplicate calendar events.
+     * Returns an unmodifiable view of the calendar entry list.
+     * This list will not contain any duplicate calendar entries.
      */
     ObservableList<CalendarEntry> getCalendarEntryList();
 }

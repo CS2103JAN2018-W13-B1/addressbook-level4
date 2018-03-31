@@ -19,14 +19,14 @@ import seedu.address.testutil.TypicalPersons;
 public class XmlSerializableAddressBookTest {
 
     private static final String TEST_DATA_FOLDER = FileUtil.getPath("src/test/data/XmlSerializableAddressBookTest/");
-    private static final File TYPICAL_EVENTS_FILE = new File(TEST_DATA_FOLDER + "typicalEventsAddressBook.xml");
+    private static final File TYPICAL_EVENTS_FILE = new File(TEST_DATA_FOLDER + "typicalEventsCalendarManager.xml");
     private static final File TYPICAL_PERSONS_FILE = new File(TEST_DATA_FOLDER + "typicalPersonsAddressBook.xml");
     private static final File TYPICAL_ORDERS_FILE = new File(TEST_DATA_FOLDER + "typicalOrdersAddressBook.xml");
     private static final File INVALID_PERSON_FILE = new File(TEST_DATA_FOLDER + "invalidPersonAddressBook.xml");
     private static final File INVALID_GROUP_FILE = new File(TEST_DATA_FOLDER + "invalidGroupAddressBook.xml");
     private static final File INVALID_PREFERENCE_FILE = new File(TEST_DATA_FOLDER + "invalidPreferenceAddressBook.xml");
     private static final File INVALID_ORDER_FILE = new File(TEST_DATA_FOLDER + "invalidOrderAddressBook.xml");
-    private static final File INVALID_EVENT_FILE = new File(TEST_DATA_FOLDER + "invalidEventsAddressBook.xml");
+    private static final File INVALID_EVENT_FILE = new File(TEST_DATA_FOLDER + "invalidEventsCalendarManager.xml");
 
 
     @Rule
