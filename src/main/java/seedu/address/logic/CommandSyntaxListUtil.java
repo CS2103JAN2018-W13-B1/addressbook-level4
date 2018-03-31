@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddEventCommand;
 import seedu.address.logic.commands.AddOrderCommand;
 import seedu.address.logic.commands.ChangeThemeCommand;
 import seedu.address.logic.commands.ClearCommand;
@@ -41,6 +42,7 @@ public final class CommandSyntaxListUtil {
      */
     private static void setCommandSyntaxList() {
         commandSyntaxList.add(AddCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(AddEventCommand.COMMAND_SYNTAX);
         commandSyntaxList.add(AddOrderCommand.COMMAND_SYNTAX);
         commandSyntaxList.add(ChangeThemeCommand.COMMAND_WORD);
         commandSyntaxList.add(ClearCommand.COMMAND_WORD);

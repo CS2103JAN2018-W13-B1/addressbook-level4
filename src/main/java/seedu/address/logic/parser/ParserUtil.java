@@ -9,7 +9,9 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.DateUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.TimeUtil;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
 import seedu.address.model.event.EventTitle;
@@ -353,7 +355,7 @@ public class ParserUtil {
     public static StartDate parseStartDate(String startDate) throws IllegalValueException {
         requireNonNull(startDate);
         String trimmedStartDate = startDate.trim();
-        if (!StartDate.isValidStartDate(trimmedStartDate)) {
+        if (!DateUtil.isValidDate(trimmedStartDate)) {
             throw new IllegalValueException(StartDate.MESSAGE_START_DATE_CONSTRAINTS);
         }
         return new StartDate(trimmedStartDate);
@@ -381,7 +383,7 @@ public class ParserUtil {
     public static EndDate parseEndDate(String endDate) throws IllegalValueException {
         requireNonNull(endDate);
         String trimmedEndDate = endDate.trim();
-        if (!EndDate.isValidEndDate(trimmedEndDate)) {
+        if (!DateUtil.isValidDate(trimmedEndDate)) {
             throw new IllegalValueException(EndDate.MESSAGE_END_DATE_CONSTRAINTS);
         }
         return new EndDate(trimmedEndDate);
@@ -409,7 +411,7 @@ public class ParserUtil {
     public static StartTime parseStartTime(String startTime) throws IllegalValueException {
         requireNonNull(startTime);
         String trimmedStartTime = startTime.trim();
-        if (!StartTime.isValidStartTime(trimmedStartTime)) {
+        if (!TimeUtil.isValidTime(trimmedStartTime)) {
             throw new IllegalValueException(StartTime.MESSAGE_START_TIME_CONSTRAINTS);
         }
         return new StartTime(trimmedStartTime);
@@ -437,7 +439,7 @@ public class ParserUtil {
     public static EndTime parseEndTime(String endTime) throws IllegalValueException {
         requireNonNull(endTime);
         String trimmedEndTime = endTime.trim();
-        if (!EndTime.isValidEndTime(trimmedEndTime)) {
+        if (!TimeUtil.isValidTime(trimmedEndTime)) {
             throw new IllegalValueException(EndTime.MESSAGE_END_TIME_CONSTRAINTS);
         }
         return new EndTime(trimmedEndTime);

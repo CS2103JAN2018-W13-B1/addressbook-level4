@@ -2,6 +2,8 @@ package seedu.address.model;
 
 import java.util.function.Predicate;
 
+import com.calendarfx.model.Calendar;
+
 import javafx.collections.ObservableList;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
@@ -96,6 +98,9 @@ public interface Model {
 
     /** Returns an unmodifiable view of the filtered order list */
     ObservableList<CalendarEntry> getFilteredCalendarEventList();
+
+    /** Returns Calendar stored in Model. */
+    Calendar getCalendar();
 
     /**
      * Replaces the given order {@code target} with {@code editedOrder}.

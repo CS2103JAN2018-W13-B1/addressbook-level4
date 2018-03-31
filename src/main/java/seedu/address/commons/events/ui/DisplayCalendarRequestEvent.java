@@ -9,19 +9,8 @@ import seedu.address.model.event.CalendarEntry;
  */
 public class DisplayCalendarRequestEvent extends BaseEvent {
 
-    private final ObservableList<CalendarEntry> calendarEntries;
-
-    public DisplayCalendarRequestEvent(ObservableList<CalendarEntry> calendarEntries) {
-        this.calendarEntries = calendarEntries;
-    }
-
     @Override
     public String toString() {
         return this.getClass().getSimpleName();
     }
-
-    public ObservableList<CalendarEntry> getCalendarEntries() {
-        return calendarEntries;
-    }
-
 }

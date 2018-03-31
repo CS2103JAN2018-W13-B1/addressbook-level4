@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddEventCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.event.CalendarEvent;
+import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
 import seedu.address.model.event.EventTitle;
@@ -80,8 +80,8 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
                 throw new IllegalValueException(START_AND_END_TIME_CONSTRAINTS);
             }
 
-            CalendarEvent calendarEvent = new CalendarEvent(eventTitle, startDate, endDate, startTime, endTime);
-            return new AddEventCommand(calendarEvent);
+            CalendarEntry calendarEntry = new CalendarEntry(eventTitle, startDate, endDate, startTime, endTime);
+            return new AddEventCommand(calendarEntry);
 
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
@@ -93,24 +93,8 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
      * Start time cannot be later than End time if event ends on the same date.
      */
     private boolean startTimeLaterThanEndTime(StartTime startTime, EndTime endTime) {
-        SimpleDateFormat format = new SimpleDateFormat(TIME_VALIDATION_FORMAT);
-        format.setLenient(false);
 
-        Date formattedStartTime;
-        Date formattedEndTime;
-
-        try {
-            formattedStartTime = format.parse(startTime.toString());
-            formattedEndTime = format.parse(endTime.toString());
-        } catch (java.text.ParseException pe) {
-            throw new AssertionError("StartTime and EndTime should have valid format.");
-        }
-
-        if (formattedStartTime.compareTo(formattedEndTime) > 0) {
-            return true;
-        }
-
-        return false;
+        return startTime.getLocalTime().isAfter(endTime.getLocalTime());
     }
 
     /**
@@ -118,25 +102,7 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
      * Start Date cannot be later than End Date as it violates the meaning of the terms.
      */
     private static boolean startDateLaterThanEndDate(StartDate startDate, EndDate endDate) {
-        SimpleDateFormat format = new SimpleDateFormat(DATE_VALIDATION_FORMAT);
-        format.setLenient(false);
-
-        Date formattedStartDate;
-        Date formattedEndDate;
-
-        try {
-            formattedStartDate = format.parse(startDate.toString());
-            formattedEndDate = format.parse(endDate.toString());
-
-        } catch (java.text.ParseException pe) {
-            throw new AssertionError("StartDate and EndDate should have valid format.");
-        }
-
-        if (formattedStartDate.compareTo(formattedEndDate) > 0) {
-            return true;
-        }
-
-        return false;
+        return startDate.getLocalDate().isAfter(endDate.getLocalDate());
     }
 
     /**

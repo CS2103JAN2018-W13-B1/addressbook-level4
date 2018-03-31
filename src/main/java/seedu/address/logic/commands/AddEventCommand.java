@@ -10,8 +10,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.event.CalendarEvent;
-import seedu.address.model.event.UniqueCalendarEventList;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
 /**
  * Adds a calendar event to the address book.
@@ -44,12 +44,12 @@ public class AddEventCommand extends UndoableCommand {
     public static final String MESSAGE_ADD_EVENT_SUCCESS = "Added Event [%1$s]";
     public static final String MESSAGE_DUPLICATE_EVENT = "This event already exists in address book.";
 
-    private final CalendarEvent calEventToAdd;
+    private final CalendarEntry calEventToAdd;
 
     /**
-     * Creates an AddEventCommand to add specified {@code CalendarEvent}.
+     * Creates an AddEventCommand to add specified {@code CalendarEntry}.
      */
-    public AddEventCommand(CalendarEvent calEvent) {
+    public AddEventCommand(CalendarEntry calEvent) {
         requireNonNull(calEvent);
         this.calEventToAdd = calEvent;
     }
@@ -58,10 +58,10 @@ public class AddEventCommand extends UndoableCommand {
     protected CommandResult executeUndoableCommand() throws CommandException {
         requireNonNull(model);
         try {
-            model.addCalendarEvent(calEventToAdd);
-            EventsCenter.getInstance().post(new DisplayCalendarRequestEvent(model.getFilteredCalendarEventList()));
+            model.addCalendarEntry(calEventToAdd);
+            EventsCenter.getInstance().post(new DisplayCalendarRequestEvent());
             return new CommandResult(String.format(MESSAGE_ADD_EVENT_SUCCESS, calEventToAdd));
-        } catch (UniqueCalendarEventList.DuplicateCalendarEventException dcee) {
+        } catch (DuplicateCalendarEntryException dcee) {
             throw new CommandException(MESSAGE_DUPLICATE_EVENT);
         }
     }

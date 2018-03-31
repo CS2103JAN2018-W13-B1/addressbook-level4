@@ -6,6 +6,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import com.calendarfx.model.Calendar;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -166,6 +168,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
         return FXCollections.unmodifiableObservableList(filteredEvents);
+    }
+
+    @Override
+    public Calendar getCalendar() {
+        return calendarManager.getCalendar();
     }
 
     @Override

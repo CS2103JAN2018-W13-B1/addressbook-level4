@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException;
 public class DateUtil {
     public static final String DATE_VALIDATION_REGEX = "\\d{2}-\\d{2}-\\d{4}"; // format
     public static final String DATE_VALIDATION_FORMAT = "dd-MM-yyyy"; // legal dates
-    public static final String DATE_PATTERN = "dd MM yyyy";
+    public static final String DATE_PATTERN = "dd-MM-yyyy";
     /**
      * Returns true if given string is a valid date.
      */
