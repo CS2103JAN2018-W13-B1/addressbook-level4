@@ -1,14 +1,14 @@
 package seedu.address.ui;
 
+import com.calendarfx.model.Calendar;
 import com.google.common.eventbus.Subscribe;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
-import seedu.address.model.event.CalendarEvent;
+
 
 /**
  * The Centre Panel of the App that can switch between Browser Panel and Calendar Panel
@@ -20,15 +20,15 @@ public class CentrePanel extends UiPart<Region> {
 
     private CalendarPanel calendarPanel;
     private BrowserPanel browserPanel;
-    private ObservableList<CalendarEvent> calendarEvents;
 
     @FXML
     private StackPane centrePlaceholder;
 
-    public CentrePanel(ObservableList<CalendarEvent> calendarEvents) {
+    public CentrePanel(Calendar calendar) {
         super(FXML);
 
-        this.calendarEvents = calendarEvents;
+        browserPanel = new BrowserPanel();
+        calendarPanel = new CalendarPanel(calendar);
         // By default, display Browser Panel in Main Window.
         displayBrowserPanel();
         registerAsAnEventHandler(this);
@@ -38,7 +38,7 @@ public class CentrePanel extends UiPart<Region> {
      * Displays the Browser Panel.
      */
     public void displayBrowserPanel() {
-        browserPanel = new BrowserPanel();
+        centrePlaceholder.getChildren().clear();
         centrePlaceholder.getChildren().add(browserPanel.getRoot());
     }
 
@@ -53,7 +53,6 @@ public class CentrePanel extends UiPart<Region> {
      * Displays the Calendar Panel.
      */
     public void displayCalendarPanel() {
-        calendarPanel = new CalendarPanel(calendarEvents);
         centrePlaceholder.getChildren().clear();
         centrePlaceholder.getChildren().add(calendarPanel.getRoot());
     }
@@ -61,7 +60,6 @@ public class CentrePanel extends UiPart<Region> {
     @Subscribe
     private void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
 
-        calendarEvents = event.getCalendarEvents();
         displayCalendarPanel();
         calendarPanel.handleDisplayCalendarRequestEvent(event);
     }
