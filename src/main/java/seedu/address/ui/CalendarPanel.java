@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
+import seedu.address.ui.util.CalendarFxUtil;
 
 /**
  * Calendar Panel displaying calendar.
@@ -33,7 +34,7 @@ public class CalendarPanel extends UiPart<Region> {
 
     public CalendarPanel(Calendar calendar) {
         super(FXML);
-        calendarView = new CalendarView();
+        calendarView = CalendarFxUtil.returnModifiedCalendarView();
         calendarSource = new CalendarSource();
 
         initialiseCalendar(calendar);
@@ -48,6 +49,8 @@ public class CalendarPanel extends UiPart<Region> {
         calendarView.getCalendarSources().setAll(calendarSource);
         calendarPanelholder.getChildren().setAll(calendarView);
     }
+
+
 
 
     @Subscribe

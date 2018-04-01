@@ -43,32 +43,38 @@ public class ModelManager extends ComponentManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyCalendarManager calendarManager, UserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(addressBook, calendarManager, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
-        this.calendarManager = new CalendarManager();
+        this.calendarManager = new CalendarManager(calendarManager);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredOrders = new FilteredList<>(this.addressBook.getOrderList());
         filteredEvents = new FilteredList<>(this.calendarManager.getCalendarEntryList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new CalendarManager(), new UserPrefs());
     }
 
     @Override
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyAddressBook newData, ReadOnlyCalendarManager newCalendarData) {
         addressBook.resetData(newData);
+        calendarManager.resetData(newCalendarData);
         indicateAddressBookChanged();
     }
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
+    }
+
+    @Override
+    public ReadOnlyCalendarManager getCalendarManager() {
+        return calendarManager;
     }
 
     /** Raises an event to indicate the model has changed */
@@ -203,6 +209,7 @@ public class ModelManager extends ComponentManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
+                && calendarManager.equals(other.calendarManager)
                 && filteredPersons.equals(other.filteredPersons);
     }
 

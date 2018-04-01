@@ -16,7 +16,7 @@ public class EndDate {
     public static final String MESSAGE_END_DATE_CONSTRAINTS =
             "End Date should be DD-MM-YYYY, and it should not be blank";
 
-
+    private final String endDateString;
     private final LocalDate endDate;
 
     /**
@@ -29,6 +29,7 @@ public class EndDate {
         checkArgument(isValidDate(endDate), MESSAGE_END_DATE_CONSTRAINTS);
         try {
             this.endDate = convertStringToDate(endDate);
+            this.endDateString = endDate;
         } catch (DateTimeParseException dtpe) {
             throw new AssertionError("Given End date should be valid for conversion.");
         }
@@ -40,7 +41,7 @@ public class EndDate {
 
     @Override
     public String toString() {
-        return endDate.toString();
+        return endDateString;
     }
 
     @Override

@@ -1,20 +1,17 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalPersons.ALICE;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.UniqueCalendarEntryList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
 /**
  * A utility class containing a list of {@code CalendarEntry} objects to be used in tests.
  */
-public class TypicalCalendarEvents {
+public class TypicalCalendarEntries {
     public static final CalendarEntry MEETING_BOSS = new CalendarEventBuilder()
             .withEventTitle("Meeting with boss")
             .withStartDate("06-06-2018")
@@ -43,26 +40,20 @@ public class TypicalCalendarEvents {
             .withStartTime("10:00")
             .withEndTime("15:00").build();
 
-    private TypicalCalendarEvents() {} // prevents instantiation
+    private TypicalCalendarEntries() {} // prevents instantiation
 
 
-    public static AddressBook getTypicalAddressBookWithEvents() {
-        AddressBook ab = new AddressBook();
-
-        try {
-            ab.addPerson(ALICE);
-        } catch (DuplicatePersonException dpe) {
-            throw new AssertionError("not possible");
-        }
+    public static CalendarManager getTypicalCalendarManagerWithEntries() {
+        CalendarManager cm = new CalendarManager();
 
         for (CalendarEntry calEvent : getTypicalCalendarEvents()) {
             try {
-                ab.addCalendarEntry(calEvent);
-            } catch (UniqueCalendarEntryList.DuplicateCalendarEntryException dcee) {
+                cm.addCalendarEntry(calEvent);
+            } catch (DuplicateCalendarEntryException dcee) {
                 throw new AssertionError("not possible");
             }
         }
-        return ab;
+        return cm;
     }
 
     public static List<CalendarEntry> getTypicalCalendarEvents() {

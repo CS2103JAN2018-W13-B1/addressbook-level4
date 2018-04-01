@@ -28,7 +28,7 @@ public interface Model {
     Predicate<CalendarEntry> PREDICATE_SHOW_ALL_CALENDAR_EVENTS = unused -> true;
 
     /** Clears existing backing model and replaces with the provided new data. */
-    void resetData(ReadOnlyAddressBook newData);
+    void resetData(ReadOnlyAddressBook newData, ReadOnlyCalendarManager newCalendarData);
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
@@ -101,6 +101,9 @@ public interface Model {
 
     /** Returns Calendar stored in Model. */
     Calendar getCalendar();
+
+    /** Returns the CalendarManager */
+    ReadOnlyCalendarManager getCalendarManager();
 
     /**
      * Replaces the given order {@code target} with {@code editedOrder}.

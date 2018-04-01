@@ -17,6 +17,7 @@ public class EndTime {
     public static final String MESSAGE_END_TIME_CONSTRAINTS =
             "End Time should be HH:mm (24Hour Format), and it should not be blank";
 
+    private final String endTimeString;
     private final LocalTime endTime;
 
     /**
@@ -28,6 +29,7 @@ public class EndTime {
         checkArgument(isValidTime(endTime), MESSAGE_END_TIME_CONSTRAINTS);
         try {
             this.endTime = convertStringToTime(endTime);
+            this.endTimeString = endTime;
         } catch (DateTimeParseException dtpe) {
             throw new AssertionError("Given start time should be valid for conversion.");
         }
@@ -39,7 +41,7 @@ public class EndTime {
 
     @Override
     public String toString() {
-        return endTime.toString();
+        return endTimeString;
     }
 
     @Override

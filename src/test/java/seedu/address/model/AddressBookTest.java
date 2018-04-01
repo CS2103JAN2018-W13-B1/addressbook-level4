@@ -230,10 +230,5 @@ public class AddressBookTest {
         public ObservableList<Order> getOrderList() {
             return orders;
         }
-
-        @Override
-        public ObservableList<CalendarEntry> getEventList() {
-            return calendarEntries;
-        }
     }
 }

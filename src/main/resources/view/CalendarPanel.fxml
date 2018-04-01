@@ -4,6 +4,6 @@
 
 <StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane fx:id="calendarPanelholder" prefHeight="150.0" prefWidth="200.0" />
+      <StackPane fx:id="calendarPanelholder" minWidth="340.0" prefHeight="300.0" prefWidth="500.0" />
    </children>
 </StackPane>

@@ -2,21 +2,22 @@ package seedu.address.model;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.testutil.TypicalCalendarEvents.GET_STOCKS;
-import static seedu.address.testutil.TypicalCalendarEvents.MEETING_BOSS;
+import static seedu.address.testutil.TypicalCalendarEntries.GET_STOCKS;
+import static seedu.address.testutil.TypicalCalendarEntries.MEETING_BOSS;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.model.event.UniqueCalendarEntryList;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
 public class UniqueCalendarEntryListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void equals() throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
+    public void equals() throws DuplicateCalendarEntryException {
         UniqueCalendarEntryList firstEventsList =  new UniqueCalendarEntryList();
         firstEventsList.add(MEETING_BOSS);
         UniqueCalendarEntryList secondEventsList = new UniqueCalendarEntryList();
@@ -34,7 +35,7 @@ public class UniqueCalendarEntryListTest {
 
     @Test
     public void asOrderInsensitiveList_compareListsWithSameItemsInDiffOrder_assertEqual()
-            throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
+            throws DuplicateCalendarEntryException {
 
         UniqueCalendarEntryList firstEventsList =  new UniqueCalendarEntryList();
         firstEventsList.add(MEETING_BOSS);
@@ -55,10 +56,10 @@ public class UniqueCalendarEntryListTest {
 
     @Test
     public void asUniqueList_addDuplicateCalendarEvents_throwsDuplicateCalendarEventException()
-            throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
+            throws DuplicateCalendarEntryException {
 
         UniqueCalendarEntryList calendarEventList = new UniqueCalendarEntryList();
-        thrown.expect(UniqueCalendarEntryList.DuplicateCalendarEntryException.class);
+        thrown.expect(DuplicateCalendarEntryException.class);
         calendarEventList.add(MEETING_BOSS);
         calendarEventList.add(MEETING_BOSS);
     }

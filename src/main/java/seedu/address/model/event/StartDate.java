@@ -16,6 +16,7 @@ public class StartDate {
     public static final String MESSAGE_START_DATE_CONSTRAINTS =
             "Start Date should be DD-MM-YYYY, and it should not be blank";
 
+    private final String startDateString;
     private final LocalDate startDate;
 
     /**
@@ -28,6 +29,7 @@ public class StartDate {
         checkArgument(isValidDate(startDate), MESSAGE_START_DATE_CONSTRAINTS);
         try {
             this.startDate = convertStringToDate(startDate);
+            this.startDateString = startDate;
         } catch (DateTimeParseException dtpe) {
             throw new AssertionError("Given Start date should be valid for conversion.");
         }
@@ -39,7 +41,7 @@ public class StartDate {
 
     @Override
     public String toString() {
-        return startDate.toString();
+        return startDateString;
     }
 
     @Override

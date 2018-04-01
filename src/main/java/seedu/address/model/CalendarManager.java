@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.calendarfx.model.Calendar;
 
@@ -33,7 +34,7 @@ public class CalendarManager implements ReadOnlyCalendarManager {
     /**
      * Resets the existing data of this {@code CalendarManager} with {@code newData}.
      */
-    private void resetData(ReadOnlyCalendarManager newData) {
+    public void resetData(ReadOnlyCalendarManager newData) {
         requireNonNull(newData);
 
         List<CalendarEntry> calEntries = new ArrayList<>(newData.getCalendarEntryList());
@@ -75,5 +76,17 @@ public class CalendarManager implements ReadOnlyCalendarManager {
         calendar.addEntries(CalendarUtil.convertToEntry(toAdd));
     }
 
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof CalendarManager // instanceof handles nulls
+                && this.calendarEntryList.equals(((CalendarManager) other).calendarEntryList));
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(calendar, calendarEntryList);
+    }
 
 }

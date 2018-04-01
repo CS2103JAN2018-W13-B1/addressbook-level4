@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
 import static seedu.address.storage.XmlAdaptedCalendarEntry.MISSING_FIELD_MESSAGE_FORMAT;
-import static seedu.address.testutil.TypicalCalendarEvents.MEETING_BOSS;
+import static seedu.address.testutil.TypicalCalendarEntries.MEETING_BOSS;
 
 import org.junit.Test;
 

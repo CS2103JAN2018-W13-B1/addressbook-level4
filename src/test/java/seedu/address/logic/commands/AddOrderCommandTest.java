@@ -19,6 +19,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import com.calendarfx.model.Calendar;
+
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.index.Index;
@@ -26,12 +28,14 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyCalendarManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.UniqueCalendarEntryList;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -52,7 +56,7 @@ public class AddOrderCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), new CalendarManager(), new UserPrefs());
 
     @Test
     public void constructor_nullOrder_throwsNullPointerException() {
@@ -130,8 +134,9 @@ public class AddOrderCommandTest {
             fail("This method should not be called.");
         }
 
+
         @Override
-        public void resetData(ReadOnlyAddressBook newData) {
+        public void resetData(ReadOnlyAddressBook newData, ReadOnlyCalendarManager newCalendarData) {
             fail("This method should not be called.");
         }
 
@@ -173,6 +178,18 @@ public class AddOrderCommandTest {
         }
 
         @Override
+        public Calendar getCalendar() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public ReadOnlyCalendarManager getCalendarManager() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             filteredPersons.setPredicate(predicate);
         }
@@ -209,7 +226,7 @@ public class AddOrderCommandTest {
 
         @Override
         public void addCalendarEntry(CalendarEntry toAdd)
-                throws UniqueCalendarEntryList.DuplicateCalendarEntryException {
+                throws DuplicateCalendarEntryException {
             fail("This method should not be called.");
         }
     }
@@ -227,6 +244,9 @@ public class AddOrderCommandTest {
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }
+
+        @Override
+        public ReadOnlyCalendarManager getCalendarManager() { return new CalendarManager(); }
     }
 
     /**
@@ -245,6 +265,9 @@ public class AddOrderCommandTest {
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }
+
+        @Override
+        public ReadOnlyCalendarManager getCalendarManager() { return new CalendarManager(); }
     }
 }
 

@@ -13,6 +13,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.model.ReadOnlyCalendarManager;
 
+/**
+ * A class to access CalendarManager data stored as an xml file on the hard disk.
+ */
 public class XmlCalendarManagerStorage implements CalendarManagerStorage {
 
     private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);

@@ -20,15 +20,13 @@ public class EventTitleTest {
     }
 
     @Test
-    public void isValidOrderInformation() {
+    public void isValidEventTitle() {
         // null event title
         Assert.assertThrows(NullPointerException.class, () -> EventTitle.isValidEventTitle(null));
 
         // invalid event title
         assertFalse(EventTitle.isValidEventTitle("")); // empty string
         assertFalse(EventTitle.isValidEventTitle(" ")); // spaces only
-        assertFalse(EventTitle.isValidEventTitle("Too long sentences exceeding forty characters"));
-        // Exceed character limit
 
         // valid event title
         assertTrue(EventTitle.isValidEventTitle("Meet with bosses"));

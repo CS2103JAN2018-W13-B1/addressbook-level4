@@ -7,8 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.stream.Stream;
 
 import seedu.address.commons.exceptions.IllegalValueException;

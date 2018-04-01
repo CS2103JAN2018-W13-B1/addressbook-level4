@@ -16,6 +16,7 @@ public class StartTime {
     public static final String MESSAGE_START_TIME_CONSTRAINTS =
             "Start Time should be HH:mm (24Hour Format), and it should not be blank";
 
+    private final String startTimeString;
     private final LocalTime startTime;
 
     /**
@@ -29,6 +30,7 @@ public class StartTime {
 
         try {
             this.startTime = convertStringToTime(startTime);
+            this.startTimeString = startTime;
         } catch (DateTimeParseException dtpe) {
             throw new AssertionError("Given start time should be valid for conversion.");
         }
@@ -40,7 +42,7 @@ public class StartTime {
 
     @Override
     public String toString() {
-        return startTime.toString();
+        return startTimeString;
     }
 
     @Override
