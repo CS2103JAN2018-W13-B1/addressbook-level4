@@ -37,12 +37,12 @@ public class CentrePanel extends UiPart<Region> {
      * Displays the Person Panel.
      */
     public void displayPersonPanel() {
-        personPanel = new personPanel();
+        personPanel = new PersonPanel();
         centrePlaceholder.getChildren().add(personPanel.getRoot());
     }
 
     /**
-     * Provides a method to access BrowserPanel's method.
+     * Provides a method to access PersonPanel's method.
      */
     public void freeResources() {
         personPanel.freeResources();

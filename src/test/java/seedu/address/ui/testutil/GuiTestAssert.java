@@ -44,62 +44,6 @@ public class GuiTestAssert {
                 actualCard.getPreferences());
     }
 
-    /*
-     * Code adopted from PR CS2103T Appendix A UI component
-     */
-    /* Returns the color style for {@code tagName}'s label. The tag's color is determined by
-     * looking up the color in {@code PersonCard#TAG_COLOUR_STYLES}, using an index generated
-     * by the hash code of the tag's content
-     * @see PersonCard#getTagColourStyleFor(String)
-     */
-    private static String getTagColourStyleFor(String tagName) {
-        switch(tagName) {
-        case "young":
-            return "red";
-
-        case "teenager":
-            return "orange";
-
-        case "female adult":
-            return "yellow";
-
-        case "male adult":
-            return "green";
-
-        case "old lady":
-            return "blue";
-
-        case "old man":
-            return "violet";
-
-        case "baby":
-            return "purple";
-
-        default:
-            fail(tagName + "does not have a colour assigned");
-            return "";
-        }
-    }
-
-    /**
-     * Asserts that {@code actualCard} displays the details of {@code expectedOrder}.
-     */
-    public static void assertCardDisplaysOrder(Order expectedOrder, OrderCardHandle actualCard) {
-        assertEquals(expectedOrder.getOrderInformation().toString(), actualCard.getOrderInformation());
-
-        String expectedPriceAndQuantity = "S$" + expectedOrder.getPrice().toString() + " X "
-                + expectedOrder.getQuantity().toString();
-        assertEquals(expectedPriceAndQuantity, actualCard.getPriceAndQuantity());
-
-        String expectedTotalPrice = "Total: S$" + String.valueOf(
-                Double.parseDouble(expectedOrder.getPrice().toString())
-                        * Integer.parseInt(expectedOrder.getQuantity().toString()));
-
-        assertEquals(expectedTotalPrice, actualCard.getTotalPrice());
-
-        assertEquals("Deliver By: " + expectedOrder.getDeliveryDate().toString(), actualCard.getDeliveryDate());
-    }
-
     /**
      * Asserts that {@code actualCard} displays the details of {@code expectedOrder}.
      */
