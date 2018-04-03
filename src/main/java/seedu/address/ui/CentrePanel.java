@@ -28,7 +28,7 @@ public class CentrePanel extends UiPart<Region> {
         super(FXML);
 
         this.calendarEvents = calendarEvents;
-      
+
         displayPersonPanel();
         registerAsAnEventHandler(this);
     }
