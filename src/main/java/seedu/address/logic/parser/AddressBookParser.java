@@ -25,6 +25,7 @@ import seedu.address.logic.commands.FindPreferenceCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ExportToVCFCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -125,6 +126,10 @@ public class AddressBookParser {
         case HistoryCommand.COMMAND_WORD:
         case HistoryCommand.COMMAND_ALIAS:
             return new HistoryCommand();
+
+        case ExportToVCFCommand.COMMAND_WORD:
+        case ExportToVCFCommand.COMMAND_ALIAS:
+            return new ExportToVCFCommand();
 
         case ExitCommand.COMMAND_WORD:
         case ExitCommand.COMMAND_ALIAS:

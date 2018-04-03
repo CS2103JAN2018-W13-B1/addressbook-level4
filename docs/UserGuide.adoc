@@ -99,6 +99,12 @@ Shows a list of all persons in the address book. +
 Format: `list` +
 Alias: `l`
 
+=== Exporting listed persons : `exportVCF`
+
+Exports a list of all listed persons to a local file stored in data/exportedFile/. +
+Format: `exportVCF` +
+Alias: `exVCF`
+
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
