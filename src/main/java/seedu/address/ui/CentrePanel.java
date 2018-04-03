@@ -28,7 +28,7 @@ public class CentrePanel extends UiPart<Region> {
         super(FXML);
 
         this.calendarEvents = calendarEvents;
-        // By default, display Person Panel in Main Window.
+      
         displayPersonPanel();
         registerAsAnEventHandler(this);
     }

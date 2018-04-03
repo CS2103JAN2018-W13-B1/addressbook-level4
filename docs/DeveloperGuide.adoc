@@ -18,6 +18,7 @@ By: `Team W13-B1`      Since: `Mar 2018`      Licence: `MIT`
 
 ContactSails is a desktop application targeted at salespersons who want to manage their customer contacts, sales orders,
 and calendar events in an efficient manner. +
+
 This guide provides the necessary technical information for those
 who might want to join our team as a software developer or a tester,
 or for those who want to develop an entirely different product by using ContactSails as a base. +

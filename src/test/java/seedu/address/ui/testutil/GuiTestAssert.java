@@ -101,6 +101,25 @@ public class GuiTestAssert {
     }
 
     /**
+     * Asserts that {@code actualCard} displays the details of {@code expectedOrder}.
+     */
+    public static void assertCardDisplaysOrder(Order expectedOrder, OrderCardHandle actualCard) {
+        assertEquals(expectedOrder.getOrderInformation().toString(), actualCard.getOrderInformation());
+
+        String expectedPriceAndQuantity = "S$" + expectedOrder.getPrice().toString() + " X "
+                + expectedOrder.getQuantity().toString();
+        assertEquals(expectedPriceAndQuantity, actualCard.getPriceAndQuantity());
+
+        String expectedTotalPrice = "Total: S$" + String.valueOf(
+                Double.parseDouble(expectedOrder.getPrice().toString())
+                        * Integer.parseInt(expectedOrder.getQuantity().toString()));
+
+        assertEquals(expectedTotalPrice, actualCard.getTotalPrice());
+
+        assertEquals("Deliver By: " + expectedOrder.getDeliveryDate().toString(), actualCard.getDeliveryDate());
+    }
+
+    /**
      * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
      * in the correct order.
      */
