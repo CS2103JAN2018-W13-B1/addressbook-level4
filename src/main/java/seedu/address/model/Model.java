@@ -108,4 +108,8 @@ public interface Model {
     void updateOrder(Order target, Order editedOrder)
             throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException;
 
+    /**
+     * Updates the order status of {@code target} with {@code orderStatus}.
+     */
+    void updateOrderStatus(Order target, String orderStatus);
 }

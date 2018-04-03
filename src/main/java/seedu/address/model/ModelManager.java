@@ -124,12 +124,19 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_EVENTS);
         indicateAddressBookChanged();
     }
+
     @Override
     public void updateOrder(Order target, Order editedOrder)
         throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
         requireAllNonNull(target, editedOrder);
 
         addressBook.updateOrder(target, editedOrder);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public void updateOrderStatus(Order target, String orderStatus) {
+        addressBook.updateOrderStatus(target, orderStatus);
         indicateAddressBookChanged();
     }
 

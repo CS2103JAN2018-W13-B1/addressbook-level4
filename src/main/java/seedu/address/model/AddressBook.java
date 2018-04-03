@@ -151,6 +151,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Updates the order status of the given order {@code target}
+     */
+    public void updateOrderStatus(Order target, String orderStatus) {
+        requireNonNull(orderStatus);
+        target.getOrderStatus().setCurrentOrderStatus(orderStatus);
+    }
+
+    /**
      *  Updates the master group list and master preference list to include groups and preferences
      *  in {@code person} that are not in the lists.
      *  @return a copy of this {@code person} such that every group and every preference in this person
