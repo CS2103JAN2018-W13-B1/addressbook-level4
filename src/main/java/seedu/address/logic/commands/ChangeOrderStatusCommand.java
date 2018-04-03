@@ -62,7 +62,7 @@ public class ChangeOrderStatusCommand extends UndoableCommand {
             throw new AssertionError("The target order cannot be missing.");
         }
 
-        EventsCenter.getInstance().post(new ChangeOrderStatusEvent(orderForChangeStatus, orderStatus));
+        EventsCenter.getInstance().post(new ChangeOrderStatusEvent(targetIndex, orderForChangeStatus, orderStatus));
         return new CommandResult(String.format(MESSAGE_ORDER_STATUS_CHANGED_SUCCESS,
                 targetIndex.getOneBased(), orderStatus));
     }

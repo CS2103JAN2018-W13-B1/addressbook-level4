@@ -71,7 +71,7 @@ public class OrderListPanel extends UiPart<Region> {
 
     @FXML
     private void handleChangeOrderStatus(ChangeOrderStatusEvent event) {
-        // TODO: dynamically assign style class to order depending on order status change
+        // TODO: change background of listcell based on order status change
     }
 
     @Subscribe
