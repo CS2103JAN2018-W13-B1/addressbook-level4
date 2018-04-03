@@ -2,6 +2,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.EditOrderCommand.MESSAGE_DUPLICATE_ORDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORDER_STATUS;
 import static seedu.address.model.order.OrderStatus.MESSAGE_ORDER_STATUS_CONSTRAINTS;
 import static seedu.address.model.order.OrderStatus.isValidOrderStatus;
@@ -14,6 +15,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.model.ChangeOrderStatusEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.OrderNotFoundException;
 
 /**
  * Changes the order status of an existing order in the address book.
@@ -51,7 +54,13 @@ public class ChangeOrderStatusCommand extends UndoableCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ORDER_STATUS, orderStatus));
         }
 
-        model.updateOrderStatus(orderForChangeStatus, orderStatus);
+        try {
+            model.updateOrderStatus(orderForChangeStatus, orderStatus);
+        } catch (UniqueOrderList.DuplicateOrderException doe) {
+            throw new CommandException(MESSAGE_DUPLICATE_ORDER);
+        } catch (OrderNotFoundException onfe) {
+            throw new AssertionError("The target order cannot be missing.");
+        }
 
         EventsCenter.getInstance().post(new ChangeOrderStatusEvent(orderForChangeStatus, orderStatus));
         return new CommandResult(String.format(MESSAGE_ORDER_STATUS_CHANGED_SUCCESS,

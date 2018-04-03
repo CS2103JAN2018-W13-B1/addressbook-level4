@@ -111,5 +111,6 @@ public interface Model {
     /**
      * Updates the order status of {@code target} with {@code orderStatus}.
      */
-    void updateOrderStatus(Order target, String orderStatus);
+    void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException;
 }

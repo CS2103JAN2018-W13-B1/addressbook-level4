@@ -157,7 +157,8 @@ public class AddEventCommandTest {
         }
 
         @Override
-        public void updateOrderStatus(Order target, String orderStatus) {
+        public void updateOrderStatus(Order target, String orderStatus)
+                throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
             fail("This method should not be called.");
         }
 

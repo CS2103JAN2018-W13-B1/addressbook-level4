@@ -135,7 +135,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateOrderStatus(Order target, String orderStatus) {
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
         addressBook.updateOrderStatus(target, orderStatus);
         indicateAddressBookChanged();
     }

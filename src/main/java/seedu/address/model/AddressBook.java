@@ -153,9 +153,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Updates the order status of the given order {@code target}
      */
-    public void updateOrderStatus(Order target, String orderStatus) {
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
         requireNonNull(orderStatus);
-        target.getOrderStatus().setCurrentOrderStatus(orderStatus);
+
+        Order editedOrder = new Order(target.getOrderInformation(), target.getPrice(),
+                target.getQuantity(), target.getDeliveryDate());
+        editedOrder.getOrderStatus().setCurrentOrderStatus(orderStatus);
+
+        orders.setOrder(target, editedOrder);
     }
 
     /**
