@@ -77,7 +77,7 @@ public class Order {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getOrderInformation())
-                .append("Status: ")
+                .append(" Status: ")
                 .append(getOrderStatus())
                 .append(" Price: ")
                 .append(getPrice())

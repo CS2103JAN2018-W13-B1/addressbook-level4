@@ -157,6 +157,11 @@ public class AddEventCommandTest {
         }
 
         @Override
+        public void updateOrderStatus(Order target, String orderStatus) {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             fail("This method should not be called.");
         }
