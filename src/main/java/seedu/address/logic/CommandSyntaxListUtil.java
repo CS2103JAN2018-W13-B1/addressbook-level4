@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddOrderCommand;
+import seedu.address.logic.commands.ChangeThemeCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteGroupCommand;
@@ -21,6 +22,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.ViewCalendarCommand;
 
 /**
  * Returns the syntax list of existing commands.
@@ -40,6 +42,7 @@ public final class CommandSyntaxListUtil {
     private static void setCommandSyntaxList() {
         commandSyntaxList.add(AddCommand.COMMAND_SYNTAX);
         commandSyntaxList.add(AddOrderCommand.COMMAND_SYNTAX);
+        commandSyntaxList.add(ChangeThemeCommand.COMMAND_WORD);
         commandSyntaxList.add(ClearCommand.COMMAND_WORD);
         commandSyntaxList.add(DeleteCommand.COMMAND_WORD);
         commandSyntaxList.add(DeleteGroupCommand.COMMAND_WORD);
@@ -56,6 +59,7 @@ public final class CommandSyntaxListUtil {
         commandSyntaxList.add(RedoCommand.COMMAND_WORD);
         commandSyntaxList.add(SelectCommand.COMMAND_SYNTAX);
         commandSyntaxList.add(UndoCommand.COMMAND_WORD);
+        commandSyntaxList.add(ViewCalendarCommand.COMMAND_WORD);
 
         sortCommandList();
     }

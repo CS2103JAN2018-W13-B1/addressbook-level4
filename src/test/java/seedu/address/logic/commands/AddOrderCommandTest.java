@@ -30,6 +30,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.event.CalendarEvent;
+import seedu.address.model.event.UniqueCalendarEventList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -151,6 +153,11 @@ public class AddOrderCommandTest {
         }
 
         @Override
+        public void updateOrder(Order target, Order editedOrder) throws UniqueOrderList.DuplicateOrderException {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             return model.getFilteredPersonList();
         }
@@ -161,8 +168,23 @@ public class AddOrderCommandTest {
         }
 
         @Override
+        public ObservableList<CalendarEvent> getFilteredCalendarEventList() {
+            return model.getFilteredCalendarEventList();
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             filteredPersons.setPredicate(predicate);
+        }
+
+        @Override
+        public void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredOrderList(Predicate<Order> predicate) {
+            fail("This method should not be called.");
         }
 
         @Override
@@ -182,6 +204,12 @@ public class AddOrderCommandTest {
 
         @Override
         public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void addCalendarEvent(CalendarEvent toAdd)
+                throws UniqueCalendarEventList.DuplicateCalendarEventException {
             fail("This method should not be called.");
         }
     }
