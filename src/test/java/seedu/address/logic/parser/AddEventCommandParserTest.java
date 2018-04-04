@@ -38,7 +38,7 @@ import seedu.address.model.event.EndTime;
 import seedu.address.model.event.EntryTitle;
 import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
-import seedu.address.testutil.CalendarEventBuilder;
+import seedu.address.testutil.CalendarEntryBuilder;
 
 //@@author SuxianAlicia
 public class AddEventCommandParserTest {
@@ -50,7 +50,7 @@ public class AddEventCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        CalendarEntry expectedCalEvent = new CalendarEventBuilder()
+        CalendarEntry expectedCalEvent = new CalendarEntryBuilder()
                 .withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
                 .withStartDate(VALID_START_DATE_MEET_BOSS)
                 .withEndDate(VALID_END_DATE_MEET_BOSS)
@@ -97,7 +97,7 @@ public class AddEventCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // No start Date - Start Date should match End Date
-        CalendarEntry expectedCalEvent = new CalendarEventBuilder()
+        CalendarEntry expectedCalEvent = new CalendarEntryBuilder()
                 .withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
                 .withStartDate(VALID_END_DATE_MEET_BOSS)
                 .withEndDate(VALID_END_DATE_MEET_BOSS)
@@ -110,7 +110,7 @@ public class AddEventCommandParserTest {
                 new AddEntryCommand(expectedCalEvent));
 
         // No Start Time - Start Time equals to 00:00
-        expectedCalEvent = new CalendarEventBuilder()
+        expectedCalEvent = new CalendarEntryBuilder()
                 .withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
                 .withStartDate(VALID_START_DATE_MEET_BOSS)
                 .withEndDate(VALID_END_DATE_MEET_BOSS)
@@ -123,7 +123,7 @@ public class AddEventCommandParserTest {
                 new AddEntryCommand(expectedCalEvent));
 
         // No Start Date and No Start Time
-        expectedCalEvent = new CalendarEventBuilder()
+        expectedCalEvent = new CalendarEntryBuilder()
                 .withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
                 .withStartDate(VALID_END_DATE_MEET_BOSS)
                 .withEndDate(VALID_END_DATE_MEET_BOSS)

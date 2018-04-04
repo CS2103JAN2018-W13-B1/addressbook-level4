@@ -11,7 +11,7 @@ import seedu.address.model.event.CalendarEntry;
 /**
  * A utility class for {@code CalendarEntry}.
  */
-public class CalendarEventUtil {
+public class CalendarEntryUtil {
 
     /**
      * returns part of command string for the given {@code calEvent}'s details.

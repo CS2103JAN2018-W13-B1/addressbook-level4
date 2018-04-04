@@ -13,7 +13,7 @@ import seedu.address.ui.util.CalendarFxUtil;
 //@@author SuxianAlicia
 public class CalendarPanelHandle extends NodeHandle<StackPane> {
 
-    public static final String CALENDAR_PANEL_ID = "#calendarPanelHolder";
+    public static final String CALENDAR_PANEL_ID = "#calendarPanelholder";
 
     private Calendar calendar;
     private CalendarSource calendarSource;

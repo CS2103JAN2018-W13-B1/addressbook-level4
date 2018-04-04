@@ -38,7 +38,7 @@ import seedu.address.model.tag.Group;
 import seedu.address.model.tag.Preference;
 import seedu.address.model.tag.exceptions.GroupNotFoundException;
 import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
-import seedu.address.testutil.CalendarEventBuilder;
+import seedu.address.testutil.CalendarEntryBuilder;
 
 //@@author SuxianAlicia
 public class AddEntryCommandTest {
@@ -54,7 +54,7 @@ public class AddEntryCommandTest {
     @Test
     public void execute_calendarEventAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingCalendarEventAdded modelStub = new ModelStubAcceptingCalendarEventAdded();
-        CalendarEntry validEvent = new CalendarEventBuilder().build();
+        CalendarEntry validEvent = new CalendarEntryBuilder().build();
 
         CommandResult commandResult = getAddEntryCommandForCalendarEvent(validEvent, modelStub).execute();
 
@@ -66,7 +66,7 @@ public class AddEntryCommandTest {
     @Test
     public void execute_duplicateEvent_throwsCommandException() throws Exception {
         ModelStub modelStub = new ModelStubThrowingDuplicateCalendarEventException();
-        CalendarEntry validEvent = new CalendarEventBuilder().build();
+        CalendarEntry validEvent = new CalendarEntryBuilder().build();
 
         thrown.expect(CommandException.class);
         thrown.expectMessage(AddEntryCommand.MESSAGE_DUPLICATE_EVENT);
@@ -76,8 +76,8 @@ public class AddEntryCommandTest {
 
     @Test
     public void equals() {
-        CalendarEntry meetBoss = new CalendarEventBuilder().withEntryTitle("Meeting with boss").build();
-        CalendarEntry getSupplies = new CalendarEventBuilder().withEntryTitle("Get supplies").build();
+        CalendarEntry meetBoss = new CalendarEntryBuilder().withEntryTitle("Meeting with boss").build();
+        CalendarEntry getSupplies = new CalendarEntryBuilder().withEntryTitle("Get supplies").build();
         AddEntryCommand addMeetBossCommand = new AddEntryCommand(meetBoss);
         AddEntryCommand addGetSuppliesCommand = new AddEntryCommand(getSupplies);
 

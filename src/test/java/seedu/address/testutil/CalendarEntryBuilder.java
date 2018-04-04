@@ -10,7 +10,7 @@ import seedu.address.model.event.StartTime;
 /**
  * A utility class to help with building CalendarEntry objects.
  */
-public class CalendarEventBuilder {
+public class CalendarEntryBuilder {
 
     public static final String DEFAULT_EVENT_TITLE = "Meeting with boss";
     public static final String DEFAULT_START_DATE = "10-10-2018";
@@ -24,7 +24,7 @@ public class CalendarEventBuilder {
     private StartTime startTime;
     private EndTime endTime;
 
-    public CalendarEventBuilder() {
+    public CalendarEntryBuilder() {
         entryTitle = new EntryTitle(DEFAULT_EVENT_TITLE);
         startDate = new StartDate(DEFAULT_START_DATE);
         endDate = new EndDate(DEFAULT_END_DATE);
@@ -33,20 +33,20 @@ public class CalendarEventBuilder {
     }
 
     /**
-     * Initializes the CalendarEventBuilder with the data of {@code eventToCopy}.
+     * Initializes the CalendarEntryBuilder with the data of {@code entryToCopy}.
      */
-    public CalendarEventBuilder(CalendarEntry eventToCopy) {
-        entryTitle = eventToCopy.getEntryTitle();
-        startDate = eventToCopy.getStartDate();
-        endDate = eventToCopy.getEndDate();
-        startTime = eventToCopy.getStartTime();
-        endTime = eventToCopy.getEndTime();
+    public CalendarEntryBuilder(CalendarEntry entryToCopy) {
+        entryTitle = entryToCopy.getEntryTitle();
+        startDate = entryToCopy.getStartDate();
+        endDate = entryToCopy.getEndDate();
+        startTime = entryToCopy.getStartTime();
+        endTime = entryToCopy.getEndTime();
     }
 
     /**
      * Sets the {@code EntryTitle} of the {@code CalendarEntry} that we are building.
      */
-    public CalendarEventBuilder withEntryTitle(String eventTitle) {
+    public CalendarEntryBuilder withEntryTitle(String eventTitle) {
         this.entryTitle = new EntryTitle(eventTitle);
         return this;
     }
@@ -54,7 +54,7 @@ public class CalendarEventBuilder {
     /**
      * Sets the {@code StartDate} of the {@code CalendarEntry} that we are building.
      */
-    public CalendarEventBuilder withStartDate(String startDate) {
+    public CalendarEntryBuilder withStartDate(String startDate) {
         this.startDate = new StartDate(startDate);
         return this;
     }
@@ -62,7 +62,7 @@ public class CalendarEventBuilder {
     /**
      * Sets the {@code EndDate} of the {@code CalendarEntry} that we are building.
      */
-    public CalendarEventBuilder withEndDate(String endDate) {
+    public CalendarEntryBuilder withEndDate(String endDate) {
         this.endDate = new EndDate(endDate);
         return this;
     }
@@ -70,7 +70,7 @@ public class CalendarEventBuilder {
     /**
      * Sets the {@code StartTime} of the {@code CalendarEntry} that we are building.
      */
-    public CalendarEventBuilder withStartTime(String startTime) {
+    public CalendarEntryBuilder withStartTime(String startTime) {
         this.startTime = new StartTime(startTime);
         return this;
     }
@@ -78,7 +78,7 @@ public class CalendarEventBuilder {
     /**
      * Sets the {@code EndTime} of the {@code CalendarEntry} that we are building.
      */
-    public CalendarEventBuilder withEndTime(String endTime) {
+    public CalendarEntryBuilder withEndTime(String endTime) {
         this.endTime = new EndTime(endTime);
         return this;
     }

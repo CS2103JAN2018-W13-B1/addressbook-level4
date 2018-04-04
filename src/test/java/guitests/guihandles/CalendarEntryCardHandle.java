@@ -3,6 +3,9 @@ package guitests.guihandles;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
+/**
+ * Provides a handle to a calendar entry card in the calendar entry list panel.
+ */
 public class CalendarEntryCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
     private static final String ENTRY_TITLE_ID = "#entryTitle";

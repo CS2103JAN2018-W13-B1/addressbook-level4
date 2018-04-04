@@ -164,7 +164,7 @@ public class AddressBookParser {
 
         case ViewCalendarCommand.COMMAND_WORD:
         case ViewCalendarCommand.COMMAND_ALIAS:
-            return new ViewCalendarCommandParser().parse(arguments);
+            return new ViewCalendarCommand(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

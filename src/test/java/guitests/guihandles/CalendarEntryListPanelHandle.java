@@ -10,7 +10,7 @@ import seedu.address.ui.CalendarEntryCard;
 /**
  * Provides a handle for {@code CalendarEntryListPanel} containing the list of {@code CalendarEntryCard}.
  */
-public class CalendarEntryListPanelHandle extends NodeHandle<ListView<CalendarEntryCard>>{
+public class CalendarEntryListPanelHandle extends NodeHandle<ListView<CalendarEntryCard>> {
     public static final String CALENDAR_ENTRY_LIST_VIEW_ID = "#calendarEntryCardListView";
 
     public CalendarEntryListPanelHandle(ListView<CalendarEntryCard> rootNode) {

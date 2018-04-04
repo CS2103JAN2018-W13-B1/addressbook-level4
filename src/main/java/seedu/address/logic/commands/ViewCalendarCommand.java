@@ -38,11 +38,12 @@ public class ViewCalendarCommand extends Command {
     private final String view;
 
     public ViewCalendarCommand(String view) {
-        requireNonNull(view);
+        String trimmedView = view.trim();
+        requireNonNull(trimmedView);
 
-        if (view.equalsIgnoreCase(MONTH_VIEW)) {
+        if (trimmedView.equalsIgnoreCase(MONTH_VIEW)) {
             this.view = MONTH_VIEW;
-        } else if (view.equalsIgnoreCase(WEEK_VIEW)) {
+        } else if (trimmedView.equalsIgnoreCase(WEEK_VIEW)) {
             this.view = WEEK_VIEW;
         } else { //If user input is equal to DAY_VIEW or input does not conform to any of the required keywords
             this.view = DAY_VIEW;

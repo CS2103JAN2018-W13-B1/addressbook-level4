@@ -12,8 +12,7 @@ public class MainWindowHandle extends StageHandle {
     private final CommandBoxHandle commandBox;
     private final StatusBarFooterHandle statusBarFooter;
     private final MainMenuHandle mainMenu;
-    private final CentrePanelHandle centrePanel;
-    private final RightPanelHandle rightPanel;
+    private final PersonPanelHandle personPanel;
 
     public MainWindowHandle(Stage stage) {
         super(stage);
@@ -23,8 +22,7 @@ public class MainWindowHandle extends StageHandle {
         commandBox = new CommandBoxHandle(getChildNode(CommandBoxHandle.COMMAND_INPUT_FIELD_ID));
         statusBarFooter = new StatusBarFooterHandle(getChildNode(StatusBarFooterHandle.STATUS_BAR_PLACEHOLDER));
         mainMenu = new MainMenuHandle(getChildNode(MainMenuHandle.MENU_BAR_ID));
-        centrePanel = new CentrePanelHandle(getChildNode(CentrePanelHandle.CENTRE_PANEL_ID));
-        rightPanel = new RightPanelHandle(getChildNode(RightPanelHandle.RIGHT_PANEL_ID));
+        personPanel = new PersonPanelHandle(getChildNode(PersonPanelHandle.PERSON_PANEL_ID));
     }
 
     public PersonListPanelHandle getPersonListPanel() {
@@ -48,18 +46,7 @@ public class MainWindowHandle extends StageHandle {
     }
 
     public PersonPanelHandle getPersonPanel() {
-        return centrePanel.getPersonPanelHandle();
+        return personPanel;
     }
 
-    public CalendarPanelHandle getCalendarPanel() {
-        return centrePanel.getCalendarPanelHandle();
-    }
-
-    public CalendarEntryListPanelHandle getCalendarEntryListPanel() {
-        return rightPanel.getCalendarEntryListPanel();
-    }
-
-    public OrderListPanelHandle getOrderListPanel() {
-        return rightPanel.getOrderListPanelHandle();
-    }
 }
