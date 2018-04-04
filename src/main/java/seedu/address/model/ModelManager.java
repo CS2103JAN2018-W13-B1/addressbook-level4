@@ -123,6 +123,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    //@@author amad-person
     @Override
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         addressBook.addOrderToOrderList(orderToAdd);
@@ -136,6 +137,7 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
         indicateAddressBookChanged();
     }
+    //@@author
 
     @Override
     public void addCalendarEntry(CalendarEntry toAdd) throws DuplicateCalendarEntryException {
@@ -144,6 +146,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateCalendarManagerChanged();
     }
 
+<<<<<<< HEAD
     @Override
     public void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException {
         calendarManager.deleteCalendarEntry(entryToDelete);
@@ -151,12 +154,23 @@ public class ModelManager extends ComponentManager implements Model {
         indicateCalendarManagerChanged();
     }
 
+=======
+    //@@author amad-person
+>>>>>>> upstream/master
     @Override
     public void updateOrder(Order target, Order editedOrder)
         throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
         requireAllNonNull(target, editedOrder);
 
         addressBook.updateOrder(target, editedOrder);
+        indicateAddressBookChanged();
+    }
+    //@@author
+
+    @Override
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+        addressBook.updateOrderStatus(target, orderStatus);
         indicateAddressBookChanged();
     }
 
@@ -178,7 +192,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     //=========== Filtered Order List Accessors =============================================================
-
+    //@@author amad-person
     /**
      * Returns an unmodifiable view of the list of {@code Order} backed by the internal list of
      * {@code addressBook}
@@ -194,6 +208,7 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(predicate);
         filteredOrders.setPredicate(predicate);
     }
+    //@@author
 
     // ========== Filtered Calendar Entry List Accessors ==================================
     @Override

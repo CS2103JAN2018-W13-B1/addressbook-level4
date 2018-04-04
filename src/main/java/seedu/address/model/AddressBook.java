@@ -136,12 +136,28 @@ public class AddressBook implements ReadOnlyAddressBook {
         removeUnusedPreferences();
     }
 
+    //@@author amad-person
     /**
      * Replaces the given order {@code target} in the list with {@code editedOrder}.
      */
     public void updateOrder(Order target, Order editedOrder)
         throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
         requireNonNull(editedOrder);
+
+        orders.setOrder(target, editedOrder);
+    }
+    //@@author
+
+    /**
+     * Updates the order status of the given order {@code target}
+     */
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+        requireNonNull(orderStatus);
+
+        Order editedOrder = new Order(target.getOrderInformation(), target.getPrice(),
+                target.getQuantity(), target.getDeliveryDate());
+        editedOrder.getOrderStatus().setCurrentOrderStatus(orderStatus);
 
         orders.setOrder(target, editedOrder);
     }
@@ -259,7 +275,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
         setPreferenceTags(newList.toSet());
     }
-
+    //@@author amad-person
     //// order-level operations
 
     /**
@@ -275,6 +291,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
         orders.remove(targetOrder);
     }
+    //@@author
 
     //// util methods
 
@@ -299,10 +316,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return prefTags.asObservableList();
     }
 
+    //@@author amad-person
     @Override
     public ObservableList<Order> getOrderList() {
         return orders.asObservableList();
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {

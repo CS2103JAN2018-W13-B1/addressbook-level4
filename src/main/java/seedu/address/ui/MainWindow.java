@@ -37,7 +37,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private CentrePanel centrePanel;
-
     private PersonListPanel personListPanel;
     private RightPanel rightPanel;
     private Config config;
@@ -124,8 +123,12 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+<<<<<<< HEAD
 
         centrePanel = new CentrePanel(logic.getCalendar());
+=======
+        centrePanel = new CentrePanel(logic.getCalendarEventList());
+>>>>>>> upstream/master
         centrePlaceholder.getChildren().add(centrePanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
@@ -164,9 +167,11 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    //@@author amad-person
     private void setTheme() {
         Theme.changeTheme(primaryStage, Theme.DARK_THEME_KEYWORD);
     }
+    //@@author
 
     /**
      * Returns the current size and the position of the main Window.
@@ -185,6 +190,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.show();
     }
 
+    //@@author amad-person
     /**
      * Changes the theme of the application.
      */
@@ -192,6 +198,7 @@ public class MainWindow extends UiPart<Stage> {
     public void handleChangeTheme(ChangeThemeEvent event) {
         Theme.changeTheme(primaryStage, event.getTheme());
     }
+    //@@author
 
     void show() {
         primaryStage.show();
@@ -223,9 +230,11 @@ public class MainWindow extends UiPart<Stage> {
         handleHelp();
     }
 
+    //@@author amad-person
     @Subscribe
     private void handleChangeThemeEvent(ChangeThemeEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleChangeTheme(event);
     }
+    //@@author
 }

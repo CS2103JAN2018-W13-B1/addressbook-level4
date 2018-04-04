@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
@@ -160,6 +161,12 @@ public class AddOrderCommandTest {
 
         @Override
         public void updateOrder(Order target, Order editedOrder) throws UniqueOrderList.DuplicateOrderException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateOrderStatus(Order target, String orderStatus)
+                throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
             fail("This method should not be called.");
         }
 

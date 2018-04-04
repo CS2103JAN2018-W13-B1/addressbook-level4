@@ -19,6 +19,7 @@ import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 import seedu.address.model.order.DeliveryDate;
 import seedu.address.model.order.OrderInformation;
+import seedu.address.model.order.OrderStatus;
 import seedu.address.model.order.Price;
 import seedu.address.model.order.Quantity;
 import seedu.address.model.person.Address;
@@ -206,6 +207,7 @@ public class ParserUtil {
         return preferenceSet;
     }
 
+    //@@author amad-person
     /**
      * Parses a {@code String orderInformation} into a {@code OrderInformation}.
      * Leading and trailing whitespaces will be trimmed.
@@ -231,6 +233,34 @@ public class ParserUtil {
         requireNonNull(orderInformation);
         return orderInformation.isPresent()
                 ? Optional.of(parseOrderInformation(orderInformation.get()))
+                : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String orderStatus} into a {@code OrderStatus}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code orderStatus} is invalid.
+     */
+    public static OrderStatus parseOrderStatus(String orderStatus) throws IllegalValueException {
+        requireNonNull(orderStatus);
+        String trimmedOrderStatus = orderStatus.trim();
+        if (!OrderStatus.isValidOrderStatus(trimmedOrderStatus)) {
+            throw new IllegalValueException(OrderStatus.MESSAGE_ORDER_STATUS_CONSTRAINTS);
+        }
+        return new OrderStatus(trimmedOrderStatus);
+    }
+
+    /**
+     * Parses a {@code Optional<String> orderStatus} into an {@code Optional<OrderStatus>}
+     * if {@code orderStatus} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<OrderStatus> parseOrderStatus(Optional<String> orderStatus)
+            throws IllegalValueException {
+        requireNonNull(orderStatus);
+        return orderStatus.isPresent()
+                ? Optional.of(parseOrderStatus(orderStatus.get()))
                 : Optional.empty();
     }
 
@@ -317,6 +347,7 @@ public class ParserUtil {
                 ? Optional.of(parseDeliveryDate(deliveryDate.get()))
                 : Optional.empty();
     }
+    //@@ author
 
     /**
      * Parses a {@code String eventTitle} into a {@code EntryTitle}.

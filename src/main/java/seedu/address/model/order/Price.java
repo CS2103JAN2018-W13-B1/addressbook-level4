@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.model.order;
 
 import static java.util.Objects.requireNonNull;
@@ -32,6 +33,7 @@ public class Price {
      * Returns true if a given string is a valid price.
      */
     public static boolean isValidPrice(String test) {
+        requireNonNull(test);
         return test.matches(PRICE_VALIDATION_REGEX);
     }
 

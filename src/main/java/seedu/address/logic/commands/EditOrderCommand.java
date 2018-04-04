@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
@@ -128,7 +129,7 @@ public class EditOrderCommand extends UndoableCommand {
             return false;
         }
 
-        // statc check
+        // state check
         EditOrderCommand eo = (EditOrderCommand) other;
         return index.equals(eo.index)
                 && editOrderDescriptor.equals(eo.editOrderDescriptor)

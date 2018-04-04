@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
@@ -18,10 +19,10 @@ public class ChangeThemeCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Changes the theme of the application.\n"
-            + "Parameters: THEME \n"
+            + "Parameters: THEME\n"
             + "Example: " + COMMAND_WORD + " light";
 
-    public static final String MESSAGE_THEME_CHANGED_SUCCESS = "Theme changed to %1$s";
+    public static final String MESSAGE_THEME_CHANGED_SUCCESS = "Theme changed to %1$s.";
     public static final String MESSAGE_INVALID_THEME = "Theme %1$s not supported.\n" + MESSAGE_THEME_CONSTRAINTS;
 
     private final String themeVersion;

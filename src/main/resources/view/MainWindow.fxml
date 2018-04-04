@@ -59,12 +59,18 @@
             </padding>
           </StackPane>
 
+<<<<<<< HEAD
           <VBox fx:id="rightPanelList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
+=======
+          <!--@@author amad-person-->
+          <VBox fx:id="orderList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
+>>>>>>> upstream/master
             <padding>
               <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
             <StackPane fx:id="rightPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
+          <!--@@author-->
         </SplitPane>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
