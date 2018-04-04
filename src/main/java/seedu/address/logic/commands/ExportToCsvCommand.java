@@ -1,16 +1,18 @@
 package seedu.address.logic.commands;
 
-import seedu.address.logic.commands.exceptions.CommandException;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.collections.ObservableList;
+
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.Person;
 
-
+/**
+ * Exports listed person from the address book into file with specified filename.
+ */
 public class ExportToCsvCommand extends Command {
     public static final String COMMAND_WORD = "exportCSV";
     public static final String COMMAND_ALIAS = "exCSV";
@@ -19,7 +21,8 @@ public class ExportToCsvCommand extends Command {
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
             + "FILENAME";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exports all listed persons to /data/exported/.. folder as a CSV file"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exports all listed persons to "
+            + "/data/exported/.. folder as a CSV file"
             + "Parameters: FILENAME\n"
             + "Example: " + COMMAND_WORD + " FILENAME";
 
