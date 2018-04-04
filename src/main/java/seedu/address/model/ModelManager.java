@@ -146,7 +146,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateCalendarManagerChanged();
     }
 
-<<<<<<< HEAD
+
     @Override
     public void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException {
         calendarManager.deleteCalendarEntry(entryToDelete);
@@ -154,9 +154,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateCalendarManagerChanged();
     }
 
-=======
     //@@author amad-person
->>>>>>> upstream/master
     @Override
     public void updateOrder(Order target, Order editedOrder)
         throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {

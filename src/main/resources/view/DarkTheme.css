@@ -359,8 +359,6 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
-<<<<<<< HEAD
-=======
 
 #cardPane {
     -fx-background-color: transparent;
@@ -412,4 +410,3 @@
 .cal-anchor-pane {
     -fx-background-color: white;
 }
->>>>>>> upstream/master

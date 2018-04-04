@@ -123,12 +123,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-<<<<<<< HEAD
 
         centrePanel = new CentrePanel(logic.getCalendar());
-=======
-        centrePanel = new CentrePanel(logic.getCalendarEventList());
->>>>>>> upstream/master
+
         centrePlaceholder.getChildren().add(centrePanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
@@ -220,9 +217,6 @@ public class MainWindow extends UiPart<Stage> {
         return this.rightPanel;
     }
 
-    void releaseResources() {
-        centrePanel.freeResources();
-    }
 
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {

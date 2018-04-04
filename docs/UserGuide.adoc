@@ -450,20 +450,11 @@ Examples:
 `cal` +
 Shows Calendar in Day-View.
 
-<<<<<<< HEAD
 * `calendar month` OR +
 `cal month` +
 Shows Calendar in Month-View.
-=======
-=== Listing all events : `eventlist` `coming in v1.5`
->>>>>>> upstream/master
 
-
-<<<<<<< HEAD
 === Adding entries to Event list : `entryadd` `Since V1.3`
-=======
-=== Adding events to Event list : `eventadd` `since v1.3`
->>>>>>> upstream/master
 
 Adds an entry to the Calendar entry list. +
 Format: `entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
@@ -488,11 +479,8 @@ Event appears on specified date in the Calendar.
 `ea t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00` +
 Event starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at the specified time period in Calendar.
 
-<<<<<<< HEAD
+
 === editing entries in Calendar Entry list : `entryedit` `Coming in V1.5`
-=======
-=== editing events in Event list : `eventedit` `coming in v1.5`
->>>>>>> upstream/master
 
 Edits an existing entry in the Calendar entry List. +
 Format: `entryedit e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
@@ -514,11 +502,7 @@ Changes reflect on the Calendar.
 `ee e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800` +
 Edits starting date and time, ending date and time of the 3rd event in Event list.
 
-<<<<<<< HEAD
 === Deleting events in Calendar entry list : `entrydelete` `Since V1.4`
-=======
-=== Deleting events in Event list : `eventdelete` `coming in v1.5`
->>>>>>> upstream/master
 
 Deletes an existing entry in Calendar entry list. +
 Format: `entrydelete EVENT_INDEX` +
