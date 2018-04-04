@@ -44,16 +44,31 @@ public class PersonPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
+    /**
+     * Frees resources allocated to the person panel.
+     */
+    public void freeResources() {
+        panel = null;
+        name = null;
+        phone = null;
+        address = null;
+        email = null;
+        groups = null;
+        preferences = null;
+    }
+
     @Subscribe
     private void loadPersonPage(Person person) {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().toString());
         address.setText(person.getAddress().toString());
         email.setText(person.getEmail().toString());
+        person.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
+        person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
     }
 
     @Subscribe
-    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+    public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadPersonPage(event.getNewSelection().person);
     }

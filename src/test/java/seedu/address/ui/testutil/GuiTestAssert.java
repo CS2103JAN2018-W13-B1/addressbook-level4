@@ -1,14 +1,15 @@
 package seedu.address.ui.testutil;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import guitests.guihandles.OrderCardHandle;
 import guitests.guihandles.PersonCardHandle;
 import guitests.guihandles.PersonListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
+import seedu.address.model.order.Order;
 import seedu.address.model.person.Person;
 
 /**
@@ -42,41 +43,23 @@ public class GuiTestAssert {
                 actualCard.getPreferences());
     }
 
-    /*
-     * Code adopted from PR CS2103T Appendix A UI component
+    /**
+     * Asserts that {@code actualCard} displays the details of {@code expectedOrder}.
      */
-    /* Returns the color style for {@code tagName}'s label. The tag's color is determined by
-     * looking up the color in {@code PersonCard#TAG_COLOUR_STYLES}, using an index generated
-     * by the hash code of the tag's content
-     * @see PersonCard#getTagColourStyleFor(String)
-     */
-    private static String getTagColourStyleFor(String tagName) {
-        switch(tagName) {
-        case "young":
-            return "red";
+    public static void assertCardDisplaysOrder(Order expectedOrder, OrderCardHandle actualCard) {
+        assertEquals(expectedOrder.getOrderInformation().toString(), actualCard.getOrderInformation());
 
-        case "teenager":
-            return "orange";
+        String expectedPriceAndQuantity = "S$" + expectedOrder.getPrice().toString() + " X "
+                + expectedOrder.getQuantity().toString();
+        assertEquals(expectedPriceAndQuantity, actualCard.getPriceAndQuantity());
 
-        case "female adult":
-            return "yellow";
+        String expectedTotalPrice = "Total: S$" + String.valueOf(
+                Double.parseDouble(expectedOrder.getPrice().toString())
+                        * Integer.parseInt(expectedOrder.getQuantity().toString()));
 
-        case "male adult":
-            return "green";
+        assertEquals(expectedTotalPrice, actualCard.getTotalPrice());
 
-        case "old lady":
-            return "blue";
-
-        case "old man":
-            return "violet";
-
-        case "baby":
-            return "purple";
-
-        default:
-            fail(tagName + "does not have a colour assigned");
-            return "";
-        }
+        assertEquals("Deliver By: " + expectedOrder.getDeliveryDate().toString(), actualCard.getDeliveryDate());
     }
 
     /**

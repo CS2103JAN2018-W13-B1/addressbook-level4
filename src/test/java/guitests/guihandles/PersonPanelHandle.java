@@ -53,7 +53,7 @@ public class PersonPanelHandle extends NodeHandle<Node> {
     }
 
     /**
-    * Update group of each person
+    * Update groups of each person
     */
     public void updateGroups() {
         Region groupsContainer = getChildNode(GROUPS_FIELD_ID);
@@ -84,6 +84,7 @@ public class PersonPanelHandle extends NodeHandle<Node> {
                 .map(Label.class::cast)
                 .collect(Collectors.toList());
     }
+
     public List<String> getPreferences() {
         return preferenceLabels
                 .stream()
