@@ -26,6 +26,7 @@ public class CalendarManager implements ReadOnlyCalendarManager {
     public CalendarManager() {
         calendarEntryList = new UniqueCalendarEntryList();
         calendar = new Calendar();
+        calendar.setReadOnly(true);
         calendar.setStyle(Calendar.Style.STYLE1);
     }
 

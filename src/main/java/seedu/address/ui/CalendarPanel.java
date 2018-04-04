@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.logging.Logger;
 
 import com.calendarfx.model.Calendar;
@@ -7,6 +9,7 @@ import com.calendarfx.model.CalendarSource;
 import com.calendarfx.view.CalendarView;
 import com.google.common.eventbus.Subscribe;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -33,8 +36,6 @@ public class CalendarPanel extends UiPart<Region> {
     private final CalendarView calendarView;
     private final CalendarSource calendarSource;
 
-
-
     @FXML
     private StackPane calendarPanelholder;
 
@@ -44,7 +45,38 @@ public class CalendarPanel extends UiPart<Region> {
         calendarSource = new CalendarSource();
 
         initialiseCalendar(calendar);
+        createTimeThread();
         registerAsAnEventHandler(this);
+    }
+
+    /**
+     * Adapted from CalendarFX developer manual QuickStart section.
+     * http://dlsc.com/wp-content/html/calendarfx/manual.html#_quick_start
+     */
+    private void createTimeThread() {
+        Thread updateTimeThread = new Thread("Calendar: Update Time Thread") {
+            @Override
+            public void run() {
+                while (true) {
+                    Platform.runLater(() -> {
+                        calendarView.setToday(LocalDate.now());
+                        calendarView.setTime(LocalTime.now());
+                    });
+
+                    try {
+                        // update every 10 seconds
+                        sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            };
+        };
+
+        updateTimeThread.setPriority(Thread.MIN_PRIORITY);
+        updateTimeThread.setDaemon(true);
+        updateTimeThread.start();
     }
 
     /**
