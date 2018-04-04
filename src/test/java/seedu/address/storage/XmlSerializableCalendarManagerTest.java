@@ -1,6 +1,6 @@
 package seedu.address.storage;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
 
 import java.io.File;
 

@@ -26,6 +26,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyCalendarManager;
 import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
@@ -212,6 +213,11 @@ public class AddCommandTest {
                 throws DuplicateCalendarEntryException {
             fail("This method should not be called.");
         }
+
+        @Override
+        public void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException {
+            fail("This method should not be called.");
+        }
     }
 
     /**
@@ -229,7 +235,9 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyCalendarManager getCalendarManager() { return new CalendarManager(); }
+        public ReadOnlyCalendarManager getCalendarManager() {
+            return new CalendarManager();
+        }
     }
 
     /**
@@ -250,6 +258,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyCalendarManager getCalendarManager() { return new CalendarManager(); }
+        public ReadOnlyCalendarManager getCalendarManager() {
+            return new CalendarManager();
+        }
     }
 }

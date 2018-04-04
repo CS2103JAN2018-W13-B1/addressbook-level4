@@ -9,7 +9,7 @@ import org.junit.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EventTitle;
+import seedu.address.model.event.EntryTitle;
 import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 import seedu.address.testutil.Assert;
@@ -21,7 +21,7 @@ public class XmlAdaptedCalendarEntryTest {
     private static final String INVALID_START_TIME = "24:60";
     private static final String INVALID_END_TIME = "25:100";
 
-    private static final String VALID_EVENT_TITLE = MEETING_BOSS.getEventTitle().toString();
+    private static final String VALID_EVENT_TITLE = MEETING_BOSS.getEntryTitle().toString();
     private static final String VALID_START_DATE = MEETING_BOSS.getStartDate().toString();
     private static final String VALID_END_DATE = MEETING_BOSS.getEndDate().toString();
     private static final String VALID_START_TIME = MEETING_BOSS.getStartTime().toString();
@@ -37,7 +37,7 @@ public class XmlAdaptedCalendarEntryTest {
     public void toModelType_invalidEventTitle_throwsIllegalValueException() {
         XmlAdaptedCalendarEntry calEvent = new XmlAdaptedCalendarEntry(INVALID_EVENT_TITLE, VALID_START_DATE,
                 VALID_END_DATE, VALID_START_TIME, VALID_END_TIME);
-        String expectedMessage = EventTitle.MESSAGE_EVENT_TITLE_CONSTRAINTS;
+        String expectedMessage = EntryTitle.MESSAGE_ENTRY_TITLE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, calEvent::toModelType);
     }
 
@@ -45,7 +45,7 @@ public class XmlAdaptedCalendarEntryTest {
     public void toModelType_nullEventTitle_throwsIllegalValueException() {
         XmlAdaptedCalendarEntry calEvent = new XmlAdaptedCalendarEntry(null, VALID_START_DATE,
                 VALID_END_DATE, VALID_START_TIME, VALID_END_TIME);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, EventTitle.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, EntryTitle.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, calEvent::toModelType);
     }
 

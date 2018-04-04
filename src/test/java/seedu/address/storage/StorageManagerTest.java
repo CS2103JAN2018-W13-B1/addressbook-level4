@@ -3,6 +3,7 @@ package seedu.address.storage;
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.testutil.TypicalCalendarEntries.getTypicalCalendarManagerWithEntries;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
@@ -15,7 +16,9 @@ import org.junit.rules.TemporaryFolder;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyCalendarManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
@@ -67,6 +70,24 @@ public class StorageManagerTest {
         storageManager.saveAddressBook(original);
         ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
         assertEquals(original, new AddressBook(retrieved));
+    }
+
+    @Test
+    public void calendarManagerReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link XmlCalendarManagerStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link XmlCalendarManagerStorageTest} class.
+         */
+        CalendarManager original = getTypicalCalendarManagerWithEntries();
+        storageManager.saveCalendarManager(original);
+        ReadOnlyCalendarManager retrieved = storageManager.readCalendarManager().get();
+        assertEquals(original, new CalendarManager(retrieved));
+    }
+
+    @Test
+    public void getCalendarManagerFilePath() {
+        assertNotNull(storageManager.getCalendarManagerFilePath());
     }
 
     @Test

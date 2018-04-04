@@ -18,49 +18,49 @@ public class UniqueCalendarEntryListTest {
 
     @Test
     public void equals() throws DuplicateCalendarEntryException {
-        UniqueCalendarEntryList firstEventsList =  new UniqueCalendarEntryList();
-        firstEventsList.add(MEETING_BOSS);
-        UniqueCalendarEntryList secondEventsList = new UniqueCalendarEntryList();
-        secondEventsList.add(GET_STOCKS);
+        UniqueCalendarEntryList firstEntriesList =  new UniqueCalendarEntryList();
+        firstEntriesList.add(MEETING_BOSS);
+        UniqueCalendarEntryList secondEntriesList = new UniqueCalendarEntryList();
+        secondEntriesList.add(GET_STOCKS);
 
         // Same object -> True
-        assertTrue(firstEventsList.equals(firstEventsList));
+        assertTrue(firstEntriesList.equals(firstEntriesList));
 
         // different type -> false
-        assertFalse(firstEventsList.equals(1));
+        assertFalse(firstEntriesList.equals(1));
 
         // different objects, same type -> false
-        assertFalse(firstEventsList.equals(secondEventsList));
+        assertFalse(firstEntriesList.equals(secondEntriesList));
     }
 
     @Test
     public void asOrderInsensitiveList_compareListsWithSameItemsInDiffOrder_assertEqual()
             throws DuplicateCalendarEntryException {
 
-        UniqueCalendarEntryList firstEventsList =  new UniqueCalendarEntryList();
-        firstEventsList.add(MEETING_BOSS);
-        firstEventsList.add(GET_STOCKS);
-        UniqueCalendarEntryList secondEventsList = new UniqueCalendarEntryList();
-        secondEventsList.add(GET_STOCKS);
-        secondEventsList.add(MEETING_BOSS);
+        UniqueCalendarEntryList firstEntriesList =  new UniqueCalendarEntryList();
+        firstEntriesList.add(MEETING_BOSS);
+        firstEntriesList.add(GET_STOCKS);
+        UniqueCalendarEntryList secondEntries = new UniqueCalendarEntryList();
+        secondEntries.add(GET_STOCKS);
+        secondEntries.add(MEETING_BOSS);
 
-        assertTrue(firstEventsList.equalsOrderInsensitive(secondEventsList));
+        assertTrue(firstEntriesList.equalsOrderInsensitive(secondEntries));
     }
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        UniqueCalendarEntryList calendarEventList = new UniqueCalendarEntryList();
+        UniqueCalendarEntryList calendarEntriesList = new UniqueCalendarEntryList();
         thrown.expect(UnsupportedOperationException.class);
-        calendarEventList.asObservableList().remove(0);
+        calendarEntriesList.asObservableList().remove(0);
     }
 
     @Test
     public void asUniqueList_addDuplicateCalendarEvents_throwsDuplicateCalendarEventException()
             throws DuplicateCalendarEntryException {
 
-        UniqueCalendarEntryList calendarEventList = new UniqueCalendarEntryList();
+        UniqueCalendarEntryList calendarEntriesList = new UniqueCalendarEntryList();
         thrown.expect(DuplicateCalendarEntryException.class);
-        calendarEventList.add(MEETING_BOSS);
-        calendarEventList.add(MEETING_BOSS);
+        calendarEntriesList.add(MEETING_BOSS);
+        calendarEntriesList.add(MEETING_BOSS);
     }
 }
