@@ -663,7 +663,7 @@ A `CalendarEvent` is implemented in the following manner:
 ----
 public class CalendarEvent {
 
-    private final String eventTitle;
+    private final String entryTitle;
     private final StartDate startDate;
     private final EndDate endDate;
     private final StartTime startTime;
@@ -677,7 +677,7 @@ public class CalendarEvent {
 
 The following is a brief description of the attributes of `CalendarEvent`:
 
-* eventTitle: Represents title of event.
+* entryTitle: Represents title of event.
 * startDate: Represents starting date of the event in DD-MM-YYYY format.
 * endDate: Represents ending date of the event in DD-MM-YYYY format.
 * startTime: Represents starting time of the event in HH:MM format (24-Hour format).

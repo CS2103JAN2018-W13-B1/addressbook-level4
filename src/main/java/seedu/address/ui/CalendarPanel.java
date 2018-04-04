@@ -21,13 +21,18 @@ import seedu.address.ui.util.CalendarFxUtil;
  */
 public class CalendarPanel extends UiPart<Region> {
 
+    public static final String DAY_VIEW = "Day";
+    public static final String MONTH_VIEW = "Month";
+    public static final String WEEK_VIEW = "Week";
+
     private static final String FXML = "CalendarPanel.fxml";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     private final CalendarView calendarView;
-
     private final CalendarSource calendarSource;
+
+
 
     @FXML
     private StackPane calendarPanelholder;
@@ -50,12 +55,19 @@ public class CalendarPanel extends UiPart<Region> {
         calendarPanelholder.getChildren().setAll(calendarView);
     }
 
-
-
-
     @Subscribe
     public void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        String view = event.getView();
+        if (view != null) {
+            if (view.equalsIgnoreCase(MONTH_VIEW)) {
+                calendarView.showMonthPage();
+            } else if (view.equalsIgnoreCase(DAY_VIEW)) {
+                calendarView.showDayPage();
+            } else if (view.equalsIgnoreCase(WEEK_VIEW)) {
+                calendarView.showWeekPage();
+            }
+        }
     }
 
 }

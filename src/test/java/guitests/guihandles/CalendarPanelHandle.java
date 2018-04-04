@@ -7,10 +7,6 @@ import javafx.scene.Node;
  */
 public class CalendarPanelHandle extends NodeHandle<Node> {
 
-    public static final String LABEL_YEAR_ID = "#year";
-    public static final String LABEL_MONTH_ID = "#month";
-    public static final String GRID_PANE_ID = "#daysOfMonth";
-
     protected CalendarPanelHandle(Node rootNode) {
         super(rootNode);
     }
