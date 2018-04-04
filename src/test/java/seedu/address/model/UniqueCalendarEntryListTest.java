@@ -12,6 +12,7 @@ import org.junit.rules.ExpectedException;
 import seedu.address.model.event.UniqueCalendarEntryList;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
+//@@author SuxianAlicia
 public class UniqueCalendarEntryListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

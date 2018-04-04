@@ -139,6 +139,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
     //@@author
 
+    //@@author SuxianAlicia
     @Override
     public void addCalendarEntry(CalendarEntry toAdd) throws DuplicateCalendarEntryException {
         calendarManager.addCalendarEntry(toAdd);
@@ -153,6 +154,8 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_ENTRIES);
         indicateCalendarManagerChanged();
     }
+
+    //@@author
 
     //@@author amad-person
     @Override
@@ -209,6 +212,7 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author
 
     // ========== Filtered Calendar Entry List Accessors ==================================
+    //@@author SuxianAlicia
     @Override
     public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
         return FXCollections.unmodifiableObservableList(filteredEvents);
@@ -225,6 +229,7 @@ public class ModelManager extends ComponentManager implements Model {
         return calendarManager.getCalendar();
     }
 
+    //@@author
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object

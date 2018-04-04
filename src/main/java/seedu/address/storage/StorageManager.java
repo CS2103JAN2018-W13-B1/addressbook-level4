@@ -84,6 +84,7 @@ public class StorageManager extends ComponentManager implements Storage {
 
     // ================== CalendarManager methods ==============================
 
+    //@@author SuxianAlicia
     @Override
     public String getCalendarManagerFilePath() {
         return calendarManagerStorage.getCalendarManagerFilePath();
@@ -112,6 +113,7 @@ public class StorageManager extends ComponentManager implements Storage {
         logger.fine("Attempting to write to calendar data file: " + filePath);
         calendarManagerStorage.saveCalendarManager(calendarManager, filePath);
     }
+    //@@author
 
 
     @Override
@@ -125,6 +127,7 @@ public class StorageManager extends ComponentManager implements Storage {
         }
     }
 
+    //@@author SuxianAlicia
     @Override
     @Subscribe
     public void handleCalendarManagerChangedEvent(CalendarManagerChangedEvent event) {
@@ -137,4 +140,5 @@ public class StorageManager extends ComponentManager implements Storage {
             raise(new DataSavingExceptionEvent(e));
         }
     }
+    //@@author
 }

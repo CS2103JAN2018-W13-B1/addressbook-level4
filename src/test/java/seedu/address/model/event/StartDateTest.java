@@ -8,6 +8,7 @@ import org.junit.Test;
 import seedu.address.commons.util.DateUtil;
 import seedu.address.testutil.Assert;
 
+//@@author SuxianAlicia
 public class StartDateTest {
     @Test
     public void constructor_null_throwsNullPointerException() {

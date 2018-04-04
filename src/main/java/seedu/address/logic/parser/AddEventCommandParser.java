@@ -23,6 +23,7 @@ import seedu.address.model.event.StartTime;
 /**
  * Parses input arguments and creates a new AddEntryCommand object
  */
+//@@author SuxianAlicia
 public class AddEventCommandParser implements Parser<AddEntryCommand> {
 
     public static final String EVENT_DURATION_CONSTRAINTS =

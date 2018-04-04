@@ -16,6 +16,7 @@ import seedu.address.model.ReadOnlyCalendarManager;
 /**
  * A class to access CalendarManager data stored as an xml file on the hard disk.
  */
+//@@author SuxianAlicia
 public class XmlCalendarManagerStorage implements CalendarManagerStorage {
 
     private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);

@@ -18,6 +18,7 @@ import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 /**
  * Manages {@code Calendar} as defined in CalendarFX and its related data.
  */
+//@@author SuxianAlicia
 public class CalendarManager implements ReadOnlyCalendarManager {
     private final Calendar calendar;
     private final UniqueCalendarEntryList calendarEntryList;

@@ -10,6 +10,7 @@ import java.time.format.DateTimeParseException;
  * Helper functions for handling strings representing Time.
  * Ensures that strings conform to a given Time Format.
  */
+//@@author SuxianAlicia
 public class TimeUtil {
     public static final String TIME_VALIDATION_REGEX = "\\d{2}:\\d{2}"; // format
     public static final String TIME_VALIDATION_FORMAT = "HH:mm"; // legal dates

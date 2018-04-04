@@ -16,6 +16,7 @@ import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
 /**
  * Deletes a calendar entry identified using it's last displayed index from the address book.
  */
+//@@author SuxianAlicia
 public class DeleteEntryCommand extends UndoableCommand {
 
 

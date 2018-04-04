@@ -6,6 +6,7 @@ import seedu.address.model.event.CalendarEntry;
 /**
  * Unmodifiable view of an calendar manager.
  */
+//@@author SuxianAlicia
 public interface ReadOnlyCalendarManager {
 
     /**

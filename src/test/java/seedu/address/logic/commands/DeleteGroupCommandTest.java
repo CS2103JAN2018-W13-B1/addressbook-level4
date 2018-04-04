@@ -24,6 +24,7 @@ import seedu.address.model.tag.Group;
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
  * {@code DeleteGroupCommand}.
  */
+//@@author SuxianAlicia
 public class DeleteGroupCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new CalendarManager(), new UserPrefs());
 

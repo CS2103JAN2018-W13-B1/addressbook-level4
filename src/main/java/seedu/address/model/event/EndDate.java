@@ -12,6 +12,7 @@ import java.time.format.DateTimeParseException;
  * Represents Ending Date of a {@code CalendarEntry}.
  * Guarantees: immutable; is valid as declared in {@link seedu.address.commons.util.DateUtil#isValidDate(String)}
  */
+//@@author SuxianAlicia
 public class EndDate {
     public static final String MESSAGE_END_DATE_CONSTRAINTS =
             "End Date should be DD-MM-YYYY, and it should not be blank";

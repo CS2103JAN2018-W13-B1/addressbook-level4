@@ -8,6 +8,7 @@ import java.util.Objects;
  * Represents a Calendar Event in address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
+//@@author SuxianAlicia
 public class CalendarEntry {
 
     private final EntryTitle entryTitle;

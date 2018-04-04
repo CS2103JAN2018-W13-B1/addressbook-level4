@@ -7,6 +7,7 @@ import seedu.address.model.Model;
 /**
  * List and display all calendar entries in the address book to the user.
  */
+//@@author SuxianAlicia
 public class ListCalendarEntryCommand extends Command {
     public static final String COMMAND_WORD = "entrylist";
     public static final String COMMAND_ALIAS = "el";

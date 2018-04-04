@@ -8,6 +8,7 @@ import org.junit.Test;
 import seedu.address.commons.util.TimeUtil;
 import seedu.address.testutil.Assert;
 
+//@@author SuxianAlicia
 public class StartTimeTest {
     @Test
     public void constructor_null_throwsNullPointerException() {

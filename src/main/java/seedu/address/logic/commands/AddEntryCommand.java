@@ -19,6 +19,7 @@ import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 /**
  * Adds a calendar entry to the address book.
  */
+//@@author SuxianAlicia
 public class AddEntryCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "entryadd";

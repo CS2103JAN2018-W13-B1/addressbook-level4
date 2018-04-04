@@ -92,6 +92,7 @@ public interface Model {
      */
     void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException;
 
+    //@@author SuxianAlicia
     /**
      * Adds event to list of calendar events.
      */
@@ -111,6 +112,7 @@ public interface Model {
     /** Returns the CalendarManager */
     ReadOnlyCalendarManager getCalendarManager();
 
+    //@@author
     /**
      * Replaces the given order {@code target} with {@code editedOrder}.
      *

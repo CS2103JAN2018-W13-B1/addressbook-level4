@@ -17,6 +17,7 @@ import seedu.address.commons.util.FileUtil;
 import seedu.address.model.CalendarManager;
 import seedu.address.model.ReadOnlyCalendarManager;
 
+//@@author SuxianAlicia
 public class XmlCalendarManagerStorageTest {
     private static final String TEST_DATA_FOLDER =
             FileUtil.getPath("./src/test/data/XmlCalendarManagerStorageTest/");

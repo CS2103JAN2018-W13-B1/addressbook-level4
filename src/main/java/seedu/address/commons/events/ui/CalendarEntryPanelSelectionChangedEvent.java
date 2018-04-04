@@ -6,6 +6,7 @@ import seedu.address.ui.CalendarEntryCard;
 /**
  * Represents a selection change in the Calendar Entry List Panel
  */
+//@@author SuxianAlicia
 public class CalendarEntryPanelSelectionChangedEvent extends BaseEvent {
 
     private final CalendarEntryCard newSelection;

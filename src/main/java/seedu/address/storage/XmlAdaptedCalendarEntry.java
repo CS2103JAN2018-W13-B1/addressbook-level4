@@ -19,6 +19,7 @@ import seedu.address.model.event.StartTime;
 /**
  * JAXB-friendly version of a CalendarEntry.
  */
+//@@author SuxianAlicia
 public class XmlAdaptedCalendarEntry {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "CalendarEntry's %s field is missing!";

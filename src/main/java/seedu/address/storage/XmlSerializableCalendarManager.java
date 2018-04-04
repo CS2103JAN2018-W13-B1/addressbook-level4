@@ -14,6 +14,7 @@ import seedu.address.model.ReadOnlyCalendarManager;
 /**
  * An Immutable CalendarManager that is serializable to XML format
  */
+//@@author SuxianAlicia
 @XmlRootElement(name = "calendarmanager")
 public class XmlSerializableCalendarManager {
     @XmlElement

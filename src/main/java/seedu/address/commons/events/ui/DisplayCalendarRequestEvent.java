@@ -7,6 +7,7 @@ import seedu.address.commons.events.BaseEvent;
 /**
  * Indicates request to display calendar.
  */
+//@@author SuxianAlicia
 public class DisplayCalendarRequestEvent extends BaseEvent {
 
     private final Optional<String> calendarView;

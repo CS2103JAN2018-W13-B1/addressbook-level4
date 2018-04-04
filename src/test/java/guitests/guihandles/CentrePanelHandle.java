@@ -5,6 +5,7 @@ import javafx.scene.Node;
 /**
  * Provides a handle for {@code CentrePanel}.
  */
+//@@author SuxianAlicia
 public class CentrePanelHandle extends NodeHandle<Node> {
     public static final String CENTRE_PANEL_ID = "#centrePlaceholder";
 

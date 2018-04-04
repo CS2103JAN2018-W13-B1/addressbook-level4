@@ -19,6 +19,7 @@ import seedu.address.ui.util.CalendarFxUtil;
  * Calendar Panel displaying calendar.
  * ContactSails implements CalendarFX to display Calendar.
  */
+//@@author SuxianAlicia
 public class CalendarPanel extends UiPart<Region> {
 
     public static final String DAY_VIEW = "Day";

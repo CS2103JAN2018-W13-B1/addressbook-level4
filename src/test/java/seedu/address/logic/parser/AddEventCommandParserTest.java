@@ -40,6 +40,7 @@ import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 import seedu.address.testutil.CalendarEventBuilder;
 
+//@@author SuxianAlicia
 public class AddEventCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT =

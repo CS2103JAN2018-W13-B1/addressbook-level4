@@ -40,6 +40,7 @@ import seedu.address.model.tag.exceptions.GroupNotFoundException;
 import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 import seedu.address.testutil.CalendarEventBuilder;
 
+//@@author SuxianAlicia
 public class AddEntryCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

@@ -25,6 +25,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PreferencesContainKeywordsPredicate;
 
+//@@author SuxianAlicia
 public class FindPreferenceCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new CalendarManager(), new UserPrefs());
 

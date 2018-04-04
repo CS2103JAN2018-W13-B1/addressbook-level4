@@ -11,6 +11,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 /**
  * Displays Calendar in App.
  */
+//@@author SuxianAlicia
 public class ViewCalendarCommand extends Command {
     public static final String COMMAND_WORD = "calendar";
     public static final String COMMAND_ALIAS = "cal";

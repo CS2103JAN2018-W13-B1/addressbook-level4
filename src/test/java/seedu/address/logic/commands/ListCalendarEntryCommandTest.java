@@ -13,6 +13,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
+//@@author SuxianAlicia
 public class ListCalendarEntryCommandTest {
     private Model model;
     private Model expectedModel;

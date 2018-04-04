@@ -24,7 +24,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.GroupsContainKeywordsPredicate;
 import seedu.address.model.person.Person;
 
-
+//@@author SuxianAlicia
 public class FindGroupCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new CalendarManager(), new UserPrefs());
 

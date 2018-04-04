@@ -7,6 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents Title of a {@code CalendarEntry} in Event list of Address Book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEntryTitle(String)}
  */
+//@@author SuxianAlicia
 public class EntryTitle {
     public static final String MESSAGE_ENTRY_TITLE_CONSTRAINTS =
             "Event title should only contain alphanumeric characters and spaces"

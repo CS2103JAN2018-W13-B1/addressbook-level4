@@ -20,6 +20,7 @@ import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
  *
  * @see CalendarEntry#equals(Object)
  */
+//@@author SuxianAlicia
 public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
     private final ObservableList<CalendarEntry> internalList = FXCollections.observableArrayList();
 

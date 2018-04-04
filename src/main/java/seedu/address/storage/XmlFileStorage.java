@@ -39,6 +39,7 @@ public class XmlFileStorage {
     /**
      * Saves the given calendarManager data to the specified file.
      */
+    //@@author SuxianAlicia
     public static void saveCalendarManagerDataToFile(File file, XmlSerializableCalendarManager calendarManager)
             throws FileNotFoundException {
         try {
@@ -60,4 +61,5 @@ public class XmlFileStorage {
             throw new DataConversionException(e);
         }
     }
+    //@@author
 }

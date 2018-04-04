@@ -15,6 +15,7 @@ import seedu.address.model.event.CalendarEntry;
 /**
  * The Centre Panel of the App that can switch between Person Panel and Calendar Panel
  */
+//@@author SuxianAlicia
 public class CentrePanel extends UiPart<Region> {
 
     private static final String FXML = "CentrePanel.fxml";
