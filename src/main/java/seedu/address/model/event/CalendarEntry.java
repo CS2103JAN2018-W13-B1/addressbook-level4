@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class CalendarEntry {
 
-    private final EventTitle eventTitle;
+    private final EntryTitle entryTitle;
     private final StartDate startDate;
     private final EndDate endDate;
     private final StartTime startTime;
@@ -20,10 +20,10 @@ public class CalendarEntry {
     /**
      * Every field must be present, and not null.
      */
-    public CalendarEntry(EventTitle eventTitle, StartDate startDate, EndDate endDate,
+    public CalendarEntry(EntryTitle entryTitle, StartDate startDate, EndDate endDate,
                          StartTime startTime, EndTime endTime) {
-        requireAllNonNull(eventTitle, startDate, endDate, startTime, endTime);
-        this.eventTitle = eventTitle;
+        requireAllNonNull(entryTitle, startDate, endDate, startTime, endTime);
+        this.entryTitle = entryTitle;
         this.startDate = startDate;
         this.endDate = endDate;
         this.startTime = startTime;
@@ -31,8 +31,8 @@ public class CalendarEntry {
     }
 
 
-    public EventTitle getEventTitle() {
-        return eventTitle;
+    public EntryTitle getEntryTitle() {
+        return entryTitle;
     }
 
     public StartDate getStartDate() {
@@ -62,7 +62,7 @@ public class CalendarEntry {
         }
 
         CalendarEntry otherCalEvent = (CalendarEntry) other;
-        return otherCalEvent.getEventTitle().equals(this.getEventTitle())
+        return otherCalEvent.getEntryTitle().equals(this.getEntryTitle())
                 && otherCalEvent.getStartDate().equals(this.getStartDate())
                 && otherCalEvent.getEndDate().equals(this.getEndDate())
                 && otherCalEvent.getStartTime().equals(this.getStartTime())
@@ -71,13 +71,13 @@ public class CalendarEntry {
 
     @Override
     public int hashCode() {
-        return Objects.hash(eventTitle, startDate, endDate, startTime, endTime);
+        return Objects.hash(entryTitle, startDate, endDate, startTime, endTime);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getEventTitle())
+        builder.append(getEntryTitle())
                 .append(" Start Date: ")
                 .append(getStartDate())
                 .append(" End Date: ")

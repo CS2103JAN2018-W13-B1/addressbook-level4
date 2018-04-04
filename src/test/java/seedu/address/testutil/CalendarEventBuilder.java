@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EventTitle;
+import seedu.address.model.event.EntryTitle;
 import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 
@@ -18,14 +18,14 @@ public class CalendarEventBuilder {
     public static final String DEFAULT_START_TIME = "10:00";
     public static final String DEFAULT_END_TIME = "12:00";
 
-    private EventTitle eventTitle;
+    private EntryTitle entryTitle;
     private StartDate startDate;
     private EndDate endDate;
     private StartTime startTime;
     private EndTime endTime;
 
     public CalendarEventBuilder() {
-        eventTitle = new EventTitle(DEFAULT_EVENT_TITLE);
+        entryTitle = new EntryTitle(DEFAULT_EVENT_TITLE);
         startDate = new StartDate(DEFAULT_START_DATE);
         endDate = new EndDate(DEFAULT_END_DATE);
         startTime = new StartTime(DEFAULT_START_TIME);
@@ -36,7 +36,7 @@ public class CalendarEventBuilder {
      * Initializes the CalendarEventBuilder with the data of {@code eventToCopy}.
      */
     public CalendarEventBuilder(CalendarEntry eventToCopy) {
-        eventTitle = eventToCopy.getEventTitle();
+        entryTitle = eventToCopy.getEntryTitle();
         startDate = eventToCopy.getStartDate();
         endDate = eventToCopy.getEndDate();
         startTime = eventToCopy.getStartTime();
@@ -44,10 +44,10 @@ public class CalendarEventBuilder {
     }
 
     /**
-     * Sets the {@code EventTitle} of the {@code CalendarEntry} that we are building.
+     * Sets the {@code EntryTitle} of the {@code CalendarEntry} that we are building.
      */
-    public CalendarEventBuilder withEventTitle(String eventTitle) {
-        this.eventTitle = new EventTitle(eventTitle);
+    public CalendarEventBuilder withEntryTitle(String eventTitle) {
+        this.entryTitle = new EntryTitle(eventTitle);
         return this;
     }
 
@@ -84,6 +84,6 @@ public class CalendarEventBuilder {
     }
 
     public CalendarEntry build() {
-        return new CalendarEntry(eventTitle, startDate, endDate, startTime, endTime);
+        return new CalendarEntry(entryTitle, startDate, endDate, startTime, endTime);
     }
 }

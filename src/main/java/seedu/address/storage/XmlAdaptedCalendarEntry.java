@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static java.time.temporal.ChronoUnit.MINUTES;
+
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -10,7 +12,7 @@ import seedu.address.commons.util.TimeUtil;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EventTitle;
+import seedu.address.model.event.EntryTitle;
 import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 
@@ -18,10 +20,18 @@ import seedu.address.model.event.StartTime;
  * JAXB-friendly version of a CalendarEntry.
  */
 public class XmlAdaptedCalendarEntry {
+
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "CalendarEntry's %s field is missing!";
+    public static final String START_AND_END_DATE_CONSTRAINTS = "Start Date cannot be later than End Date.";
+    public static final String START_AND_END_TIME_CONSTRAINTS =
+            "Start Time cannot be later than End Time if Event ends on same date.";
+    public static final String EVENT_DURATION_CONSTRAINTS =
+            "Event must last at least 15 minutes if ending in same day."; //Constraint of CalendarFX entries
+
+    private static final int MINIMAL_DURATION = 15; //Constraint of CalendarFX entries
 
     @XmlElement
-    private String eventTitle;
+    private String entryTitle;
     @XmlElement
     private String startDate;
     @XmlElement
@@ -39,9 +49,9 @@ public class XmlAdaptedCalendarEntry {
     /**
      * Constructs an {@code XmlAdaptedCalendarEntry} with the given calendar event details.
      */
-    public XmlAdaptedCalendarEntry(String eventTitle, String startDate, String endDate,
+    public XmlAdaptedCalendarEntry(String entryTitle, String startDate, String endDate,
                                    String startTime, String endTime) {
-        this.eventTitle = eventTitle;
+        this.entryTitle = entryTitle;
         this.startDate = startDate;
         this.endDate = endDate;
         this.startTime = startTime;
@@ -54,7 +64,7 @@ public class XmlAdaptedCalendarEntry {
      * @param source future changes to this will not affect the created XmlAdaptedCalendarEntry
      */
     public XmlAdaptedCalendarEntry(CalendarEntry source) {
-        eventTitle = source.getEventTitle().toString();
+        entryTitle = source.getEntryTitle().toString();
         startDate = source.getStartDate().toString();
         endDate = source.getEndDate().toString();
         startTime = source.getStartTime().toString();
@@ -67,14 +77,14 @@ public class XmlAdaptedCalendarEntry {
      * @throws IllegalValueException if any data constraints are violated in the adapted calendar event's fields.
      */
     public CalendarEntry toModelType() throws IllegalValueException {
-        if (this.eventTitle == null) {
+        if (this.entryTitle == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    EventTitle.class.getSimpleName()));
+                    EntryTitle.class.getSimpleName()));
         }
-        if (!EventTitle.isValidEventTitle(this.eventTitle)) {
-            throw new IllegalValueException(EventTitle.MESSAGE_EVENT_TITLE_CONSTRAINTS);
+        if (!EntryTitle.isValidEntryTitle(this.entryTitle)) {
+            throw new IllegalValueException(EntryTitle.MESSAGE_ENTRY_TITLE_CONSTRAINTS);
         }
-        final EventTitle eventTitle = new EventTitle(this.eventTitle);
+        final EntryTitle entryTitle = new EntryTitle(this.entryTitle);
 
         if (this.startDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -117,7 +127,26 @@ public class XmlAdaptedCalendarEntry {
 
         final EndTime endTime = new EndTime(this.endTime);
 
-        return new CalendarEntry(eventTitle, startDate, endDate, startTime, endTime);
+        // Exception thrown if Start Date is later than End Date
+        if (startDate.getLocalDate().isAfter(endDate.getLocalDate())) {
+            throw new IllegalValueException(START_AND_END_DATE_CONSTRAINTS);
+        }
+
+        // Check for cases when Start Date is equal to End Date
+        if (startDate.getLocalDate().equals(endDate.getLocalDate())) {
+            // Check if start time is later than end time
+            if (startTime.getLocalTime().isAfter(endTime.getLocalTime())) {
+                throw new IllegalValueException(START_AND_END_TIME_CONSTRAINTS);
+            }
+
+            // Check if duration of event is less than 15 minutes
+            if (MINUTES.between(startTime.getLocalTime(), endTime.getLocalTime()) < MINIMAL_DURATION) {
+                throw new IllegalValueException(EVENT_DURATION_CONSTRAINTS);
+            }
+        }
+
+
+        return new CalendarEntry(entryTitle, startDate, endDate, startTime, endTime);
     }
 
     @Override
@@ -131,7 +160,7 @@ public class XmlAdaptedCalendarEntry {
         }
 
         XmlAdaptedCalendarEntry otherCalEvent = (XmlAdaptedCalendarEntry) other;
-        return Objects.equals(eventTitle, otherCalEvent.eventTitle)
+        return Objects.equals(entryTitle, otherCalEvent.entryTitle)
                 && Objects.equals(startDate, otherCalEvent.startDate)
                 && Objects.equals(endDate, otherCalEvent.endDate)
                 && Objects.equals(startTime, otherCalEvent.startTime)

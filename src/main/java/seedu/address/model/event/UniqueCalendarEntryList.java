@@ -105,10 +105,13 @@ public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
     /**
      * Removes CalendarEntry from list if it exists.
      */
-    public void remove(CalendarEntry toRemove) {
+    public boolean remove(CalendarEntry toRemove) {
         requireNonNull(toRemove);
         if (contains(toRemove)) {
             internalList.remove(toRemove);
+            return true;
+        } else {
+            return false;
         }
     }
 

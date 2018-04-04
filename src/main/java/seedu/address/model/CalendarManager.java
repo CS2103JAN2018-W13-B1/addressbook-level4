@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.CalendarUtil;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.UniqueCalendarEntryList;
+import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
 /**
@@ -19,9 +20,10 @@ import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
  */
 public class CalendarManager implements ReadOnlyCalendarManager {
     private final Calendar calendar;
-    private final UniqueCalendarEntryList calendarEntryList = new UniqueCalendarEntryList();
+    private final UniqueCalendarEntryList calendarEntryList;
 
     public CalendarManager() {
+        calendarEntryList = new UniqueCalendarEntryList();
         calendar = new Calendar();
         calendar.setStyle(Calendar.Style.STYLE1);
     }
@@ -44,6 +46,14 @@ public class CalendarManager implements ReadOnlyCalendarManager {
         } catch (DuplicateCalendarEntryException dcee) {
             throw new AssertionError("Calendar Manager should not have duplicate calendar entries.");
         }
+        updateCalendar();
+    }
+
+    /**
+     * Updates Calendar with entries converted from {@code calendarEntryList}.
+     */
+    private void updateCalendar() {
+        calendar.clear();
         calendar.addEntries(CalendarUtil.convertEntireListToEntries(calendarEntryList.asObservableList()));
     }
 
@@ -67,13 +77,27 @@ public class CalendarManager implements ReadOnlyCalendarManager {
     // Managing CalendarEntries operations
 
     /**
-     * Adds a calendar entries to list of calendar entries in address book.
+     * Adds a calendar entries to list of calendar entries in calendar manager.
      * @throws DuplicateCalendarEntryException
-     * if there exist an equivalent calendar event in address book.
+     * if there exist an equivalent calendar entry in calendar manager.
      */
     public void addCalendarEntry(CalendarEntry toAdd) throws DuplicateCalendarEntryException {
         calendarEntryList.add(toAdd);
-        calendar.addEntries(CalendarUtil.convertToEntry(toAdd));
+        updateCalendar();
+    }
+
+    /**
+     * Removes an existing calendar entry in list of calendar entries and from the calendar itself.
+     * @throws CalendarEntryNotFoundException
+     * if given calendar entry does not exist in list of calendar entry
+     */
+    public void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException {
+        if (!calendarEntryList.remove(entryToDelete)) {
+            throw new CalendarEntryNotFoundException();
+        } else {
+            updateCalendar();
+        }
+
     }
 
     @Override
@@ -88,5 +112,6 @@ public class CalendarManager implements ReadOnlyCalendarManager {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(calendar, calendarEntryList);
     }
+
 
 }

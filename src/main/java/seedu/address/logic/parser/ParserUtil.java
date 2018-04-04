@@ -14,7 +14,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.TimeUtil;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EventTitle;
+import seedu.address.model.event.EntryTitle;
 import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 import seedu.address.model.order.DeliveryDate;
@@ -319,26 +319,26 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String eventTitle} into a {@code EventTitle}.
+     * Parses a {@code String eventTitle} into a {@code EntryTitle}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws IllegalValueException if the given {@code eventTitle} is invalid.
      */
-    public static EventTitle parseEventTitle(String eventTitle) throws IllegalValueException {
+    public static EntryTitle parseEventTitle(String eventTitle) throws IllegalValueException {
         requireNonNull(eventTitle);
         String trimmedEventTitle = eventTitle.trim();
-        if (!EventTitle.isValidEventTitle(trimmedEventTitle)) {
-            throw new IllegalValueException(EventTitle.MESSAGE_EVENT_TITLE_CONSTRAINTS);
+        if (!EntryTitle.isValidEntryTitle(trimmedEventTitle)) {
+            throw new IllegalValueException(EntryTitle.MESSAGE_ENTRY_TITLE_CONSTRAINTS);
         }
-        return new EventTitle(trimmedEventTitle);
+        return new EntryTitle(trimmedEventTitle);
     }
 
     /**
-     * Parses a {@code Optional<String> eventTitle} into an {@code Optional<EventTitle>}
+     * Parses a {@code Optional<String> eventTitle} into an {@code Optional<EntryTitle>}
      * if {@code eventTitle} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<EventTitle> parseEventTitle(Optional<String> eventTitle)
+    public static Optional<EntryTitle> parseEventTitle(Optional<String> eventTitle)
             throws IllegalValueException {
         requireNonNull(eventTitle);
         return eventTitle.isPresent()

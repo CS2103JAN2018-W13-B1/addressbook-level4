@@ -14,7 +14,9 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.model.CalendarManagerChangedEvent;
 import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
@@ -65,6 +67,7 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.resetData(newData);
         calendarManager.resetData(newCalendarData);
         indicateAddressBookChanged();
+        indicateCalendarManagerChanged();
     }
 
     @Override
@@ -80,6 +83,10 @@ public class ModelManager extends ComponentManager implements Model {
     /** Raises an event to indicate the model has changed */
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(addressBook));
+    }
+
+    private void indicateCalendarManagerChanged() {
+        raise(new CalendarManagerChangedEvent(calendarManager));
     }
 
     @Override
@@ -119,21 +126,31 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         addressBook.addOrderToOrderList(orderToAdd);
+        updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
         indicateAddressBookChanged();
     }
 
     @Override
     public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
         addressBook.deleteOrder(targetOrder);
+        updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
         indicateAddressBookChanged();
     }
 
     @Override
     public void addCalendarEntry(CalendarEntry toAdd) throws DuplicateCalendarEntryException {
         calendarManager.addCalendarEntry(toAdd);
-        updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_EVENTS);
-        indicateAddressBookChanged();
+        updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_ENTRIES);
+        indicateCalendarManagerChanged();
     }
+
+    @Override
+    public void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException {
+        calendarManager.deleteCalendarEntry(entryToDelete);
+        updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_ENTRIES);
+        indicateCalendarManagerChanged();
+    }
+
     @Override
     public void updateOrder(Order target, Order editedOrder)
         throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
@@ -172,26 +189,27 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
-        return FXCollections.unmodifiableObservableList(filteredEvents);
-    }
-
-    @Override
-    public Calendar getCalendar() {
-        return calendarManager.getCalendar();
-    }
-
-    @Override
     public void updateFilteredOrderList(Predicate<Order> predicate) {
 
         requireNonNull(predicate);
         filteredOrders.setPredicate(predicate);
     }
 
+    // ========== Filtered Calendar Entry List Accessors ==================================
+    @Override
+    public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
+        return FXCollections.unmodifiableObservableList(filteredEvents);
+    }
+
     @Override
     public void updateFilteredCalendarEventList(Predicate<CalendarEntry> predicate) {
         requireNonNull(predicate);
         filteredEvents.setPredicate(predicate);
+    }
+
+    @Override
+    public Calendar getCalendar() {
+        return calendarManager.getCalendar();
     }
 
     @Override

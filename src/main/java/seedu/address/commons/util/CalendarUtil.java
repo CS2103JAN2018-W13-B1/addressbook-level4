@@ -27,7 +27,7 @@ public class CalendarUtil {
                 calEntry.getEndDate().getLocalDate(),
                 calEntry.getEndTime().getLocalTime());
 
-        return new Entry<>(calEntry.getEventTitle().toString(), entryInterval);
+        return new Entry<>(calEntry.getEntryTitle().toString(), entryInterval);
     }
 
     /**

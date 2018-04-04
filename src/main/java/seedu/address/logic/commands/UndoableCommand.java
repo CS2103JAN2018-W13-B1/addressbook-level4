@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CALENDAR_ENTRIES;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ORDERS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -20,7 +22,7 @@ public abstract class UndoableCommand extends Command {
     protected abstract CommandResult executeUndoableCommand() throws CommandException;
 
     /**
-     * Stores the current state of {@code model#addressBook}.
+     * Stores the current state of {@code model#addressBook} and {@code model#calendarManager}.
      */
     private void saveAddressBookSnapshot() {
         requireNonNull(model);
@@ -35,7 +37,7 @@ public abstract class UndoableCommand extends Command {
     protected void preprocessUndoableCommand() throws CommandException {}
 
     /**
-     * Reverts the AddressBook to the state before this command
+     * Reverts the AddressBook and CalendarManager to the state before this command
      * was executed and updates the filtered person list to
      * show all persons.
      */
@@ -43,6 +45,8 @@ public abstract class UndoableCommand extends Command {
         requireAllNonNull(model, previousAddressBook, previousCalendarManager);
         model.resetData(previousAddressBook, previousCalendarManager);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+        model.updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_ENTRIES);
     }
 
     /**
@@ -58,6 +62,8 @@ public abstract class UndoableCommand extends Command {
                     + "it should not fail now");
         }
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+        model.updateFilteredCalendarEventList(PREDICATE_SHOW_ALL_CALENDAR_ENTRIES);
     }
 
     @Override

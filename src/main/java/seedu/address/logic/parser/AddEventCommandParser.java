@@ -1,55 +1,58 @@
 package seedu.address.logic.parser;
 
+import static java.time.temporal.ChronoUnit.MINUTES;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENTRY_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.stream.Stream;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.logic.commands.AddEventCommand;
+import seedu.address.logic.commands.AddEntryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
 import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EventTitle;
+import seedu.address.model.event.EntryTitle;
 import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 
 /**
- * Parses input arguments and creates a new AddEventCommand object
+ * Parses input arguments and creates a new AddEntryCommand object
  */
-public class AddEventCommandParser implements Parser<AddEventCommand> {
+public class AddEventCommandParser implements Parser<AddEntryCommand> {
 
-    public static final String DATE_VALIDATION_FORMAT = "dd-MM-yyyy"; // legal dates
-    public static final String TIME_VALIDATION_FORMAT = "HH:mm"; // legal time format
+    public static final String EVENT_DURATION_CONSTRAINTS =
+            "Event must last at least 15 minutes if ending in same day."; //Constraint of CalendarFX entries
     public static final String STANDARD_START_TIME = "00:00"; //Start Time of event if StartTime not given
     public static final String START_AND_END_DATE_CONSTRAINTS = "Start Date cannot be later than End Date.";
     public static final String START_AND_END_TIME_CONSTRAINTS =
             "Start Time cannot be later than End Time if Event ends on same date.";
 
+    private static final int MINIMAL_DURATION = 15; //Constraint of CalendarFX entries
+
     /**
-     * Parses the given {@code String} of arguments in the context of the AddEventCommand
-     * and returns an AddEventCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the AddEntryCommand
+     * and returns an AddEntryCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     @Override
-    public AddEventCommand parse(String userInput) throws ParseException {
+    public AddEntryCommand parse(String userInput) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_EVENT_TITLE, PREFIX_START_DATE, PREFIX_END_DATE,
+                ArgumentTokenizer.tokenize(userInput, PREFIX_ENTRY_TITLE, PREFIX_START_DATE, PREFIX_END_DATE,
                         PREFIX_START_TIME, PREFIX_END_TIME);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_EVENT_TITLE, PREFIX_END_DATE, PREFIX_END_TIME)
+        if (!arePrefixesPresent(argMultimap, PREFIX_ENTRY_TITLE, PREFIX_END_DATE, PREFIX_END_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEventCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEntryCommand.MESSAGE_USAGE));
         }
 
         try {
 
-            EventTitle eventTitle = ParserUtil.parseEventTitle(argMultimap.getValue(PREFIX_EVENT_TITLE)).get();
+            EntryTitle entryTitle = ParserUtil.parseEventTitle(argMultimap.getValue(PREFIX_ENTRY_TITLE)).get();
             EndDate endDate = ParserUtil.parseEndDate(argMultimap.getValue(PREFIX_END_DATE)).get();
             StartDate startDate;
 
@@ -78,12 +81,28 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
                 throw new IllegalValueException(START_AND_END_TIME_CONSTRAINTS);
             }
 
-            CalendarEntry calendarEntry = new CalendarEntry(eventTitle, startDate, endDate, startTime, endTime);
-            return new AddEventCommand(calendarEntry);
+            if (startDate.toString().equals(endDate.toString())
+                    && eventIsShorterThanFifteenMinutes(startTime, endTime)) {
+                throw new IllegalValueException(EVENT_DURATION_CONSTRAINTS);
+            }
+
+            CalendarEntry calendarEntry = new CalendarEntry(entryTitle, startDate, endDate, startTime, endTime);
+            return new AddEntryCommand(calendarEntry);
 
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }
+    }
+
+    /**
+     * Returns true if duration between start time and end time is less than 15 minutes.
+     * This is a constraint that CalendarFX has. Event duration must last at least 15 minutes.
+     */
+    private boolean eventIsShorterThanFifteenMinutes(StartTime startTime, EndTime endTime) {
+        if (MINUTES.between(startTime.getLocalTime(), endTime.getLocalTime()) < MINIMAL_DURATION) {
+            return true;
+        }
+        return false;
     }
 
     /**

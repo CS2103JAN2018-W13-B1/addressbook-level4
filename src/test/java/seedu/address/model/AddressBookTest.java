@@ -23,7 +23,6 @@ import org.junit.rules.ExpectedException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.order.Order;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -202,7 +201,6 @@ public class AddressBookTest {
         private final ObservableList<Group> groupTags = FXCollections.observableArrayList();
         private final ObservableList<Preference> prefTags = FXCollections.observableArrayList();
         private final ObservableList<Order> orders = FXCollections.observableArrayList();
-        private final ObservableList<CalendarEntry> calendarEntries = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons, Collection<? extends Group> groups,
                         Collection<? extends Preference> preferences) {

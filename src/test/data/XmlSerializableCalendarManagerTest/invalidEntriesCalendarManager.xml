@@ -2,7 +2,7 @@
 <calendarmanager>
     <!-- CalendarEntry with invalid startTime field -->
     <calendarEntries>
-        <eventTitle>Meeting with boss</eventTitle>
+        <entryTitle>Meeting with boss</entryTitle>
         <startDate>06-06-2018</startDate>
         <endDate>06-06-2018</endDate>
         <startTime>30:00</startTime>
