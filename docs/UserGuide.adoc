@@ -215,7 +215,7 @@ Deletes the 2nd person in the address book.
 `delete 1`  OR `d 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Deleting a group : `groupdelete` `Since v1.2`
+=== Deleting a group : `groupdelete` `since v1.2`
 
 Deletes the specified group from the address book. +
 Format: `groupdelete GROUP_NAME` +
@@ -233,7 +233,7 @@ Examples:
 `gd friends`+
 All persons in ContactSails with the group `friends` will have the group removed.
 
-=== Deleting a preference : `prefdelete` `Since v1.2`
+=== Deleting a preference : `prefdelete` `since v1.2`
 
 Deletes the specified preference from the address book. +
 Format: `prefdelete PREFERENCE_NAME` +
@@ -642,9 +642,9 @@ e.g. `edit 2 n/James Lee e/jameslee@example.com`
 e.g. `eventedit e/2 t/meeting with Jason ed/20-20-2020 i/2`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
-* *GroupFind* : groupfind KEYWORD [MORE_KEYWORDS]` +
+* *GroupFind* : `groupfind KEYWORD [MORE_KEYWORDS]` +
 e.g. `groupfind friends`
-* *PrefFind* : preffind KEYWORD [MORE_KEYWORDS]` +
+* *PrefFind* : `preffind KEYWORD [MORE_KEYWORDS]` +
 e.g. `preffind computers`
 * *List* : `list`
 * *Help* : `help`
@@ -661,10 +661,10 @@ e.g. `orderdelete 5`
 * *OrderStatus* : `orderstatus INDEX os/ORDER STATUS`
 * *Undo* : `undo`
 * *Redo* : `redo`
-* *TopCustomers: `topcustomers NUMBER`
-* *TopItems: `topitems NUMBER`
-* *SendPromoGroup: `sendpromogroup GROUP... [sub/SUBJECT] [b/BODY]`
-* *SendPromoPref: `sendpromopref PREFERENCE... [sub/SUBJECT] [b/BODY]`
+* *TopCustomers `coming in v2.0`* : `topcustomers NUMBER`
+* *TopItems `coming in v2.0`* : `topitems NUMBER`
+* *SendPromoGroup `coming in v2.0`* : `sendpromogroup GROUP... [sub/SUBJECT] [b/BODY]`
+* *SendPromoPref `coming in v2.0`* : `sendpromopref PREFERENCE... [sub/SUBJECT] [b/BODY]`
 * *Exit* : `exit`
 
 == Command Alias Summary
@@ -691,9 +691,9 @@ e.g. `e 2 n/James Lee e/jameslee@example.com`
 e.g. `ee e/2 t/meeting with Jason ed/20-20-2020 i/2`
 * *Find* : `f KEYWORD [MORE_KEYWORDS]` +
 e.g. `f James Jake`
-* *GroupFind* : gf KEYWORD [MORE_KEYWORDS]` +
+* *GroupFind* : `gf KEYWORD [MORE_KEYWORDS]` +
 e.g. `gf friends`
-* *PrefFind* : pf KEYWORD [MORE_KEYWORDS]` +
+* *PrefFind* : `pf KEYWORD [MORE_KEYWORDS]` +
 e.g. `pf computers`
 * *List* : `l`
 * *Help* : `?`
@@ -710,8 +710,8 @@ e.g. `od 5`
 * *OrderStatus* : `os INDEX os/ORDER STATUS`
 * *Undo* : `u`
 * *Redo* : `r`
-* *TopCustomers `coming in v2.0`: `tc NUMBER`
-* *TopItems `coming in v2.0`: `ti NUMBER`
-* *SendPromoGroup `coming in v2.0`: `spg GROUP... [sub/SUBJECT] [b/BODY]`
-* *SendPromoPref `coming in v2.0`: `spp PREFERENCE... [sub/SUBJECT] [b/BODY]`
+* *TopCustomers `coming in v2.0`* : `tc NUMBER`
+* *TopItems `coming in v2.0`* : `ti NUMBER`
+* *SendPromoGroup `coming in v2.0`* : `spg GROUP... [sub/SUBJECT] [b/BODY]`
+* *SendPromoPref `coming in v2.0`* : `spp PREFERENCE... [sub/SUBJECT] [b/BODY]`
 * *Exit* : `q`
