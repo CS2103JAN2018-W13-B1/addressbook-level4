@@ -369,6 +369,7 @@
     -fx-font-size: 15pt;
 }
 
+//@@author AJZ1995
 #personPanel #name {
     -fx-font-size: 50pt;
     -fx-text-fill: #FFFFFF;
@@ -390,7 +391,7 @@
 #personPanel .split-pane-divider {
     -fx-background-color: derive(#1d1d1d, 50%);
 }
-
+//@@author AJZ1995
 .cell-cal-label {
     -fx-background-color: #3e7b91;
     -fx-background-insets: 0, 0 0 1 1 ;
