@@ -30,6 +30,12 @@ With ContactSails, you can do the following:
 * Keep track of deadlines: Add tasks and reminders and view your schedules in the integrated calendar.
 * Know your customer demographic: See what the top selling items and who your most frequent customers are.
 
+== Site Map
+
+* <<UserGuide#, User Guide>>
+* <<DeveloperGuide#, Developer Guide>>
+* <<AboutUs#, About Us>>
+* <<ContactUs#, Contact Us>>
 
 == Acknowledgements
 
