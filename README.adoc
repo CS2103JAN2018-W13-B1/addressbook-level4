@@ -30,18 +30,12 @@ With ContactSails, you can do the following:
 * Keep track of deadlines: Add tasks and reminders and view your schedules in the integrated calendar.
 * Know your customer demographic: See what the top selling items and who your most frequent customers are.
 
-== Site Map
-
-* <<UserGuide#, User Guide>>
-* <<DeveloperGuide#, Developer Guide>>
-* <<AboutUs#, About Us>>
-* <<ContactUs#, Contact Us>>
 
 == Acknowledgements
 
 * This project is based on AddressBook-Level4 project which was created by the https://github.com/se-edu/[SE-EDU initiative].
 * Some parts of this sample application were inspired by the excellent http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
 _Marco Jakob_.
-* Libraries used: https://github.com/TomasMikula/EasyBind[EasyBind], https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit4[JUnit4]
+* Libraries used: https://github.com/TomasMikula/EasyBind[EasyBind], https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit4[JUnit4], https://github.com/dlemmermann/CalendarFX[CalendarFX]
 
 == Licence : link:LICENSE[MIT]
