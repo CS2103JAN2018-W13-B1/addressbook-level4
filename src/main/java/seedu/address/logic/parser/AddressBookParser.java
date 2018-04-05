@@ -21,6 +21,7 @@ import seedu.address.logic.commands.DeletePreferenceCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditOrderCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.ExportToCsvCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindGroupCommand;
 import seedu.address.logic.commands.FindPreferenceCommand;
@@ -165,6 +166,10 @@ public class AddressBookParser {
         case ViewCalendarCommand.COMMAND_WORD:
         case ViewCalendarCommand.COMMAND_ALIAS:
             return new ViewCalendarCommand(arguments);
+
+        case ExportToCsvCommand.COMMAND_WORD:
+        case ExportToCsvCommand.COMMAND_ALIAS:
+            return new ExportToCsvCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -533,6 +533,13 @@ Clears all event list entries from the address book. +
 Format: `eventclear` +
 Alias: `ec`
 
+=== Exporting all listed persons : `exportCSV`
+
+Exports all listed persons from the address book into Comma Separated Values file format. +
+File will be stored to "data/exportedFile/" folder +
+Format: `exportCSV` +
+Alias: `exCSV`
+
 === Clearing all entries : `clear`
 
 Clears all entries from the address book. +
@@ -649,6 +656,8 @@ e.g. `prefdelete computers`
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *EventEdit `coming in v1.5`* : `eventedit e/EVENT_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME] [i/INDEX]...` +
 e.g. `eventedit e/2 t/meeting with Jason ed/20-20-2020 i/2`
+* *Export to CSV file* : `exportCSV FILENAME` +
+e.g. `exportCSV exportedDataFIle`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
 * *GroupFind* : `groupfind KEYWORD [MORE_KEYWORDS]` +
