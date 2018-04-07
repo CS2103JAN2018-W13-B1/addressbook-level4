@@ -55,6 +55,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 .  Refer to <<Features>> for details of each command.
 
+== ContactSails UI
+
 [[Features]]
 == Features
 
@@ -76,15 +78,17 @@ For example, typing `ad` in the command box and then pressing `TAB` will automat
 === Viewing help : `help`
 
 Format: `help` +
-Alias: `?`
+Command Alias: `?`
 
 === Managing Persons
+
+This section describes commands you can use to manage person entries in ContactSails.
 
 ==== Adding a person : `add`
 
 Adds a person to ContactSails +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
-Alias: `a`
+Command Alias: `a`
 
 [TIP]
 A person can have any number of groups and preferences (including 0)
@@ -100,7 +104,7 @@ and 'notebooks' as a preference tag.
 
 Edits an existing person in ContactSails. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
-Alias: `e`
+Command Alias: `e`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -124,7 +128,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing gr
 
 Deletes the specified person from ContactSails. +
 Format: `delete INDEX` +
-Alias: `d INDEX`
+Command Alias: `d INDEX`
 
 ****
 * Deletes the person at the specified `INDEX`.
@@ -146,13 +150,13 @@ Deletes the 1st person in the results of the `find` command.
 
 Shows a list of all persons in ContactSails. +
 Format: `list` +
-Alias: `l`
+Command Alias: `l`
 
 ==== Selecting a person : `select`
 
 Selects the person identified by the index number used in the last person listing. +
 Format: `select INDEX` +
-Alias: `s INDEX`
+Command Alias: `s INDEX`
 
 ****
 * Selects the person and loads the Google search page the person at the specified `INDEX`.
@@ -170,11 +174,15 @@ Selects the 2nd person in ContactSails.
 `select 1` OR `s 1` +
 Selects the 1st person in the results of the `find` command.
 
-==== Locating persons by name : `find`
+=== Finding Persons
+
+This section describes commands you can use to find person entries using various query types in ContactSails.
+
+==== Finding persons by name : `find`
 
 Finds persons whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]` +
-Alias: `f KEYWORD [MORE KEYWORDS]`
+Command Alias: `f KEYWORD [MORE KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
@@ -194,11 +202,11 @@ Returns `john` and `John Doe`
 `f Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-==== Locating persons by groups : `groupfind` `since v1.2`
+==== Finding persons by groups : `groupfind` `since v1.2`
 
 Finds persons whose groups matches any of the given keywords. +
 Format: `groupfind KEYWORD [MORE_KEYWORDS]` +
-Alias: `gf KEYWORD [MORE_KEYWORDS]`
+Command Alias: `gf KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `Friends` will match `friends`
@@ -217,11 +225,11 @@ Returns `John Doe`
 `gf neighbours friends colleagues` +
 Returns any person having groups `neighbours`, `friends`, or `colleagues`
 
-==== Locating persons by preferences : `preffind` `since v1.2`
+==== Finding persons by preferences : `preffind` `since v1.2`
 
 Finds persons whose preferences matches any of the given keywords. +
 Format: `preffind KEYWORD [MORE_KEYWORDS]` +
-Alias: `pf KEYWORD [MORE_KEYWORDS]`
+Command Alias: `pf KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `Computers` will match `computers`
@@ -242,11 +250,13 @@ Returns any person having preferences `computers`, `shoes`, or `necklaces`
 
 === Managing Groups and Preferences
 
+This section describes commands you can use to manage preference and group tags in ContactSails.
+
 ==== Deleting a group : `groupdelete` `since v1.2`
 
 Deletes the specified group from ContactSails. +
 Format: `groupdelete GROUP_NAME` +
-Alias: `gd GROUP_NAME`
+Command Alias: `gd GROUP_NAME`
 
 ****
 * Deletes the group specified by `GROUP_NAME`.
@@ -264,7 +274,7 @@ All persons in ContactSails with the group `friends` will have the group removed
 
 Deletes the specified preference from ContactSails. +
 Format: `prefdelete PREFERENCE_NAME` +
-Alias: `pd PREFERENCE_NAME`
+Command Alias: `pd PREFERENCE_NAME`
 
 ****
 * Deletes the preference specified by `PREFERENCE_NAME`.
@@ -280,11 +290,13 @@ All persons in ContactSails with the preference [computers] will have the prefer
 
 === Managing Orders
 
+This section describes commands you can use to manage order entries in ContactSails.
+
 ==== Adding an order : `orderadd` `since v1.2`
 
 Adds an order to the person specified by the index number used in the last person listing. +
 Format: `orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
-Alias: `oa`
+Command Alias: `oa`
 
 [NOTE]
 For now, orders are added to the list of all orders and not the person selected.
@@ -306,7 +318,7 @@ Adds the 'Books' order to 2nd person in the results of the `find` command.
 
 Edits the order specified by the index number used in the order listing. +
 Format: `orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]` +
-Alias: `oe`
+Command Alias: `oe`
 
 ****
 * Edits the order at the specified `INDEX`. The index refers to the index number shown in the last order listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -324,7 +336,7 @@ Edits the quantity field of the 1st order to be 10.
 
 Changes the order status of the order specified by the index number used in the order listing. +
 Format: `orderstatus INDEX os/ORDER STATUS` +
-Alias: `os`
+Command Alias: `os`
 
 ****
 * Orders can be marked as `ongoing` and `done` only.
@@ -340,7 +352,7 @@ Marks the order status of the 2nd order in the most recent order listing as 'don
 
 Deletes the order specified by the index number used in the order listing. +
 Format: `orderdelete INDEX` +
-Alias: `od`
+Command Alias: `od`
 
 ****
 * Deletes the order at the specified `INDEX`.
@@ -358,15 +370,17 @@ Deletes the 3rd order of the order list in ContactSails.
 
 Shows a list of all orders in ContactSails. +
 Format: `orderlist` +
-Alias: `ol`
+Command Alias: `ol`
 
 === Viewing Calendar
+
+This section describes commands related to viewing the calendar in ContactSails.
 
 ==== Displaying the calendar : `calendar` `since v1.3`
 
 Displays the Calendar at centre of window in specified viewing format. +
 Format: `calendar [VIEW_FORMAT]` +
-Alias: `cal`
+Command Alias: `cal`
 
 ****
 * Calendar has 3 views; Day, Week, and Month.
@@ -389,7 +403,7 @@ Shows Calendar in Month-View.
 
 Goes to the next page in Calendar. +
 Format: `calendarnext` +
-Alias: `calnext`
+Command Alias: `calnext`
 
 ****
 * Depending on the current day/week/month calendar is displaying, this command will display the next day/week/month.
@@ -399,7 +413,7 @@ Alias: `calnext`
 
 Goes to the previous page in Calendar. +
 Format: `calendarprev` +
-Alias: `calprev`
+Command Alias: `calprev`
 
 ****
 * Depending on the current day/week/month calendar is displaying, this command will display the previous day/week/month.
@@ -409,7 +423,7 @@ Alias: `calprev`
 
 Displays today's date in Calendar. +
 Format: `calendarnow` +
-Alias: `calnow`
+Command Alias: `calnow`
 
 ****
 * If calendar is displaying in day-view, command displays today's date in day-view.
@@ -419,11 +433,13 @@ Alias: `calnow`
 
 === Managing Calendar Entries
 
+This section describes commands you can use to manage calendar entries in ContactSails.
+
 ==== Adding entries to calendar entry list : `entryadd` `since v1.3`
 
 Adds an entry to the Calendar entry list. +
 Format: `entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
-Alias: `ea t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
+Command Alias: `ea t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
 
 ****
 * If input does not contain START_DATE, it is assumed that START DATE is the same as END_DATE.
@@ -449,7 +465,7 @@ Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at th
 
 Edits an existing entry in the Calendar entry List. +
 Format: `entryedit e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
-Alias: `ee e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
+Command Alias: `ee e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
 
 ****
 * Edits the entry at specified ENTRY_INDEX. The index refers to the index number shown in the last entry listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -471,7 +487,7 @@ Edits starting date and time, ending date and time of the 3rd entry in entry lis
 
 Deletes an existing entry in Calendar entry list. +
 Format: `entrydelete ENTRY_INDEX` +
-Alias: `ed ENTRY_INDEX` +
+Command Alias: `ed ENTRY_INDEX` +
 
 ****
 * Deletes entry at specified ENTRY_INDEX of entry list.
@@ -490,21 +506,23 @@ Entry is removed from the Calendar.
 
 Shows a list of all calendar entries in ContactSails. +
 Format: `entrylist` +
-Alias: `el`
+Command Alias: `el`
 
 ==== Clearing all entries in list of entries : `entryclear` `coming in v1.5`
 
 Clears all entry list entries from ContactSails. +
 Format: `entryclear` +
-Alias: `ec`
+Command Alias: `ec`
 
 === Miscellaneous Commands
+
+This section describes other commands you can use in ContactSails.
 
 ==== Viewing command history : `history`
 
 Lists all the commands that you have entered in reverse chronological order. +
 Format: `history` +
-Alias: `h`
+Command Alias: `h`
 
 [NOTE]
 ====
@@ -515,7 +533,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 Changes the theme of the application. +
 Format: `theme THEME_TYPE` +
-Alias: `t`
+Command Alias: `t`
 
 ****
 * Currently, you can choose between 'dark' and 'light' themes only.
@@ -532,7 +550,7 @@ Changes the theme of the application to the light theme.
 
 Restores ContactSails to the state before the previous _undoable_ command was executed. +
 Format: `undo` +
-Alias: `u`
+Command Alias: `u`
 
 [NOTE]
 ====
@@ -559,7 +577,7 @@ The `undo` command fails as there are no undoable commands executed previously.
 
 Reverses the most recent `undo` command. +
 Format: `redo` +
-Alias: `r`
+Command Alias: `r`
 
 Examples:
 
@@ -583,7 +601,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 Clears all entries from ContactSails. +
 Format: `clear` +
-Alias: `c`
+Command Alias: `c`
 
 ==== Saving the data
 
@@ -594,7 +612,7 @@ There is no need to save manually.
 
 Exits the program. +
 Format: `exit` +
-Alias: `q`
+Command Alias: `q`
 
 === Coming in v2.0
 
@@ -602,7 +620,7 @@ Alias: `q`
 
 Displays a list of the top customers based on the frequency their contacts are accessed. +
 Format: `topcustomers NUMBER` +
-Alias: `tc`
+Command Alias: `tc`
 
 ****
 * The command will display the top `NUMBER` amount of people, sorted by most frequently contacted to the least.
@@ -619,7 +637,7 @@ Displays the list of the top ten persons in ContactSails based on how frequently
 
 Displays a list of the top items based on amount of items that have been sold to customers. +
 Format: `topitems NUMBER` +
-Alias: `ti`
+Command Alias: `ti`
 
 ****
 * The command will display the top `NUMBER` amount of items, sorted by most bought item to the least.
@@ -636,7 +654,7 @@ Displays the list of the top ten items in ContactSails based on how many of the 
 
 Opens a promotion email draft in the browser, which can be sent to multiple persons having the same group tags.
 Format: `sendpromogroup GROUP... [sub/SUBJECT] [b/BODY]`
-Alias: `spg`
+Command Alias: `spg`
 
 ****
 * The email draft will use the Default Email Service Provider on your local device.
@@ -655,7 +673,7 @@ Opens an email draft in the browser with recipients as all persons tagged as 'fr
 
 Opens a promotion email draft in the browser, which can be sent to multiple persons having the same preference tags.
 Format: `sendpromopref PREFERENCE... [sub/SUBJECT] [b/BODY]`
-Alias: `spp`
+Command Alias: `spp`
 
 ****
 * The email draft will use the Default Email Service Provider on your local device.
