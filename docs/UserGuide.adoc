@@ -57,6 +57,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 == ContactSails UI
 
+// explain where each panel is and what it does
+
 [[Features]]
 == Features
 
@@ -757,3 +759,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |Clear all data. |`clear` |`clear` |`c`
 |Exit ContactSails. |`exit` |`exit` |`q`
 |===
+
+== Glossary
+
+// add terms: CommandBox, Group, Preference, Orders, Entries, PersonPanel, CalendarPanel, OrderListPanel, EntryListPanel, etc.
