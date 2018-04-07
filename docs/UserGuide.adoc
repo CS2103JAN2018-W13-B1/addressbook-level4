@@ -697,6 +697,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 == Command Summary
 
 === Managing Persons
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |Add a person. |`add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` |`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` |`a`
@@ -707,6 +708,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |===
 
 === Finding Persons
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |Find persons by name. |`find KEYWORD [MORE_KEYWORDS]` |`find John` |`f`
@@ -715,6 +717,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |===
 
 === Managing Groups and Preferences
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |Delete a group. |`groupdelete GROUP_NAME` | `groupdelete friends` |`gd`
@@ -722,6 +725,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |===
 
 === Managing Orders
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |Add an order. |`orderadd INDEX i/ORDER_INFORMATION pr/PRICE q/QUANTITY d/DELIVERY_DATE` |`orderadd 1 i/Chocolates pr/10.00 q/5 d/12-08-2018` |`oa`
@@ -731,6 +735,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |===
 
 === Viewing Calendar
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |Display the calendar. |`calendar [VIEW_FORMAT]` |`calendar month` |`cal`
@@ -740,6 +745,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |===
 
 === Managing Calendar Entries
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |Add a calendar entry. |`entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` |`entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00` |`ea`
@@ -750,6 +756,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 |===
 
 === Miscellaneous Commands
+[width="100%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Example |Alias
 |View command history. |`history` |`history` |`h`
