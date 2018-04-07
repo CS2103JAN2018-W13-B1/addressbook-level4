@@ -707,7 +707,7 @@ In the Figure 22, `ModelManager` contains an instance of `CalendarManager`. `Mod
 The sequence diagram below shows how adding an entry works:
 
 .Sequence Diagram for adding of an entry into ContactSails
-image::AddEventSD.png[width="800" align="center]
+image::AddEntrySD.png[width="800" align="center]
 
 In Figure 23, when a user enters the command to add an entry, `AddEntryCommandParser` is invoked which creates a `CalendarEntry` based on user input. The parser then creates `AddEntryCommand` passing the `CalendarEntry` to it.
 When AddEntryCommand is executed, `CalendarEntry` is passed from `AddEntryCommand` to `ModelManager` and to `CalendarManager`, which adds it to `UniqueCalendarEntryList`.
