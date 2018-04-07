@@ -97,8 +97,8 @@ Examples:
 
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` OR +
 `a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` +
-Adds a contact 'John Doe', with '98765432' as phone number, 'johnd@example.com' as email, 'John street, block 123, #01-01' as address,
-and 'notebooks' as a preference tag.
+Adds a contact `John Doe`, with `98765432` as phone number, `johnd@example.com` as email, `John street, block 123, #01-01` as address,
+and `notebooks` as a preference tag.
 
 ==== Editing a person : `edit`
 
