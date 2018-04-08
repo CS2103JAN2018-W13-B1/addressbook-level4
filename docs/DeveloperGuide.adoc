@@ -694,8 +694,8 @@ Ongoing orders of a person will also appear as `CalendarEntry` based on the `Del
 
 The following diagram shows class diagram of `Model` Component related to `CalendarEntry`.
 
-.`Model` Component showing classes related to entry management
-image::UserEventClassDiagram.png[width="800" align="center"]
+.Classes related to entry management in `Model` and `Commons`
+image::CalendarEntryClassDiagram.png[width="800" align="center"]
 
 In the Figure 22, `ModelManager` contains an instance of `CalendarManager`. `ModelManager` calls the functions in `CalendarManager` to manage `CalendarEntries` stored in it.
 `CalendarManager` in turn calls methods in `UniqueCalendarEntryList` to add, remove or edit `CalendarEntries` stored in it.
