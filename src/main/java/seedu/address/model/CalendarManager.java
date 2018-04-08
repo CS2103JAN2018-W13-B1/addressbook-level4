@@ -99,7 +99,15 @@ public class CalendarManager implements ReadOnlyCalendarManager {
         } else {
             updateCalendar();
         }
+    }
 
+    /**
+     * Replaces the given calendar entry {@code target} in the list with {@code editedEntry}.
+     */
+    public void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry)
+            throws DuplicateCalendarEntryException, CalendarEntryNotFoundException {
+        requireNonNull(editedEntry);
+        calendarEntryList.setCalendarEntry(entryToEdit, editedEntry);
     }
 
     @Override
@@ -114,6 +122,4 @@ public class CalendarManager implements ReadOnlyCalendarManager {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(calendar, calendarEntryList);
     }
-
-
 }

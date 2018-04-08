@@ -155,6 +155,14 @@ public class ModelManager extends ComponentManager implements Model {
         indicateCalendarManagerChanged();
     }
 
+    @Override
+    public void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry)
+            throws DuplicateCalendarEntryException, CalendarEntryNotFoundException {
+        requireAllNonNull(entryToEdit, editedEntry);
+        calendarManager.updateCalendarEntry(entryToEdit, editedEntry);
+        indicateCalendarManagerChanged();
+    }
+
     //@@author
 
     //@@author amad-person

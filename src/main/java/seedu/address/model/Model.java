@@ -103,6 +103,16 @@ public interface Model {
      */
     void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException;
 
+    /**
+     * Replaces the given calendar entry {@code target} with {@code editedEntry}.
+     *
+     * @throws DuplicateCalendarEntryException if updating the entry's details causes the entry to be equivalent to
+     *      another existing entry in the list.
+     * @throws CalendarEntryNotFoundException if {@code target} could not be found in the list.
+     */
+    void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry)
+            throws DuplicateCalendarEntryException, CalendarEntryNotFoundException;
+
     /** Returns an unmodifiable view of the filtered order list */
     ObservableList<CalendarEntry> getFilteredCalendarEventList();
 
@@ -128,4 +138,5 @@ public interface Model {
      */
     void updateOrderStatus(Order target, String orderStatus)
             throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException;
+
 }
