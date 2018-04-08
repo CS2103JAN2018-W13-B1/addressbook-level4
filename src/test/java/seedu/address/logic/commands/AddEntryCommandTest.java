@@ -69,7 +69,7 @@ public class AddEntryCommandTest {
         CalendarEntry validEvent = new CalendarEntryBuilder().build();
 
         thrown.expect(CommandException.class);
-        thrown.expectMessage(AddEntryCommand.MESSAGE_DUPLICATE_EVENT);
+        thrown.expectMessage(AddEntryCommand.MESSAGE_DUPLICATE_ENTRY);
 
         getAddEntryCommandForCalendarEvent(validEvent, modelStub).execute();
     }

@@ -25,7 +25,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_END_TIME_MEET_B
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ENTRY_TITLE_MEET_BOSS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE_MEET_BOSS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_START_TIME_MEET_BOSS;
-import static seedu.address.logic.parser.AddEventCommandParser.STANDARD_START_TIME;
+import static seedu.address.logic.parser.AddEntryCommandParser.STANDARD_START_TIME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -41,12 +41,12 @@ import seedu.address.model.event.StartTime;
 import seedu.address.testutil.CalendarEntryBuilder;
 
 //@@author SuxianAlicia
-public class AddEventCommandParserTest {
+public class AddEntryCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEntryCommand.MESSAGE_USAGE);
 
-    private AddEventCommandParser parser = new AddEventCommandParser();
+    private AddEntryCommandParser parser = new AddEntryCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
@@ -198,18 +198,18 @@ public class AddEventCommandParserTest {
         // Start Date later than End Date
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + INVALID_START_DATE_LATER_THAN_END_DATE_DESC
                         + END_DATE_DESC_MEET_BOSS + START_TIME_DESC_MEET_BOSS + END_TIME_DESC_MEET_BOSS,
-                AddEventCommandParser.START_AND_END_DATE_CONSTRAINTS);
+                AddEntryCommandParser.START_AND_END_DATE_CONSTRAINTS);
 
         // Start Time later than End Time for same Start Date and End Date
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + START_DATE_DESC_MEET_BOSS
                         + END_DATE_DESC_MEET_BOSS + INVALID_START_TIME_LATER_THAN_END_TIME_DESC
                         + END_TIME_DESC_MEET_BOSS,
-                AddEventCommandParser.START_AND_END_TIME_CONSTRAINTS);
+                AddEntryCommandParser.START_AND_END_TIME_CONSTRAINTS);
 
         // Start Time less than 15 minutes from End Time for same Start Date and End Date
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + START_DATE_DESC_MEET_BOSS
                         + END_DATE_DESC_MEET_BOSS + INVALID_START_TIME_LESS_THAN_FIFTEEN_MINUTES_FROM_END_TIME_DESC
                         + END_TIME_DESC_MEET_BOSS,
-                AddEventCommandParser.EVENT_DURATION_CONSTRAINTS);
+                AddEntryCommandParser.EVENT_DURATION_CONSTRAINTS);
     }
 }
