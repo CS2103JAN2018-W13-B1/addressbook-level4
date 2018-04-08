@@ -49,7 +49,7 @@
 <li><a href="#orders">4.2. Orders</a></li>
 <li><a href="#data-encryption">4.3. Data Encryption</a></li>
 <li><a href="#logging">4.4. Logging</a></li>
-<li><a href="#calendar-and-event-tracking">4.5. Calendar and Event tracking</a></li>
+<li><a href="#calendar-and-entry-tracking">4.5. Calendar and Entry tracking</a></li>
 <li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
 </ul>
 </li>
@@ -1306,22 +1306,29 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-and-event-tracking"><a class="link" href="#calendar-and-event-tracking">4.5. Calendar and Event tracking</a></h3>
+<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">4.5. Calendar and Entry tracking</a></h3>
 <div class="paragraph">
-<p>Events refer to meetings, deadlines and order deliveries created by users in ContactSails.
-Users can create, edit and delete events, and existing events are displayed in a calendar interface within the application.</p>
+<p>Entries refer to meetings, deadlines and order deliveries created by users in ContactSails.
+Users can create, edit and delete entries.
+ContactSails has a calendar interface that displays existing entries for better visualisation of the user&#8217;s schedule.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p><code>CalendarEvent</code> represents an event created by users.</p>
+<p>ContactSails uses CalendarFX&#8217;s calendar interface. The <code>Model</code> component manages a list of entries, and this list of entries will synchronise with
+the calendar&#8217;s internal list of entries.</p>
+</div>
+<div class="sect4">
+<h5 id="calendar-entries"><a class="link" href="#calendar-entries">Calendar Entries</a></h5>
+<div class="paragraph">
+<p><code>CalendarEntry</code> represents an entry created by users.</p>
 </div>
 <div class="paragraph">
-<p>A <code>CalendarEvent</code> is implemented in the following manner:</p>
+<p>A <code>CalendarEntry</code> is implemented in the following manner:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarEvent</span> {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarEntry</span> {
 
     <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> entryTitle;
     <span class="directive">private</span> <span class="directive">final</span> StartDate startDate;
@@ -1330,102 +1337,118 @@ Users can create, edit and delete events, and existing events are displayed in a
     <span class="directive">private</span> <span class="directive">final</span> EndTime endTime;
 
 
-    <span class="comment">// ... Order attribute getters and setters ...</span>
+    <span class="comment">// ... CalendarEntry attribute getters and setters ...</span>
 
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The following is a brief description of the attributes of <code>CalendarEvent</code>:</p>
+<p>The following is a brief description of the attributes of <code>CalendarEntry</code>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>entryTitle: Represents title of event.</p>
+<p>entryTitle: Represents title of entry.</p>
 </li>
 <li>
-<p>startDate: Represents starting date of the event in DD-MM-YYYY format.</p>
+<p>startDate: Represents starting date of the entry in DD-MM-YYYY format.</p>
 </li>
 <li>
-<p>endDate: Represents ending date of the event in DD-MM-YYYY format.</p>
+<p>endDate: Represents ending date of the entry in DD-MM-YYYY format.</p>
 </li>
 <li>
-<p>startTime: Represents starting time of the event in HH:MM format (24-Hour format).</p>
+<p>startTime: Represents starting time of the entry in HH:MM format (24-Hour format).</p>
 </li>
 <li>
-<p>endTime: Represents ending time of the event in HH:MM format (24-Hour format).</p>
+<p>endTime: Represents ending time of the entry in HH:MM format (24-Hour format).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Events management is facilitated by <code>ModelManager</code>, which resides inside <code>Model</code>.
-It is supported by <code>UserEventsManager</code> residing inside <code>UserEvents</code>, which supports the adding, removing and editing of <code>CalendarEvent</code>(e.g. <code>addEvent</code>, <code>deleteEvent</code>).
-Orders of a person will also appear as <code>CalendarEvent</code> based on the <code>DeliveryDate</code> attribute of the <code>Order</code>.</p>
+<p>Entry management is facilitated by <code>CalendarManager</code> residing in <code>ModelManager</code>.
+It supports the adding, removing and editing of <code>CalendarEntry</code>(e.g. <code>addEntry</code>, <code>deleteEntry</code>) and maintains a <code>UniqueCalendarEntryList</code> to store <code>CalendarEntry</code>.
+Ongoing orders of a person will also appear as <code>CalendarEntry</code> based on the <code>DeliveryDate</code> attribute of the <code>Order</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>CalendarEvent</code>.</p>
+<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>CalendarEntry</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UserEventClassDiagram.png" alt="UserEventClassDiagram" width="800">
+<img src="images/CalendarEntryClassDiagram.png" alt="CalendarEntryClassDiagram" width="800">
 </div>
-<div class="title">Figure 22. <code>Model</code> Component showing classes related to events management</div>
-</div>
-<div class="paragraph">
-<p>In the Figure 22, <code>ModelManager</code> creates an instance of <code>UserEvents</code> interface, which provides the <code>UserEvents</code> API for <code>ModelManager</code> to implement.
-<code>UserEventsManager</code> implements methods used by users to add, edit or delete <code>CalendarEvent</code>, which contains information of an event. <code>CalendarEvent</code> is stored in the <code>UniqueEventList</code>.<br></p>
+<div class="title">Figure 22. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
 </div>
 <div class="paragraph">
-<p><code>Logic</code> Component contains the commands required to manage user&#8217;s events (e.g. <code>AddEventCommand</code>, <code>deleteEventCommand</code>).</p>
+<p>In the Figure 22, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
+<code>CalendarManager</code> in turn calls methods in <code>UniqueCalendarEntryList</code> to add, remove or edit <code>CalendarEntries</code> stored in it.
+<code>CalendarManager</code> contains an instance of <code>Calendar</code> belonging to CalendarFX&#8217;s library. <code>Calendar</code> stores <code>Entry</code>, as defined in CalendarFX&#8217;s library.
+<code>CalendarEntry</code> is converted to <code>Entry</code> before they can be added to <code>Calendar</code> via <code>CalendarUtil</code> in the <code>Commons</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The sequence diagram below shows how add event operation works:</p>
+<p><code>Logic</code> Component contains the commands required to manage user&#8217;s entries (e.g. <code>AddEntryCommand</code>, <code>DeleteEntryCommand</code>).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows how adding an entry works:</p>
 </div>
 <div class="imageblock" style="text-align: "center">
 <div class="content">
-<img src="images/AddEventSD.png" alt="AddEventSD" width="800">
+<img src="images/AddEntrySD.png" alt="AddEntrySD" width="800">
 </div>
-<div class="title">Figure 23. Sequence Diagram for adding of an event into ContactSails</div>
-</div>
-<div class="paragraph">
-<p>In Figure 23, when a user enters the command to add an event, <code>AddEventCommand</code> will call <code>addEvent()</code> in <code>ModelManager</code>.
-<code>ModelManager</code> in turn calls <code>addEvent()</code> in <code>UserEventsManager</code>, which creates a new <code>CalendarEvent</code> containing the information given by user.
-<code>UserEventsManager</code> will then add <code>CalendarEvent</code> to <code>UniqueEventList</code>. If addition of event is a success, control is eventually returned from <code>UserEventsManager</code> to <code>AddEventCommand</code>.</p>
+<div class="title">Figure 23. Sequence Diagram for adding of an entry into ContactSails</div>
 </div>
 <div class="paragraph">
-<p>Events added, removed or modified by users will have their intended results displayed by the <code>CalendarUi</code> residing inside <code>Ui</code> Component.
-The <code>CalendarUi</code> can display dates in a week, month and year format, depending on user inputs.<br>
-Storing of <code>CalendarEvent</code> data is managed by <code>CalendarStorage</code> within <code>Storage</code> Component, converting <code>CalendarEvent</code> to <code>XmlAdaptedEvent</code> to store in a .xml file.</p>
+<p>In Figure 23, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
+When AddEntryCommand is executed, <code>CalendarEntry</code> is passed from <code>AddEntryCommand</code> to <code>ModelManager</code> and to <code>CalendarManager</code>, which adds it to <code>UniqueCalendarEntryList</code>.
+The <code>CalendarEntry</code> is then converted to <code>Entry</code> to be added to <code>Calendar</code> and control is eventually returned to the user.</p>
+</div>
+<div class="paragraph">
+<p>Storing of <code>CalendarEvent</code> data is managed by <code>CalendarManagerStorage</code> within <code>Storage</code> Component, converting <code>CalendarEntry</code> to <code>XmlAdaptedCalendarEntry</code> to store in a .xml file.
+This file is separate from the one storing <code>Person</code> and <code>Order</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="calendar-interface"><a class="link" href="#calendar-interface">Calendar Interface</a></h5>
+<div class="paragraph">
+<p><code>CalendarView</code> within CalendarFX&#8217;s library uses the <code>Calendar</code> within <code>CalendarManager</code> in <code>Model</code> to display all entries stored within <code>Calendar</code>.
+<code>CalendarPanel</code> residing in <code>Ui</code> component creates an instance of <code>CalendarView</code> to manage the display of the calendar.
+The panel responds to events related to the calendar, such as changing the viewing format or changing the current date displayed.
+Any changes made to <code>Calendar</code> in <code>Model</code> will automatically be shown via the <code>CalendarView</code>.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-feature-as-a-whole"><a class="link" href="#aspect-implementation-of-feature-as-a-whole">Aspect: Implementation of feature as a whole</a></h5>
+<h5 id="aspect-implementation-of-calendar-interface"><a class="link" href="#aspect-implementation-of-calendar-interface">Aspect: Implementation of calendar interface</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Creates a localised version of Calendar where all data related to it is stored locally.</p>
+<p><strong>Alternative 1 (current choice):</strong> Integrate CalendarFX to display entries while all entry data is stored locally.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not require constant Internet access to manage data of Calendar.</p>
+<p>Pros: Doing so does not require constant Internet access to manage data of Calendar. CalendarFX can also synchronise with certain calendar applications such as Google Calendar.
+As less code is written to implement it, the effort required to maintain or debug is potentially lesser.</p>
 </li>
 <li>
-<p>Cons: Disallows quick synchronisation between this Calendar and other Calendar applications, such as Google Calendar, that users might use. There are much more areas in the code that potentially contains hidden bugs.</p>
+<p>Cons: CalendarFX has many features that are currently not used in ContactSails. Developers who intend to use them need to decide and learn how to implement such features by themselves.
+Developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
+Bugs present in the library cannot be easily fixed by developers.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Uses a third-party library such as Google Calendar API to manage.</p>
+<p><strong>Alternative 2:</strong> Create a calendar using JavaFX to manage entries.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not require substantial maintenance of related code as less code is required to implement the feature. Some third-party libraries allows users to access some existing calendar applications, saving time required to transfer their calendar events.</p>
+<p>Pros: This option offers greater potential for customisation as code is entirely managed by developers.</p>
 </li>
 <li>
-<p>Cons: Some third-party libraries use REST APIs, which would require users to have Internet access to edit their Calendars. Some libraries will periodically prompt for authentication of user to continue to use their API, which can be a problematic if authentication process is changed in the future.</p>
+<p>Cons: There is greater probability of bugs created as implementation have to be created from scratch.
+As compared to using third-party libraries, substantial lines of code has to be written, thus debugging may be harder.
+Design of features of the calendar have to be decided by developers themselves, which requires more time and effort to implement the features.</p>
 </li>
 </ul>
 </div>
@@ -3684,7 +3707,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-08 03:04:00 UTC
+Last updated 2018-04-08 03:09:12 UTC
 </div>
 </div>
 </body>
