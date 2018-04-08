@@ -699,72 +699,72 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 === Managing Persons
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|Add a person. |`add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` |`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks` |`a`
-|Edit an existing person. |`edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` |`edit 2 n/James Lee e/jameslee@example.com` |`e`
-|Delete an existing person. |`delete INDEX` |`delete 2` |`d`
-|Show a list of all persons. |`list` |`list` |`l`
-|Select a person. |`select INDEX` |`select 3` |`s`
+|Function |Command |Alias |Example
+|Add a person. |`add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` |`a` |`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks`
+|Edit an existing person. |`edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` |`e` |`edit 2 n/James Lee e/jameslee@example.com`
+|Delete an existing person. |`delete INDEX` |`d` |`delete 2`
+|Show a list of all persons. |`list` |`l` |`list`
+|Select a person. |`select INDEX` |`s` |`select 3`
 |===
 
 === Finding Persons
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|Find persons by name. |`find KEYWORD [MORE_KEYWORDS]` |`find John` |`f`
-|Find persons by group. |`groupfind KEYWORD [MORE_KEYWORDS]` |`groupfind friends` |`gf`
-|Finds persons by preference. |`preffind KEYWORD [MORE_KEYWORDS]` |`preffind notebooks` |`gf`
+|Function |Command |Alias |Example
+|Find persons by name. |`find KEYWORD [MORE_KEYWORDS]` |`f` |`find John`
+|Find persons by group. |`groupfind KEYWORD [MORE_KEYWORDS]` |`gf` |`groupfind friends`
+|Finds persons by preference. |`preffind KEYWORD [MORE_KEYWORDS]` |`gf` |`preffind notebooks`
 |===
 
 === Managing Groups and Preferences
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|Delete a group. |`groupdelete GROUP_NAME` | `groupdelete friends` |`gd`
-|Delete a preference. |`prefdelete PREFERENCE_NAME` |`prefdelete books` |`pd`
+|Function |Command |Alias |Example
+|Delete a group. |`groupdelete GROUP_NAME` |`gd` | `groupdelete friends`
+|Delete a preference. |`prefdelete PREFERENCE_NAME` |`pd` |`prefdelete books`
 |===
 
 === Managing Orders
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|Add an order. |`orderadd INDEX i/ORDER_INFORMATION pr/PRICE q/QUANTITY d/DELIVERY_DATE` |`orderadd 1 i/Chocolates pr/10.00 q/5 d/12-08-2018` |`oa`
-|Edit an existing order. |`orderedit INDEX [i/ORDER_INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY_DATE]` |`orderedit 1 q/10` |`oe`
-|Change status of existing order. |`orderstatus INDEX os/ORDER_STATUS` |`orderstatus 2 os/done` |`os`
-|Delete an existing order. |`orderdelete INDEX` |`orderdelete 2` |`od`
+|Function |Command |Alias |Example
+|Add an order. |`orderadd INDEX i/ORDER_INFORMATION pr/PRICE q/QUANTITY d/DELIVERY_DATE` |`oa` |`orderadd 1 i/Chocolates pr/10.00 q/5 d/12-08-2018`
+|Edit an existing order. |`orderedit INDEX [i/ORDER_INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY_DATE]` |`oe` |`orderedit 1 q/10`
+|Change status of existing order. |`orderstatus INDEX os/ORDER_STATUS` |`os` |`orderstatus 2 os/done`
+|Delete an existing order. |`orderdelete INDEX` |`od` |`orderdelete 2`
 |===
 
 === Viewing Calendar
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|Display the calendar. |`calendar [VIEW_FORMAT]` |`calendar month` |`cal`
-|Go to the next page of the calendar. |`calendarnext` |`calendarnext` |`calnext`
-|Go to the previous page of the calendar. |`calendarprev` |`calendarprev` |`calprev`
-|Go to the current day. |`calendarnow` |`calendarnow` |`calnow`
+|Function |Command |Alias |Example
+|Display the calendar. |`calendar [VIEW_FORMAT]` |`cal` |`calendar month`
+|Go to the next page of the calendar. |`calendarnext` |`calnext` |`calendarnext`
+|Go to the previous page of the calendar. |`calendarprev` |`calprev` |`calendarprev`
+|Go to the current day. |`calendarnow` |`calnow` |`calendarnow`
 |===
 
 === Managing Calendar Entries
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|Add a calendar entry. |`entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` |`entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00` |`ea`
-|Edit an existing calendar entry. |`entryedit e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` |`entryedit e/1 t/meet with bosses et/1400` |`ee`
-|Delete an existing calendar entry. |`entrydelete ENTRY_INDEX` |`entrydelete 1` |`ed`
-|List all calendar entries. |`entrylist` |`entrylist` |`el`
-|Clear all calendar entries. |`entryclear` |`entryclear` |`ec`
+|Function |Command |Alias |Example
+|Add a calendar entry. |`entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` |`ea` |`entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00`
+|Edit an existing calendar entry. |`entryedit e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` |`ee` |`entryedit e/1 t/meet with bosses et/1400`
+|Delete an existing calendar entry. |`entrydelete ENTRY_INDEX` |`ed` |`entrydelete 1`
+|List all calendar entries. |`entrylist` |`el` |`entrylist`
+|Clear all calendar entries. |`entryclear`  |`ec` |`entryclear`
 |===
 
 === Miscellaneous Commands
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
-|Function |Command |Example |Alias
-|View command history. |`history` |`history` |`h`
-|Change theme. |`theme THEME_TYPE` |`theme light` |`t`
-|Undo previous command. |`undo` |`undo` |`u`
-|Redo previous command. |`redo` |`redo` |`r`
-|Clear all data. |`clear` |`clear` |`c`
-|Exit ContactSails. |`exit` |`exit` |`q`
+|Function |Command |Alias |Example
+|View command history. |`history` |`h` |`history`
+|Change theme. |`theme THEME_TYPE` |`t` |`theme light`
+|Undo previous command. |`undo` |`u` |`undo`
+|Redo previous command. |`redo` |`r` |`redo`
+|Clear all data. |`clear` |`c` |`clear`
+|Exit ContactSails. |`exit` |`q` |`exit`
 |===
 
 == Glossary
