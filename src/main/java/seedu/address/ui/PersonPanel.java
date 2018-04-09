@@ -57,7 +57,7 @@ public class PersonPanel extends UiPart<Region> {
         });
         person.getPreferenceTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
-            tagLabel.getStyleClass().add(PersonCard.getGroupTagColorStyleFor(tag.tagName));
+            tagLabel.getStyleClass().add(PersonCard.getPrefTagColorStyleFor(tag.tagName));
             preferences.getChildren().add(tagLabel);
         });
     }

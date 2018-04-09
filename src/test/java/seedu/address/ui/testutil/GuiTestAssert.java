@@ -35,8 +35,8 @@ public class GuiTestAssert {
         expectedCard.getGroups().forEach(tag ->
              assertEquals(expectedCard.getGroupTagStyleClasses(tag), actualCard.getGroupTagStyleClasses(tag)));
         expectedCard.getPreferences().forEach(tag ->
-                assertEquals(expectedCard.getPreferenceTagStyleClasses(tag),
-                        actualCard.getPreferenceTagStyleClasses(tag)));
+             assertEquals(expectedCard.getPreferenceTagStyleClasses(tag),
+                     actualCard.getPreferenceTagStyleClasses(tag)));
     }
 
     /**
@@ -60,23 +60,14 @@ public class GuiTestAssert {
      */
     private static String getGroupTagColorStyleFor(String tagName) {
         switch (tagName) {
-        case "classmates":
-        case "owesMoney":
-            return "teal";
-
-        case "colleagues":
-        case "neighbours":
-            return "yellow";
-
-        case "family":
-        case "friend":
-            return "orange";
+        case "twitter":
+            return "blue";
 
         case "friends":
             return "brown";
 
-        case "husband":
-            return "indigo";
+        case "neighbours":
+            return "yellow";
 
         default:
             fail(tagName + " does not have a color assigned.");
@@ -92,23 +83,17 @@ public class GuiTestAssert {
      */
     private static String getPrefTagColorStyleFor(String tagName) {
         switch (tagName) {
-        case "classmates":
-        case "owesMoney":
+        case "computers":
             return "teal";
 
-        case "colleagues":
-        case "neighbours":
-            return "yellow";
-
-        case "family":
-        case "friend":
-            return "orange";
-
-        case "friends":
+        case "necklaces":
             return "brown";
 
-        case "husband":
-            return "violet";
+        case "shoes":
+            return "green";
+
+        case "videoGames":
+            return "black";
 
         default:
             fail(tagName + " does not have a color assigned.");

@@ -74,7 +74,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Creates the group tag labels for {@code person}.
+     * Creates the preference tag labels for {@code person}.
      */
     private void initPreferenceTags(Person person) {
         person.getPreferenceTags().forEach(tag -> {
