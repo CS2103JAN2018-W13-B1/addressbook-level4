@@ -1,5 +1,5 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import static java.util.Objects.requireNonNull;
 
 import java.util.Optional;
@@ -9,27 +9,23 @@ import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
- * Displays Calendar in App.
+ * Displays Calendar in ContactSails in 3 possible viewing formats, Day, Week or Month.
  */
-//@@author SuxianAlicia
 public class ViewCalendarCommand extends Command {
     public static final String COMMAND_WORD = "calendar";
     public static final String COMMAND_ALIAS = "cal";
 
-
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
             + "[VIEW_FORMAT]";
 
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays Calendar in a specified format.\n"
+            + ": Displays Calendar in a specified viewing format.\n"
             + "Parameters: [VIEW_FORMAT] (must be either \"day\", \"week\" or \"month\" without captions)\n"
             + "If no parameters are given or given parameter does not follow the required keywords,"
             + " calendar will display in Day-View.\n"
             + "Example: " + COMMAND_WORD + " day";
 
     public static final String MESSAGE_SHOW_CALENDAR_SUCCESS = "Display Calendar in %1$s-View.";
-
 
     public static final String MONTH_VIEW = "Month";
     public static final String DAY_VIEW = "Day";
