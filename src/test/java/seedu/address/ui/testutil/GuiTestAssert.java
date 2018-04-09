@@ -60,12 +60,20 @@ public class GuiTestAssert {
      */
     private static String getGroupTagColorStyleFor(String tagName) {
         switch (tagName) {
+        case "classmates":
+        case "owesMoney":
+            return "teal";
+
         case "twitter":
             return "blue";
 
+        case "family":
+        case "friend":
+            return "orange";
         case "friends":
             return "brown";
 
+        case "colleagues":
         case "neighbours":
             return "yellow";
 
@@ -83,11 +91,19 @@ public class GuiTestAssert {
      */
     private static String getPrefTagColorStyleFor(String tagName) {
         switch (tagName) {
+        case "cosmetics":
         case "computers":
             return "teal";
 
         case "necklaces":
             return "brown";
+
+        case "notebooks":
+            return "green";
+
+        case "photobooks":
+        case "skirts":
+            return "orange";
 
         case "shoes":
             return "green";
