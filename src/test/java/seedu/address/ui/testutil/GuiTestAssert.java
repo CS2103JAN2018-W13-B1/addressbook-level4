@@ -35,7 +35,8 @@ public class GuiTestAssert {
         expectedCard.getGroups().forEach(tag ->
              assertEquals(expectedCard.getGroupTagStyleClasses(tag), actualCard.getGroupTagStyleClasses(tag)));
         expectedCard.getPreferences().forEach(tag ->
-                assertEquals(expectedCard.getPreferenceTagStyleClasses(tag), actualCard.getPreferenceTagStyleClasses(tag)));
+                assertEquals(expectedCard.getPreferenceTagStyleClasses(tag),
+                        actualCard.getPreferenceTagStyleClasses(tag)));
     }
 
     /**
@@ -46,8 +47,8 @@ public class GuiTestAssert {
         assertEquals(expectedPerson.getPhone().value, actualCard.getPhone());
         assertEquals(expectedPerson.getEmail().value, actualCard.getEmail());
         assertEquals(expectedPerson.getAddress().value, actualCard.getAddress());
-        assertGroupsEqual(expectedPerson,actualCard);
-        assertPreferencesEqual(expectedPerson,actualCard);
+        assertGroupsEqual(expectedPerson, actualCard);
+        assertPreferencesEqual(expectedPerson, actualCard);
 
     }
 
@@ -59,27 +60,27 @@ public class GuiTestAssert {
      */
     private static String getGroupTagColorStyleFor(String tagName) {
         switch (tagName) {
-            case "classmates":
-            case "owesMoney":
-                return "teal";
+        case "classmates":
+        case "owesMoney":
+            return "teal";
 
-            case "colleagues":
-            case "neighbours":
-                return "yellow";
+        case "colleagues":
+        case "neighbours":
+            return "yellow";
 
-            case "family":
-            case "friend":
-                return "orange";
+        case "family":
+        case "friend":
+            return "orange";
 
-            case "friends":
-                return "brown";
+        case "friends":
+            return "brown";
 
-            case "husband":
-                return "indigo";
+        case "husband":
+            return "indigo";
 
-            default:
-                fail(tagName + " does not have a color assigned.");
-                return "";
+        default:
+            fail(tagName + " does not have a color assigned.");
+            return "";
         }
     }
 
