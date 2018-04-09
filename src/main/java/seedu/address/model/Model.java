@@ -113,8 +113,8 @@ public interface Model {
     void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry)
             throws DuplicateCalendarEntryException, CalendarEntryNotFoundException;
 
-    /** Returns an unmodifiable view of the filtered order list */
-    ObservableList<CalendarEntry> getFilteredCalendarEventList();
+    /** Returns an unmodifiable view of the filtered calendar entry list */
+    ObservableList<CalendarEntry> getFilteredCalendarEntryList();
 
     /** Returns Calendar stored in Model. */
     Calendar getCalendar();

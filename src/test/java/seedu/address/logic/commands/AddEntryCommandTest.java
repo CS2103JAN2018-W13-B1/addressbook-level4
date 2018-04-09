@@ -151,7 +151,7 @@ public class AddEntryCommandTest {
         }
 
         @Override
-        public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
+        public ObservableList<CalendarEntry> getFilteredCalendarEntryList() {
             fail("This method should not be called.");
             return null;
         }

@@ -222,7 +222,7 @@ public class ModelManager extends ComponentManager implements Model {
     // ========== Filtered Calendar Entry List Accessors ==================================
     //@@author SuxianAlicia
     @Override
-    public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
+    public ObservableList<CalendarEntry> getFilteredCalendarEntryList() {
         return FXCollections.unmodifiableObservableList(filteredEvents);
     }
 

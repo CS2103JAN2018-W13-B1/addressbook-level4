@@ -181,8 +181,8 @@ public class AddOrderCommandTest {
         }
 
         @Override
-        public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
-            return model.getFilteredCalendarEventList();
+        public ObservableList<CalendarEntry> getFilteredCalendarEntryList() {
+            return model.getFilteredCalendarEntryList();
         }
 
         @Override
