@@ -1,5 +1,5 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_GET_STOCKS;
@@ -32,7 +32,8 @@ import seedu.address.testutil.CalendarEntryBuilder;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditEntryCommand.
+ * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand)
+ * and unit tests for EditEntryCommand.
  */
 public class EditEntryCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), getTypicalCalendarManagerWithEntries() ,
@@ -46,7 +47,7 @@ public class EditEntryCommandTest {
 
         String expectedMessage = String.format(EditEntryCommand.MESSAGE_EDIT_ENTRY_SUCCESS, editedEntry);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new CalendarManager(),
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), model.getCalendarManager(),
                 new UserPrefs());
         expectedModel.updateCalendarEntry(model.getFilteredCalendarEntryList().get(0), editedEntry);
 
@@ -96,7 +97,7 @@ public class EditEntryCommandTest {
         EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder(firstEntry).build();
         EditEntryCommand editEntryCommand = prepareCommand(INDEX_SECOND_ENTRY, descriptor);
 
-        assertCommandFailure(editEntryCommand, model, EditOrderCommand.MESSAGE_DUPLICATE_ORDER);
+        assertCommandFailure(editEntryCommand, model, EditEntryCommand.MESSAGE_DUPLICATE_ENTRY);
     }
 
     @Test

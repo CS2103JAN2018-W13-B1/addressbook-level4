@@ -211,6 +211,6 @@ public class AddEntryCommandParserTest {
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + START_DATE_DESC_MEET_BOSS
                         + END_DATE_DESC_MEET_BOSS + INVALID_START_TIME_LESS_THAN_FIFTEEN_MINUTES_FROM_END_TIME_DESC
                         + END_TIME_DESC_MEET_BOSS,
-                EntryTimeConstraintsUtil.EVENT_DURATION_CONSTRAINTS);
+                EntryTimeConstraintsUtil.ENTRY_DURATION_CONSTRAINTS);
     }
 }
