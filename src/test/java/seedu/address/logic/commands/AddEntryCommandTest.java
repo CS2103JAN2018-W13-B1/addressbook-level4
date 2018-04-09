@@ -225,6 +225,11 @@ public class AddEntryCommandTest {
         public void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException {
             fail("This method should not be called.");
         }
+
+        @Override
+        public void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry) throws DuplicateCalendarEntryException, CalendarEntryNotFoundException {
+            fail("This method should not be called.");
+        }
     }
 
     /**
@@ -266,7 +271,7 @@ public class AddEntryCommandTest {
 
         /* To fix later on */
         @Override
-        public ObservableList<CalendarEntry> getFilteredCalendarEventList() {
+        public ObservableList<CalendarEntry> getFilteredCalendarEntryList() {
             return null;
         }
 
