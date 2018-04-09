@@ -25,8 +25,6 @@ public class PersonPanel extends UiPart<Region> {
     private static final String FXML = "PersonPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
-    private Person selectedPerson;
-
     @FXML
     private VBox panel;
     @FXML
@@ -60,24 +58,21 @@ public class PersonPanel extends UiPart<Region> {
         preferences.getChildren().clear();
     }
 
-    /*
-    * Loads a person page
-    */
-    private void loadPersonPage() {
-        name.setText(selectedPerson.getName().fullName);
-        phone.setText(selectedPerson.getPhone().toString());
-        address.setText(selectedPerson.getAddress().toString());
-        email.setText(selectedPerson.getEmail().toString());
-        selectedPerson.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
-        selectedPerson.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
+    @Subscribe
+    private void loadPersonPage(Person person) {
+        name.setText(person.getName().fullName);
+        phone.setText(person.getPhone().toString());
+        address.setText(person.getAddress().toString());
+        email.setText(person.getEmail().toString());
+        person.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
+        person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
     }
 
     @Subscribe
     public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         loadBlankPersonPage();
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        selectedPerson = event.getNewSelection().person;
-        loadPersonPage();
+        loadPersonPage(event.getNewSelection().person);
     }
 
     @Subscribe
