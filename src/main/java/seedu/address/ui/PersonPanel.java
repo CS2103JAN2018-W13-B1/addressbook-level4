@@ -60,6 +60,9 @@ public class PersonPanel extends UiPart<Region> {
         preferences.getChildren().clear();
     }
 
+    /*
+    * Loads a person page
+    */
     private void loadPersonPage() {
         name.setText(selectedPerson.getName().fullName);
         phone.setText(selectedPerson.getPhone().toString());
