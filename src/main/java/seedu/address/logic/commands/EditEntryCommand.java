@@ -60,8 +60,6 @@ public class EditEntryCommand extends UndoableCommand {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the calendar.";
 
-
-
     private final Index index;
     private final EditEntryDescriptor editEntryDescriptor;
 
@@ -81,7 +79,7 @@ public class EditEntryCommand extends UndoableCommand {
     }
 
     @Override
-    protected CommandResult executeUndoableCommand() throws CommandException {
+    public CommandResult executeUndoableCommand() throws CommandException {
         try {
             model.updateCalendarEntry(entryToEdit, editedEntry);
         } catch (DuplicateCalendarEntryException dcee) {
@@ -95,7 +93,7 @@ public class EditEntryCommand extends UndoableCommand {
 
     @Override
     protected void preprocessUndoableCommand() throws CommandException {
-        List<CalendarEntry> lastShownList = model.getFilteredCalendarEventList();
+        List<CalendarEntry> lastShownList = model.getFilteredCalendarEntryList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);

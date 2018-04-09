@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EditEntryCommand;
+import seedu.address.logic.commands.EditEntryCommand.EditEntryDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -38,7 +39,7 @@ public class EditEntryCommandParser implements Parser<EditEntryCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditEntryCommand.MESSAGE_USAGE));
         }
 
-        EditEntryCommand.EditEntryDescriptor editEntryDescriptor = new EditEntryCommand.EditEntryDescriptor();
+        EditEntryDescriptor editEntryDescriptor = new EditEntryDescriptor();
 
         try {
             ParserUtil.parseEventTitle(argMultimap.getValue(PREFIX_ENTRY_TITLE))

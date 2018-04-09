@@ -32,6 +32,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.testutil.EditEntryDescriptorBuilder;
 import seedu.address.testutil.EditOrderDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
@@ -157,6 +158,9 @@ public class CommandTestUtil {
     public static final EditOrderCommand.EditOrderDescriptor DESC_COMPUTER;
     public static final EditOrderCommand.EditOrderDescriptor DESC_COMICBOOK;
 
+    public static final EditEntryCommand.EditEntryDescriptor DESC_MEET_BOSS;
+    public static final EditEntryCommand.EditEntryDescriptor DESC_GET_STOCKS;
+
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -175,6 +179,15 @@ public class CommandTestUtil {
                 .withQuantity("1")
                 .withDeliveryDate("01-01-2018")
                 .build();
+    }
+
+    static {
+        DESC_MEET_BOSS = new EditEntryDescriptorBuilder().withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
+                .withStartDate(VALID_START_DATE_MEET_BOSS).withEndDate(VALID_END_DATE_MEET_BOSS)
+                .withStartTime(VALID_START_TIME_MEET_BOSS).withEndTime(VALID_END_TIME_MEET_BOSS).build();
+        DESC_GET_STOCKS = new EditEntryDescriptorBuilder().withEntryTitle(VALID_ENTRY_TITLE_GET_STOCKS)
+                .withStartDate(VALID_START_DATE_GET_STOCKS).withEndDate(VALID_END_DATE_GET_STOCKS)
+                .withStartTime(VALID_START_TIME_GET_STOCKS).withEndTime(VALID_END_TIME_GET_STOCKS).build();
     }
 
     /**
