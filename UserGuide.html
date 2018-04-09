@@ -72,7 +72,7 @@
 <li><a href="#managing-calendar-entries">4.7. Managing Calendar Entries</a>
 <ul class="sectlevel3">
 <li><a href="#adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code">4.7.1. Adding entries to calendar entry list : <code>entryadd</code> <code>since v1.3</code></a></li>
-<li><a href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-coming-in-v1-5-code">4.7.2. Editing entries in calendar entry list : <code>entryedit</code> <code>coming in v1.5</code></a></li>
+<li><a href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code">4.7.2. Editing entries in calendar entry list : <code>entryedit</code> <code>since v1.5rc</code></a></li>
 <li><a href="#deleting-entries-in-calendar-entry-list-code-entrydelete-code-code-since-v1-4-code">4.7.3. Deleting entries in calendar entry list : <code>entrydelete</code> <code>since v1.4</code></a></li>
 <li><a href="#listing-all-calendar-entries-code-entrylist-code-code-since-v1-4-code">4.7.4. Listing all calendar entries : <code>entrylist</code> <code>since v1.4</code></a></li>
 <li><a href="#clearing-all-entries-in-list-of-entries-code-entryclear-code-code-coming-in-v1-5-code">4.7.5. Clearing all entries in list of entries : <code>entryclear</code> <code>coming in v1.5</code></a></li>
@@ -999,10 +999,10 @@ Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at th
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-entries-in-calendar-entry-list-code-entryedit-code-code-coming-in-v1-5-code"><a class="link" href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-coming-in-v1-5-code">4.7.2. Editing entries in calendar entry list : <code>entryedit</code> <code>coming in v1.5</code></a></h4>
+<h4 id="editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code"><a class="link" href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code">4.7.2. Editing entries in calendar entry list : <code>entryedit</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing entry in the Calendar entry List.<br>
-Format: <code>entryedit e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code><br>
+Format: <code>entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code><br>
 Command Alias: <code>ee</code><br></p>
 </div>
 <div class="sidebarblock">
@@ -1025,14 +1025,14 @@ Command Alias: <code>ee</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>entryedit e/1 t/meet with bosses et/1400</code> OR<br>
-<code>ee e/1 t/meet with bosses et/1400</code><br>
+<p><code>entryedit 1 t/meet with bosses et/1400</code> OR<br>
+<code>ee 1 t/meet with bosses et/1400</code><br>
 Edits title and end time of 1st entry in entry list to "meet with bosses" and 1400 respectively.<br>
 Changes reflect on the Calendar.</p>
 </li>
 <li>
-<p><code>entryedit e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800</code> OR<br>
-<code>ee e/3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800</code><br>
+<p><code>entryedit 3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800</code> OR<br>
+<code>ee 3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800</code><br>
 Edits starting date and time, ending date and time of the 3rd entry in entry list.</p>
 </li>
 </ul>
@@ -1658,9 +1658,9 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edit an existing calendar entry.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit e/ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ee</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit e/1 t/meet with bosses et/1400</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit 1 t/meet with bosses et/1400</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Delete an existing calendar entry.</p></td>
@@ -1751,7 +1751,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-09 00:54:49 UTC
+Last updated 2018-04-09 06:10:50 UTC
 </div>
 </div>
 </body>
