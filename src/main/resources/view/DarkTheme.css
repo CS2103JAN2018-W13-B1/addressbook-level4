@@ -376,7 +376,7 @@
 
 #groups .blue {
     -fx-text-fill: white;
-    -fx-background-color: blue;
+    -fx-background-color: #2980B9;
 }
 
 #groups .orange {
@@ -391,7 +391,7 @@
 
 #groups .green {
     -fx-text-fill: black;
-    -fx-background-color: green;
+    -fx-background-color: #27AE60;
 }
 
 #groups .pink {
@@ -404,14 +404,9 @@
     -fx-background-color: black;
 }
 
-#groups .grey {
+#groups .indigo {
     -fx-text-fill: black;
-    -fx-background-color: grey;
-}
-
-#groups .teal {
-    -fx-text-fill: white;
-    -fx-background-color: #3e7b91;
+    -fx-background-color: #8E44AD;
 }
 
 #preferences .red {
@@ -426,7 +421,7 @@
 
 #preferences .blue {
     -fx-text-fill: white;
-    -fx-background-color: blue;
+    -fx-background-color: #2980B9;
 }
 
 #preferences .orange {
@@ -441,7 +436,7 @@
 
 #groups .green {
     -fx-text-fill: black;
-    -fx-background-color: green;
+    -fx-background-color: #27AE60;
 }
 
 #preferences .pink {
@@ -454,9 +449,9 @@
     -fx-background-color: black;
 }
 
-#preferences .grey {
+#preferences .indigo {
     -fx-text-fill: black;
-    -fx-background-color: grey;
+    -fx-background-color: #8E44AD;
 }
 
 /*@@author AJZ1995*/

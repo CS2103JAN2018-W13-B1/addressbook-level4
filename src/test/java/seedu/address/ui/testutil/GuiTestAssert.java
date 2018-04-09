@@ -75,7 +75,7 @@ public class GuiTestAssert {
                 return "brown";
 
             case "husband":
-                return "grey";
+                return "indigo";
 
             default:
                 fail(tagName + " does not have a color assigned.");
@@ -107,7 +107,7 @@ public class GuiTestAssert {
                 return "brown";
 
             case "husband":
-                return "grey";
+                return "violet";
 
             default:
                 fail(tagName + " does not have a color assigned.");
