@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.ResetPersonPanelEvent;
 import seedu.address.model.person.Person;
 
 /**
@@ -23,6 +24,8 @@ public class PersonPanel extends UiPart<Region> {
 
     private static final String FXML = "PersonPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(this.getClass());
+
+    private Person selectedPerson;
 
     @FXML
     private VBox panel;
@@ -42,21 +45,41 @@ public class PersonPanel extends UiPart<Region> {
     public PersonPanel() {
         super(FXML);
         registerAsAnEventHandler(this);
+        loadBlankPersonPage();
     }
 
-    @Subscribe
-    private void loadPersonPage(Person person) {
-        name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().toString());
-        address.setText(person.getAddress().toString());
-        email.setText(person.getEmail().toString());
-        person.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
-        person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
+    /**
+     * Loads a blank page when no contact is selected.
+     */
+    private void loadBlankPersonPage() {
+        name.setText("");
+        phone.setText("");
+        address.setText("");
+        email.setText("");
+        groups.getChildren().clear();
+        preferences.getChildren().clear();
+    }
+
+    private void loadPersonPage() {
+        name.setText(selectedPerson.getName().fullName);
+        phone.setText(selectedPerson.getPhone().toString());
+        address.setText(selectedPerson.getAddress().toString());
+        email.setText(selectedPerson.getEmail().toString());
+        selectedPerson.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
+        selectedPerson.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
     }
 
     @Subscribe
     public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+        loadBlankPersonPage();
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        loadPersonPage(event.getNewSelection().person);
+        selectedPerson = event.getNewSelection().person;
+        loadPersonPage();
+    }
+
+    @Subscribe
+    private void handlePersonPanelNoSelectionEvent(ResetPersonPanelEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadBlankPersonPage();
     }
 }
