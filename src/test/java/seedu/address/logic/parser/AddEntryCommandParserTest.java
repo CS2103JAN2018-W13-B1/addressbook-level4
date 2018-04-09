@@ -31,6 +31,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 
 import org.junit.Test;
 
+import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.logic.commands.AddEntryCommand;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
@@ -198,18 +199,18 @@ public class AddEntryCommandParserTest {
         // Start Date later than End Date
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + INVALID_START_DATE_LATER_THAN_END_DATE_DESC
                         + END_DATE_DESC_MEET_BOSS + START_TIME_DESC_MEET_BOSS + END_TIME_DESC_MEET_BOSS,
-                AddEntryCommandParser.START_AND_END_DATE_CONSTRAINTS);
+                EntryTimeConstraintsUtil.START_AND_END_DATE_CONSTRAINTS);
 
         // Start Time later than End Time for same Start Date and End Date
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + START_DATE_DESC_MEET_BOSS
                         + END_DATE_DESC_MEET_BOSS + INVALID_START_TIME_LATER_THAN_END_TIME_DESC
                         + END_TIME_DESC_MEET_BOSS,
-                AddEntryCommandParser.START_AND_END_TIME_CONSTRAINTS);
+                EntryTimeConstraintsUtil.START_AND_END_TIME_CONSTRAINTS);
 
         // Start Time less than 15 minutes from End Time for same Start Date and End Date
         assertParseFailure(parser, ENTRY_TITLE_DESC_MEET_BOSS + START_DATE_DESC_MEET_BOSS
                         + END_DATE_DESC_MEET_BOSS + INVALID_START_TIME_LESS_THAN_FIFTEEN_MINUTES_FROM_END_TIME_DESC
                         + END_TIME_DESC_MEET_BOSS,
-                AddEntryCommandParser.EVENT_DURATION_CONSTRAINTS);
+                EntryTimeConstraintsUtil.EVENT_DURATION_CONSTRAINTS);
     }
 }
