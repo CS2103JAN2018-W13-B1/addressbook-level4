@@ -28,7 +28,10 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.order.Order;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -76,7 +79,7 @@ public class CommandTestUtil {
     public static final String VALID_START_TIME_MEET_BOSS = "10:00";
     public static final String VALID_START_TIME_GET_STOCKS = "08:00";
     public static final String VALID_END_TIME_MEET_BOSS = "12:00";
-    public static final String VALID_END_TIME_GET_STOCKS = "12:00";
+    public static final String VALID_END_TIME_GET_STOCKS = "13:00";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -216,7 +219,11 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
-        List<Person> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<Person> expectedFilteredPersonList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<Order> expectedFilteredOrderList = new ArrayList<>(actualModel.getFilteredOrderList());
+        CalendarManager expectedCalendarManager = new CalendarManager(actualModel.getCalendarManager());
+        List<CalendarEntry> expectedFilteredCalendarEntryList =
+                new ArrayList<>(actualModel.getFilteredCalendarEntryList());
 
         try {
             command.execute();
@@ -224,7 +231,11 @@ public class CommandTestUtil {
         } catch (CommandException e) {
             assertEquals(expectedMessage, e.getMessage());
             assertEquals(expectedAddressBook, actualModel.getAddressBook());
-            assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
+            assertEquals(expectedFilteredPersonList, actualModel.getFilteredPersonList());
+            assertEquals(expectedFilteredOrderList, actualModel.getFilteredOrderList());
+            assertEquals(expectedCalendarManager, actualModel.getCalendarManager());
+            assertEquals(expectedFilteredCalendarEntryList, actualModel.getFilteredCalendarEntryList());
+
         }
     }
 

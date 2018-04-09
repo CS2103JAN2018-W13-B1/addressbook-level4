@@ -227,7 +227,8 @@ public class AddEntryCommandTest {
         }
 
         @Override
-        public void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry) throws DuplicateCalendarEntryException, CalendarEntryNotFoundException {
+        public void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry)
+                throws DuplicateCalendarEntryException, CalendarEntryNotFoundException {
             fail("This method should not be called.");
         }
     }
