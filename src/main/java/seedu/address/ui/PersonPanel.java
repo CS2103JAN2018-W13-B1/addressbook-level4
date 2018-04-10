@@ -8,6 +8,7 @@ import com.google.common.eventbus.Subscribe;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
@@ -81,7 +82,21 @@ public class PersonPanel extends UiPart<Region> {
         email.setText("");
         groups.getChildren().clear();
         preferences.getChildren().clear();
+        initBlankIcons();
     }
+
+    //@@author amad-person
+    /**
+     * Sets all image icons to blank.
+     */
+    private void initBlankIcons() {
+        phoneIcon.setImage(null);
+        addressIcon.setImage(null);
+        emailIcon.setImage(null);
+        prefIcon.setImage(null);
+        groupIcon.setImage(null);
+    }
+    //@@author
 
     @Subscribe
     private void loadPersonPage(Person person) {
@@ -91,10 +106,28 @@ public class PersonPanel extends UiPart<Region> {
         email.setText(person.getEmail().toString());
         person.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
         person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
+        setIcons();
         setImageSizeForAllImages();
     }
 
-    // @@author amad-person
+    private void setIcons() {
+        Image phoneIconImage = new Image("images/phone_icon.png");
+        phoneIcon.setImage(phoneIconImage);
+
+        Image addressIconImage = new Image("images/address_icon.png");
+        addressIcon.setImage(addressIconImage);
+
+        Image emailIconImage = new Image("images/email_icon.png");
+        emailIcon.setImage(emailIconImage);
+
+        Image prefIconImage = new Image("images/pref_icon.png");
+        prefIcon.setImage(prefIconImage);
+
+        Image groupIconImage = new Image("images/group_icon.png");
+        groupIcon.setImage(groupIconImage);
+    }
+
+    //@@author amad-person
     private void setImageSizeForAllImages() {
         phoneIcon.setFitWidth(ICON_WIDTH);
         phoneIcon.setFitHeight(ICON_HEIGHT);
@@ -111,7 +144,7 @@ public class PersonPanel extends UiPart<Region> {
         prefIcon.setFitWidth(ICON_WIDTH);
         prefIcon.setFitHeight(ICON_HEIGHT);
     }
-    // @@author
+    //@@author
 
     @Subscribe
     public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
