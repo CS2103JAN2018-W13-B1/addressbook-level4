@@ -21,7 +21,7 @@ public class ViewCalendarCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Displays Calendar in a specified viewing format.\n"
             + "Parameters: [VIEW_FORMAT] (must be either \"day\", \"week\" or \"month\" without captions)\n"
-            + "If no parameters are given or given parameter does not follow the required keywords,"
+            + "If no parameters are given or given parameter does not follow the accepted keywords,"
             + " calendar will display in Day-View.\n"
             + "Example: " + COMMAND_WORD + " day";
 
@@ -34,14 +34,14 @@ public class ViewCalendarCommand extends Command {
     private final String view;
 
     public ViewCalendarCommand(String view) {
+        requireNonNull(view);
         String trimmedView = view.trim();
-        requireNonNull(trimmedView);
 
         if (trimmedView.equalsIgnoreCase(MONTH_VIEW)) {
             this.view = MONTH_VIEW;
         } else if (trimmedView.equalsIgnoreCase(WEEK_VIEW)) {
             this.view = WEEK_VIEW;
-        } else { //If user input is equal to DAY_VIEW or input does not conform to any of the required keywords
+        } else { //If view is equal to DAY_VIEW, is empty or does not match any of the accepted keywords
             this.view = DAY_VIEW;
         }
     }
@@ -58,7 +58,8 @@ public class ViewCalendarCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ViewCalendarCommand); // instanceof handles nulls
+                || (other instanceof ViewCalendarCommand
+                && this.view.equals(((ViewCalendarCommand) other).view)); // instanceof handles nulls
     }
 
 }
