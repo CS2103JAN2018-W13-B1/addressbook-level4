@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
@@ -18,6 +19,9 @@ import seedu.address.model.order.Quantity;
  */
 public class OrderCard extends UiPart<Region> {
     private static final String FXML = "OrderListCard.fxml";
+    private static final double ICON_WIDTH = 25;
+    private static final double ICON_HEIGHT = 25;
+
     public final Order order;
 
     private final Logger logger = LogsCenter.getLogger(OrderCard.class);
@@ -26,13 +30,13 @@ public class OrderCard extends UiPart<Region> {
     private HBox cardPane;
 
     @FXML
+    private Label id;
+
+    @FXML
     private Label orderInformation;
 
     @FXML
     private Label orderStatus;
-
-    @FXML
-    private Label id;
 
     @FXML
     private Label priceAndQuantity;
@@ -43,6 +47,18 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label deliveryDate;
 
+    @FXML
+    private ImageView orderStatusIcon;
+
+    @FXML
+    private ImageView priceAndQuantityIcon;
+
+    @FXML
+    private ImageView totalPriceIcon;
+
+    @FXML
+    private ImageView deliveryDateIcon;
+
     public OrderCard(Order order, int displayedIndex) {
         super(FXML);
         this.order = order;
@@ -52,6 +68,7 @@ public class OrderCard extends UiPart<Region> {
         priceAndQuantity.setText("S$" + order.getPrice().toString() + " X " + order.getQuantity().toString());
         totalPrice.setText("Total: S$" + getTotalPrice(order.getPrice(), order.getQuantity()));
         deliveryDate.setText("Deliver By: " + order.getDeliveryDate().toString());
+        setImageSizeForAllImages();
     }
 
     private String getTotalPrice(Price price, Quantity quantity) {
@@ -59,6 +76,20 @@ public class OrderCard extends UiPart<Region> {
         int quantityValue = Integer.valueOf(quantity.toString());
 
         return String.valueOf(priceValue * quantityValue);
+    }
+
+    private void setImageSizeForAllImages() {
+        orderStatusIcon.setFitWidth(ICON_WIDTH);
+        orderStatusIcon.setFitHeight(ICON_HEIGHT);
+
+        priceAndQuantityIcon.setFitWidth(ICON_WIDTH);
+        priceAndQuantityIcon.setFitHeight(ICON_HEIGHT);
+
+        totalPriceIcon.setFitWidth(ICON_WIDTH);
+        totalPriceIcon.setFitHeight(ICON_HEIGHT);
+
+        deliveryDateIcon.setFitWidth(ICON_WIDTH);
+        deliveryDateIcon.setFitHeight(ICON_HEIGHT);
     }
 
     @Override
