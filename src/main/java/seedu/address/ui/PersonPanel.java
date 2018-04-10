@@ -1,3 +1,4 @@
+//@@author AJZ1995
 package seedu.address.ui;
 
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javafx.scene.layout.VBox;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.ResetPersonPanelEvent;
 import seedu.address.model.person.Person;
 
 /**
@@ -38,23 +40,22 @@ public class PersonPanel extends UiPart<Region> {
     @FXML
     private FlowPane preferences;
 
-
     public PersonPanel() {
         super(FXML);
         registerAsAnEventHandler(this);
+        loadBlankPersonPage();
     }
 
     /**
-     * Frees resources allocated to the person panel.
+     * Loads a blank page when no contact is selected.
      */
-    public void freeResources() {
-        panel = null;
-        name = null;
-        phone = null;
-        address = null;
-        email = null;
-        groups = null;
-        preferences = null;
+    private void loadBlankPersonPage() {
+        name.setText("");
+        phone.setText("");
+        address.setText("");
+        email.setText("");
+        groups.getChildren().clear();
+        preferences.getChildren().clear();
     }
 
     @Subscribe
@@ -63,13 +64,28 @@ public class PersonPanel extends UiPart<Region> {
         phone.setText(person.getPhone().toString());
         address.setText(person.getAddress().toString());
         email.setText(person.getEmail().toString());
-        person.getGroupTags().forEach(group -> groups.getChildren().add(new Label(group.tagName)));
-        person.getPreferenceTags().forEach(pref -> preferences.getChildren().add(new Label(pref.tagName)));
+        person.getGroupTags().forEach(tag -> {
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.getStyleClass().add(PersonCard.getGroupTagColorStyleFor(tag.tagName));
+            groups.getChildren().add(tagLabel);
+        });
+        person.getPreferenceTags().forEach(tag -> {
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.getStyleClass().add(PersonCard.getPrefTagColorStyleFor(tag.tagName));
+            preferences.getChildren().add(tagLabel);
+        });
     }
 
     @Subscribe
     public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+        loadBlankPersonPage();
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadPersonPage(event.getNewSelection().person);
+    }
+
+    @Subscribe
+    private void handlePersonPanelNoSelectionEvent(ResetPersonPanelEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadBlankPersonPage();
     }
 }

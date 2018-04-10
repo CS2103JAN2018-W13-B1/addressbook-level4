@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyCalendarManager;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -76,4 +78,14 @@ public class SampleDataUtil {
 
         return prefTags;
     }
+
+    //@@author SuxianAlicia
+    /**
+     * Returns a {@code CalendarManager} with no {@code CalendarEntry} in it.
+     */
+    public static ReadOnlyCalendarManager getSampleCalendarManager() {
+        CalendarManager sampleCm = new CalendarManager();
+        return sampleCm;
+    }
+    //@@author
 }
