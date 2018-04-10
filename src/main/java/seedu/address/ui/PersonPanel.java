@@ -14,6 +14,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
+import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.ResetPersonPanelEvent;
@@ -114,19 +115,19 @@ public class PersonPanel extends UiPart<Region> {
 
     //@@author amad-person
     private void setIcons() {
-        Image phoneIconImage = new Image("images/phone_icon.png");
+        Image phoneIconImage = new Image(MainApp.class.getResourceAsStream("/images/phone_icon.png"));
         phoneIcon.setImage(phoneIconImage);
 
-        Image addressIconImage = new Image("images/address_icon.png");
+        Image addressIconImage = new Image(MainApp.class.getResourceAsStream("/images/address_icon.png"));
         addressIcon.setImage(addressIconImage);
 
-        Image emailIconImage = new Image("images/email_icon.png");
+        Image emailIconImage = new Image(MainApp.class.getResourceAsStream("/images/email_icon.png"));
         emailIcon.setImage(emailIconImage);
 
-        Image prefIconImage = new Image("images/pref_icon.png");
+        Image prefIconImage = new Image(MainApp.class.getResourceAsStream("/images/pref_icon.png"));
         prefIcon.setImage(prefIconImage);
 
-        Image groupIconImage = new Image("images/group_icon.png");
+        Image groupIconImage = new Image(MainApp.class.getResourceAsStream("/images/group_icon.png"));
         groupIcon.setImage(groupIconImage);
     }
 

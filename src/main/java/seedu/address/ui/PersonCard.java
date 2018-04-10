@@ -58,7 +58,6 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private ImageView prefIcon;
 
-
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
@@ -72,7 +71,7 @@ public class PersonCard extends UiPart<Region> {
         setImageSizeForAllImages();
     }
 
-    // @@author amad-person
+    //@@author amad-person
     private void setImageSizeForAllImages() {
         phoneIcon.setFitWidth(ICON_WIDTH);
         phoneIcon.setFitHeight(ICON_HEIGHT);
@@ -89,7 +88,7 @@ public class PersonCard extends UiPart<Region> {
         prefIcon.setFitWidth(ICON_WIDTH);
         prefIcon.setFitHeight(ICON_HEIGHT);
     }
-    // @@author
+    //@@author
 
     @Override
     public boolean equals(Object other) {
