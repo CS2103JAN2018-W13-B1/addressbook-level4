@@ -36,11 +36,11 @@ public class Price {
     public static boolean isValidPrice(String test) {
         requireNonNull(test);
 
-        if (Double.valueOf(test) > 1000000.00) {
+        if (!test.matches(PRICE_VALIDATION_REGEX) || Double.valueOf(test) > 1000000.00) {
             return false;
+        } else {
+            return true;
         }
-
-        return test.matches(PRICE_VALIDATION_REGEX);
     }
 
     @Override

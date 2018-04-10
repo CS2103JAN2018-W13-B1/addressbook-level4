@@ -35,11 +35,11 @@ public class Quantity {
     public static boolean isValidQuantity(String test) {
         requireNonNull(test);
 
-        if (Integer.valueOf(test) > 1000000) {
+        if (!test.matches(QUANTITY_VALIDATION_REGEX) || Integer.valueOf(test) > 1000000) {
             return false;
+        } else {
+            return true;
         }
-
-        return test.matches(QUANTITY_VALIDATION_REGEX);
     }
 
     @Override
