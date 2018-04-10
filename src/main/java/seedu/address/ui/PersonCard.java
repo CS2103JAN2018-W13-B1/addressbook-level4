@@ -90,7 +90,7 @@ public class PersonCard extends UiPart<Region> {
         prefIcon.setFitWidth(ICON_WIDTH);
         prefIcon.setFitHeight(ICON_HEIGHT);
     }
-    
+
     //@@author AJZ1995
     /**
      * Returns the color style for {@code tagName}'s label.
@@ -106,7 +106,7 @@ public class PersonCard extends UiPart<Region> {
         // between different runs of the program while still making it random enough between tags.
         return TAG_COLOR_STYLES[Math.abs(tagName.hashCode()) % TAG_COLOR_STYLES.length];
     }
-    
+
     /**
      * Creates the group tag labels for {@code person}.
      */
