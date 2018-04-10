@@ -65,6 +65,7 @@ public class OrderCard extends UiPart<Region> {
         }
 
         return false;
+    }
   
     private void setPriceAndQuantity(Order order) {
         double priceValue = Double.valueOf(order.getPrice().toString());
