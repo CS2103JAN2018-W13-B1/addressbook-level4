@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.view.CalendarView;
-import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -31,7 +30,7 @@ public class CalendarPanel extends UiPart<Region> {
 
     private static final String REQUEST_TODAY = "Today";
     private static final String REQUEST_BACK = "Back";
-    private static final String REQUEST_FORWARD = "Forward";
+    private static final String REQUEST_NEXT = "Next";
 
     private static final String FXML = "CalendarPanel.fxml";
 
@@ -114,11 +113,11 @@ public class CalendarPanel extends UiPart<Region> {
     public void handleChangeCalendarPageRequestEvent(ChangeCalendarPageRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         String request = event.getRequestType();
-        if(request.equals(REQUEST_TODAY)) {
+        if (request.equals(REQUEST_TODAY)) {
             calendarView.getSelectedPage().goToday();
         } else if (request.equals(REQUEST_BACK)) {
             calendarView.getSelectedPage().goBack();
-        } else if (request.equals(REQUEST_FORWARD)) {
+        } else if (request.equals(REQUEST_NEXT)) {
             calendarView.getSelectedPage().goForward();
         }
     }

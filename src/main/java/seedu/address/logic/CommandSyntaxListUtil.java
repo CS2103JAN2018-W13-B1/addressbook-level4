@@ -32,7 +32,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.ViewBackCommand;
 import seedu.address.logic.commands.ViewCalendarCommand;
-import seedu.address.logic.commands.ViewForwardCommand;
+import seedu.address.logic.commands.ViewNextCommand;
 import seedu.address.logic.commands.ViewTodayCommand;
 
 /**
@@ -79,7 +79,7 @@ public final class CommandSyntaxListUtil {
         commandSyntaxList.add(UndoCommand.COMMAND_WORD);
         commandSyntaxList.add(ViewBackCommand.COMMAND_WORD);
         commandSyntaxList.add(ViewCalendarCommand.COMMAND_WORD);
-        commandSyntaxList.add(ViewForwardCommand.COMMAND_WORD);
+        commandSyntaxList.add(ViewNextCommand.COMMAND_WORD);
         commandSyntaxList.add(ViewTodayCommand.COMMAND_WORD);
 
         sortCommandList();
