@@ -65,8 +65,8 @@
 <ul class="sectlevel3">
 <li><a href="#displaying-the-calendar-code-calendar-code-code-since-v1-3-code">4.6.1. Displaying the calendar : <code>calendar</code> <code>since v1.3</code></a></li>
 <li><a href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-coming-in-v1-5-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>coming in v1.5</code></a></li>
-<li><a href="#go-to-previous-page-in-the-calendar-code-calendarprev-code-code-coming-in-v1-5-code">4.6.3. Go to previous page in the calendar : <code>calendarprev</code> <code>coming in v1.5</code></a></li>
-<li><a href="#display-current-day-in-the-calendar-code-calendarnow-code-code-coming-in-v1-5-code">4.6.4. Display current day in the calendar : <code>calendarnow</code> <code>coming in v1.5</code></a></li>
+<li><a href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-coming-in-v1-5-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>coming in v1.5</code></a></li>
+<li><a href="#display-current-day-in-the-calendar-code-calendartoday-code-code-coming-in-v1-5-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>coming in v1.5</code></a></li>
 </ul>
 </li>
 <li><a href="#managing-calendar-entries">4.7. Managing Calendar Entries</a>
@@ -883,7 +883,7 @@ Shows Calendar in Month-View.</p>
 <div class="sect3">
 <h4 id="go-to-next-page-in-the-calendar-code-calendarnext-code-code-coming-in-v1-5-code"><a class="link" href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-coming-in-v1-5-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>coming in v1.5</code></a></h4>
 <div class="paragraph">
-<p>Goes to the next page in Calendar.<br>
+<p>Displays next page of current displayed date in calendar.<br>
 Format: <code>calendarnext</code><br>
 Command Alias: <code>calnext</code></p>
 </div>
@@ -892,7 +892,13 @@ Command Alias: <code>calnext</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Depending on the current day/week/month calendar is displaying, this command will display the next day/week/month.</p>
+<p>If calendar is displaying in day-view, command displays the next day of original date in day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in week-view, command displays the next week of original date in week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in month-view, command displays next month of original date in month-view.</p>
 </li>
 </ul>
 </div>
@@ -900,18 +906,24 @@ Command Alias: <code>calnext</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="go-to-previous-page-in-the-calendar-code-calendarprev-code-code-coming-in-v1-5-code"><a class="link" href="#go-to-previous-page-in-the-calendar-code-calendarprev-code-code-coming-in-v1-5-code">4.6.3. Go to previous page in the calendar : <code>calendarprev</code> <code>coming in v1.5</code></a></h4>
+<h4 id="go-to-previous-page-in-the-calendar-code-calendarback-code-code-coming-in-v1-5-code"><a class="link" href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-coming-in-v1-5-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>coming in v1.5</code></a></h4>
 <div class="paragraph">
-<p>Goes to the previous page in Calendar.<br>
-Format: <code>calendarprev</code><br>
-Command Alias: <code>calprev</code></p>
+<p>Displays previous page of current displayed date in calendar.<br>
+Format: <code>calendarback</code><br>
+Command Alias: <code>calback</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Depending on the current day/week/month calendar is displaying, this command will display the previous day/week/month.</p>
+<p>If calendar is displaying in day-view, command displays the previous day of original date in day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in week-view, command displays the previous week of original date in week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in month-view, command displays previous month of original date in month-view.</p>
 </li>
 </ul>
 </div>
@@ -919,11 +931,11 @@ Command Alias: <code>calprev</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="display-current-day-in-the-calendar-code-calendarnow-code-code-coming-in-v1-5-code"><a class="link" href="#display-current-day-in-the-calendar-code-calendarnow-code-code-coming-in-v1-5-code">4.6.4. Display current day in the calendar : <code>calendarnow</code> <code>coming in v1.5</code></a></h4>
+<h4 id="display-current-day-in-the-calendar-code-calendartoday-code-code-coming-in-v1-5-code"><a class="link" href="#display-current-day-in-the-calendar-code-calendartoday-code-code-coming-in-v1-5-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>coming in v1.5</code></a></h4>
 <div class="paragraph">
 <p>Displays today&#8217;s date in Calendar.<br>
-Format: <code>calendarnow</code><br>
-Command Alias: <code>calnow</code></p>
+Format: <code>calendartoday</code><br>
+Command Alias: <code>caltoday</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1751,7 +1763,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 06:19:34 UTC
+Last updated 2018-04-10 07:44:36 UTC
 </div>
 </div>
 </body>
