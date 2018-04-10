@@ -98,6 +98,7 @@ public class PersonPanel extends UiPart<Region> {
     }
     //@@author
 
+    //@@author AJZ1995
     @Subscribe
     private void loadPersonPage(Person person) {
         name.setText(person.getName().fullName);
@@ -109,7 +110,9 @@ public class PersonPanel extends UiPart<Region> {
         setIcons();
         setImageSizeForAllImages();
     }
+    //@@author
 
+    //@@author amad-person
     private void setIcons() {
         Image phoneIconImage = new Image("images/phone_icon.png");
         phoneIcon.setImage(phoneIconImage);
@@ -127,7 +130,6 @@ public class PersonPanel extends UiPart<Region> {
         groupIcon.setImage(groupIconImage);
     }
 
-    //@@author amad-person
     private void setImageSizeForAllImages() {
         phoneIcon.setFitWidth(ICON_WIDTH);
         phoneIcon.setFitHeight(ICON_HEIGHT);
@@ -146,6 +148,7 @@ public class PersonPanel extends UiPart<Region> {
     }
     //@@author
 
+    //@@author AJZ1995
     @Subscribe
     public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         loadBlankPersonPage();
@@ -158,4 +161,5 @@ public class PersonPanel extends UiPart<Region> {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadBlankPersonPage();
     }
+    //@@author
 }
