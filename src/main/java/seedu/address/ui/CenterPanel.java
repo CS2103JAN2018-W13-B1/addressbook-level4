@@ -30,7 +30,7 @@ public class CenterPanel extends UiPart<Region> {
     private ObservableList<CalendarEntry> calendarEvents;
 
     @FXML
-    private StackPane centrePlaceholder;
+    private StackPane centerPlaceholder;
 
     public CenterPanel(Calendar calendar) {
         super(FXML);
@@ -47,16 +47,16 @@ public class CenterPanel extends UiPart<Region> {
      * Displays the Person Panel.
      */
     public void displayPersonPanel() {
-        centrePlaceholder.getChildren().clear();
-        centrePlaceholder.getChildren().add(personPanel.getRoot());
+        centerPlaceholder.getChildren().clear();
+        centerPlaceholder.getChildren().add(personPanel.getRoot());
     }
 
     /**
      * Displays the Calendar Panel.
      */
     public void displayCalendarPanel() {
-        centrePlaceholder.getChildren().clear();
-        centrePlaceholder.getChildren().add(calendarPanel.getRoot());
+        centerPlaceholder.getChildren().clear();
+        centerPlaceholder.getChildren().add(calendarPanel.getRoot());
     }
 
     @Subscribe
