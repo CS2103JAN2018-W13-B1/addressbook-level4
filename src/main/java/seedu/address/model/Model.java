@@ -2,9 +2,12 @@ package seedu.address.model;
 
 import java.util.function.Predicate;
 
+import com.calendarfx.model.Calendar;
+
 import javafx.collections.ObservableList;
-import seedu.address.model.event.CalendarEvent;
-import seedu.address.model.event.UniqueCalendarEventList;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
+import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -23,11 +26,10 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Order> PREDICATE_SHOW_ALL_ORDERS = unused -> true;
-
-    Predicate<CalendarEvent> PREDICATE_SHOW_ALL_CALENDAR_EVENTS = unused -> true;
+    Predicate<CalendarEntry> PREDICATE_SHOW_ALL_CALENDAR_ENTRIES = unused -> true;
 
     /** Clears existing backing model and replaces with the provided new data. */
-    void resetData(ReadOnlyAddressBook newData);
+    void resetData(ReadOnlyAddressBook newData, ReadOnlyCalendarManager newCalendarData);
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
@@ -57,7 +59,7 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    void updateFilteredCalendarEventList(Predicate<CalendarEvent> predicate);
+    void updateFilteredCalendarEventList(Predicate<CalendarEntry> predicate);
 
     /**
      * Updates the filter of the filtered order list to filter by the given {@code predicate}.
@@ -90,13 +92,36 @@ public interface Model {
      */
     void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException;
 
+    //@@author SuxianAlicia
     /**
      * Adds event to list of calendar events.
      */
-    void addCalendarEvent(CalendarEvent toAdd) throws UniqueCalendarEventList.DuplicateCalendarEventException;
+    void addCalendarEntry(CalendarEntry toAdd) throws DuplicateCalendarEntryException;
 
-    /** Returns an unmodifiable view of the filtered order list */
-    ObservableList<CalendarEvent> getFilteredCalendarEventList();
+    /**
+     * Deletes given calendar entry from calendar.
+     */
+    void deleteCalendarEntry(CalendarEntry entryToDelete) throws CalendarEntryNotFoundException;
+
+    /**
+     * Replaces the given calendar entry {@code target} with {@code editedEntry}.
+     *
+     * @throws DuplicateCalendarEntryException if updating the entry's details causes the entry to be equivalent to
+     *      another existing entry in the list.
+     * @throws CalendarEntryNotFoundException if {@code target} could not be found in the list.
+     */
+    void updateCalendarEntry(CalendarEntry entryToEdit, CalendarEntry editedEntry)
+            throws DuplicateCalendarEntryException, CalendarEntryNotFoundException;
+
+    /** Returns an unmodifiable view of the filtered calendar entry list */
+    ObservableList<CalendarEntry> getFilteredCalendarEntryList();
+
+    /** Returns Calendar stored in Model. */
+    Calendar getCalendar();
+
+    /** Returns the CalendarManager */
+    ReadOnlyCalendarManager getCalendarManager();
+    //@@author
 
     /**
      * Replaces the given order {@code target} with {@code editedOrder}.
@@ -106,6 +131,12 @@ public interface Model {
      * @throws OrderNotFoundException if {@code target} could not be found in the list.
      */
     void updateOrder(Order target, Order editedOrder)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException;
+
+    /**
+     * Updates the order status of {@code target} with {@code orderStatus}.
+     */
+    void updateOrderStatus(Order target, String orderStatus)
             throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException;
 
 }

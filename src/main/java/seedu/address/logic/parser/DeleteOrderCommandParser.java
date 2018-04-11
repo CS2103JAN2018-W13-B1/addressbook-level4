@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -23,7 +24,8 @@ public class DeleteOrderCommandParser implements Parser<DeleteOrderCommand> {
             return new DeleteOrderCommand(index);
         } catch (IllegalValueException ive) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteOrderCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteOrderCommand.MESSAGE_USAGE)
+            );
         }
     }
 }

@@ -11,8 +11,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.event.CalendarEvent;
-import seedu.address.model.event.UniqueCalendarEventList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -38,7 +36,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePreferenceList prefTags;
     private final UniqueGroupList groupTags;
     private final UniqueOrderList orders;
-    private final UniqueCalendarEventList calendarEvents;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -52,7 +49,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         prefTags = new UniquePreferenceList();
         groupTags = new UniqueGroupList();
         orders = new UniqueOrderList();
-        calendarEvents = new UniqueCalendarEventList();
     }
 
     public AddressBook() {}
@@ -140,12 +136,28 @@ public class AddressBook implements ReadOnlyAddressBook {
         removeUnusedPreferences();
     }
 
+    //@@author amad-person
     /**
      * Replaces the given order {@code target} in the list with {@code editedOrder}.
      */
     public void updateOrder(Order target, Order editedOrder)
         throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
         requireNonNull(editedOrder);
+
+        orders.setOrder(target, editedOrder);
+    }
+    //@@author
+
+    /**
+     * Updates the order status of the given order {@code target}
+     */
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+        requireNonNull(orderStatus);
+
+        Order editedOrder = new Order(target.getOrderInformation(), target.getPrice(),
+                target.getQuantity(), target.getDeliveryDate());
+        editedOrder.getOrderStatus().setCurrentOrderStatus(orderStatus);
 
         orders.setOrder(target, editedOrder);
     }
@@ -208,6 +220,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         prefTags.add(p);
     }
 
+    //@@author SuxianAlicia
     /**
      * Removes group from all persons who has the group
      * @throws GroupNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
@@ -263,7 +276,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
         setPreferenceTags(newList.toSet());
     }
+    //@@author
 
+    //@@author amad-person
     //// order-level operations
 
     /**
@@ -279,18 +294,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
         orders.remove(targetOrder);
     }
-
-    /// calendar event operations
-
-    /**
-     * Adds a calendar event to list of calendar events in address book.
-     *
-     * @throws UniqueCalendarEventList.DuplicateCalendarEventException
-     * if there exist an equivalent calendar event in address book.
-     */
-    public void addCalendarEvent(CalendarEvent toAdd) throws UniqueCalendarEventList.DuplicateCalendarEventException {
-        calendarEvents.add(toAdd);
-    }
+    //@@author
 
     //// util methods
 
@@ -315,15 +319,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return prefTags.asObservableList();
     }
 
+    //@@author amad-person
     @Override
     public ObservableList<Order> getOrderList() {
         return orders.asObservableList();
     }
-
-    @Override
-    public ObservableList<CalendarEvent> getEventList() {
-        return calendarEvents.asObservableList();
-    }
+    //@@author
 
     @Override
     public boolean equals(Object other) {

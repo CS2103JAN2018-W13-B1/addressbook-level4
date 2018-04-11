@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.model.order;
 
 import static java.util.Objects.requireNonNull;
@@ -30,6 +31,7 @@ public class OrderInformation {
      * Returns true if a given string is valid order information.
      */
     public static boolean isValidOrderInformation(String test) {
+        requireNonNull(test);
         return test.matches(ORDER_INFORMATION_VALIDATION_REGEX);
     }
 

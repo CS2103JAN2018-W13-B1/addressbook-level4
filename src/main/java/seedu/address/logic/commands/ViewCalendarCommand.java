@@ -1,49 +1,65 @@
 package seedu.address.logic.commands;
+//@@author SuxianAlicia
+import static java.util.Objects.requireNonNull;
+
+import java.util.Optional;
 
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
- * Displays Calendar in App.
+ * Displays Calendar in ContactSails in 3 possible viewing formats, Day, Week or Month.
  */
 public class ViewCalendarCommand extends Command {
     public static final String COMMAND_WORD = "calendar";
     public static final String COMMAND_ALIAS = "cal";
 
-    /* Not Implemented yet.
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
-            + "INDEX"; */
-    public static final String COMMAND_SYNTAX = COMMAND_WORD;
-
-    /* Not Implemented yet.
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays Calendar in a specified format.\n"
-            + "Parameters: [VIEW_FORMAT] (must be either \"week\" or \"month\")\n"
-            + "If no parameters are given, calendar will display in Month-View.\n"
-            + "Example: " + COMMAND_WORD + " month"; */
+            + "[VIEW_FORMAT]";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays Calendar in Month-View format.\n"
-            + "Example: " + COMMAND_WORD;
+            + ": Displays Calendar in a specified viewing format.\n"
+            + "Parameters: [VIEW_FORMAT] (must be either \"day\", \"week\" or \"month\" without captions)\n"
+            + "If no parameters are given or given parameter does not follow the accepted keywords,"
+            + " calendar will display in Day-View.\n"
+            + "Example: " + COMMAND_WORD + " day";
 
-    public static final String MESSAGE_SHOW_CALENDAR_SUCCESS = "Displayed Calendar in Month-View.";
-
-    /* Not Implemented yet.
     public static final String MESSAGE_SHOW_CALENDAR_SUCCESS = "Display Calendar in %1$s-View.";
-    */
+
+    public static final String MONTH_VIEW = "Month";
+    public static final String DAY_VIEW = "Day";
+    public static final String WEEK_VIEW = "Week";
+
+    private final String view;
+
+    public ViewCalendarCommand(String view) {
+        requireNonNull(view);
+        String trimmedView = view.trim();
+
+        if (trimmedView.equalsIgnoreCase(MONTH_VIEW)) {
+            this.view = MONTH_VIEW;
+        } else if (trimmedView.equalsIgnoreCase(WEEK_VIEW)) {
+            this.view = WEEK_VIEW;
+        } else { //If view is equal to DAY_VIEW, is empty or does not match any of the accepted keywords
+            this.view = DAY_VIEW;
+        }
+    }
 
     @Override
     public CommandResult execute() throws CommandException {
+        requireNonNull(view);
+        Optional<String> selectedView = Optional.of(view); //Guaranteed that view cannot be null
 
-        EventsCenter.getInstance().post(new DisplayCalendarRequestEvent(model.getFilteredCalendarEventList()));
-        return new CommandResult(MESSAGE_SHOW_CALENDAR_SUCCESS);
+        EventsCenter.getInstance().post(new DisplayCalendarRequestEvent(selectedView));
+        return new CommandResult(String.format(MESSAGE_SHOW_CALENDAR_SUCCESS, view));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ViewCalendarCommand); // instanceof handles nulls
+                || (other instanceof ViewCalendarCommand
+                && this.view.equals(((ViewCalendarCommand) other).view)); // instanceof handles nulls
     }
 
 }

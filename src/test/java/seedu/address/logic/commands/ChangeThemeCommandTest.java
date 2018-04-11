@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
@@ -19,6 +20,7 @@ import org.junit.rules.ExpectedException;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -33,7 +35,7 @@ public class ChangeThemeCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), new CalendarManager(), new UserPrefs());
         userPrefs = new UserPrefs();
         guiSettings = userPrefs.getGuiSettings();
     }
@@ -59,7 +61,7 @@ public class ChangeThemeCommandTest {
                 LIGHT_THEME_KEYWORD
         );
 
-        Model expectedModel = new ModelManager(getTypicalAddressBook(), expectedUserPrefs);
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new CalendarManager(), expectedUserPrefs);
         assertCommandSuccess(changeThemeToLightCommand, model, expectedMessage, expectedModel);
 
         ChangeThemeCommand changeThemeToDarkCommand = prepareCommand(DARK_THEME_KEYWORD);
@@ -75,7 +77,7 @@ public class ChangeThemeCommandTest {
                 DARK_THEME_KEYWORD
         );
 
-        expectedModel = new ModelManager(getTypicalAddressBook(), expectedUserPrefs);
+        expectedModel = new ModelManager(getTypicalAddressBook(), new CalendarManager(), expectedUserPrefs);
         assertCommandSuccess(changeThemeToDarkCommand, model, expectedMessage, expectedModel);
     }
 

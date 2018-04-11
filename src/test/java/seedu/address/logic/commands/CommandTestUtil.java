@@ -8,7 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DELIVERY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENTRY_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GROUP;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORDER_INFORMATION;
@@ -28,10 +28,14 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
+import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.order.Order;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.testutil.EditEntryDescriptorBuilder;
 import seedu.address.testutil.EditOrderDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
@@ -66,8 +70,8 @@ public class CommandTestUtil {
     public static final String VALID_QUANTITY_COMPUTER = "1";
     public static final String VALID_DELIVERY_DATE_COMPUTER = "18-07-2018";
 
-    public static final String VALID_EVENT_TITLE_MEET_BOSS = "Meeting with boss";
-    public static final String VALID_EVENT_TITLE_GET_STOCKS = "Get stocks from supplier";
+    public static final String VALID_ENTRY_TITLE_MEET_BOSS = "Meeting with boss";
+    public static final String VALID_ENTRY_TITLE_GET_STOCKS = "Get stocks from supplier";
     public static final String VALID_START_DATE_MEET_BOSS = "06-06-2018";
     public static final String VALID_START_DATE_GET_STOCKS = "01-07-2018";
     public static final String VALID_END_DATE_MEET_BOSS = "06-06-2018";
@@ -75,7 +79,7 @@ public class CommandTestUtil {
     public static final String VALID_START_TIME_MEET_BOSS = "10:00";
     public static final String VALID_START_TIME_GET_STOCKS = "08:00";
     public static final String VALID_END_TIME_MEET_BOSS = "12:00";
-    public static final String VALID_END_TIME_GET_STOCKS = "12:00";
+    public static final String VALID_END_TIME_GET_STOCKS = "13:00";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -107,8 +111,8 @@ public class CommandTestUtil {
     public static final String QUANTITY_DESC_COMPUTER = " " + PREFIX_QUANTITY + VALID_QUANTITY_COMPUTER;
     public static final String DELIVERY_DATE_DESC_COMPUTER = " " + PREFIX_DELIVERY_DATE + VALID_DELIVERY_DATE_COMPUTER;
 
-    public static final String EVENT_TITLE_DESC_MEET_BOSS = " " + PREFIX_EVENT_TITLE + VALID_EVENT_TITLE_MEET_BOSS;
-    public static final String EVENT_TITLE_DESC_GET_STOCKS = " " + PREFIX_EVENT_TITLE + VALID_EVENT_TITLE_GET_STOCKS;
+    public static final String ENTRY_TITLE_DESC_MEET_BOSS = " " + PREFIX_ENTRY_TITLE + VALID_ENTRY_TITLE_MEET_BOSS;
+    public static final String ENTRY_TITLE_DESC_GET_STOCKS = " " + PREFIX_ENTRY_TITLE + VALID_ENTRY_TITLE_GET_STOCKS;
     public static final String START_DATE_DESC_MEET_BOSS = " " + PREFIX_START_DATE + VALID_START_DATE_MEET_BOSS;
     public static final String START_DATE_DESC_GET_STOCKS = " " + PREFIX_START_DATE + VALID_START_DATE_GET_STOCKS;
     public static final String END_DATE_DESC_MEET_BOSS = " " + PREFIX_END_DATE + VALID_END_DATE_MEET_BOSS;
@@ -133,8 +137,8 @@ public class CommandTestUtil {
             + PREFIX_QUANTITY + "-11"; // '-' sign not allowed in quantities
     public static final String INVALID_DELIVERY_DATE_DESC = " " + PREFIX_DELIVERY_DATE + "20-45-10000"; // illegal date
 
-    public static final String INVALID_EVENT_TITLE_DESC = " "
-            + PREFIX_EVENT_TITLE + "M@@ting with the boss, "; // '@' and ',' are not allowed in event title.
+    public static final String INVALID_ENTRY_TITLE_DESC = " "
+            + PREFIX_ENTRY_TITLE + "M@@ting with the boss, "; // '@' and ',' are not allowed in event title.
     public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "31-02-2018"; // Illegal date
     public static final String INVALID_END_DATE_DESC = " " + PREFIX_END_DATE + "23-20-20000"; // Illegal date
     public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME + "12-30"; //Illegal time format
@@ -143,7 +147,8 @@ public class CommandTestUtil {
             " " + PREFIX_START_DATE + "06-07-2018"; // Start Date later than 06-06-2018
     public static final String INVALID_START_TIME_LATER_THAN_END_TIME_DESC =
             " " + PREFIX_START_TIME + "23:00"; // Start Time later than End time same Start Date and End Date.
-
+    public static final String INVALID_START_TIME_LESS_THAN_FIFTEEN_MINUTES_FROM_END_TIME_DESC =
+            " " + PREFIX_START_TIME + "11:50";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -155,6 +160,9 @@ public class CommandTestUtil {
 
     public static final EditOrderCommand.EditOrderDescriptor DESC_COMPUTER;
     public static final EditOrderCommand.EditOrderDescriptor DESC_COMICBOOK;
+
+    public static final EditEntryCommand.EditEntryDescriptor DESC_MEET_BOSS;
+    public static final EditEntryCommand.EditEntryDescriptor DESC_GET_STOCKS;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -174,6 +182,15 @@ public class CommandTestUtil {
                 .withQuantity("1")
                 .withDeliveryDate("01-01-2018")
                 .build();
+    }
+
+    static {
+        DESC_MEET_BOSS = new EditEntryDescriptorBuilder().withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
+                .withStartDate(VALID_START_DATE_MEET_BOSS).withEndDate(VALID_END_DATE_MEET_BOSS)
+                .withStartTime(VALID_START_TIME_MEET_BOSS).withEndTime(VALID_END_TIME_MEET_BOSS).build();
+        DESC_GET_STOCKS = new EditEntryDescriptorBuilder().withEntryTitle(VALID_ENTRY_TITLE_GET_STOCKS)
+                .withStartDate(VALID_START_DATE_GET_STOCKS).withEndDate(VALID_END_DATE_GET_STOCKS)
+                .withStartTime(VALID_START_TIME_GET_STOCKS).withEndTime(VALID_END_TIME_GET_STOCKS).build();
     }
 
     /**
@@ -202,7 +219,11 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
-        List<Person> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<Person> expectedFilteredPersonList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<Order> expectedFilteredOrderList = new ArrayList<>(actualModel.getFilteredOrderList());
+        CalendarManager expectedCalendarManager = new CalendarManager(actualModel.getCalendarManager());
+        List<CalendarEntry> expectedFilteredCalendarEntryList =
+                new ArrayList<>(actualModel.getFilteredCalendarEntryList());
 
         try {
             command.execute();
@@ -210,7 +231,11 @@ public class CommandTestUtil {
         } catch (CommandException e) {
             assertEquals(expectedMessage, e.getMessage());
             assertEquals(expectedAddressBook, actualModel.getAddressBook());
-            assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
+            assertEquals(expectedFilteredPersonList, actualModel.getFilteredPersonList());
+            assertEquals(expectedFilteredOrderList, actualModel.getFilteredOrderList());
+            assertEquals(expectedCalendarManager, actualModel.getCalendarManager());
+            assertEquals(expectedFilteredCalendarEntryList, actualModel.getFilteredCalendarEntryList());
+
         }
     }
 

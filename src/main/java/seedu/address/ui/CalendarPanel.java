@@ -1,190 +1,124 @@
 package seedu.address.ui;
-
-import java.time.DayOfWeek;
+//@@author SuxianAlicia
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
-import com.google.common.eventbus.Subscribe;
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.CalendarSource;
+import com.calendarfx.view.CalendarView;
 
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 
-import javafx.scene.layout.VBox;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
-import seedu.address.model.event.CalendarEvent;
+import seedu.address.ui.util.CalendarFxUtil;
 
 /**
- * Calendar Panel displaying calendar in Month-View Format.
- * The code is adapted from: https://github.com/sedj601/CalendarFx
+ * Calendar Panel displaying calendar.
+ * ContactSails implements CalendarFX to display Calendar.
  */
 public class CalendarPanel extends UiPart<Region> {
 
+    private static final String DAY_VIEW = "Day";
+    private static final String MONTH_VIEW = "Month";
+    private static final String WEEK_VIEW = "Week";
 
-    public static final String DATE_VALIDATION_FORMAT = "dd MM yyyy";
-    public static final String DEFAULT_TIME = "00:00";
-    public static final LocalTime DEFAULT_TIME_AT_CALENDAR = LocalTime.parse(DEFAULT_TIME);
+    private static final String REQUEST_TODAY = "Today";
+    private static final String REQUEST_BACK = "Back";
+    private static final String REQUEST_NEXT = "Next";
 
     private static final String FXML = "CalendarPanel.fxml";
-    private static final String MONTH = "Month";
-
-    private static ObservableList<CalendarEvent> eventList;
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
-    @FXML
-    private Label month;
+    private final CalendarView calendarView;
+    private final CalendarSource calendarSource;
 
     @FXML
-    private Label year;
+    private StackPane calendarPanelholder;
 
-    @FXML
-    private GridPane daysOfMonth;
-
-    public CalendarPanel(ObservableList<CalendarEvent> calendarEventsList) {
+    public CalendarPanel(Calendar calendar) {
         super(FXML);
+        calendarView = CalendarFxUtil.returnModifiedCalendarView();
+        calendarSource = new CalendarSource();
 
-        initialiseCalendarEventList(calendarEventsList);
-        initialiseCalendar(LocalDateTime.now());
-        registerAsAnEventHandler(this);
-    }
-
-    private void initialiseCalendarEventList(ObservableList<CalendarEvent> calendarEventsList) {
-        eventList = calendarEventsList;
-    }
-
-    private void initialiseCalendar(LocalDateTime givenLdt) {
-        LocalDateTime currentLdt = givenLdt;
-        loadCurrentMonth(currentLdt);
-
+        initialiseCalendar(calendar);
+        createTimeThread();
     }
 
     /**
-     * Sets Month and Year Labels to display Month and Year corresponding to given {@code LocalDateTime}.
-     * Loads the number of daysOfMonth and any events set in the given month of the year.
+     * Adapted from CalendarFX developer manual QuickStart section.
+     * http://dlsc.com/wp-content/html/calendarfx/manual.html#_quick_start
      */
-    private void loadCurrentMonth(LocalDateTime givenLdt) {
+    private void createTimeThread() {
+        Thread updateTimeThread = new Thread("Calendar: Update Time Thread") {
+            @Override
+            public void run() {
+                while (true) {
+                    Platform.runLater(() -> {
+                        calendarView.setToday(LocalDate.now());
+                        calendarView.setTime(LocalTime.now());
+                    });
 
-        if (daysOfMonth.getChildren().size() > 0) {
-            daysOfMonth.getChildren().clear();
-        }
+                    try {
+                        // update every 10 seconds
+                        sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
-        month.setText(givenLdt.getMonth().toString());
-        year.setText(Integer.toString(givenLdt.getYear()));
+                }
+            };
+        };
 
-        setDaysOfWeek();
-
-        //The following sets the date numbers in gridpane for the current Month and Year.
-        LocalDateTime ldtIterator = givenLdt.minusDays(givenLdt.getDayOfMonth() - 1);
-        ldtIterator.format(DateTimeFormatter.ISO_DATE);
-
-        int control = getColumn(ldtIterator);
-        int control2 = 0;
-        int i = 0;
-        while (ldtIterator.getMonth() == givenLdt.getMonth()) {
-            if (i == 0 || i == 1 && control2 <= control) {
-                i = 1;
-                control2++;
-            } else {
-                i = ((control2 - (control + 1)) / 7) + 2;
-                control2++;
-            }
-
-            Label tempLabel = new Label(Integer.toString(ldtIterator.getDayOfMonth()));
-
-            daysOfMonth.add(createCell(tempLabel, ldtIterator), ldtIterator.getDayOfWeek().getValue() - 1, i);
-
-            ldtIterator = ldtIterator.plusDays(1);
-        }
+        updateTimeThread.setPriority(Thread.MIN_PRIORITY);
+        updateTimeThread.setDaemon(true);
+        updateTimeThread.start();
     }
 
     /**
-     * Sets first row of daysOfMonth to be the 7 days of the week, starting from Monday.
+     * Sets up CalendarFX.
      */
-    private void setDaysOfWeek() {
-
-        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-        for (int i = 0; i < 7; i++) {
-            Label dayLabel = new Label(days[i]);
-            GridPane.setHalignment(dayLabel, HPos.CENTER);
-            daysOfMonth.add(dayLabel, i, 0);
-        }
+    public void initialiseCalendar(Calendar calendar) {
+        calendarSource.getCalendars().addAll(calendar);
+        calendarView.getCalendarSources().setAll(calendarSource);
+        calendarPanelholder.getChildren().setAll(calendarView);
     }
 
     /**
-     * Returns the starting column number in GridPane based on givenLdt.
+     * Handles Request to display Calendar in specific viewing format.
      */
-    private int getColumn (LocalDateTime givenLdt) {
-
-        int i = 0;
-        while (givenLdt.getDayOfWeek() != DayOfWeek.SUNDAY) {
-            i++;
-            givenLdt = givenLdt.plusDays(1);
-        }
-
-        return i;
-    }
-
-    /**
-     * Creates a date cell for the given date.
-     */
-    private BorderPane createCell(Label label, LocalDateTime ldt) {
-
-        BorderPane cell = new BorderPane();
-
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(loadEventsForDate(ldt));
-        BorderPane.setAlignment(vbox, Pos.CENTER);
-        cell.setCenter(vbox);
-
-        BorderPane.setAlignment(label, Pos.TOP_RIGHT);
-        cell.setTop(label);
-        cell.getStyleClass().add("cell-cal-label");
-
-        return cell;
-    }
-
-
-    /**
-     * Returns List of Label, each Label containing Event title of Events occurring during ldt time.
-     */
-    private List<Label> loadEventsForDate(LocalDateTime ldt) {
-        List<Label> labelList = new ArrayList<>();
-
-        for (CalendarEvent ce: eventList) {
-            DateTimeFormatter format = DateTimeFormatter.ofPattern(DATE_VALIDATION_FORMAT);
-            LocalDate startDateWithoutTime = LocalDate.parse(ce.getStartDate().toString() , format);
-            LocalDate endDateWithoutTime = LocalDate.parse(ce.getEndDate().toString(), format);
-            LocalDateTime startDate = LocalDateTime.of(startDateWithoutTime, DEFAULT_TIME_AT_CALENDAR);
-            LocalDateTime endDate = LocalDateTime.of(endDateWithoutTime, DEFAULT_TIME_AT_CALENDAR);
-
-            // Checks if ldt is within start date and end date of Event
-            if (ldt.isAfter(startDate) || ldt.equals(startDate) && ldt.isBefore(endDate) || ldt.equals(endDate)) {
-                String eventTitle = ce.getEventTitle().toString().substring(0, 15); //Set limit to characters displayed
-                Label eventLabel = new Label(eventTitle);
-                eventLabel.getStyleClass().add("cell-cal-event");
-                eventLabel.setText(eventTitle);
-                labelList.add(eventLabel);
-            }
-
-        }
-        return labelList;
-    }
-
-    @Subscribe
     public void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        String view = event.getView();
+        if (view != null) {
+            if (view.equalsIgnoreCase(MONTH_VIEW)) {
+                calendarView.showMonthPage();
+            } else if (view.equalsIgnoreCase(DAY_VIEW)) {
+                calendarView.showDayPage();
+            } else if (view.equalsIgnoreCase(WEEK_VIEW)) {
+                calendarView.showWeekPage();
+            }
+        }
     }
 
+    /**
+     * Handles request to change the current page of the Calendar.
+     */
+    public void handleChangeCalendarPageRequestEvent(ChangeCalendarPageRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        String request = event.getRequestType();
+        if (request.equals(REQUEST_TODAY)) {
+            calendarView.getSelectedPage().goToday();
+        } else if (request.equals(REQUEST_BACK)) {
+            calendarView.getSelectedPage().goBack();
+        } else if (request.equals(REQUEST_NEXT)) {
+            calendarView.getSelectedPage().goForward();
+        }
+    }
 }

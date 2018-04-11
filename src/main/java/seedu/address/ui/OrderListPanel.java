@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.ui;
 
 import java.util.logging.Logger;
@@ -13,7 +14,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.events.model.ChangeOrderStatusEvent;
 import seedu.address.commons.events.ui.OrderPanelSelectionChangedEvent;
 import seedu.address.model.order.Order;
 
@@ -62,10 +63,15 @@ public class OrderListPanel extends UiPart<Region> {
         });
     }
 
+    @FXML
+    private void handleChangeOrderStatus(ChangeOrderStatusEvent event) {
+        // TODO: change background of listcell based on order status change
+    }
+
     @Subscribe
-    private void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
+    private void handleChangeOrderStatusEvent(ChangeOrderStatusEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        scrollTo(event.targetIndex);
+        handleChangeOrderStatus(event);
     }
 
     /**

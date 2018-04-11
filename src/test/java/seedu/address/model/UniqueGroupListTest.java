@@ -11,10 +11,12 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.model.tag.UniqueGroupList;
 
+//@@author SuxianAlicia
 public class UniqueGroupListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    //@@author amad-person
     @Test
     public void equals() throws UniqueGroupList.DuplicateGroupException {
         UniqueGroupList firstGroupList = new UniqueGroupList();
@@ -31,6 +33,7 @@ public class UniqueGroupListTest {
         // different objects, same type -> false
         assertFalse(firstGroupList.equals(secondGroupList));
     }
+    //@@author
 
     @Test
     public void asOrderInsensitiveList_compareListsWithSameItemsInDiffOrder_assertEqual()
@@ -45,6 +48,7 @@ public class UniqueGroupListTest {
         assertTrue(firstGroupList.equalsOrderInsensitive(secondGroupList));
     }
 
+    //@@author amad-person
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         UniqueGroupList uniqueGroupList = new UniqueGroupList();
@@ -53,11 +57,12 @@ public class UniqueGroupListTest {
     }
 
     @Test
-    public void asUniqueList_addDuplicateOrder_throwsDuplicateOrderException()
+    public void asUniqueList_addDuplicateGroup_throwsDuplicateGroupException()
             throws UniqueGroupList.DuplicateGroupException {
         UniqueGroupList uniqueGroupList = new UniqueGroupList();
         thrown.expect(UniqueGroupList.DuplicateGroupException.class);
         uniqueGroupList.add(FRIENDS);
         uniqueGroupList.add(FRIENDS);
     }
+    //@@author
 }

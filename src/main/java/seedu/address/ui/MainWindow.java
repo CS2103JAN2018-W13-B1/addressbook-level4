@@ -37,9 +37,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private CentrePanel centrePanel;
-
     private PersonListPanel personListPanel;
-    private OrderListPanel orderListPanel;
+    private RightPanel rightPanel;
     private Config config;
     private UserPrefs prefs;
 
@@ -56,7 +55,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane orderListPanelPlaceholder;
+    private StackPane rightPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -125,14 +124,15 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        centrePanel = new CentrePanel(logic.getCalendarEventList());
+        centrePanel = new CentrePanel(logic.getCalendar());
+
         centrePlaceholder.getChildren().add(centrePanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
-        orderListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
+        rightPanel = new RightPanel(logic.getFilteredOrderList(), logic.getFilteredCalendarEntryList());
+        rightPanelPlaceholder.getChildren().add(rightPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -164,9 +164,11 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    //@@author amad-person
     private void setTheme() {
         Theme.changeTheme(primaryStage, Theme.DARK_THEME_KEYWORD);
     }
+    //@@author
 
     /**
      * Returns the current size and the position of the main Window.
@@ -185,6 +187,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.show();
     }
 
+    //@@author amad-person
     /**
      * Changes the theme of the application.
      */
@@ -192,6 +195,7 @@ public class MainWindow extends UiPart<Stage> {
     public void handleChangeTheme(ChangeThemeEvent event) {
         Theme.changeTheme(primaryStage, event.getTheme());
     }
+    //@@author
 
     void show() {
         primaryStage.show();
@@ -209,13 +213,10 @@ public class MainWindow extends UiPart<Stage> {
         return this.personListPanel;
     }
 
-    public OrderListPanel getOrderListPanel() {
-        return this.orderListPanel;
+    public RightPanel getRightPanel() {
+        return this.rightPanel;
     }
 
-    void releaseResources() {
-        centrePanel.freeResources();
-    }
 
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
@@ -223,9 +224,11 @@ public class MainWindow extends UiPart<Stage> {
         handleHelp();
     }
 
+    //@@author amad-person
     @Subscribe
     private void handleChangeThemeEvent(ChangeThemeEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleChangeTheme(event);
     }
+    //@@author
 }
