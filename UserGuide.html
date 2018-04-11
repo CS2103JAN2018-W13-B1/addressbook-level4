@@ -64,9 +64,9 @@
 <li><a href="#viewing-calendar">4.6. Viewing Calendar</a>
 <ul class="sectlevel3">
 <li><a href="#displaying-the-calendar-code-calendar-code-code-since-v1-3-code">4.6.1. Displaying the calendar : <code>calendar</code> <code>since v1.3</code></a></li>
-<li><a href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-coming-in-v1-5-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>coming in v1.5</code></a></li>
-<li><a href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-coming-in-v1-5-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>coming in v1.5</code></a></li>
-<li><a href="#display-current-day-in-the-calendar-code-calendartoday-code-code-coming-in-v1-5-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>coming in v1.5</code></a></li>
+<li><a href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>since v1.5rc</code></a></li>
+<li><a href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>since v1.5rc</code></a></li>
+<li><a href="#display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>since v1.5rc</code></a></li>
 </ul>
 </li>
 <li><a href="#managing-calendar-entries">4.7. Managing Calendar Entries</a>
@@ -150,15 +150,16 @@ This app will not work with earlier versions of Java 8.
 <p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the app. The User Interface (UI) should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/ContactSails_Interface_StartUp.png" alt="ContactSails Interface StartUp" width="790">
 </div>
+<div class="title">Figure 1. ContactSails Application UI Interface</div>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type the command in the command box (located right below Menu Bar) and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
@@ -212,7 +213,42 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="contactsails-ui"><a class="link" href="#contactsails-ui">3. ContactSails UI</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>This section briefly explains the various panels in the UI interface of ContactSails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ContactSails_Interface_Breakdown.png" alt="ContactSails Interface Breakdown" width="790">
+</div>
+<div class="title">Figure 2. Breakdown of ContactSails UI</div>
+</div>
+<div class="paragraph">
+<p>With reference to Figure 2 above, there are 5 important sections in the interface:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Command Box: This is the place for you to type your commands. Pressing <kbd>Enter</kbd> will execute the command.</p>
+</li>
+<li>
+<p>Result Display: This place shows the result of the command you have executed. It will display messages indicating whether your command has executed successfully.
+If your command fails to execute, error messages indicating the cause of the failure will be shown here.</p>
+</li>
+<li>
+<p>Person List Panel: This panel displays the list of persons that exist in ContactSails. You can filter this list of persons with <code>find</code> commands.</p>
+</li>
+<li>
+<p>Center Panel: This panel can display either a detailed display of a person&#8217;s information, or a calendar. <code>calendar</code> command will display the calendar and <code>select</code> command will display selected person&#8217;s information.</p>
+</li>
+<li>
+<p>Right Panel: This panel can display either a list of orders or a list of calendar entries in ContactSails. On startup, this panel will show the list of orders by default.
+You can use <code>entrylist</code> and <code>orderlist</code> to switch between the two lists.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Person List Panel, Center Panel and Right Panel will be explained in greater detail in <a href="#Features">Section 4, &#8220;Features&#8221;</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -260,7 +296,8 @@ For example, typing <code>ad</code> in the command box and then pressing <code>T
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code><br>
+<p>Description: Opens User Guide in a new window.<br>
+Format: <code>help</code><br>
 Command Alias: <code>?</code></p>
 </div>
 </div>
@@ -446,7 +483,8 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 <div class="sect2">
 <h3 id="finding-persons"><a class="link" href="#finding-persons">4.3. Finding Persons</a></h3>
 <div class="paragraph">
-<p>This section describes commands you can use to find person entries using various query types in ContactSails.</p>
+<p>This section describes commands you can use to find person entries using various query types in ContactSails.
+The Person List in the interface will only show the persons you are finding after executing the command.</p>
 </div>
 <div class="sect3">
 <h4 id="finding-persons-by-name-code-find-code"><a class="link" href="#finding-persons-by-name-code-find-code">4.3.1. Finding persons by name : <code>find</code></a></h4>
@@ -829,7 +867,17 @@ Command Alias: <code>ol</code></p>
 <div class="sect2">
 <h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">4.6. Viewing Calendar</a></h3>
 <div class="paragraph">
-<p>This section describes commands related to viewing the calendar in ContactSails.</p>
+<p>This section describes commands related to viewing the calendar in ContactSails.
+Given below is how the Calendar in ContactSails look like.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ContactSails_Ui_Calendar.PNG" alt="ContactSails Ui Calendar" width="790">
+</div>
+<div class="title">Figure 3. ContactSails interface with Calendar and Calendar Entries displayed.</div>
+</div>
+<div class="paragraph">
+<p>The calendar has a day view, week view and month view to help you view all your scheduled events.</p>
 </div>
 <div class="sect3">
 <h4 id="displaying-the-calendar-code-calendar-code-code-since-v1-3-code"><a class="link" href="#displaying-the-calendar-code-calendar-code-code-since-v1-3-code">4.6.1. Displaying the calendar : <code>calendar</code> <code>since v1.3</code></a></h4>
@@ -877,7 +925,7 @@ Shows Calendar in Month-View.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="go-to-next-page-in-the-calendar-code-calendarnext-code-code-coming-in-v1-5-code"><a class="link" href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-coming-in-v1-5-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>coming in v1.5</code></a></h4>
+<h4 id="go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code"><a class="link" href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
 <p>Displays next page of current displayed date in calendar.<br>
 Format: <code>calendarnext</code><br>
@@ -902,7 +950,7 @@ Command Alias: <code>calnext</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="go-to-previous-page-in-the-calendar-code-calendarback-code-code-coming-in-v1-5-code"><a class="link" href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-coming-in-v1-5-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>coming in v1.5</code></a></h4>
+<h4 id="go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code"><a class="link" href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
 <p>Displays previous page of current displayed date in calendar.<br>
 Format: <code>calendarback</code><br>
@@ -927,7 +975,7 @@ Command Alias: <code>calback</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="display-current-day-in-the-calendar-code-calendartoday-code-code-coming-in-v1-5-code"><a class="link" href="#display-current-day-in-the-calendar-code-calendartoday-code-code-coming-in-v1-5-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>coming in v1.5</code></a></h4>
+<h4 id="display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code"><a class="link" href="#display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
 <p>Displays today&#8217;s date in Calendar.<br>
 Format: <code>calendartoday</code><br>
@@ -955,7 +1003,9 @@ Command Alias: <code>caltoday</code></p>
 <div class="sect2">
 <h3 id="managing-calendar-entries"><a class="link" href="#managing-calendar-entries">4.7. Managing Calendar Entries</a></h3>
 <div class="paragraph">
-<p>This section describes commands you can use to manage calendar entries in ContactSails.</p>
+<p>This section describes commands you can use to manage calendar entries in ContactSails.
+You can use calendar entries to represent events, deadlines or meetings.
+These entries will be displayed in the calendar.</p>
 </div>
 <div class="sect3">
 <h4 id="adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code"><a class="link" href="#adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code">4.7.1. Adding entries to calendar entry list : <code>entryadd</code> <code>since v1.3</code></a></h4>
@@ -1757,7 +1807,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 03:16:06 UTC
+Last updated 2018-04-11 03:21:40 UTC
 </div>
 </div>
 </body>
