@@ -10,7 +10,7 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 === Aadyaa Maddi
 image::aadyaa.jpg[width="150", align="left"]
-{empty}[https://github.com/CS2103JAN2018-W13-B1[homepage]] [https://github.com/amad-person[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/CS2103JAN2018-W13-B1[homepage]] [https://github.com/amad-person[github]] [<<aadyaamaddi#, portfolio>>]
 
 Role: Developer +
 Responsibilities: Logic, Documentation, Deliverables and Deadlines
@@ -19,7 +19,7 @@ Responsibilities: Logic, Documentation, Deliverables and Deadlines
 
 === Alicia Ho Sor Sian
 image::suxianalicia.JPG[width="150", align="left"]
-{empty}[https://github.com/SuxianAlicia[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/SuxianAlicia[github]] [<<aliciaho#, portfolio>>]
 
 Role: Developer +
 Responsibilities: In charge of Model Component, Code Quality
