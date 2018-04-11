@@ -9,7 +9,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
-import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
+import seedu.address.commons.events.ui.ChangeCalendarViewRequestEvent;
 import seedu.address.commons.events.ui.DisplayPersonPanelRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.ResetPersonPanelRequestEvent;
@@ -65,8 +65,8 @@ public class CenterPanel extends UiPart<Region> {
     }
 
     @Subscribe
-    private void handleDisplayCalendarRequestEvent(DisplayCalendarRequestEvent event) {
-        calendarPanel.handleDisplayCalendarRequestEvent(event);
+    private void handleChangeCalendarViewRequestEvent(ChangeCalendarViewRequestEvent event) {
+        calendarPanel.handleChangeCalendarViewRequestEvent(event);
         displayCalendarPanel();
     }
 
