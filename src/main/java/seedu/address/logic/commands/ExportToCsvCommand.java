@@ -72,12 +72,12 @@ public class ExportToCsvCommand extends Command {
         }
         //
 
-        String MsgFileNameChanged = "";
+        String msgFileNameChanged = "";
         // do action
         if (fExistedNameChanged == 1) {
-            MsgFileNameChanged = "\n\"(1)\" appended to filename as file with input file name previously existed";
+            msgFileNameChanged = "\n\"(1)\" appended to filename as file with input file name previously existed";
         }
 
-        return new CommandResult(MESSAGE_SUCCESS + " " + pathName + MsgFileNameChanged);
+        return new CommandResult(MESSAGE_SUCCESS + " " + pathName + msgFileNameChanged);
     }
 }
