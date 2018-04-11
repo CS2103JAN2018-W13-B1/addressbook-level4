@@ -39,7 +39,7 @@ public class CalendarJumpCommandTest {
     }
 
     @Test
-    public void execute_calendarJumpCommand_validDateAndDateStringGiven_success() {
+    public void execute_validDateAndDateStringGiven_success() {
         assertSwitchDateSuccess(LEAP_YEAR_DATE, LEAP_YEAR_DATE_STRING);
     }
 

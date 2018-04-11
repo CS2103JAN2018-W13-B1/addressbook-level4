@@ -7,12 +7,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ENTRY_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
-import java.util.Optional;
-
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarEntryListEvent;
-import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;

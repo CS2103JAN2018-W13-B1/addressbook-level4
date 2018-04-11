@@ -109,7 +109,7 @@ public class CalendarPanel extends UiPart<Region> {
     }
 
     /**
-     * Handles request to change the current page of the Calendar.
+     * Handles request to change the current page of the Calendar to the page in {@code event}.
      */
     public void handleChangeCalendarPageRequestEvent(ChangeCalendarPageRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -123,6 +123,9 @@ public class CalendarPanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Handles request to change the current date of the Calendar to the date in {@code event}.
+     */
     public void handleChangeCalendarDateRequestEvent(ChangeCalendarDateRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         calendarView.setDate(event.getDate());

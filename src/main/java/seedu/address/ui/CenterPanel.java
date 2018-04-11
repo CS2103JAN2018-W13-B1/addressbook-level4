@@ -10,19 +10,20 @@ import javafx.scene.layout.StackPane;
 import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
+import seedu.address.commons.events.ui.DisplayPersonPanelRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
-import seedu.address.commons.events.ui.ResetPersonPanelEvent;
+import seedu.address.commons.events.ui.ResetPersonPanelRequestEvent;
 import seedu.address.model.event.CalendarEntry;
 
 
 /**
- * The Centre Panel of the App that can switch between Person Panel and Calendar Panel.
- * Centre Panel subscribes to Events meant for Person Panel and Calendar Panel
+ * The Center Panel of the App that can switch between Person Panel and Calendar Panel.
+ * Center Panel subscribes to Events meant for Person Panel and Calendar Panel
  * in order to handle the switching between the displays.
  */
-public class CentrePanel extends UiPart<Region> {
+public class CenterPanel extends UiPart<Region> {
 
-    private static final String FXML = "CentrePanel.fxml";
+    private static final String FXML = "CenterPanel.fxml";
 
     private CalendarPanel calendarPanel;
 
@@ -30,9 +31,9 @@ public class CentrePanel extends UiPart<Region> {
     private ObservableList<CalendarEntry> calendarEvents;
 
     @FXML
-    private StackPane centrePlaceholder;
+    private StackPane centerPlaceholder;
 
-    public CentrePanel(Calendar calendar) {
+    public CenterPanel(Calendar calendar) {
         super(FXML);
 
         personPanel = new PersonPanel();
@@ -47,9 +48,9 @@ public class CentrePanel extends UiPart<Region> {
      * Displays the Person Panel.
      */
     public void displayPersonPanel() {
-        if (!centrePlaceholder.getChildren().contains(personPanel.getRoot())) {
-            centrePlaceholder.getChildren().clear();
-            centrePlaceholder.getChildren().add(personPanel.getRoot());
+        if (!centerPlaceholder.getChildren().contains(personPanel.getRoot())) {
+            centerPlaceholder.getChildren().clear();
+            centerPlaceholder.getChildren().add(personPanel.getRoot());
         }
     }
 
@@ -57,9 +58,9 @@ public class CentrePanel extends UiPart<Region> {
      * Displays the Calendar Panel.
      */
     public void displayCalendarPanel() {
-        if (!centrePlaceholder.getChildren().contains(calendarPanel.getRoot())) {
-            centrePlaceholder.getChildren().clear();
-            centrePlaceholder.getChildren().add(calendarPanel.getRoot());
+        if (!centerPlaceholder.getChildren().contains(calendarPanel.getRoot())) {
+            centerPlaceholder.getChildren().clear();
+            centerPlaceholder.getChildren().add(calendarPanel.getRoot());
         }
     }
 
@@ -76,19 +77,25 @@ public class CentrePanel extends UiPart<Region> {
     }
 
     @Subscribe
+    private void handleChangeCalendarDateRequestEvent(ChangeCalendarDateRequestEvent event) {
+        calendarPanel.handleChangeCalendarDateRequestEvent(event);
+        displayCalendarPanel();
+    }
+
+    @Subscribe
+    private void handleDisplayPersonPanelRequestEvent(DisplayPersonPanelRequestEvent event) {
+        displayPersonPanel();
+    }
+
+    @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         personPanel.handlePersonPanelSelectionChangedEvent(event);
         displayPersonPanel();
     }
 
     @Subscribe
-    private void handleResetPersonPanelEvent(ResetPersonPanelEvent event) {
-            personPanel = new PersonPanel();
-    }
-
-    @Subscribe
-    private void handleChangeCalendarDateRequestEvent(ChangeCalendarDateRequestEvent event) {
-        calendarPanel.handleChangeCalendarDateRequestEvent(event);
-        displayCalendarPanel();
+    private void handleResetPersonPanelRequestEvent(ResetPersonPanelRequestEvent event) {
+        personPanel.handleResetPersonPanelRequestEvent(event);
+        displayPersonPanel();
     }
 }
