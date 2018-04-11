@@ -21,6 +21,7 @@ public class OrderCard extends UiPart<Region> {
     private static final String FXML = "OrderListCard.fxml";
     private static final double ICON_WIDTH = 25;
     private static final double ICON_HEIGHT = 25;
+    private static final String ORDER_STATUS_DONE = "DONE";
 
     public final Order order;
 
@@ -69,6 +70,17 @@ public class OrderCard extends UiPart<Region> {
         setTotalPrice(order);
         deliveryDate.setText("Deliver By: " + order.getDeliveryDate().toString());
         setImageSizeForAllImages();
+    }
+
+    /**
+     * Returns true if order status equals done.
+     */
+    public boolean isOrderStatusDone() {
+        if (orderStatus.getText().equals(ORDER_STATUS_DONE)) {
+            return true;
+        }
+
+        return false;
     }
 
     private void setPriceAndQuantity(Order order) {
