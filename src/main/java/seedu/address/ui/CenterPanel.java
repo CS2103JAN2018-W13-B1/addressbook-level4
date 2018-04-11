@@ -9,8 +9,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
+import seedu.address.commons.events.ui.DisplayPersonPanelRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
-import seedu.address.commons.events.ui.ResetPersonPanelEvent;
+import seedu.address.commons.events.ui.ResetPersonPanelRequestEvent;
 import seedu.address.model.event.CalendarEntry;
 
 
@@ -19,9 +20,9 @@ import seedu.address.model.event.CalendarEntry;
  * Centre Panel subscribes to Events meant for Person Panel and Calendar Panel
  * in order to handle the switching between the displays.
  */
-public class CentrePanel extends UiPart<Region> {
+public class CenterPanel extends UiPart<Region> {
 
-    private static final String FXML = "CentrePanel.fxml";
+    private static final String FXML = "CenterPanel.fxml";
 
     private CalendarPanel calendarPanel;
 
@@ -31,7 +32,7 @@ public class CentrePanel extends UiPart<Region> {
     @FXML
     private StackPane centrePlaceholder;
 
-    public CentrePanel(Calendar calendar) {
+    public CenterPanel(Calendar calendar) {
         super(FXML);
 
         personPanel = new PersonPanel();
@@ -71,16 +72,19 @@ public class CentrePanel extends UiPart<Region> {
     }
 
     @Subscribe
+    private void handleDisplayPersonPanelRequestEvent(DisplayPersonPanelRequestEvent event) {
+        displayPersonPanel();
+    }
+
+    @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         personPanel.handlePersonPanelSelectionChangedEvent(event);
         displayPersonPanel();
     }
 
     @Subscribe
-    private void handleResetPersonPanelEvent(ResetPersonPanelEvent event) {
-        if (centrePlaceholder.getChildren().contains(personPanel.getRoot())) {
-            personPanel = new PersonPanel();
-            displayPersonPanel();
-        }
+    private void handleResetPersonPanelRequestEvent(ResetPersonPanelRequestEvent event) {
+        personPanel.handleResetPersonPanelRequestEvent(event);
+        displayPersonPanel();
     }
 }
