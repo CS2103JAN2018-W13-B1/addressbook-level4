@@ -10,15 +10,16 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new ExportToCsvCommand object
  */
 public class ExportToCsvCommandParser implements Parser<ExportToCsvCommand> {
+    
+    public static final String MESSAGE_FILENAME_CONSTRAINTS = "1. The FILENAME should only contain "
+            + "characters from digits 0-9 and alphabets a-z or A-Z\n"
+            + "2. The nameOfFile should consist of at least 1 character and at most 30 characters.\n";
+    
     /**
      * Parses the given {@code String} of arguments in the context of the ExportToCsvCommand
      * and returns an ExportToCsvCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-
-    public static final String MESSAGE_FILENAME_CONSTRAINTS = "1. The FILENAME should only contain "
-            + "characters from digits 0-9 and alphabets a-z or A-Z\n"
-            + "2. The nameOfFile should consist of at least 1 character and at most 30 characters.\n";
 
     public ExportToCsvCommand parse(String args) throws ParseException {
         try {
