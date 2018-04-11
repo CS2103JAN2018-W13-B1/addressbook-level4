@@ -14,6 +14,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.ui.util.CalendarFxUtil;
@@ -120,5 +121,10 @@ public class CalendarPanel extends UiPart<Region> {
         } else if (request.equals(REQUEST_NEXT)) {
             calendarView.getSelectedPage().goForward();
         }
+    }
+
+    public void handleChangeCalendarDateRequestEvent(ChangeCalendarDateRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        calendarView.setDate(event.getDate());
     }
 }

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
@@ -46,16 +47,20 @@ public class CentrePanel extends UiPart<Region> {
      * Displays the Person Panel.
      */
     public void displayPersonPanel() {
-        centrePlaceholder.getChildren().clear();
-        centrePlaceholder.getChildren().add(personPanel.getRoot());
+        if (!centrePlaceholder.getChildren().contains(personPanel.getRoot())) {
+            centrePlaceholder.getChildren().clear();
+            centrePlaceholder.getChildren().add(personPanel.getRoot());
+        }
     }
 
     /**
      * Displays the Calendar Panel.
      */
     public void displayCalendarPanel() {
-        centrePlaceholder.getChildren().clear();
-        centrePlaceholder.getChildren().add(calendarPanel.getRoot());
+        if (!centrePlaceholder.getChildren().contains(calendarPanel.getRoot())) {
+            centrePlaceholder.getChildren().clear();
+            centrePlaceholder.getChildren().add(calendarPanel.getRoot());
+        }
     }
 
     @Subscribe
@@ -78,9 +83,12 @@ public class CentrePanel extends UiPart<Region> {
 
     @Subscribe
     private void handleResetPersonPanelEvent(ResetPersonPanelEvent event) {
-        if (centrePlaceholder.getChildren().contains(personPanel.getRoot())) {
             personPanel = new PersonPanel();
-            displayPersonPanel();
-        }
+    }
+
+    @Subscribe
+    private void handleChangeCalendarDateRequestEvent(ChangeCalendarDateRequestEvent event) {
+        calendarPanel.handleChangeCalendarDateRequestEvent(event);
+        displayCalendarPanel();
     }
 }
