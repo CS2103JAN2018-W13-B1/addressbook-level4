@@ -392,38 +392,44 @@ Shows a list of all orders in ContactSails. +
 Format: `orderlist` +
 Command Alias: `ol`
 
-=== Viewing Calendar
+// tag::calendarandentries[]
+=== Viewing the Calendar
 
 This section describes commands related to viewing the calendar in ContactSails.
-Given below is how the Calendar in ContactSails look like.
+The calendar is displayed at the CenterPanel of the interface when you enter any of the commands in this section.
+Figure 3 below shows how the calendar looks like.
 
 .ContactSails interface with Calendar and Calendar Entries displayed.
 image::ContactSails_Ui_Calendar.PNG[width=790]
 
-The calendar has a day view, week view and month view to help you view all your scheduled events.
+In Figure 3, the calendar is set to Day-view, hence it displays all calendar entries that occur in the displayed date (11 April 2018, Wednesday).
+In the calendar, calendar entries appears as colored blocks, such as the green block in Figure 3, indicating the title and starting time of the entry.
+You can change the viewing format of the calendar using `calendar` command to switch to either of the 3 views; Day-view, Week-view and Month-view.
+To change the displayed date, you can enter `calendarjump` command to view your desired date.
 
 ==== Displaying the calendar : `calendar` `since v1.3`
 
-Displays the Calendar in the CenterPanel in specified viewing format. +
+Displays the calendar in the Center Panel in specified viewing format. +
 Format: `calendar [VIEW_FORMAT]` +
 Command Alias: `cal`
 
 ****
-* Calendar has 3 views; Day, Week, and Month.
+* Calendar can be set to display 1 of the 3 views; Day, Week, and Month.
 * `VIEW_FORMAT` only accepts the keywords, `day`, `week` and `month` to display the calendar in the respective format.
-* Calendar shows current day by default if no parameters are entered or invalid parameters are entered.
-* Calendar will display all incoming entries within timeframe of the specified view.
+* Calendar is set to Day-view by default if no parameters are entered or invalid parameters are entered.
+* Calendar will display all entries within timeframe of the specified view.
 ****
 
-Examples:
+Example:
 
-* `calendar` OR +
-`cal` +
-Shows Calendar in Day-View.
+To set display of calendar to Month-view, execute the following command:
 
 * `calendar month` OR +
 `cal month` +
-Shows Calendar in Month-View.
+Shows calendar in Month-view as seen in the figure below.
+
+.Calendar set to Month-view
+image::Calendar_Month_View.png[width]
 
 ==== Go to next page in the calendar : `calendarnext` `since v1.5rc`
 
@@ -432,9 +438,10 @@ Format: `calendarnext` +
 Command Alias: `calnext`
 
 ****
-* If calendar is displaying in day-view, command displays the next day of original date in day-view.
-* If calendar is displaying in week-view, command displays the next week of original date in week-view.
-* If calendar is displaying in month-view, command displays next month of original date in month-view.
+* The command has the same effect as pressing the kbd:[&rarr;] button at the top left corner of the calendar.
+* If calendar is displaying in Day-view, command displays the next day of original date in Day-view.
+* If calendar is displaying in Week-view, command displays the next week of original date in Week-view.
+* If calendar is displaying in Month-view, command displays next month of original date in Month-view.
 ****
 
 ==== Go to previous page in the calendar : `calendarback` `since v1.5rc`
@@ -444,72 +451,81 @@ Format: `calendarback` +
 Command Alias: `calback`
 
 ****
-* If calendar is displaying in day-view, command displays the previous day of original date in day-view.
-* If calendar is displaying in week-view, command displays the previous week of original date in week-view.
-* If calendar is displaying in month-view, command displays previous month of original date in month-view.
+* The command has the same effect as pressing the kbd:[&larr;] button at the top left corner of the calendar.
+* If calendar is displaying in Day-view, command displays the previous day of original date in Day-view.
+* If calendar is displaying in Week-view, command displays the previous week of original date in Week-view.
+* If calendar is displaying in Month-view, command displays previous month of original date in Month-view.
 ****
 
 ==== Display current day in the calendar : `calendartoday` `since v1.5rc`
 
-Displays today's date in Calendar. +
+Displays today's date in calendar. +
 Format: `calendartoday` +
 Command Alias: `caltoday`
 
 ****
-* If calendar is displaying in day-view, command displays today's date in day-view.
-* If calendar is displaying in week-view, command displays the current week of today in week-view.
-* If calendar is displaying in month-view, command displays current month of today in month-view.
+* The command has the same effect as pressing the kbd:[today] button at the top left corner of the calendar.
+* If calendar is displaying in Day-view, command displays today's date in Day-view.
+* If calendar is displaying in Week-view, command displays the current week of today in Week-view.
+* If calendar is displaying in Month-view, command displays current month of today in Month-view.
 ****
 
 ==== Display given date in the calendar : `calendarjump` `since v1.5`
 
-Displays given date in Calendar. +
+Displays the given date in calendar. +
 Format: `calendarjump td/TARGET_DATE` +
 Command Alias: `caljump`
 
 ****
 * TARGET_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
-* If calendar is displaying in day-view, command displays TARGET_DATE in day-view.
-* If calendar is displaying in week-view, command displays the week of TARGET_DATE in week-view.
-* If calendar is displaying in month-view, command displays the month of TARGET_DATE in month-view.
+* If calendar is displaying in Day-view, command displays TARGET_DATE in Day-view.
+* If calendar is displaying in Week-view, command displays the week of TARGET_DATE in Week-view.
+* If calendar is displaying in Month-view, command displays the month of TARGET_DATE in Month-view.
 ****
 
 === Managing Calendar Entries
 
 This section describes commands you can use to manage calendar entries in ContactSails.
-You can use calendar entries to represent events, deadlines or meetings.
-These entries will be displayed in the calendar.
+You can use calendar entries to represent events, deadlines or meetings. +
+
+A calendar entry has a title, start date, end date, start time and end time.
+These entries will be displayed in the calendar in the Center Panel and calendar entry list in the Right Panel.
+Figure 5 below shows how a calendar entry appears in the calendar entry list.
+
+.Calendar Entry Description
+image::Calendar_Entry_Card.png[width]
+
+In Figure 5, calendar entry has an index of 1, indicating its position in the list.
+Beside the index is the title of the calendar entry (Meet Aaron).
+The description indicates the entry's starting date (11-04-2018) and ending date (11-04-2018).
+The last sentence indicates the starting time (14:00) and ending time. (17:00) of the entry.
+
 
 ==== Adding entries to calendar entry list : `entryadd` `since v1.3`
 
-Adds an entry to the Calendar entry list and displays it in the calendar. +
-Format: `entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
+Adds an entry to the calendar entry list and displays it in the calendar. +
+Format: `entryadd t/ENTRY_TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
 Command Alias: `ea` +
 
 ****
+* ENTRY_TITLE must be alphanumeric, but whitespaces are allowed inbetween words.
 * If input does not contain START_DATE, it is assumed that START DATE is the same as END_DATE.
 * If input does not contain START_TIME, it is assumed that START_TIME is 00:00.
-* TITLE is alphanumeric and accepts white space. TITLE accepts maximum of 40 characters.
 * START_DATE and END_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
 * START_TIME and END_TIME must follow the 24-Hour format: HH:MM (E.g. 23:59)
-*
+* Duration of an entry must be at least 15 minutes.
 ****
 
-Examples:
+Example:
 
 * `entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00` OR +
 `ea t/meet with boss ed/05-05-2020 st/10:00 et/12:00` +
 Creates a calendar entry with listed title, starts from 1000 and ends at 1200 on 5 May 2020. +
-Entry appears on specified date in the Calendar.
-
-* `entryadd t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00` OR +
-`ea t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00` +
-Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at the specified time period in Calendar.
 
 ==== Editing entries in calendar entry list : `entryedit` `since v1.5rc`
 
-Edits an existing entry in the Calendar entry list and displays the edited entry in the calendar. +
-Format: `entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
+Edits an existing entry in the calendar entry list and displays the edited entry in the calendar. +
+Format: `entryedit ENTRY_INDEX [t/ENTRY_TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
 Command Alias: `ee` +
 
 ****
@@ -517,20 +533,26 @@ Command Alias: `ee` +
 * At least one of the optional fields must be provided.
 ****
 
-Examples:
+Example:
 
-* `entryedit 1 t/meet with bosses et/1400` OR +
+The calendar entry list currently has the following calendar entry at index 1:
+
+.Initial state of "Meet boss" calendar entry
+image::Edit_Entry_Before.png[width]
+
+To edit the above calendar entry, execute the following command:
+
+* `entryedit 1 t/Meeting with Bosses et/14:00` OR +
 `ee 1 t/meet with bosses et/1400` +
-Edits title and end time of 1st entry in entry list to "meet with bosses" and 1400 respectively. +
-Changes reflect on the Calendar.
+Edits title and end time of 1st entry in entry list to "Meeting with Bosses" and 1400 respectively.
+The result is shown in the figure below.+
 
-* `entryedit 3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800` OR +
-`ee 3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800` +
-Edits starting date and time, ending date and time of the 3rd entry in entry list.
+.Result of editing "Meet boss" calendar entry
+image::Edit_Entry_After.png[width]
 
 ==== Deleting entries in calendar entry list : `entrydelete` `since v1.4`
 
-Deletes an existing entry in Calendar entry list. +
+Deletes an existing entry in calendar entry list. +
 Format: `entrydelete ENTRY_INDEX` +
 Command Alias: `ed` +
 
@@ -540,12 +562,12 @@ Command Alias: `ed` +
 * The index *must be a positive integer* 1, 2, 3, ...
 ****
 
-Examples:
+Example:
 
 * `entrydelete 1` OR +
 `ed 1` +
 Deletes the entry at index 1 of most recent entry listing. +
-Entry is removed from the Calendar.
+Entry is removed from the calendar.
 
 ==== Listing all calendar entries : `entrylist` `since v1.4`
 
@@ -559,6 +581,7 @@ Clears all entry list entries from ContactSails. +
 Format: `entryclear` +
 Command Alias: `ec`
 
+// end::calendarandentries[]
 === Miscellaneous Commands
 
 This section describes other commands you can use in ContactSails.
@@ -737,6 +760,14 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+
+*Q*: Why is it that an error shows up when I clicked the interface of the calendar twice, as seen in Figure ? below?
+
+.Error dialog box when calendar is clicked twice
+image::Calendar_DoubleClick_Error.png[width]
+
+*A*: As of V1.5, we have disabled the ability for users to add entries by clicking on the calendar twice, as entries created this way will not be saved in ContactSails.
+This ability will be enabled in future versions of ContactSails.
 // end::cominginfuture[]
 
 // tag::commandsummary[]
