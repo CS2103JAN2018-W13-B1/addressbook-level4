@@ -850,6 +850,8 @@ Command Alias: `q`
 // tag::commandsummary[]
 == Command Summary
 
+The following sections summarize the commands you can use in ContactSails.
+
 === Managing Persons
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
@@ -925,6 +927,8 @@ Command Alias: `q`
 
 // tag::cominginfuture[]
 == Coming in v2.0
+
+The following section describes some of the proposed features we are planning to add to ContactSails in `v2.0`.
 
 === Viewing top customers : `topcustomers` `coming in v2.0`
 
