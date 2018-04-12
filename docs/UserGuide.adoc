@@ -321,9 +321,21 @@ Command Alias: `gd`
 
 Examples:
 
-* `groupdelete friends` OR+
-`gd friends`+
+Here's a picture of the contacts in ContactSails.
+
+image::BeforeContacts.png[width = "790"]
+
+* `groupdelete friends` OR `gd friends`
 All persons in ContactSails with the group `friends` will have the group removed.
+
+At first, it will show the following, where the group friends still
+appear at the person panel.
+
+image::Warning1.png[width = "790"]
+
+Now, click on another contact. Then, click back 1. Alex Yeoh to see the change.
+
+image::Warning2.png[width = "790"]
 
 ==== Deleting a preference : `prefdelete` `since v1.2`
 
@@ -339,9 +351,22 @@ Command Alias: `pd`
 
 Examples:
 
-* `prefdelete computers` OR+
-`pd computers`+
-All persons in ContactSails with the preference [computers] will have the preference removed.
+Here's a picture of the contacts in ContactSails.
+
+image::Warning3.png[width = "790"]
+
+* `prefdelete shoes` OR
+`pd shoes`.
+All persons in ContactSails with the preference [shoes] will have the preference removed.
+
+At first, it will show the following, where the preference shoes still appear
+at the person panel.
+
+image::PreferenceWarning1.png[width = "790"]
+
+Now, click on another contact. Then, click back 2. Bernice Yu to see the change.
+
+image::PreferenceWarning2.png[width = "790"]
 
 === Managing Orders
 
