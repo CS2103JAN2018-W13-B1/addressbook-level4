@@ -75,6 +75,41 @@ You can use `entrylist` and `orderlist` to switch between the two lists.
 
 Person List Panel, Center Panel and Right Panel will be explained in greater detail in <<Features>>.
 
+=== Walkthrough
+Here's a simple walkthrough of Contact Sails.
+
+1) There are 6 contacts and 4 orders that are already pre-loaded in ContactSails to help you to get familiarised
+with the commands and features found in ContactSails. Click any contact on the left will `select` the contact,
+which will show you the contact's information on the center panel. For instance, clicking on
+Alex Yeoh on the left shows the picture below.
+
+image::SelectContactProcess.png[width="790"]
+
+2) Let us start by clearing these example contacts. Type `clear` on the command box at the top.
+Now, you should see an empty screen like the picture below:
+
+image::Empty.png[width = "790"]
+
+3) Let us add our first contact now. Type `add n/Mary p/96628855 e/mary@example.com a/Mary Road, block 1, #12-06, g/SoC pr/videoGame`
+in the command box and press enter. Click on the contact Mary and you should see this picture:
+
+image::ExampleMary.png[width = "790"]
+
+4) Oops! Looks like Mary is from group Science and not SoC. Notice that Mary is the 1st contact in our contact list,
+this means her index is 1.
+Type `edit 1 g/FASS` on the command box and you should see the follwing:
+
+image::EditMary.png[width = "790"]
+
+5) Let's say Mary is not in your contacts anymore. Her index in Contact Sails is still 1 in the picture.
+Type `delete 1` in the command box and press enter to remove her. You should see the following:
+
+image::DeleteMary.png[width = "790"]
+
+Congratulations! You have learnt the basic commands in ContactSails. In order to understand all the available commands,
+the next section illustrate all the available commands with detailed explanation.
+
+
 [[Features]]
 == Features
 
