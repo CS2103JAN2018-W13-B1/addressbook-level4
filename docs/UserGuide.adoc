@@ -875,3 +875,6 @@ A Panel that displays all sales orders that you have added to ContactSails.
 
 [[entrylistpanel]]EntryListPanel::
 A Panel that displays all the calendar entries that you have added to ContactSails.
+
+[[alphanumeric]]Alphanumeric::
+The parameter can only contain alphabets and/or numbers.
