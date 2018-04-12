@@ -681,6 +681,7 @@ There is no need to save manually.
 Exits the program. +
 Format: `exit` +
 Command Alias: `q`
+
 // tag::cominginfuture[]
 === Coming in v2.0
 
@@ -817,16 +818,17 @@ This ability will be enabled in future versions of ContactSails.
 |Function |Command |Alias |Example
 |Display the calendar. |`calendar [VIEW_FORMAT]` |`cal` |`calendar month`
 |Go to the next page of the calendar. |`calendarnext` |`calnext` |`calendarnext`
-|Go to the previous page of the calendar. |`calendarprev` |`calprev` |`calendarprev`
-|Go to the current day. |`calendarnow` |`calnow` |`calendarnow`
+|Go to the previous page of the calendar. |`calendarback` |`calback` |`calendarback`
+|Go to the current day. |`calendartoday` |`caltoday` |`calendartoday`
+|Go to specified date. |`calendarjump td/TARGET_DATE` |`caljump` |`calendarjump 10-10-2020`
 |===
 
 === Managing Calendar Entries
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Alias |Example
-|Add a calendar entry. |`entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` |`ea` |`entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00`
-|Edit an existing calendar entry. |`entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` |`ee` |`entryedit 1 t/meet with bosses et/1400`
+|Add a calendar entry. |`entryadd t/ENTRY_TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` |`ea` |`entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00`
+|Edit an existing calendar entry. |`entryedit ENTRY_INDEX [t/ENTRY_TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` |`ee` |`entryedit 1 t/meet with bosses et/1400`
 |Delete an existing calendar entry. |`entrydelete ENTRY_INDEX` |`ed` |`entrydelete 1`
 |List all calendar entries. |`entrylist` |`el` |`entrylist`
 |Clear all calendar entries. |`entryclear`  |`ec` |`entryclear`
