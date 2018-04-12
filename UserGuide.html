@@ -67,6 +67,7 @@
 <li><a href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>since v1.5rc</code></a></li>
 <li><a href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>since v1.5rc</code></a></li>
 <li><a href="#display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>since v1.5rc</code></a></li>
+<li><a href="#display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code">4.6.5. Display given date in the calendar : <code>calendarjump</code> <code>since v1.5</code></a></li>
 </ul>
 </li>
 <li><a href="#managing-calendar-entries">4.7. Managing Calendar Entries</a>
@@ -999,6 +1000,34 @@ Command Alias: <code>caltoday</code></p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code"><a class="link" href="#display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code">4.6.5. Display given date in the calendar : <code>calendarjump</code> <code>since v1.5</code></a></h4>
+<div class="paragraph">
+<p>Displays given date in Calendar.<br>
+Format: <code>calendarjump td/TARGET_DATE</code><br>
+Command Alias: <code>caljump</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>TARGET_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
+</li>
+<li>
+<p>If calendar is displaying in day-view, command displays TARGET_DATE in day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in week-view, command displays the week of TARGET_DATE in week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in month-view, command displays the month of TARGET_DATE in month-view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="managing-calendar-entries"><a class="link" href="#managing-calendar-entries">4.7. Managing Calendar Entries</a></h3>
@@ -1010,7 +1039,7 @@ These entries will be displayed in the calendar.</p>
 <div class="sect3">
 <h4 id="adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code"><a class="link" href="#adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code">4.7.1. Adding entries to calendar entry list : <code>entryadd</code> <code>since v1.3</code></a></h4>
 <div class="paragraph">
-<p>Adds an entry to the Calendar entry list.<br>
+<p>Adds an entry to the Calendar entry list and displays it in the calendar.<br>
 Format: <code>entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME</code><br>
 Command Alias: <code>ea</code><br></p>
 </div>
@@ -1031,7 +1060,8 @@ Command Alias: <code>ea</code><br></p>
 <p>START_DATE and END_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
 </li>
 <li>
-<p>START_TIME and END_TIME must follow the 24-Hour format: HH:MM (E.g. 23:59)</p>
+<p>START_TIME and END_TIME must follow the 24-Hour format: HH:MM (E.g. 23:59)
+*</p>
 </li>
 </ul>
 </div>
@@ -1059,7 +1089,7 @@ Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at th
 <div class="sect3">
 <h4 id="editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code"><a class="link" href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code">4.7.2. Editing entries in calendar entry list : <code>entryedit</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing entry in the Calendar entry List.<br>
+<p>Edits an existing entry in the Calendar entry list and displays the edited entry in the calendar.<br>
 Format: <code>entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code><br>
 Command Alias: <code>ee</code><br></p>
 </div>
@@ -1850,7 +1880,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 01:36:47 UTC
+Last updated 2018-04-12 01:39:13 UTC
 </div>
 </div>
 </body>
