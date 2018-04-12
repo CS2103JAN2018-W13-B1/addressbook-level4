@@ -1,7 +1,7 @@
 = ContactSails - User Guide
 :toc:
 :toclevels: 5
-:toc-title:
+:toc-title: Table of Contents
 :toc-placement: preamble
 :sectnums:
 :imagesDir: images
@@ -14,7 +14,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/CS2103JAN2018-W13-B1/main
 
-By: `Team W13-B1`      Since: `Mar 2018`      Licence: `MIT`
+By: `Team W13-B1`           Since: `Mar 2018`           Licence: `MIT`
 
 == Introduction
 
@@ -47,10 +47,10 @@ image::ContactSails_Interface_StartUp.PNG[width="790" align="center"]
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
-* *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
-* **`delete`**`3` : deletes the 3rd contact shown in the current list
-* *`exit`* : exits the app
+* `list` : lists all contacts
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
+* `delete 3` : deletes the 3rd contact shown in the current list
+* `exit` : exits the app
 
 .  Refer to <<Features>> for details of each command.
 
@@ -68,12 +68,12 @@ image::ContactSails_Interface_Breakdown.png[width="790" align="center"]
 
 With reference to Figure 2 above, there are 5 important sections in the interface:
 
-* Command Box: This is the place for you to type your commands. Pressing kbd:[Enter] will execute the command.
-* Result Display: This place shows the result of the command you have executed. It will display messages indicating whether your command has executed successfully.
+. *Command Box*: This is the place for you to type your commands. Pressing kbd:[Enter] will execute the command.
+. *Result Display*: This place shows the result of the command you have executed. It will display messages indicating whether your command has executed successfully.
 If your command fails to execute, error messages indicating the cause of the failure will be shown here.
-* Person List Panel: This panel displays the list of persons that exist in ContactSails. You can filter this list of persons with `find` commands.
-* Center Panel: This panel can display either a detailed display of a person's information, or a calendar. `calendar` command will display the calendar and `select` command will display selected person's information.
-* Right Panel: This panel can display either a list of orders or a list of calendar entries in ContactSails. On startup, this panel will show the list of orders by default.
+. *Person List Panel*: This panel displays the list of persons that exist in ContactSails. You can filter this list of persons with `find` commands.
+. *Center Panel*: This panel can display either a detailed display of a person's information, or a calendar. `calendar` command will display the calendar and `select` command will display selected person's information.
+. *Right Panel*: This panel can display either a list of orders or a list of calendar entries in ContactSails. On startup, this panel will show the list of orders by default.
 You can use `entrylist` and `orderlist` to switch between the two lists.
 
 Person List Panel, Center Panel and Right Panel will be explained in greater detail in <<Features>>.
@@ -120,7 +120,7 @@ This section describes commands you can use to manage person entries in ContactS
 
 ==== Adding a person : `add`
 
-Adds a person to ContactSails. +
+Description: Adds a person to ContactSails. +
 
 ****
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]... [pr/PREFERENCE]...` +
@@ -140,7 +140,7 @@ and `notebooks` as a preference tag.
 
 ==== Editing a person : `edit`
 
-Edits an existing person in ContactSails. +
+Description: Edits an existing person in ContactSails. +
 
 ****
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]... [pr/PREFERENCE]...` +
@@ -168,7 +168,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing gr
 
 ==== Deleting a person : `delete`
 
-Deletes the specified person from ContactSails. +
+Description: Deletes the specified person from ContactSails. +
 
 ****
 Format: `delete INDEX` +
@@ -194,7 +194,7 @@ Deletes the 1st person in the results of the `find` command.
 
 ==== Listing all persons : `list`
 
-Shows a list of all persons in ContactSails. +
+Description: Shows a list of all persons in ContactSails. +
 
 ****
 Format: `list` +
@@ -204,7 +204,7 @@ Command Alias: `l`
 
 ==== Selecting a person : `select`
 
-Selects the person identified by the index number used in the last person listing. +
+Description: Selects the person identified by the index number used in the last person listing. +
 
 ****
 Format: `select INDEX` +
@@ -235,7 +235,7 @@ The Person List in the interface will only show the persons you are finding afte
 
 ==== Finding persons by name : `find`
 
-Finds persons whose names contain any of the given keywords. +
+Description: Finds persons whose names contain any of the given keywords. +
 
 ****
 Format: `find KEYWORD [MORE_KEYWORDS]` +
@@ -263,7 +263,7 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 
 ==== Finding persons by groups : `groupfind` `since v1.2`
 
-Finds persons whose groups matches any of the given keywords. +
+Description: Finds persons whose groups matches any of the given keywords. +
 
 ****
 Format: `groupfind KEYWORD [MORE_KEYWORDS]` +
@@ -290,7 +290,7 @@ Returns any person having groups `neighbours`, `friends`, or `colleagues`
 
 ==== Finding persons by preferences : `preffind` `since v1.2`
 
-Finds persons whose preferences matches any of the given keywords. +
+Description: Finds persons whose preferences matches any of the given keywords. +
 
 ****
 Format: `preffind KEYWORD [MORE_KEYWORDS]` +
@@ -321,7 +321,7 @@ This section describes commands you can use to manage preference and group tags 
 
 ==== Deleting a group : `groupdelete` `since v1.2`
 
-Deletes the specified group from ContactSails. +
+Description: Deletes the specified group from ContactSails. +
 
 ****
 Format: `groupdelete GROUP_NAME` +
@@ -343,7 +343,7 @@ All persons in ContactSails with the group `friends` will have the group removed
 
 ==== Deleting a preference : `prefdelete` `since v1.2`
 
-Deletes the specified preference from ContactSails. +
+Description: Deletes the specified preference from ContactSails. +
 
 ****
 Format: `prefdelete PREFERENCE_NAME` +
@@ -373,7 +373,7 @@ image::OrdersInitialAddressbook.png[width="790" align="center"]
 
 ==== Adding an order : `orderadd` `since v1.2`
 
-Adds an order to the person specified by the index number used in the last person listing. +
+Description: Adds an order to the person specified by the index number used in the last person listing. +
 
 ****
 Format: `orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE` +
@@ -393,7 +393,7 @@ image::OrderAdd.png[width="790" align="center"]
 
 ==== Editing an order : `orderedit` `since v1.2`
 
-Edits the order specified by the index number used in the order listing. +
+Description: Edits the order specified by the index number used in the order listing. +
 
 ****
 Format: `orderedit INDEX [i/ORDER_INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY_DATE]` +
@@ -427,7 +427,7 @@ image::OrderEditResult.png[width="250" align="center"]
 
 ==== Changing the order status : `orderstatus` `since v1.4`
 
-Changes the order status of the order specified by the index number used in the order listing. +
+Description: Changes the order status of the order specified by the index number used in the order listing. +
 
 ****
 Format: `orderstatus INDEX os/ORDER STATUS` +
@@ -451,7 +451,7 @@ image::OrderStatusResult.png[width="250" align="center"]
 
 ==== Deleting an order : `orderdelete` `since v1.2`
 
-Deletes the order specified by the index number used in the order listing. +
+Description: Deletes the order specified by the index number used in the order listing. +
 
 ****
 Format: `orderdelete INDEX` +
@@ -483,7 +483,7 @@ image::OrderDeleteResult.png[width="250" align="center"]
 
 ==== Listing all orders : `orderlist` `since v1.4`
 
-Shows a list of all orders in ContactSails. +
+Description: Shows a list of all orders in ContactSails. +
 
 ****
 Format: `orderlist` +
@@ -504,7 +504,7 @@ The calendar has a day view, week view and month view to help you view all your 
 
 ==== Displaying the calendar : `calendar` `since v1.3`
 
-Displays the Calendar in the CenterPanel in specified viewing format. +
+Description: Displays the Calendar in the CenterPanel in specified viewing format. +
 
 ****
 Format: `calendar [VIEW_FORMAT]` +
@@ -531,7 +531,7 @@ Shows Calendar in Month-View.
 
 ==== Go to next page in the calendar : `calendarnext` `since v1.5rc`
 
-Displays next page of current displayed date in calendar. +
+Description: Displays next page of current displayed date in calendar. +
 
 ****
 Format: `calendarnext` +
@@ -547,7 +547,7 @@ Command Alias: `calnext`
 
 ==== Go to previous page in the calendar : `calendarback` `since v1.5rc`
 
-Displays previous page of current displayed date in calendar. +
+Description: Displays previous page of current displayed date in calendar. +
 
 ****
 Format: `calendarback` +
@@ -563,7 +563,7 @@ Command Alias: `calback`
 
 ==== Display current day in the calendar : `calendartoday` `since v1.5rc`
 
-Displays today's date in Calendar. +
+Description: Displays today's date in Calendar. +
 
 ****
 Format: `calendartoday` +
@@ -579,7 +579,7 @@ Command Alias: `caltoday`
 
 ==== Display given date in the calendar : `calendarjump` `since v1.5`
 
-Displays given date in Calendar. +
+Description: Displays given date in Calendar. +
 
 ****
 Format: `calendarjump td/TARGET_DATE` +
@@ -588,10 +588,10 @@ Format: `calendarjump td/TARGET_DATE` +
 Command Alias: `caljump`
 
 ****
-* TARGET_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
-* If calendar is displaying in day-view, command displays TARGET_DATE in day-view.
-* If calendar is displaying in week-view, command displays the week of TARGET_DATE in week-view.
-* If calendar is displaying in month-view, command displays the month of TARGET_DATE in month-view.
+* `TARGET_DATE` must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
+* If calendar is displaying in day-view, command displays `TARGET_DATE` in day-view.
+* If calendar is displaying in week-view, command displays the week of `TARGET_DATE` in week-view.
+* If calendar is displaying in month-view, command displays the month of `TARGET_DATE` in month-view.
 ****
 
 === Managing Calendar Entries
@@ -602,7 +602,7 @@ These entries will be displayed in the calendar.
 
 ==== Adding entries to calendar entry list : `entryadd` `since v1.3`
 
-Adds an entry to the Calendar entry list and displays it in the calendar. +
+Description: Adds an entry to the Calendar entry list and displays it in the calendar. +
 
 ****
 Format: `entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME` +
@@ -611,11 +611,11 @@ Format: `entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIM
 Command Alias: `ea` +
 
 ****
-* If input does not contain START_DATE, it is assumed that START DATE is the same as END_DATE.
-* If input does not contain START_TIME, it is assumed that START_TIME is 00:00.
-* TITLE is alphanumeric and accepts white space. TITLE accepts maximum of 40 characters.
-* START_DATE and END_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
-* START_TIME and END_TIME must follow the 24-Hour format: HH:MM (E.g. 23:59)
+* If input does not contain `START_DATE`, it is assumed that `START DATE` is the same as `END_DATE`.
+* If input does not contain `START_TIME`, it is assumed that `START_TIME` is 00:00.
+* `TITLE` is alphanumeric and accepts white space. `TITLE` accepts maximum of 40 characters.
+* `START_DATE` and `END_DATE` must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)
+* `START_TIME` and `END_TIME` must follow the 24-Hour format: HH:MM (E.g. 23:59)
 *
 ****
 
@@ -624,15 +624,15 @@ Examples:
 * `entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00` OR +
 `ea t/meet with boss ed/05-05-2020 st/10:00 et/12:00` +
 Creates a calendar entry with listed title, starts from 1000 and ends at 1200 on 5 May 2020. +
-Entry appears on specified date in the Calendar.
+Entry appears on specified date in the dalendar.
 
 * `entryadd t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00` OR +
 `ea t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00` +
-Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at the specified time period in Calendar.
+Entry starting from `1 Jan 2019 1000` and ending at `10 Jan 2019 1800` appears at the specified time period in the calendar.
 
 ==== Editing entries in calendar entry list : `entryedit` `since v1.5rc`
 
-Edits an existing entry in the Calendar entry list and displays the edited entry in the calendar. +
+Description: Edits an existing entry in the Calendar entry list and displays the edited entry in the calendar. +
 
 ****
 Format: `entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]` +
@@ -641,7 +641,7 @@ Format: `entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START
 Command Alias: `ee` +
 
 ****
-* Edits the entry at specified ENTRY_INDEX. The index refers to the index number shown in the last entry listing. The index *must be a positive integer* 1, 2, 3, ...
+* Edits the entry at specified `ENTRY_INDEX`. The index refers to the index number shown in the last entry listing. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 ****
 
@@ -649,7 +649,7 @@ Examples:
 
 * `entryedit 1 t/meet with bosses et/1400` OR +
 `ee 1 t/meet with bosses et/1400` +
-Edits title and end time of 1st entry in entry list to "meet with bosses" and 1400 respectively. +
+Edits title and end time of 1st entry in entry list to `meet with bosses` and `1400` respectively. +
 Changes reflect on the Calendar.
 
 * `entryedit 3 sd/01-01-2019 ed/11-01-2019 st/0900 et/1800` OR +
@@ -658,7 +658,7 @@ Edits starting date and time, ending date and time of the 3rd entry in entry lis
 
 ==== Deleting entries in calendar entry list : `entrydelete` `since v1.4`
 
-Deletes an existing entry in Calendar entry list. +
+Description: Deletes an existing entry in Calendar entry list. +
 
 ****
 Format: `entrydelete ENTRY_INDEX` +
@@ -667,7 +667,7 @@ Format: `entrydelete ENTRY_INDEX` +
 Command Alias: `ed` +
 
 ****
-* Deletes entry at specified ENTRY_INDEX of entry list.
+* Deletes entry at specified `ENTRY_INDEX` of entry list.
 * The index refers to index number shown in the most recent entry listing.
 * The index *must be a positive integer* 1, 2, 3, ...
 ****
@@ -681,7 +681,7 @@ Entry is removed from the Calendar.
 
 ==== Listing all calendar entries : `entrylist` `since v1.4`
 
-Shows a list of all calendar entries in ContactSails. +
+Description: Shows a list of all calendar entries in ContactSails. +
 
 ****
 Format: `entrylist` +
@@ -691,8 +691,12 @@ Command Alias: `el`
 
 ==== Clearing all entries in list of entries : `entryclear` `coming in v1.5`
 
-Clears all entry list entries from ContactSails. +
+Description: Clears all entry list entries from ContactSails. +
+
+****
 Format: `entryclear` +
+****
+
 Command Alias: `ec`
 
 === Miscellaneous Commands
@@ -701,7 +705,7 @@ This section describes other commands you can use in ContactSails.
 
 ==== Viewing command history : `history`
 
-Lists all the commands that you have entered in reverse chronological order. +
+Description: Lists all the commands that you have entered in reverse chronological order. +
 
 ****
 Format: `history` +
@@ -716,7 +720,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 ==== Changing the theme : `theme` `since v1.3`
 
-Changes the theme of the application. +
+Description: Changes the theme of the application. +
 
 ****
 Format: `theme THEME_TYPE` +
@@ -732,12 +736,16 @@ Examples:
 
 * `theme light` OR +
 `t light` +
-Changes the theme of the application to the light theme.
+Changes the theme of the application to the light theme. The figure below shows the ContactSails UI with the light theme.
+
+.ContactSails Light Theme
+image::ContactSails_Light_Theme.png[width="790" align="center"]
+
 
 // tag::undoredo[]
 ==== Undoing previous command : `undo`
 
-Restores ContactSails to the state before the previous `undoable` command was executed. +
+Description: Restores ContactSails to the state before the previous `undoable` command was executed. +
 
 ****
 Format: `undo` +
@@ -768,7 +776,7 @@ The `undo` command fails as there are no undoable commands executed previously.
 
 ==== Redoing the previously undone command : `redo`
 
-Reverses the most recent `undoable` command. +
+Description: Reverses the most recent `undoable` command. +
 
 ****
 Format: `redo` +
@@ -796,7 +804,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 ==== Clearing all entries : `clear`
 
-Clears all entries from ContactSails. +
+Description: Clears all entries from ContactSails. +
 
 ****
 Format: `clear` +
@@ -811,7 +819,7 @@ There is no need to save the data manually.
 
 ==== Exiting the program : `exit`
 
-Exits the program. +
+Description: Exits the program. +
 
 ****
 Format: `exit` +
@@ -821,8 +829,23 @@ Command Alias: `q`
 
 == FAQ
 
-*Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+*Q*: I can't open the ContactSails `.jar` file. What should I do? +
+*A*: Given below are steps you can follow to solve this problem:
+
+*For Windows Users:*
+
+. Open the `Command Prompt` application.
+. Change the current directory to the directory of your `Java JDK`.
+. Execute the command `"JAVA_JDK_EXE_FILE_DIRECTORY_PATH" -jar YOUR_APPLICATION_JAR_FILE_NAME.jar`.
+** For example, if your `Java JDK` is in the `"C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe"` directory, you would execute the following command: `"C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe" -jar ContactSails.jar`.
+
+*For Mac/Linux users:*
+
+. Open the `Terminal` application.
+. Execute the command `java -jar YOUR_APPLICATION_JAR_FILE_NAME.jar`
+
+*Q*: How do I transfer my data to another computer? +
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ContactSails folder.
 
 // tag::commandsummary[]
 == Command Summary
