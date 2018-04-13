@@ -18,15 +18,20 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team W13-B1</code>      Since: <code>Mar 2018</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W13-B1</code>           Since: <code>Mar 2018</code>           Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle"></div>
+<div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#contactsails-ui">3. ContactSails UI</a></li>
+<li><a href="#using-contactsails">3. Using ContactSails</a>
+<ul class="sectlevel2">
+<li><a href="#contactsails-user-interface">3.1. ContactSails User Interface</a></li>
+<li><a href="#command-format-guidelines">3.2. Command Format Guidelines</a></li>
+</ul>
+</li>
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></li>
@@ -58,7 +63,7 @@
 <li><a href="#editing-an-order-code-orderedit-code-code-since-v1-2-code">4.5.2. Editing an order : <code>orderedit</code> <code>since v1.2</code></a></li>
 <li><a href="#changing-the-order-status-code-orderstatus-code-code-since-v1-4-code">4.5.3. Changing the order status : <code>orderstatus</code> <code>since v1.4</code></a></li>
 <li><a href="#deleting-an-order-code-orderdelete-code-code-since-v1-2-code">4.5.4. Deleting an order : <code>orderdelete</code> <code>since v1.2</code></a></li>
-<li><a href="#listing-all-orders-code-orderlist-code-code-since-v1-4-code">4.5.5. Listing all orders : <code>orderlist</code> <code>Since v1.4</code></a></li>
+<li><a href="#listing-all-orders-code-orderlist-code-code-since-v1-4-code">4.5.5. Listing all orders : <code>orderlist</code> <code>since v1.4</code></a></li>
 </ul>
 </li>
 <li><a href="#viewing-calendar">4.6. Viewing Calendar</a>
@@ -88,10 +93,6 @@
 <li><a href="#clearing-all-entries-code-clear-code">4.8.5. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#saving-the-data">4.8.6. Saving the data</a></li>
 <li><a href="#exiting-the-program-code-exit-code">4.8.7. Exiting the program : <code>exit</code></a></li>
-<li><a href="#viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code">4.8.8. Viewing top customers : <code>topcustomers</code> <code>coming in v2.0</code></a></li>
-<li><a href="#viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code">4.8.9. Viewing top customers : <code>topitems</code> <code>coming in v2.0</code></a></li>
-<li><a href="#sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code">4.8.10. Sending promotions based on group : <code>sendpromogroup</code> <code>coming in v2.0</code></a></li>
-<li><a href="#sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code">4.8.11. Sending promotions based on preference : <code>sendpromopref</code> <code>coming in v2.0</code></a></li>
 </ul>
 </li>
 </ul>
@@ -108,7 +109,15 @@
 <li><a href="#miscellaneous-commands-2">6.7. Miscellaneous Commands</a></li>
 </ul>
 </li>
-<li><a href="#glossary">7. Glossary</a></li>
+<li><a href="#coming-in-v2-0">7. Coming in v2.0</a>
+<ul class="sectlevel2">
+<li><a href="#viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code">7.1. Viewing top customers : <code>topcustomers</code> <code>coming in v2.0</code></a></li>
+<li><a href="#viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code">7.2. Viewing top customers : <code>topitems</code> <code>coming in v2.0</code></a></li>
+<li><a href="#sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code">7.3. Sending promotions based on group : <code>sendpromogroup</code> <code>coming in v2.0</code></a></li>
+<li><a href="#sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code">7.4. Sending promotions based on preference : <code>sendpromopref</code> <code>coming in v2.0</code></a></li>
+</ul>
+</li>
+<li><a href="#glossary">8. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -116,7 +125,13 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ContactSails is for users who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, it is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ContactSails can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>ContactSails is for salespersons who prefer to use a desktop app for managing contacts, orders, and events.</p>
+</div>
+<div class="paragraph">
+<p>More importantly, it is optimized for those who prefer to work with a Command Line Interface (<a href="#cli">CLI</a>), while still having the benefits of a Graphical User Interface (<a href="#gui">GUI</a>).</p>
+</div>
+<div class="paragraph">
+<p>If you can type fast, ContactSails can get your sales management related tasks done faster than traditional GUI apps.</p>
 </div>
 </div>
 </div>
@@ -124,12 +139,8 @@
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To set up and start using ContactSails, do the following:</p>
+<p>Before you start, ensure you have Java version <code>1.8.0_60</code> or later installed in your computer.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your Computer.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -137,22 +148,26 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Having any Java 8 version is not enough.<br>
-This app will not work with earlier versions of Java 8.
+This app will not work with earlier versions of Java 8, so make sure you have installed the right version.
 </td>
 </tr>
 </table>
 </div>
-</li>
+<div class="paragraph">
+<p>To install and start using ContactSails, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Download the latest <code>ContactSails.jar</code> <a href="https://github.com/CS2103JAN2018-W13-B1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for ContactSails.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The User Interface (UI) should appear in a few seconds.</p>
-<div class="imageblock">
+<p>Double-click the file to start the app. The User Interface (UI) should appear in a few seconds, as shown in Figure 1 below.
+You can resize the application window as required by dragging the corners of the window.</p>
+<div class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/ContactSails_Interface_StartUp.PNG" alt="ContactSails Interface StartUp" width="790">
 </div>
@@ -160,7 +175,7 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Type the command in the command box (located right below Menu Bar) and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type a command in the command box (located right below Menu Bar) and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
@@ -168,38 +183,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><code>list</code> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><code>delete 3</code> : deletes the 3rd contact shown in the current list</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Commands also have alias words so you can execute the same commands in a quicker way.</p>
-</li>
-<li>
-<p>Some example command aliases you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>l</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>a</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>d</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : q</p>
+<p><code>exit</code> : exits the app</p>
 </li>
 </ul>
 </div>
@@ -212,12 +205,17 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect1">
-<h2 id="contactsails-ui"><a class="link" href="#contactsails-ui">3. ContactSails UI</a></h2>
+<h2 id="using-contactsails"><a class="link" href="#using-contactsails">3. Using ContactSails</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section first describes the various components of ContactSails' User Interface and later explains some guidelines you will need to follow to execute commands.</p>
+</div>
+<div class="sect2">
+<h3 id="contactsails-user-interface"><a class="link" href="#contactsails-user-interface">3.1. ContactSails User Interface</a></h3>
 <div class="paragraph">
 <p>This section briefly explains the various panels in the UI interface of ContactSails.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/ContactSails_Interface_Breakdown.png" alt="ContactSails Interface Breakdown" width="790">
 </div>
@@ -226,29 +224,106 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>With reference to Figure 2 above, there are 5 important sections in the interface:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Command Box: This is the place for you to type your commands. Pressing <kbd>Enter</kbd> will execute the command.</p>
+<p><strong>Command Box</strong>: This is the place for you to type your commands. Pressing <kbd>Enter</kbd> will execute the command.</p>
 </li>
 <li>
-<p>Result Display: This place shows the result of the command you have executed. It will display messages indicating whether your command has executed successfully.
+<p><strong>Result Display</strong>: This place shows the result of the command you have executed. It will display messages indicating whether your command has executed successfully.
 If your command fails to execute, error messages indicating the cause of the failure will be shown here.</p>
 </li>
 <li>
-<p>Person List Panel: This panel displays the list of persons that exist in ContactSails. You can filter this list of persons with <code>find</code> commands.</p>
+<p><strong>Person List Panel</strong>: This panel displays the list of persons that exist in ContactSails. You can filter this list of persons with <code>find</code> commands.</p>
 </li>
 <li>
-<p>Center Panel: This panel can display either a detailed display of a person&#8217;s information, or a calendar. <code>calendar</code> command will display the calendar and <code>select</code> command will display selected person&#8217;s information.</p>
+<p><strong>Center Panel</strong>: This panel can display either a detailed display of a person&#8217;s information, or a calendar. <code>calendar</code> command will display the calendar and <code>select</code> command will display selected person&#8217;s information.</p>
 </li>
 <li>
-<p>Right Panel: This panel can display either a list of orders or a list of calendar entries in ContactSails. On startup, this panel will show the list of orders by default.
+<p><strong>Right Panel</strong>: This panel can display either a list of orders or a list of calendar entries in ContactSails. On startup, this panel will show the list of orders by default.
 You can use <code>entrylist</code> and <code>orderlist</code> to switch between the two lists.</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="paragraph">
 <p>Person List Panel, Center Panel and Right Panel will be explained in greater detail in <a href="#Features">Section 4, &#8220;Features&#8221;</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-format-guidelines"><a class="link" href="#command-format-guidelines">3.2. Command Format Guidelines</a></h3>
+<div class="paragraph">
+<p>Here are some guidelines you will have to take note of to execute commands in ContactSails:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Command words are case sensitive.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Typing <code>help</code> will execute the help command.</p>
+</li>
+<li>
+<p>Typing <code>Help</code>, or <code>HELP</code> will not execute the help command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Items in square brackets are optional.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, <code>n/NAME [g/GROUP]</code> can be used as <code>n/John Doe g/friend</code> or simply as <code>n/John Doe</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Items with <code>&#8230;&#8203;</code>​ after them can be used multiple times. They can be omitted as well i.e. used 0 times.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, <code>[g/GROUP]&#8230;&#8203;</code> can be used as <code>'&#160;'</code> (i.e. 0 times), as <code>g/friend</code>, or  as <code>g/friend g/family</code>, etc.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Parameters can be in any order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, if the command format specifies <code>n/NAME p/PHONE_NUMBER</code>, entering <code>p/PHONE_NUMBER n/NAME</code> instead will also be acceptable.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+ContactSails will automatically complete the command you want to enter if you press the <kbd>Tab</kbd> key.<br>
+For example, typing <code>ad</code> in the command box and then pressing <kbd>Tab</kbd> will automatically fill <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]&#8230;&#8203;[pr/PREFERENCE]</code> in the command box.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -258,48 +333,20 @@ You can use <code>entrylist</code> and <code>orderlist</code> to switch between 
 <div class="paragraph">
 <p>This section describes each command in ContactSails in detail.</p>
 </div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Command Format</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items in square brackets are optional e.g <code>n/NAME [g/GROUP]</code> can be used as <code>n/John Doe g/friend</code> or as <code>n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[g/GROUP]&#8230;&#8203;</code> <code>[pr/PREFERENCE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>g/friend</code>, <code>g/friend g/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-ContactSails will automatically complete the command you want to enter if you press the <code>TAB</code> key.<br>
-For example, typing <code>ad</code> in the command box and then pressing <code>TAB</code> will automatically fill <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]&#8230;&#8203;[pr/PREFERENCE]</code> in the command box.
-</td>
-</tr>
-</table>
-</div>
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Description: Opens User Guide in a new window.<br>
-Format: <code>help</code><br>
-Command Alias: <code>?</code></p>
+<p>Description: Opens User Guide in a new window.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>help</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>?</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -310,9 +357,17 @@ Command Alias: <code>?</code></p>
 <div class="sect3">
 <h4 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">4.2.1. Adding a person : <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to ContactSails.<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br>
-Command Alias: <code>a</code></p>
+<p>Description: Adds a person to ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>a</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -343,9 +398,17 @@ and <code>notebooks</code> as a preference tag.</p>
 <div class="sect3">
 <h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">4.2.2. Editing a person : <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing person in ContactSails.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br>
-Command Alias: <code>e</code></p>
+<p>Description: Edits an existing person in ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>e</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -391,9 +454,17 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <div class="sect3">
 <h4 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">4.2.3. Deleting a person : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from ContactSails.<br>
-Format: <code>delete INDEX</code><br>
-Command Alias: <code>d</code></p>
+<p>Description: Deletes the specified person from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>d</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -433,17 +504,33 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 <div class="sect3">
 <h4 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">4.2.4. Listing all persons : <code>list</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in ContactSails.<br>
-Format: <code>list</code><br>
-Command Alias: <code>l</code></p>
+<p>Description: Shows a list of all persons in ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>list</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>l</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">4.2.5. Selecting a person : <code>select</code></a></h4>
 <div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code><br>
-Command Alias: <code>s</code></p>
+<p>Description: Selects the person identified by the index number used in the last person listing.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>select INDEX</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>s</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -490,9 +577,17 @@ The Person List in the interface will only show the persons you are finding afte
 <div class="sect3">
 <h4 id="finding-persons-by-name-code-find-code"><a class="link" href="#finding-persons-by-name-code-find-code">4.3.1. Finding persons by name : <code>find</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-Command Alias: <code>f</code></p>
+<p>Description: Finds persons whose names contain any of the given keywords.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>f</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -538,9 +633,17 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <div class="sect3">
 <h4 id="finding-persons-by-groups-code-groupfind-code-code-since-v1-2-code"><a class="link" href="#finding-persons-by-groups-code-groupfind-code-code-since-v1-2-code">4.3.2. Finding persons by groups : <code>groupfind</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose groups matches any of the given keywords.<br>
-Format: <code>groupfind KEYWORD [MORE_KEYWORDS]</code><br>
-Command Alias: <code>gf</code></p>
+<p>Description: Finds persons whose groups matches any of the given keywords.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>groupfind KEYWORD [MORE_KEYWORDS]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>gf</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -583,9 +686,17 @@ Returns any person having groups <code>neighbours</code>, <code>friends</code>, 
 <div class="sect3">
 <h4 id="finding-persons-by-preferences-code-preffind-code-code-since-v1-2-code"><a class="link" href="#finding-persons-by-preferences-code-preffind-code-code-since-v1-2-code">4.3.3. Finding persons by preferences : <code>preffind</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose preferences matches any of the given keywords.<br>
-Format: <code>preffind KEYWORD [MORE_KEYWORDS]</code><br>
-Command Alias: <code>pf</code></p>
+<p>Description: Finds persons whose preferences matches any of the given keywords.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>preffind KEYWORD [MORE_KEYWORDS]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>pf</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -634,9 +745,17 @@ Returns any person having preferences <code>computers</code>, <code>shoes</code>
 <div class="sect3">
 <h4 id="deleting-a-group-code-groupdelete-code-code-since-v1-2-code"><a class="link" href="#deleting-a-group-code-groupdelete-code-code-since-v1-2-code">4.4.1. Deleting a group : <code>groupdelete</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified group from ContactSails.<br>
-Format: <code>groupdelete GROUP_NAME</code><br>
-Command Alias: <code>gd</code></p>
+<p>Description: Deletes the specified group from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>groupdelete GROUP_NAME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>gd</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -661,8 +780,8 @@ Command Alias: <code>gd</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>groupdelete friends</code> OR+
-<code>gd friends</code>+
+<p><code>groupdelete friends</code> OR<br>
+<code>gd friends</code><br>
 All persons in ContactSails with the group <code>friends</code> will have the group removed.</p>
 </li>
 </ul>
@@ -671,9 +790,17 @@ All persons in ContactSails with the group <code>friends</code> will have the gr
 <div class="sect3">
 <h4 id="deleting-a-preference-code-prefdelete-code-code-since-v1-2-code"><a class="link" href="#deleting-a-preference-code-prefdelete-code-code-since-v1-2-code">4.4.2. Deleting a preference : <code>prefdelete</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified preference from ContactSails.<br>
-Format: <code>prefdelete PREFERENCE_NAME</code><br>
-Command Alias: <code>pd</code></p>
+<p>Description: Deletes the specified preference from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>prefdelete PREFERENCE_NAME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>pd</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -698,9 +825,9 @@ Command Alias: <code>pd</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>prefdelete computers</code> OR+
-<code>pd computers</code>+
-All persons in ContactSails with the preference [computers] will have the preference removed.</p>
+<p><code>prefdelete computers</code> OR<br>
+<code>pd computers</code><br>
+All persons in ContactSails with the preference <code>computers</code> will have the preference removed.</p>
 </li>
 </ul>
 </div>
@@ -709,27 +836,28 @@ All persons in ContactSails with the preference [computers] will have the prefer
 <div class="sect2">
 <h3 id="managing-orders"><a class="link" href="#managing-orders">4.5. Managing Orders</a></h3>
 <div class="paragraph">
-<p>This section describes commands you can use to manage order entries in ContactSails.</p>
+<p>This section describes commands you can use to manage order entries in ContactSails. The figure below shows how ContactSails looks currently.</p>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrdersInitialAddressbook.png" alt="OrdersInitialAddressbook" width="790">
+</div>
+<div class="title">Figure 3. Current state of ContactSails.</div>
 </div>
 <div class="sect3">
 <h4 id="adding-an-order-code-orderadd-code-code-since-v1-2-code"><a class="link" href="#adding-an-order-code-orderadd-code-code-since-v1-2-code">4.5.1. Adding an order : <code>orderadd</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Adds an order to the person specified by the index number used in the last person listing.<br>
-Format: <code>orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE</code><br>
-Command Alias: <code>oa</code></p>
+<p>Description: Adds an order to the person specified by the index number used in the last person listing.<br></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-For now, orders are added to the list of all orders and not the person selected.
-We are planning to implement this aspect by <code>v1.5</code>.
-</td>
-</tr>
-</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>orderadd INDEX i/ORDER INFORMATION pr/PRICE q/QUANTITY d/DELIVERY DATE</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>oa</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -737,26 +865,33 @@ We are planning to implement this aspect by <code>v1.5</code>.
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>orderadd 1 i/Chocolates pr/10.00 q/5 d/12-08-2018</code> OR<br>
-<code>oa 1 i/Chocolates pr/10.00 q/5 d/12-08-2018</code><br>
-Adds the 'Chocolates' order to the 1st person in ContactSails.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>orderadd 2 i/Books pr/20.00 q/2 d/04-11-2018</code> OR<br>
-<code>oa 2 i/Books pr/20.00 q/2 d/04-11-2018</code><br>
-Adds the 'Books' order to 2nd person in the results of the <code>find</code> command.</p>
+<p><code>orderadd 2 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018</code> OR<br>
+<code>orderadd 2 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018</code><br>
+Adds the <code>NBA 2k18</code> order to <code>Noel Tay</code>, the 2nd person, as shown in the figure below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrderAdd.png" alt="OrderAdd" width="790">
+</div>
+<div class="title">Figure 4. Result of adding the 'NBA 2k18' to 'Noel Tay' in ContactSails.</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="editing-an-order-code-orderedit-code-code-since-v1-2-code"><a class="link" href="#editing-an-order-code-orderedit-code-code-since-v1-2-code">4.5.2. Editing an order : <code>orderedit</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Edits the order specified by the index number used in the order listing.<br>
-Format: <code>orderedit INDEX [i/ORDER INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY DATE]</code><br>
-Command Alias: <code>oe</code></p>
+<p>Description: Edits the order specified by the index number used in the order listing.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>orderedit INDEX [i/ORDER_INFORMATION] [pr/PRICE] [q/QUANTITY] [d/DELIVERY_DATE]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>oe</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -778,22 +913,48 @@ Command Alias: <code>oe</code></p>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="paragraph">
+<p>ContactSails currently has the following order:</p>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrderEditInit.png" alt="OrderEditInit" width="250">
+</div>
+<div class="title">Figure 5. Initial state of the 'Books' order.</div>
+</div>
+<div class="paragraph">
+<p>To edit the order above, execute the following command:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>orderedit 1 q/10</code> OR<br>
-<code>oe 1 q/10</code><br>
-Edits the quantity field of the 1st order to be 10.</p>
+<p><code>orderedit 1 pr/12.50 q/5</code> OR<br>
+<code>oe 1 pr/12.50 q/5</code><br>
+Edits the price and quantity fields of <code>Books</code>, the 1st order, to be <code>12.50</code> and <code>5</code> respectively. The result is shown in the figure below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrderEditResult.png" alt="OrderEditResult" width="250">
+</div>
+<div class="title">Figure 6. Result of editing the 'Books' order.</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="changing-the-order-status-code-orderstatus-code-code-since-v1-4-code"><a class="link" href="#changing-the-order-status-code-orderstatus-code-code-since-v1-4-code">4.5.3. Changing the order status : <code>orderstatus</code> <code>since v1.4</code></a></h4>
 <div class="paragraph">
-<p>Changes the order status of the order specified by the index number used in the order listing.<br>
-Format: <code>orderstatus INDEX os/ORDER STATUS</code><br>
-Command Alias: <code>os</code></p>
+<p>Description: Changes the order status of the order specified by the index number used in the order listing.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>orderstatus INDEX os/ORDER STATUS</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>os</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -812,19 +973,33 @@ Command Alias: <code>os</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>orderstatus 2 os/done</code> OR<br>
-<code>os 2 os/done</code>
-Marks the order status of the 2nd order in the most recent order listing as 'done'.</p>
+<p><code>orderstatus 1 os/done</code> OR<br>
+<code>os 1 os/done</code>
+Marks the order status of <code>Books</code>, the 1st order in the order list as <code>done</code>. The figure below shows how the UI updates after executing the command above.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrderStatusResult.png" alt="OrderStatusResult" width="250">
+</div>
+<div class="title">Figure 7. Result of marking the status of the 'Books' order as 'done'.</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="deleting-an-order-code-orderdelete-code-code-since-v1-2-code"><a class="link" href="#deleting-an-order-code-orderdelete-code-code-since-v1-2-code">4.5.4. Deleting an order : <code>orderdelete</code> <code>since v1.2</code></a></h4>
 <div class="paragraph">
-<p>Deletes the order specified by the index number used in the order listing.<br>
-Format: <code>orderdelete INDEX</code><br>
-Command Alias: <code>od</code></p>
+<p>Description: Deletes the order specified by the index number used in the order listing.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>orderdelete INDEX</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>od</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -846,22 +1021,45 @@ Command Alias: <code>od</code></p>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="paragraph">
+<p>The figure below shows the current order list in the application:</p>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrderDeleteInit.png" alt="OrderDeleteInit" width="250">
+</div>
+<div class="title">Figure 8. Initial state of the order list.</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>orderdelete 3</code> OR<br>
-<code>od 3</code><br>
-Deletes the 3rd order of the order list in ContactSails.</p>
+<p><code>orderdelete 1</code> OR<br>
+<code>od 1</code><br>
+Deletes <code>Books</code>, the 1st order in the order list from ContactSails.</p>
 </li>
 </ul>
 </div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/OrderDeleteResult.png" alt="OrderDeleteResult" width="250">
+</div>
+<div class="title">Figure 9. Result of deleting 'Books', the 1st order in the order list.</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-orders-code-orderlist-code-code-since-v1-4-code"><a class="link" href="#listing-all-orders-code-orderlist-code-code-since-v1-4-code">4.5.5. Listing all orders : <code>orderlist</code> <code>Since v1.4</code></a></h4>
+<h4 id="listing-all-orders-code-orderlist-code-code-since-v1-4-code"><a class="link" href="#listing-all-orders-code-orderlist-code-code-since-v1-4-code">4.5.5. Listing all orders : <code>orderlist</code> <code>since v1.4</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all orders in ContactSails.<br>
-Format: <code>orderlist</code><br>
-Command Alias: <code>ol</code></p>
+<p>Description: Shows a list of all orders in ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>orderlist</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ol</code></p>
 </div>
 </div>
 </div>
@@ -871,11 +1069,11 @@ Command Alias: <code>ol</code></p>
 <p>This section describes commands related to viewing the calendar in ContactSails.
 Given below is how the Calendar in ContactSails look like.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/ContactSails_Ui_Calendar.PNG" alt="ContactSails Ui Calendar" width="790">
 </div>
-<div class="title">Figure 3. ContactSails interface with Calendar and Calendar Entries displayed.</div>
+<div class="title">Figure 10. ContactSails interface with Calendar and Calendar Entries displayed.</div>
 </div>
 <div class="paragraph">
 <p>The calendar has a day view, week view and month view to help you view all your scheduled events.</p>
@@ -883,9 +1081,17 @@ Given below is how the Calendar in ContactSails look like.</p>
 <div class="sect3">
 <h4 id="displaying-the-calendar-code-calendar-code-code-since-v1-3-code"><a class="link" href="#displaying-the-calendar-code-calendar-code-code-since-v1-3-code">4.6.1. Displaying the calendar : <code>calendar</code> <code>since v1.3</code></a></h4>
 <div class="paragraph">
-<p>Displays the Calendar in the CenterPanel in specified viewing format.<br>
-Format: <code>calendar [VIEW_FORMAT]</code><br>
-Command Alias: <code>cal</code></p>
+<p>Description: Displays the Calendar in the CenterPanel in specified viewing format.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendar [VIEW_FORMAT]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>cal</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -928,9 +1134,17 @@ Shows Calendar in Month-View.</p>
 <div class="sect3">
 <h4 id="go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code"><a class="link" href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code">4.6.2. Go to next page in the calendar : <code>calendarnext</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
-<p>Displays next page of current displayed date in calendar.<br>
-Format: <code>calendarnext</code><br>
-Command Alias: <code>calnext</code></p>
+<p>Description: Displays next page of current displayed date in calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendarnext</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>calnext</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -953,9 +1167,17 @@ Command Alias: <code>calnext</code></p>
 <div class="sect3">
 <h4 id="go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code"><a class="link" href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code">4.6.3. Go to previous page in the calendar : <code>calendarback</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
-<p>Displays previous page of current displayed date in calendar.<br>
-Format: <code>calendarback</code><br>
-Command Alias: <code>calback</code></p>
+<p>Description: Displays previous page of current displayed date in calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendarback</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>calback</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -978,9 +1200,17 @@ Command Alias: <code>calback</code></p>
 <div class="sect3">
 <h4 id="display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code"><a class="link" href="#display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code">4.6.4. Display current day in the calendar : <code>calendartoday</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
-<p>Displays today&#8217;s date in Calendar.<br>
-Format: <code>calendartoday</code><br>
-Command Alias: <code>caltoday</code></p>
+<p>Description: Displays today&#8217;s date in Calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendartoday</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>caltoday</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1003,25 +1233,33 @@ Command Alias: <code>caltoday</code></p>
 <div class="sect3">
 <h4 id="display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code"><a class="link" href="#display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code">4.6.5. Display given date in the calendar : <code>calendarjump</code> <code>since v1.5</code></a></h4>
 <div class="paragraph">
-<p>Displays given date in Calendar.<br>
-Format: <code>calendarjump td/TARGET_DATE</code><br>
-Command Alias: <code>caljump</code></p>
+<p>Description: Displays given date in Calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendarjump td/TARGET_DATE</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>caljump</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>TARGET_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
+<p><code>TARGET_DATE</code> must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
 </li>
 <li>
-<p>If calendar is displaying in day-view, command displays TARGET_DATE in day-view.</p>
+<p>If calendar is displaying in day-view, command displays <code>TARGET_DATE</code> in day-view.</p>
 </li>
 <li>
-<p>If calendar is displaying in week-view, command displays the week of TARGET_DATE in week-view.</p>
+<p>If calendar is displaying in week-view, command displays the week of <code>TARGET_DATE</code> in week-view.</p>
 </li>
 <li>
-<p>If calendar is displaying in month-view, command displays the month of TARGET_DATE in month-view.</p>
+<p>If calendar is displaying in month-view, command displays the month of <code>TARGET_DATE</code> in month-view.</p>
 </li>
 </ul>
 </div>
@@ -1039,28 +1277,36 @@ These entries will be displayed in the calendar.</p>
 <div class="sect3">
 <h4 id="adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code"><a class="link" href="#adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code">4.7.1. Adding entries to calendar entry list : <code>entryadd</code> <code>since v1.3</code></a></h4>
 <div class="paragraph">
-<p>Adds an entry to the Calendar entry list and displays it in the calendar.<br>
-Format: <code>entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME</code><br>
-Command Alias: <code>ea</code><br></p>
+<p>Description: Adds an entry to the Calendar entry list and displays it in the calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ea</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>If input does not contain START_DATE, it is assumed that START DATE is the same as END_DATE.</p>
+<p>If input does not contain <code>START_DATE</code>, it is assumed that <code>START DATE</code> is the same as <code>END_DATE</code>.</p>
 </li>
 <li>
-<p>If input does not contain START_TIME, it is assumed that START_TIME is 00:00.</p>
+<p>If input does not contain <code>START_TIME</code>, it is assumed that <code>START_TIME</code> is 00:00.</p>
 </li>
 <li>
-<p>TITLE is alphanumeric and accepts white space. TITLE accepts maximum of 40 characters.</p>
+<p><code>TITLE</code> is alphanumeric and accepts white space. <code>TITLE</code> accepts maximum of 40 characters.</p>
 </li>
 <li>
-<p>START_DATE and END_DATE must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
+<p><code>START_DATE</code> and <code>END_DATE</code> must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
 </li>
 <li>
-<p>START_TIME and END_TIME must follow the 24-Hour format: HH:MM (E.g. 23:59)
+<p><code>START_TIME</code> and <code>END_TIME</code> must follow the 24-Hour format: HH:MM (E.g. 23:59)
 *</p>
 </li>
 </ul>
@@ -1076,12 +1322,12 @@ Command Alias: <code>ea</code><br></p>
 <p><code>entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00</code> OR<br>
 <code>ea t/meet with boss ed/05-05-2020 st/10:00 et/12:00</code><br>
 Creates a calendar entry with listed title, starts from 1000 and ends at 1200 on 5 May 2020.<br>
-Entry appears on specified date in the Calendar.</p>
+Entry appears on specified date in the dalendar.</p>
 </li>
 <li>
 <p><code>entryadd t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00</code> OR<br>
 <code>ea t/roadshow sd/01-01-2019 ed/10-01-2019 st/09:00 et/18:00</code><br>
-Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at the specified time period in Calendar.</p>
+Entry starting from <code>1 Jan 2019 1000</code> and ending at <code>10 Jan 2019 1800</code> appears at the specified time period in the calendar.</p>
 </li>
 </ul>
 </div>
@@ -1089,16 +1335,24 @@ Entry starting from 1 Jan 2019 1000 and ending at 10 Jan 2019 1800 appears at th
 <div class="sect3">
 <h4 id="editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code"><a class="link" href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code">4.7.2. Editing entries in calendar entry list : <code>entryedit</code> <code>since v1.5rc</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing entry in the Calendar entry list and displays the edited entry in the calendar.<br>
-Format: <code>entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code><br>
-Command Alias: <code>ee</code><br></p>
+<p>Description: Edits an existing entry in the Calendar entry list and displays the edited entry in the calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ee</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the entry at specified ENTRY_INDEX. The index refers to the index number shown in the last entry listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the entry at specified <code>ENTRY_INDEX</code>. The index refers to the index number shown in the last entry listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -1115,7 +1369,7 @@ Command Alias: <code>ee</code><br></p>
 <li>
 <p><code>entryedit 1 t/meet with bosses et/1400</code> OR<br>
 <code>ee 1 t/meet with bosses et/1400</code><br>
-Edits title and end time of 1st entry in entry list to "meet with bosses" and 1400 respectively.<br>
+Edits title and end time of 1st entry in entry list to <code>meet with bosses</code> and <code>1400</code> respectively.<br>
 Changes reflect on the Calendar.</p>
 </li>
 <li>
@@ -1129,16 +1383,24 @@ Edits starting date and time, ending date and time of the 3rd entry in entry lis
 <div class="sect3">
 <h4 id="deleting-entries-in-calendar-entry-list-code-entrydelete-code-code-since-v1-4-code"><a class="link" href="#deleting-entries-in-calendar-entry-list-code-entrydelete-code-code-since-v1-4-code">4.7.3. Deleting entries in calendar entry list : <code>entrydelete</code> <code>since v1.4</code></a></h4>
 <div class="paragraph">
-<p>Deletes an existing entry in Calendar entry list.<br>
-Format: <code>entrydelete ENTRY_INDEX</code><br>
-Command Alias: <code>ed</code><br></p>
+<p>Description: Deletes an existing entry in Calendar entry list.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entrydelete ENTRY_INDEX</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ed</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes entry at specified ENTRY_INDEX of entry list.</p>
+<p>Deletes entry at specified <code>ENTRY_INDEX</code> of entry list.</p>
 </li>
 <li>
 <p>The index refers to index number shown in the most recent entry listing.</p>
@@ -1167,17 +1429,33 @@ Entry is removed from the Calendar.</p>
 <div class="sect3">
 <h4 id="listing-all-calendar-entries-code-entrylist-code-code-since-v1-4-code"><a class="link" href="#listing-all-calendar-entries-code-entrylist-code-code-since-v1-4-code">4.7.4. Listing all calendar entries : <code>entrylist</code> <code>since v1.4</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all calendar entries in ContactSails.<br>
-Format: <code>entrylist</code><br>
-Command Alias: <code>el</code></p>
+<p>Description: Shows a list of all calendar entries in ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entrylist</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>el</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="clearing-all-entries-in-list-of-entries-code-entryclear-code-code-coming-in-v1-5-code"><a class="link" href="#clearing-all-entries-in-list-of-entries-code-entryclear-code-code-coming-in-v1-5-code">4.7.5. Clearing all entries in list of entries : <code>entryclear</code> <code>coming in v1.5</code></a></h4>
 <div class="paragraph">
-<p>Clears all entry list entries from ContactSails.<br>
-Format: <code>entryclear</code><br>
-Command Alias: <code>ec</code></p>
+<p>Description: Clears all entry list entries from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entryclear</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ec</code></p>
 </div>
 </div>
 </div>
@@ -1189,9 +1467,17 @@ Command Alias: <code>ec</code></p>
 <div class="sect3">
 <h4 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">4.8.1. Viewing command history : <code>history</code></a></h4>
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code><br>
-Command Alias: <code>h</code></p>
+<p>Description: Lists all the commands that you have entered in reverse chronological order.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>history</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>h</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1201,7 +1487,7 @@ Command Alias: <code>h</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+<p>Pressing the <kbd>Up</kbd> and <kbd>Down</kbd> arrows will display the previous and next input respectively in the command box.</p>
 </div>
 </td>
 </tr>
@@ -1211,9 +1497,17 @@ Command Alias: <code>h</code></p>
 <div class="sect3">
 <h4 id="changing-the-theme-code-theme-code-code-since-v1-3-code"><a class="link" href="#changing-the-theme-code-theme-code-code-since-v1-3-code">4.8.2. Changing the theme : <code>theme</code> <code>since v1.3</code></a></h4>
 <div class="paragraph">
-<p>Changes the theme of the application.<br>
-Format: <code>theme THEME_TYPE</code><br>
-Command Alias: <code>t</code></p>
+<p>Description: Changes the theme of the application.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>theme THEME_TYPE</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>t</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1234,17 +1528,31 @@ Command Alias: <code>t</code></p>
 <li>
 <p><code>theme light</code> OR<br>
 <code>t light</code><br>
-Changes the theme of the application to the light theme.</p>
+Changes the theme of the application to the light theme. The figure below shows the ContactSails UI with the light theme.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ContactSails_Light_Theme.png" alt="ContactSails Light Theme" width="790">
+</div>
+<div class="title">Figure 11. ContactSails Light Theme</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">4.8.3. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
-<p>Restores ContactSails to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code><br>
-Command Alias: <code>u</code></p>
+<p>Description: Restores ContactSails to the state before the previous <code>undoable</code> command was executed.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>undo</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>u</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1254,7 +1562,7 @@ Command Alias: <code>u</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify ContactSails&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: These are commands that modify ContactSails&#8217;s state (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, etc.).</p>
 </div>
 </td>
 </tr>
@@ -1288,9 +1596,17 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <div class="sect3">
 <h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">4.8.4. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code><br>
-Command Alias: <code>r</code></p>
+<p>Description: Reverses the most recent <code>undoable</code> command.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>redo</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>r</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1321,173 +1637,40 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect3">
 <h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.8.5. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from ContactSails.<br>
-Format: <code>clear</code><br>
-Command Alias: <code>c</code></p>
+<p>Description: Clears all entries from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>clear</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>c</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.8.6. Saving the data</a></h4>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Data in ContactSails is saved in the hard disk automatically after you execute any command that changes the data.<br>
+There is no need to save the data manually.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.8.7. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code><br>
-Command Alias: <code>q</code>
-=== Coming in v2.0</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code">4.8.8. Viewing top customers : <code>topcustomers</code> <code>coming in v2.0</code></a></h4>
-<div class="paragraph">
-<p>Displays a list of the top customers based on the frequency their contacts are accessed.<br>
-Format: <code>topcustomers NUMBER</code><br>
-Command Alias: <code>tc</code></p>
+<p>Description: Exits the program.<br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The command will display the top <code>NUMBER</code> amount of people, sorted by most frequently contacted to the least.</p>
-</li>
-<li>
-<p><code>NUMBER</code> must be in the range of 1 to total number of persons in ContactSails, both inclusive.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Format: <code>exit</code><br></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>topcustomers 10</code> OR<br>
-<code>tc 10</code><br>
-Displays the list of the top ten persons in ContactSails based on how frequently you access these contacts.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code">4.8.9. Viewing top customers : <code>topitems</code> <code>coming in v2.0</code></a></h4>
-<div class="paragraph">
-<p>Displays a list of the top items based on amount of items that have been sold to customers.<br>
-Format: <code>topitems NUMBER</code><br>
-Command Alias: <code>ti</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The command will display the top <code>NUMBER</code> amount of items, sorted by most bought item to the least.</p>
-</li>
-<li>
-<p><code>NUMBER</code> must be in the range of 1 to total number of items in ContactSails, both inclusive.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>topitems 10</code> OR<br>
-<code>ti 10</code><br>
-Displays the list of the top ten items in ContactSails based on how many of the items have been sold.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code">4.8.10. Sending promotions based on group : <code>sendpromogroup</code> <code>coming in v2.0</code></a></h4>
-<div class="paragraph">
-<p>Opens a promotion email draft in the browser, which can be sent to multiple persons having the same group tags.
-Format: <code>sendpromogroup GROUP&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code>
-Command Alias: <code>spg</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The email draft will use the Default Email Service Provider on your local device.</p>
-</li>
-<li>
-<p>The command will add all the persons with the <code>GROUP</code> tag as recipients of the email.</p>
-</li>
-<li>
-<p>Multiple <code>GROUP</code> tags can be specified. All persons in these groups will be added as recipients.</p>
-</li>
-<li>
-<p>The subject and body of the email will be specified by the <code>SUBJECT</code> and <code>BODY</code> parameters respectively.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>sendpromogroup friends sub/New Offer on Sunglasses</code> OR<br>
-<code>spg friends sub/New Offer on Sunglasses</code><br>
-Opens an email draft in the browser with recipients as all persons tagged as 'friends' and subject as 'New Offer on Sunglasses'.<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code">4.8.11. Sending promotions based on preference : <code>sendpromopref</code> <code>coming in v2.0</code></a></h4>
-<div class="paragraph">
-<p>Opens a promotion email draft in the browser, which can be sent to multiple persons having the same preference tags.
-Format: <code>sendpromopref PREFERENCE&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code>
-Command Alias: <code>spp</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The email draft will use the Default Email Service Provider on your local device.</p>
-</li>
-<li>
-<p>The command will add all the persons with the <code>PREFERENCE</code> tag as recipients of the email.</p>
-</li>
-<li>
-<p>Multiple <code>PREFERENCE</code> tags can be specified. All persons in these groups will be added as recipients.</p>
-</li>
-<li>
-<p>The subject and body of the email will be specified by the <code>SUBJECT</code> and <code>BODY</code> parameters respectively.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>sendpromopref books sub/Books on SALE</code> OR<br>
-<code>spp books sub/Books on SALE</code><br>
-Opens an email draft in the browser with recipients as all persons tagged with 'books' and subject as 'Books on SALE'.<br></p>
-</li>
-</ul>
+<p>Command Alias: <code>q</code></p>
 </div>
 </div>
 </div>
@@ -1497,14 +1680,57 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 <h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<p><strong>Q</strong>: I can&#8217;t open the ContactSails <code>.jar</code> file. What should I do?<br>
+<strong>A</strong>: Given below are steps you can follow to solve this problem:</p>
+</div>
+<div class="paragraph">
+<p><strong>For Windows Users:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the <code>Command Prompt</code> application.</p>
+</li>
+<li>
+<p>Change the current directory to the directory of your <code>Java JDK</code>.</p>
+</li>
+<li>
+<p>Execute the command <code>"JAVA_JDK_EXE_FILE_DIRECTORY_PATH" -jar YOUR_APPLICATION_JAR_FILE_NAME.jar</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, if your <code>Java JDK</code> is in the <code>"C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe"</code> directory, you would execute the following command: <code>"C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe" -jar ContactSails.jar</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>For Mac/Linux users:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the <code>Terminal</code> application.</p>
+</li>
+<li>
+<p>Execute the command <code>java -jar YOUR_APPLICATION_JAR_FILE_NAME.jar</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ContactSails folder.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The following sections summarize the commands you can use in ContactSails.</p>
+</div>
 <div class="sect2">
 <h3 id="managing-persons-2"><a class="link" href="#managing-persons-2">6.1. Managing Persons</a></h3>
 <table class="tableblock frame-all grid-all" style="width: 99%;">
@@ -1705,15 +1931,21 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Go to the previous page of the calendar.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarprev</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calprev</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarback</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calback</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarprev</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Go to the current day.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarnow</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calnow</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarnow</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendartoday</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>caltoday</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendartoday</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jump to specified day.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarjump td/TARGET_DATE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>caljump</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarjump td/04-04-2020</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1829,10 +2061,178 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">7. Glossary</a></h2>
+<h2 id="coming-in-v2-0"><a class="link" href="#coming-in-v2-0">7. Coming in v2.0</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following section describes some of the proposed features we are planning to add to ContactSails in <code>v2.0</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code">7.1. Viewing top customers : <code>topcustomers</code> <code>coming in v2.0</code></a></h3>
+<div class="paragraph">
+<p>Displays a list of the top customers based on the frequency their contacts are accessed.<br>
+Format: <code>topcustomers NUMBER</code><br>
+Command Alias: <code>tc</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The command will display the top <code>NUMBER</code> amount of people, sorted by most frequently contacted to the least.</p>
+</li>
+<li>
+<p><code>NUMBER</code> must be in the range of 1 to total number of persons in ContactSails, both inclusive.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>topcustomers 10</code> OR<br>
+<code>tc 10</code><br>
+Displays the list of the top ten persons in ContactSails based on how frequently you access these contacts.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code">7.2. Viewing top customers : <code>topitems</code> <code>coming in v2.0</code></a></h3>
+<div class="paragraph">
+<p>Displays a list of the top items based on amount of items that have been sold to customers.<br>
+Format: <code>topitems NUMBER</code><br>
+Command Alias: <code>ti</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The command will display the top <code>NUMBER</code> amount of items, sorted by most bought item to the least.</p>
+</li>
+<li>
+<p><code>NUMBER</code> must be in the range of 1 to total number of items in ContactSails, both inclusive.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>topitems 10</code> OR<br>
+<code>ti 10</code><br>
+Displays the list of the top ten items in ContactSails based on how many of the items have been sold.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code">7.3. Sending promotions based on group : <code>sendpromogroup</code> <code>coming in v2.0</code></a></h3>
+<div class="paragraph">
+<p>Opens a promotion email draft in the browser, which can be sent to multiple persons having the same group tags.
+Format: <code>sendpromogroup GROUP&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code>
+Command Alias: <code>spg</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The email draft will use the Default Email Service Provider on your local device.</p>
+</li>
+<li>
+<p>The command will add all the persons with the <code>GROUP</code> tag as recipients of the email.</p>
+</li>
+<li>
+<p>Multiple <code>GROUP</code> tags can be specified. All persons in these groups will be added as recipients.</p>
+</li>
+<li>
+<p>The subject and body of the email will be specified by the <code>SUBJECT</code> and <code>BODY</code> parameters respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sendpromogroup friends sub/New Offer on Sunglasses</code> OR<br>
+<code>spg friends sub/New Offer on Sunglasses</code><br>
+Opens an email draft in the browser with recipients as all persons tagged as 'friends' and subject as 'New Offer on Sunglasses'.<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code">7.4. Sending promotions based on preference : <code>sendpromopref</code> <code>coming in v2.0</code></a></h3>
+<div class="paragraph">
+<p>Opens a promotion email draft in the browser, which can be sent to multiple persons having the same preference tags.
+Format: <code>sendpromopref PREFERENCE&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code>
+Command Alias: <code>spp</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The email draft will use the Default Email Service Provider on your local device.</p>
+</li>
+<li>
+<p>The command will add all the persons with the <code>PREFERENCE</code> tag as recipients of the email.</p>
+</li>
+<li>
+<p>Multiple <code>PREFERENCE</code> tags can be specified. All persons in these groups will be added as recipients.</p>
+</li>
+<li>
+<p>The subject and body of the email will be specified by the <code>SUBJECT</code> and <code>BODY</code> parameters respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sendpromopref books sub/Books on SALE</code> OR<br>
+<code>spp books sub/Books on SALE</code><br>
+Opens an email draft in the browser with recipients as all persons tagged with 'books' and subject as 'Books on SALE'.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">8. Glossary</a></h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1"><a id="cli"></a>Command Line Interface</dt>
+<dd>
+<p>A command line interface (or CLI) is an application interface where one issues commands to the application in the form of successive lines of text.</p>
+</dd>
+<dt class="hdlist1"><a id="gui"></a>Graphical User Interface</dt>
+<dd>
+<p>A graphical user interface (or GUI) is an application interface where one interacts with the application in a visual manner i.e. using icons, menus, or windows.</p>
+</dd>
+<dt class="hdlist1"><a id="session"></a>Session</dt>
+<dd>
+<p>Each usage session begins when you open ContactSails and ends when you close it.</p>
+</dd>
 <dt class="hdlist1"><a id="tag"></a>Tag</dt>
 <dd>
 <p>A field that you can add to a person&#8217;s contact to represent additional details about that person.</p>
@@ -1880,7 +2280,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 01:39:13 UTC
+Last updated 2018-04-13 02:42:10 UTC
 </div>
 </div>
 </body>
