@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import com.calendarfx.model.Calendar;
 
 import javafx.scene.layout.StackPane;
-import seedu.address.ui.CalendarPanel;
-import seedu.address.ui.PersonPanel;
 
 /**
  * A handler for {@code CenterPanel} of the Ui.

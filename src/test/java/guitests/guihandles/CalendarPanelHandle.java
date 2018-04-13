@@ -2,15 +2,12 @@ package guitests.guihandles;
 //@@author SuxianAlicia
 import java.time.LocalDate;
 
-import com.calendarfx.model.Calendar;
-import com.calendarfx.model.CalendarSource;
 import com.calendarfx.view.CalendarView;
 import com.calendarfx.view.page.DayPage;
 import com.calendarfx.view.page.MonthPage;
 import com.calendarfx.view.page.WeekPage;
 
 import javafx.scene.layout.StackPane;
-import seedu.address.ui.util.CalendarFxUtil;
 
 /**
  * A handler for {@code CalendarPanel} of the Ui.
