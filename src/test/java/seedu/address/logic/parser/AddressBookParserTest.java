@@ -7,6 +7,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TARGET_DATE;
 import static seedu.address.model.theme.Theme.LIGHT_THEME_KEYWORD;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_DELIVERY_DATE;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_ORDER_INFORMATION;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_PRICE;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_QUANTITY;
 import static seedu.address.testutil.TypicalGroups.FRIENDS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ENTRY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
@@ -271,18 +275,26 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_editOrder() throws Exception {
         Order order = new OrderBuilder().build();
-        EditOrderCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder().build();
+        EditOrderCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withOrderInformation(DEFAULT_ORDER_INFORMATION).withPrice(DEFAULT_PRICE)
+                .withQuantity(DEFAULT_QUANTITY).withDeliveryDate(DEFAULT_DELIVERY_DATE).build();
+
         EditOrderCommand command = (EditOrderCommand) parser.parseCommand(EditOrderCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_ORDER.getOneBased() + OrderUtil.getOrderDetails(order));
+                + INDEX_FIRST_ORDER.getOneBased() + " " + OrderUtil.getOrderDetails(order));
+
         assertEquals(new EditOrderCommand(INDEX_FIRST_ORDER, descriptor), command);
     }
 
     @Test
     public void parseCommand_editOrderAlias() throws Exception {
         Order order = new OrderBuilder().build();
-        EditOrderCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder().build();
+        EditOrderCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withOrderInformation(DEFAULT_ORDER_INFORMATION).withPrice(DEFAULT_PRICE)
+                .withQuantity(DEFAULT_QUANTITY).withDeliveryDate(DEFAULT_DELIVERY_DATE).build();
+
         EditOrderCommand command = (EditOrderCommand) parser.parseCommand(EditOrderCommand.COMMAND_ALIAS + " "
-                + INDEX_FIRST_ORDER.getOneBased() + OrderUtil.getOrderDetails(order));
+                + INDEX_FIRST_ORDER.getOneBased() + " " + OrderUtil.getOrderDetails(order));
+
         assertEquals(new EditOrderCommand(INDEX_FIRST_ORDER, descriptor), command);
     }
     //@@author
