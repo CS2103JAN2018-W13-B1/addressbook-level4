@@ -429,11 +429,11 @@ image::UndoRedoActivityDiagram.png[width="650" align="center"]
 
 //tag::Person Panel[]
 === Person Panel
-The `PersonPanel` replaces the previous `BrowserPanel`, which is called upon using the methods in `CenterPanel`.
+The `PersonPanel` replaces the previous `BrowserPanel`, and is called upon using the methods in `CenterPanel`.
 `PersonPanel` will be used to display contact's information, groups and preferences depending on user's actions.
 
 ==== Layout Implementation
-The specifications for the layout of PersonPanel is in `PersonPanel.fxml`. The figure below will show the visual layout of the `PersonPanel`.
+The specifications for the layout of PersonPanel is in `PersonPanel.fxml`. Figure 19 shows the visual layout of the `PersonPanel`.
 
 .Visual layout of PersonPanel
 image::PersonPanelLayout.png[width="800" align="center"]
@@ -443,7 +443,7 @@ We plan to implement more features for v2.0, such as a profile picture for the c
 
 ==== Current Implementation
 By utilising the `EventsCenter`, PersonPanel is able to display contact's particulars, its
-groups and preferences through selecting its respective `PersonCard`.
+groups and preferences when its respective `PersonCard` is selected.
 
 The following 2 code snippets will show its implementation.
 
@@ -458,10 +458,10 @@ public void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEv
     loadPersonPage(person);
 }
 ----
-Whenever a contact is selected, an event is triggered. Once the event is triggered,
-the method will obtain its respective PersonCard variable and a Person variable, which
-contains the information of the contact. The person variable will be passed
-into the method loadPersonPage(Person person), which is code snippet 2.
+Whenever a contact is selected, the event `handlePersonPanelSelectionChangedEvent` is triggered. Once the event is triggered,
+the method will obtain its respective `PersonCard` variable and a `Person` variable, which
+contains the information of the contact. The `person` variable will be passed
+into the method `loadPersonPage(Person person)`, which is code snippet 2.
 
 Code Snippet 2: loadPersonPage(Person person)
 [source,java]
@@ -485,8 +485,8 @@ private void loadPersonPage(Person person) {
     setImageSizeForAllImages();
 }
 ----
-The Person variable that is passed into loadPersonPage will be used to extract the
-contact's information for display. After which, the UI of the PersonPanel will be updated
+The `Person` variable that is passed into `loadPersonPage` will be used to extract the
+contact's information for display. After which, the UI of the `PersonPanel` will be updated
 accordingly to reflect the changes.
 
 [NOTE]
