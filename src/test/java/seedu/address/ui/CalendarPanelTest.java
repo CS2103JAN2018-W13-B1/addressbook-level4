@@ -2,12 +2,6 @@ package seedu.address.ui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static seedu.address.logic.commands.ViewBackCommand.REQUEST_BACK;
-import static seedu.address.logic.commands.ViewCalendarCommand.DAY_VIEW;
-import static seedu.address.logic.commands.ViewCalendarCommand.MONTH_VIEW;
-import static seedu.address.logic.commands.ViewCalendarCommand.WEEK_VIEW;
-import static seedu.address.logic.commands.ViewNextCommand.REQUEST_NEXT;
-import static seedu.address.logic.commands.ViewTodayCommand.REQUEST_TODAY;
 import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.testutil.TypicalBaseEvents.CHANGE_DATE_EVENT;
 import static seedu.address.testutil.TypicalBaseEvents.CHANGE_TO_DAY_EVENT;
@@ -17,6 +11,9 @@ import static seedu.address.testutil.TypicalBaseEvents.CHANGE_TO_PREVIOUS_PAGE_E
 import static seedu.address.testutil.TypicalBaseEvents.CHANGE_TO_TODAY_EVENT;
 import static seedu.address.testutil.TypicalBaseEvents.CHANGE_TO_WEEK_EVENT;
 import static seedu.address.testutil.TypicalLocalDates.LEAP_YEAR_DATE;
+import static seedu.address.ui.util.CalendarFxUtil.DAY_VIEW;
+import static seedu.address.ui.util.CalendarFxUtil.MONTH_VIEW;
+import static seedu.address.ui.util.CalendarFxUtil.WEEK_VIEW;
 
 import java.time.LocalDate;
 
@@ -26,10 +23,6 @@ import org.junit.Test;
 import com.calendarfx.model.Calendar;
 
 import guitests.guihandles.CenterPanelHandle;
-import javafx.application.Platform;
-import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
-import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
-import seedu.address.commons.events.ui.ChangeCalendarViewRequestEvent;
 
 /**
  * Contains integration tests (interaction with the CenterPanel) for {@code CalendarPanel}.
@@ -98,7 +91,7 @@ public class CalendarPanelTest extends GuiUnitTest {
     @Test
     public void handleChangeCalendarDateRequestEvent() {
         centerPanelHandle.setUpCalendarPanelHandle(calendar);
-        
+
         LocalDate previousDate = centerPanelHandle.getCalendarCurrentDate();
         postNow(CHANGE_DATE_EVENT);
         guiRobot.pauseForHuman();

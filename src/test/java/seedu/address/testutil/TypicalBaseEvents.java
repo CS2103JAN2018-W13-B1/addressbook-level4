@@ -1,13 +1,13 @@
 package seedu.address.testutil;
 //@@author SuxianAlicia
 
-import static seedu.address.logic.commands.ViewBackCommand.REQUEST_BACK;
-import static seedu.address.logic.commands.ViewCalendarCommand.DAY_VIEW;
-import static seedu.address.logic.commands.ViewCalendarCommand.MONTH_VIEW;
-import static seedu.address.logic.commands.ViewCalendarCommand.WEEK_VIEW;
-import static seedu.address.logic.commands.ViewNextCommand.REQUEST_NEXT;
-import static seedu.address.logic.commands.ViewTodayCommand.REQUEST_TODAY;
 import static seedu.address.testutil.TypicalLocalDates.LEAP_YEAR_DATE;
+import static seedu.address.ui.util.CalendarFxUtil.DAY_VIEW;
+import static seedu.address.ui.util.CalendarFxUtil.MONTH_VIEW;
+import static seedu.address.ui.util.CalendarFxUtil.REQUEST_BACK;
+import static seedu.address.ui.util.CalendarFxUtil.REQUEST_NEXT;
+import static seedu.address.ui.util.CalendarFxUtil.REQUEST_TODAY;
+import static seedu.address.ui.util.CalendarFxUtil.WEEK_VIEW;
 
 import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.ChangeCalendarPageRequestEvent;
