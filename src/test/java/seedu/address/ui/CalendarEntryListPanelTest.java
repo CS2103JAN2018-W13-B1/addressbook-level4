@@ -25,7 +25,7 @@ public class CalendarEntryListPanelTest extends GuiUnitTest {
         uiPartRule.setUiPart(calendarEntryListPanel);
 
         calendarEntryListPanelHandle = new CalendarEntryListPanelHandle(getChildNode(calendarEntryListPanel.getRoot(),
-                calendarEntryListPanelHandle.CALENDAR_ENTRY_LIST_VIEW_ID));
+                CalendarEntryListPanelHandle.CALENDAR_ENTRY_LIST_VIEW_ID));
     }
 
     @Test
