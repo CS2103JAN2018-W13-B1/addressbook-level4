@@ -32,7 +32,7 @@ public class EntryTimeConstraintsUtilTest {
         try {
             EntryTimeConstraintsUtil.checkCalendarEntryTimeConstraints(startDate, endDate, startTime, endTime);
         } catch (IllegalValueException ive) {
-            fail("This test should not throw any exceptions.");
+            fail("This exception should not be thrown as the inputs are valid.");
         }
     }
 
