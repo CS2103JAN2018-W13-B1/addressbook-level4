@@ -141,11 +141,25 @@ It is written in Java, and has about 10 kLoC.</p>
 <p>The following section describes some of the proposed features we are planning to add to ContactSails in <code>v2.0</code>.</p>
 </div>
 <div class="sect2">
-<h3 id="viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code">Viewing top customers : <code>topcustomers</code> <code>coming in v2.0</code></a></h3>
+<h3 id="viewing-customer-statistics"><a class="link" href="#viewing-customer-statistics">Viewing Customer Statistics</a></h3>
 <div class="paragraph">
-<p>Displays a list of the top customers based on the frequency their contacts are accessed.<br>
-Format: <code>topcustomers NUMBER</code><br>
-Command Alias: <code>tc</code></p>
+<p>One of the features we are planning to add in ContactSails <code>v2.0</code> is the ability to view relevant statistics regarding your customers and sales orders.
+The command descriptions for these features are given below.</p>
+</div>
+<div class="sect3">
+<h4 id="viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topcustomers-code-code-coming-in-v2-0-code">Viewing top customers : <code>topcustomers</code> <code>coming in v2.0</code></a></h4>
+<div class="paragraph">
+<p>Description: Displays a list of the top customers based on the frequency their contacts are accessed.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>topcustomers NUMBER</code></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>tc</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -174,12 +188,20 @@ Displays the list of the top ten persons in ContactSails based on how frequently
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code">Viewing top customers : <code>topitems</code> <code>coming in v2.0</code></a></h3>
+<div class="sect3">
+<h4 id="viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code"><a class="link" href="#viewing-top-customers-code-topitems-code-code-coming-in-v2-0-code">Viewing top customers : <code>topitems</code> <code>coming in v2.0</code></a></h4>
 <div class="paragraph">
-<p>Displays a list of the top items based on amount of items that have been sold to customers.<br>
-Format: <code>topitems NUMBER</code><br>
-Command Alias: <code>ti</code></p>
+<p>Description: Displays a list of the top items based on amount of items that have been sold to customers.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>topitems NUMBER</code></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ti</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -208,12 +230,27 @@ Displays the list of the top ten items in ContactSails based on how many of the 
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code">Sending promotions based on group : <code>sendpromogroup</code> <code>coming in v2.0</code></a></h3>
+<h3 id="sending-promotions"><a class="link" href="#sending-promotions">Sending Promotions</a></h3>
 <div class="paragraph">
-<p>Opens a promotion email draft in the browser, which can be sent to multiple persons having the same group tags.
-Format: <code>sendpromogroup GROUP&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code>
-Command Alias: <code>spg</code></p>
+<p>Another proposed feature we are planning to implement is the ability to send promotions to multiple customers based on their groups or preferences.
+The command descriptions for these features are given below.</p>
+</div>
+<div class="sect3">
+<h4 id="sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-group-code-sendpromogroup-code-code-coming-in-v2-0-code">Sending promotions based on group : <code>sendpromogroup</code> <code>coming in v2.0</code></a></h4>
+<div class="paragraph">
+<p>Description: Opens a promotion email draft in the browser, which can be sent to multiple persons having the same group tags.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>sendpromogroup GROUP&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>spg</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -248,12 +285,20 @@ Opens an email draft in the browser with recipients as all persons tagged as 'fr
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code">Sending promotions based on preference : <code>sendpromopref</code> <code>coming in v2.0</code></a></h3>
+<div class="sect3">
+<h4 id="sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code"><a class="link" href="#sending-promotions-based-on-preference-code-sendpromopref-code-code-coming-in-v2-0-code">Sending promotions based on preference : <code>sendpromopref</code> <code>coming in v2.0</code></a></h4>
 <div class="paragraph">
-<p>Opens a promotion email draft in the browser, which can be sent to multiple persons having the same preference tags.
-Format: <code>sendpromopref PREFERENCE&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code>
-Command Alias: <code>spp</code></p>
+<p>Description: Opens a promotion email draft in the browser, which can be sent to multiple persons having the same preference tags.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>sendpromopref PREFERENCE&#8230;&#8203; [sub/SUBJECT] [b/BODY]</code></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>spp</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -286,6 +331,7 @@ Command Alias: <code>spp</code></p>
 Opens an email draft in the browser with recipients as all persons tagged with 'books' and subject as 'Books on SALE'.<br></p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -498,7 +544,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 <td class="tableblock halign-left valign-top"><p class="tableblock">Go to the previous page of the calendar.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarback</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>calback</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarprev</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarback</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Go to the current day.</p></td>
@@ -507,10 +553,10 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendartoday</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Jump to specified day.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Go to specified date.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarjump td/TARGET_DATE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>caljump</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarjump td/04-04-2020</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendarjump 10-10-2020</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -535,13 +581,13 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add a calendar entry.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryadd t/TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryadd t/ENTRY_TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ea</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edit an existing calendar entry.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit ENTRY_INDEX [t/TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit ENTRY_INDEX [t/ENTRY_TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ee</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>entryedit 1 t/meet with bosses et/1400</code></p></td>
 </tr>
@@ -895,7 +941,7 @@ the same order.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 02:42:10 UTC
+Last updated 2018-04-13 06:16:38 UTC
 </div>
 </div>
 </body>
