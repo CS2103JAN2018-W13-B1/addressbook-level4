@@ -43,7 +43,7 @@ public class CalendarPanel extends UiPart<Region> {
     private final CalendarSource calendarSource;
 
     @FXML
-    private StackPane calendarPanelholder;
+    private StackPane calendarPanelHolder;
 
     public CalendarPanel(Calendar calendar) {
         super(FXML);
@@ -90,7 +90,7 @@ public class CalendarPanel extends UiPart<Region> {
     public void initialiseCalendar(Calendar calendar) {
         calendarSource.getCalendars().addAll(calendar);
         calendarView.getCalendarSources().setAll(calendarSource);
-        calendarPanelholder.getChildren().setAll(calendarView);
+        calendarPanelHolder.getChildren().setAll(calendarView);
     }
 
     /**
