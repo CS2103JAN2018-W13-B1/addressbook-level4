@@ -56,7 +56,8 @@ public class CalendarManager implements ReadOnlyCalendarManager {
      */
     private void updateCalendar() {
         calendar.clear();
-        calendar.addEntries(CalendarEntryConversionUtil.convertEntireListToEntries(calendarEntryList.asObservableList()));
+        calendar.addEntries(
+                CalendarEntryConversionUtil.convertEntireListToEntries(calendarEntryList.asObservableList()));
     }
 
     /**
