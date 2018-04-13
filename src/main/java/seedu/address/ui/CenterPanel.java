@@ -28,7 +28,6 @@ public class CenterPanel extends UiPart<Region> {
     private CalendarPanel calendarPanel;
 
     private PersonPanel personPanel;
-    private ObservableList<CalendarEntry> calendarEvents;
 
     @FXML
     private StackPane centerPlaceholder;
@@ -38,7 +37,6 @@ public class CenterPanel extends UiPart<Region> {
 
         personPanel = new PersonPanel();
         calendarPanel = new CalendarPanel(calendar);
-        this.calendarEvents = calendarEvents;
 
         displayPersonPanel();
         registerAsAnEventHandler(this);
