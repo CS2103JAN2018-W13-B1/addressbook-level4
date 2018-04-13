@@ -28,5 +28,4 @@ public class FindPreferenceCommandParser implements Parser<FindPreferenceCommand
 
         return new FindPreferenceCommand(new PreferencesContainKeywordsPredicate(Arrays.asList(preferenceKeywords)));
     }
-
 }

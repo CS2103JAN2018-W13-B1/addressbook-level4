@@ -13,8 +13,7 @@ import seedu.address.model.tag.Group;
  * @throws ParseException if the user input does not conform the expected format
  */
 public class DeleteGroupCommandParser implements Parser<DeleteGroupCommand> {
-
-    @Override
+    
     public DeleteGroupCommand parse(String userInput) throws ParseException {
         try {
             Group group = ParserUtil.parseGroup(userInput);

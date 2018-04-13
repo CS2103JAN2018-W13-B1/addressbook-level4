@@ -41,5 +41,4 @@ public class DateUtil {
 
         return convertedDate;
     }
-
 }
