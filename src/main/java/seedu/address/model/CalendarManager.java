@@ -16,7 +16,8 @@ import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
 /**
- * Manages {@code Calendar} as defined in CalendarFX and its related data.
+ * Manages {@code Calendar} as defined in CalendarFX and {@code UniqueCalendarEntryList},
+ * which contains {@code CalendarEntry} to be added to {@code Calendar}.
  */
 public class CalendarManager implements ReadOnlyCalendarManager {
     private final Calendar calendar;
