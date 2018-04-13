@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.DateUtil;
+import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.commons.util.TimeUtil;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
@@ -120,8 +121,7 @@ public class XmlAdaptedCalendarEntry {
 
         final EndTime endTime = new EndTime(this.endTime);
 
-        checkCalendarEntryTimeConstraints(startDate, endDate, startTime, endTime);
-
+        EntryTimeConstraintsUtil.checkCalendarEntryTimeConstraints(startDate, endDate, startTime, endTime);
 
         return new CalendarEntry(entryTitle, startDate, endDate, startTime, endTime);
     }
@@ -143,5 +143,4 @@ public class XmlAdaptedCalendarEntry {
                 && Objects.equals(startTime, otherCalEvent.startTime)
                 && Objects.equals(endTime, otherCalEvent.endTime);
     }
-
 }

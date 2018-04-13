@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import java.util.stream.Stream;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.logic.commands.AddEntryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.event.CalendarEntry;
@@ -67,7 +68,7 @@ public class AddEntryCommandParser implements Parser<AddEntryCommand> {
                 startTime = ParserUtil.parseStartTime(argMultimap.getValue(PREFIX_START_TIME)).get();
             }
 
-            checkCalendarEntryTimeConstraints(startDate, endDate, startTime, endTime);
+            EntryTimeConstraintsUtil.checkCalendarEntryTimeConstraints(startDate, endDate, startTime, endTime);
 
             CalendarEntry calendarEntry = new CalendarEntry(entryTitle, startDate, endDate, startTime, endTime);
             return new AddEntryCommand(calendarEntry);

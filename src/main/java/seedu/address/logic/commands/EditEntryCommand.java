@@ -20,6 +20,7 @@ import seedu.address.commons.events.ui.ChangeCalendarDateRequestEvent;
 import seedu.address.commons.events.ui.DisplayCalendarEntryListEvent;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.event.CalendarEntry;
 import seedu.address.model.event.EndDate;
@@ -127,7 +128,8 @@ public class EditEntryCommand extends UndoableCommand {
         StartTime updatedStartTime = editEntryDescriptor.getStartTime().orElse(entryToEdit.getStartTime());
         EndTime updatedEndTime = editEntryDescriptor.getEndTime().orElse(entryToEdit.getEndTime());
 
-        checkCalendarEntryTimeConstraints(updatedStartDate, updatedEndDate, updatedStartTime, updatedEndTime);
+        EntryTimeConstraintsUtil.checkCalendarEntryTimeConstraints(updatedStartDate, updatedEndDate,
+                updatedStartTime, updatedEndTime);
 
         return new CalendarEntry(updatedEntryTitle, updatedStartDate, updatedEndDate, updatedStartTime, updatedEndTime);
     }
