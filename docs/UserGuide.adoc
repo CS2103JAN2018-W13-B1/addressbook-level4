@@ -24,6 +24,21 @@ More importantly, it is optimized for those who prefer to work with a Command Li
 
 If you can type fast, ContactSails can get your sales management related tasks done faster than traditional GUI apps.
 
+== About This Guide
+
+This User Guide will help you set up ContactSails on your desktop and explain the all the features provided by our application in detail.
+
+The User Guide has some text styled in different ways to signify different meanings:
+
+* `text` : denotes the commands you will need to enter to execute the corresponding functions in ContactSails. +
+* kbd:[TEXT] : denotes keyboard buttons you might need to press. +
+* <<TEXT>> : denotes links to other parts of the document or links that need to be opened in the browser.
+
+See <<Quick Start>> for instructions on how to install our application.
+
+If you are ready to use the application and want to know more about the CLI commands offered by ContactSails, you can jump to <<Features>>.
+
+
 == Quick Start
 
 Before you start, ensure you have Java version `1.8.0_60` or later installed in your computer.
