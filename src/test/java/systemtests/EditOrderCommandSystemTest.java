@@ -69,14 +69,6 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
                 getModel().getFilteredOrderList().get(INDEX_THIRD_ORDER.getZeroBased()), editedOrder);
         assertCommandSuccess(command, model, expectedResultMessage);
 
-        /* Case: edit some fields -> order edited */
-        index = INDEX_FIRST_ORDER;
-        command = EditOrderCommand.COMMAND_WORD + " " + index.getOneBased() + QUANTITY_DESC_COMPUTER;
-        Order orderToEdit = getModel().getFilteredOrderList().get(index.getZeroBased());
-        editedOrder = new OrderBuilder(orderToEdit).withQuantity(VALID_QUANTITY_COMPUTER).build();
-        assertCommandSuccess(command, index, editedOrder);
-
-
         /* --------------------------------- Performing invalid edit operation -------------------------------------- */
 
         /* Case: invalid index (0) -> rejected */
