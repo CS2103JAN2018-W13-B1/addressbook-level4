@@ -442,7 +442,7 @@ Notably, the contact's group and preferences are coloured as these are important
 We plan to implement more features for v2.0, such as a profile picture for the contact.
 
 ==== Current Implementation
-By utilising `java.util.logging` package, PersonPanel is able to display contact's particulars, its
+By utilising the `EventsCenter`, PersonPanel is able to display contact's particulars, its
 groups and preferences through selecting its respective `PersonCard`.
 
 The following 2 code snippets will show its implementation.
