@@ -189,6 +189,30 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <ul>
 <li>
 <p>Some example commands you can try:</p>
+</li>
+<li>
+<p><strong><code>list</code></strong> : lists all contacts</p>
+</li>
+<li>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to ContactSails.</p>
+</li>
+<li>
+<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+</li>
+<li>
+<p><strong><code>calendar month</code></strong>: displays the calendar at the center of ContactSails</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Commands also have alias words so you can execute the same commands in a quicker way.</p>
+</li>
+<li>
+<p>Some example command aliases you can try:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -199,12 +223,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p><code>delete 3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p><code>exit</code> : exits the app</p>
+<p><strong><code>cal month</code></strong>: displays the calendar at the center of ContactSails</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><code>exit</code> : exits the app</p>
 </li>
 </ul>
 </div>
@@ -364,7 +392,13 @@ For example, typing <code>ad</code> in the command box and then pressing <kbd>Ta
 <div class="sect2">
 <h3 id="managing-persons"><a class="link" href="#managing-persons">4.2. Managing Persons</a></h3>
 <div class="paragraph">
-<p>This section describes commands you can use to manage person entries in ContactSails.</p>
+<p>This section describes commands you can use to manage person entries in ContactSails.
+The figure below shows how ContactSails look currently.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Start.png" alt="Start" width="790">
+</div>
 </div>
 <div class="sect3">
 <h4 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">4.2.1. Adding a person : <code>add</code></a></h4>
@@ -406,6 +440,11 @@ and <code>notebooks</code> as a preference tag.</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/add.png" alt="add" width="790">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">4.2.2. Editing a person : <code>edit</code></a></h4>
@@ -446,21 +485,29 @@ and <code>notebooks</code> as a preference tag.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Here&#8217;s a picture of current ContactSails</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/add.png" alt="add" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code> OR<br>
-<code>e 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
 <li>
 <p><code>edit 2 n/Betsy Crower g/</code> OR<br>
 <code>e 2 n/Betsy Crower g/</code><br>
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing groups.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/edit.png" alt="edit" width="790">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -789,14 +836,44 @@ Returns any person having preferences <code>computers</code>, <code>shoes</code>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="paragraph">
+<p>Here&#8217;s a picture of the contacts in ContactSails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeContacts.png" alt="BeforeContacts" width="790">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
+<p><code>groupdelete friends</code> OR <code>gd friends</code></p>
+</li>
+<li>
 <p><code>groupdelete friends</code> OR<br>
-<code>gd friends</code><br>
-All persons in ContactSails with the group <code>friends</code> will have the group removed.</p>
+<code>gd friends</code><br></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>All persons in ContactSails with the group <code>friends</code> will have the group removed.</p>
+</div>
+<div class="paragraph">
+<p>At first, it will show the following, where the group friends still
+appear at the person panel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Warning1.png" alt="Warning1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now, click on another contact. Then, click back 1. Alex Yeoh to see the change.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Warning2.png" alt="Warning2" width="790">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -833,6 +910,40 @@ All persons in ContactSails with the group <code>friends</code> will have the gr
 </div>
 <div class="paragraph">
 <p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a picture of the contacts in ContactSails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Warning3.png" alt="Warning3" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>prefdelete shoes</code> OR
+<code>pd shoes</code>.
+All persons in ContactSails with the preference [shoes] will have the preference removed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>At first, it will show the following, where the preference shoes still appear
+at the person panel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PreferenceWarning1.png" alt="PreferenceWarning1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now, click on another contact. Then, click back 2. Bernice Yu to see the change.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PreferenceWarning2.png" alt="PreferenceWarning2" width="790">
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -2402,7 +2513,7 @@ Opens an email draft in the browser with recipients as all persons tagged with '
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 02:26:50 UTC
+Last updated 2018-04-14 03:06:08 UTC
 </div>
 </div>
 </body>
