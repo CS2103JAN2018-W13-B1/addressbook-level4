@@ -187,28 +187,16 @@
 </table>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> OR <code>u</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code> OR <code>u</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> OR <code>u</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> OR <code>u</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Type <code>delete 1</code> into the Command Box, and press <kbd>Enter</kbd>. This deletes the 1st contact.<br></p>
+</div>
+<div class="paragraph">
+<p>Next, type <code>list</code> to display the list of persons after the deletion. You can see that the 1st contact has been deleted.<br></p>
+</div>
+<div class="paragraph">
+<p>Now, to undo the deletion, type <code>undo</code> OR <code>u</code>. You can see that the deleted person has been added back to the list of contacts.<br></p>
 </div>
 </div>
 <div class="sect3">
@@ -227,29 +215,16 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p>Command Alias: <code>r</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> OR <code>r</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code> OR <code>r</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> OR <code>r</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> OR <code>r</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Type <code>delete 1</code> into the Command Box, and press <kbd>Enter</kbd>. This deletes the 1st contact.<br></p>
+</div>
+<div class="paragraph">
+<p>Typing <code>undo</code> will add the deleted person back to the list of contacts.</p>
+</div>
+<div class="paragraph">
+<p>Now, if you want to redo the deletion, type <code>redo</code> OR <code>r</code>. You can see that the same contact has been deleted again.<br></p>
 </div>
 </div>
 </div>
@@ -604,7 +579,7 @@ being stored.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 05:15:22 UTC
+Last updated 2018-04-14 05:33:57 UTC
 </div>
 </div>
 </body>
