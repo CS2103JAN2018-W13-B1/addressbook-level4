@@ -92,10 +92,10 @@ public abstract class AddressBookSystemTest {
     protected AddressBook getInitialData() {
         AddressBook ab = TypicalPersons.getTypicalAddressBook();
         try {
-            ab.addOrderToOrderList(BOOKS);
-            ab.addOrderToOrderList(CHOCOLATES);
             ab.addOrderToOrderList(FACEWASH);
             ab.addOrderToOrderList(SHOES);
+            ab.addOrderToOrderList(BOOKS);
+            ab.addOrderToOrderList(CHOCOLATES);
         } catch (UniqueOrderList.DuplicateOrderException doe) {
             throw new AssertionError("not possible");
         }

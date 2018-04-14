@@ -146,7 +146,7 @@ public class GuiTestAssert {
                 assertEquals(Arrays.asList(LABEL_DEFAULT_STYLE, getPrefTagColorStyleFor(tag)),
                         actualCard.getPreferenceTagStyleClasses(tag)));
     }
-    //@@author AJZ1995
+    //@@author
 
     /**
      * Asserts that {@code actualCard} displays the details of {@code expectedOrder}.
@@ -208,6 +208,7 @@ public class GuiTestAssert {
         assertPersonListMatching(personListPanelHandle, persons.toArray(new Person[0]));
     }
 
+    //@@author SuxianAlicia-reused
     /**
      * Asserts that the list in {@code orderListPanelHandle} displays the details of {@code orders} correctly and
      * in the correct order.
@@ -245,6 +246,7 @@ public class GuiTestAssert {
             CalendarEntryListPanelHandle calendarEntryListPanelHandle, List<CalendarEntry> entries) {
         assertCalendarEntryListMatching(calendarEntryListPanelHandle, entries.toArray(new CalendarEntry[0]));
     }
+    //@@author
 
     /**
      * Asserts the size of the list in {@code personListPanelHandle} equals to {@code size}.

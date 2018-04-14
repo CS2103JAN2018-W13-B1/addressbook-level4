@@ -176,6 +176,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
         executeCommand(command);
         expectedModel.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertCommandBoxShowsDefaultStyle();
         if (expectedSelectedCardIndex != null) {
             assertSelectedCardChanged(expectedSelectedCardIndex);
@@ -201,6 +202,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
 
         executeCommand(command);
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
         assertStatusBarUnchanged();

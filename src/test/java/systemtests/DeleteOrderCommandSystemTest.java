@@ -138,6 +138,7 @@ public class DeleteOrderCommandSystemTest extends AddressBookSystemTest {
                                       Index expectedSelectedCardIndex) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
 
         if (expectedSelectedCardIndex != null) {
             assertSelectedCardChanged(expectedSelectedCardIndex);
@@ -165,6 +166,7 @@ public class DeleteOrderCommandSystemTest extends AddressBookSystemTest {
 
         executeCommand(command);
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
         assertStatusBarUnchanged();
