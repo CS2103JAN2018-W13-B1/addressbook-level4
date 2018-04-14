@@ -7,6 +7,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TARGET_DATE;
 import static seedu.address.model.theme.Theme.LIGHT_THEME_KEYWORD;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_DELIVERY_DATE;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_ORDER_INFORMATION;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_PRICE;
+import static seedu.address.testutil.OrderBuilder.DEFAULT_QUANTITY;
 import static seedu.address.testutil.TypicalGroups.FRIENDS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ENTRY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
@@ -39,6 +43,7 @@ import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.EditEntryCommand;
 import seedu.address.logic.commands.EditEntryCommand.EditEntryDescriptor;
 import seedu.address.logic.commands.EntryListClearCommand;
+import seedu.address.logic.commands.EditOrderCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindGroupCommand;
@@ -65,6 +70,7 @@ import seedu.address.model.person.PreferencesContainKeywordsPredicate;
 import seedu.address.testutil.CalendarEntryBuilder;
 import seedu.address.testutil.CalendarEntryUtil;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
+import seedu.address.testutil.EditOrderDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.OrderBuilder;
 import seedu.address.testutil.OrderUtil;
@@ -84,6 +90,7 @@ public class AddressBookParserTest {
         assertEquals(new AddCommand(person), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_addAlias() throws Exception {
         Person person = new PersonBuilder().build();
@@ -107,6 +114,7 @@ public class AddressBookParserTest {
                 + " " + INDEX_FIRST_PERSON.getOneBased() + " " + OrderUtil.getOrderDetails(order));
         assertEquals(new AddOrderCommand(INDEX_FIRST_PERSON, order), command);
     }
+    //@@author
 
     @Test
     public void parseCommand_addEntry() throws Exception {
@@ -142,6 +150,7 @@ public class AddressBookParserTest {
         assertEquals(new CalendarJumpCommand(NORMAL_DATE, NORMAL_DATE_STRING), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_changeTheme() throws Exception {
         ChangeThemeCommand command = (ChangeThemeCommand) parser.parseCommand(
@@ -155,6 +164,7 @@ public class AddressBookParserTest {
                 ChangeThemeCommand.COMMAND_ALIAS + " " + LIGHT_THEME_KEYWORD);
         assertEquals(new ChangeThemeCommand(LIGHT_THEME_KEYWORD), command);
     }
+    //@@author
 
     @Test
     public void parseCommand_clear() throws Exception {
@@ -162,11 +172,13 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_clearAlias() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_ALIAS) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_ALIAS + " 3") instanceof ClearCommand);
     }
+    //@@author
 
     @Test
     public void parseCommand_delete() throws Exception {
@@ -175,12 +187,14 @@ public class AddressBookParserTest {
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_deleteAlias() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
     }
+    //@@author
 
     @Test
     public void parseCommand_deleteGroup() throws Exception {
@@ -210,6 +224,7 @@ public class AddressBookParserTest {
         assertEquals(new DeletePreferenceCommand(COMPUTERS), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_deleteOrder() throws Exception {
         DeleteOrderCommand command = (DeleteOrderCommand) parser.parseCommand(
@@ -223,6 +238,7 @@ public class AddressBookParserTest {
                 DeleteOrderCommand.COMMAND_ALIAS + " " + INDEX_FIRST_ORDER.getOneBased());
         assertEquals(new DeleteOrderCommand(INDEX_FIRST_ORDER), command);
     }
+    //@@author
 
     @Test
     public void parseCommand_deleteEntry() throws Exception {
@@ -247,6 +263,7 @@ public class AddressBookParserTest {
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_editAlias() throws Exception {
         Person person = new PersonBuilder().build();
@@ -255,6 +272,33 @@ public class AddressBookParserTest {
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getPersonDetails(person));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
+
+    @Test
+    public void parseCommand_editOrder() throws Exception {
+        Order order = new OrderBuilder().build();
+        EditOrderCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withOrderInformation(DEFAULT_ORDER_INFORMATION).withPrice(DEFAULT_PRICE)
+                .withQuantity(DEFAULT_QUANTITY).withDeliveryDate(DEFAULT_DELIVERY_DATE).build();
+
+        EditOrderCommand command = (EditOrderCommand) parser.parseCommand(EditOrderCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_ORDER.getOneBased() + " " + OrderUtil.getOrderDetails(order));
+
+        assertEquals(new EditOrderCommand(INDEX_FIRST_ORDER, descriptor), command);
+    }
+
+    @Test
+    public void parseCommand_editOrderAlias() throws Exception {
+        Order order = new OrderBuilder().build();
+        EditOrderCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withOrderInformation(DEFAULT_ORDER_INFORMATION).withPrice(DEFAULT_PRICE)
+                .withQuantity(DEFAULT_QUANTITY).withDeliveryDate(DEFAULT_DELIVERY_DATE).build();
+
+        EditOrderCommand command = (EditOrderCommand) parser.parseCommand(EditOrderCommand.COMMAND_ALIAS + " "
+                + INDEX_FIRST_ORDER.getOneBased() + " " + OrderUtil.getOrderDetails(order));
+
+        assertEquals(new EditOrderCommand(INDEX_FIRST_ORDER, descriptor), command);
+    }
+    //@@author
 
     @Test
     public void parseCommand_editEntry() throws Exception {
@@ -294,11 +338,13 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_exitAlias() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_ALIAS) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_ALIAS + " 3") instanceof ExitCommand);
     }
+    //@@author
 
     @Test
     public void parseCommand_find() throws Exception {
@@ -308,6 +354,7 @@ public class AddressBookParserTest {
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_findAlias() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
@@ -315,6 +362,7 @@ public class AddressBookParserTest {
                 FindCommand.COMMAND_ALIAS + " " + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
+    //@@author
 
     @Test
     public void parseCommand_findGroups() throws Exception {
@@ -358,11 +406,13 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_helpAlias() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_ALIAS) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_ALIAS + " 3") instanceof HelpCommand);
     }
+    //@@author
 
     @Test
     public void parseCommand_history() throws Exception {
@@ -377,6 +427,7 @@ public class AddressBookParserTest {
         }
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_historyAlias() throws Exception {
         assertTrue(parser.parseCommand(HistoryCommand.COMMAND_ALIAS) instanceof HistoryCommand);
@@ -389,6 +440,7 @@ public class AddressBookParserTest {
             assertEquals(MESSAGE_UNKNOWN_COMMAND, pe.getMessage());
         }
     }
+    //@@author
 
     @Test
     public void parseCommand_list() throws Exception {
@@ -396,11 +448,13 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_listAlias() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_ALIAS) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_ALIAS + " 3") instanceof ListCommand);
     }
+    //@@author
 
     @Test
     public void parseCommand_calendarEntryList() throws Exception {
@@ -437,13 +491,14 @@ public class AddressBookParserTest {
         assertEquals(new SelectCommand(INDEX_FIRST_PERSON), command);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_selectAlias() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(
                 SelectCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new SelectCommand(INDEX_FIRST_PERSON), command);
     }
-
+    //@@author
 
     @Test
     public void parseCommand_redoCommandWord_returnsRedoCommand() throws Exception {
@@ -451,11 +506,13 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand("redo 1") instanceof RedoCommand);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_redoCommandWordAlias_returnsRedoCommand() throws Exception {
         assertTrue(parser.parseCommand(RedoCommand.COMMAND_ALIAS) instanceof RedoCommand);
         assertTrue(parser.parseCommand("redo 1") instanceof RedoCommand);
     }
+    //@@author
 
     @Test
     public void parseCommand_undoCommandWord_returnsUndoCommand() throws Exception {
@@ -463,11 +520,13 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand("undo 3") instanceof UndoCommand);
     }
 
+    //@@author amad-person
     @Test
     public void parseCommand_undoCommandWordAlias_returnsUndoCommand() throws Exception {
         assertTrue(parser.parseCommand(UndoCommand.COMMAND_ALIAS) instanceof UndoCommand);
         assertTrue(parser.parseCommand("undo 3") instanceof UndoCommand);
     }
+    //@@author
 
     @Test
     public void parseCommand_viewCalendarCommand_returnsViewCalendarCommand() throws Exception {
