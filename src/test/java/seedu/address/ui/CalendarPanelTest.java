@@ -29,6 +29,7 @@ import guitests.guihandles.CenterPanelHandle;
  * Contains integration tests (interaction with the CenterPanel) for {@code CalendarPanel}.
  */
 public class CalendarPanelTest extends GuiUnitTest {
+
     private static final Calendar calendar = new Calendar();
 
     private CenterPanelHandle centerPanelHandle;
@@ -85,7 +86,6 @@ public class CalendarPanelTest extends GuiUnitTest {
 
         expectedDate = originalDate.minusDays(1);
         assertEquals(expectedDate, centerPanelHandle.getCalendarCurrentDate());
-
     }
 
     @Test
@@ -99,5 +99,4 @@ public class CalendarPanelTest extends GuiUnitTest {
         assertNotEquals(previousDate, LEAP_YEAR_DATE);
         assertEquals(LEAP_YEAR_DATE, centerPanelHandle.getCalendarCurrentDate());
     }
-
 }

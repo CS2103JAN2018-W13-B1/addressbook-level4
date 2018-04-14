@@ -24,7 +24,7 @@ import seedu.address.model.entry.CalendarEntry;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code  DeleteEntryCommand}.
+ * {@code DeleteEntryCommand}.
  */
 public class DeleteEntryCommandTest {
     private Model model = new ModelManager(getTypicalAddressBookWithOrders(),

@@ -45,6 +45,7 @@ import seedu.address.model.entry.StartTime;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
 
 public class EditEntryCommandParserTest {
+
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditEntryCommand.MESSAGE_USAGE);
 
