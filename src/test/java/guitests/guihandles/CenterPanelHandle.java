@@ -25,9 +25,29 @@ public class CenterPanelHandle extends NodeHandle<StackPane> {
      * Sets Up {@code CalendarPanelHandle}.
      * This method is only invoked only after {@code CenterPanel} adds {@code CalendarPanel} to its root node.
      */
-    public void setUpCalendarPanelHandle(Calendar calendar) {
+    public void setUpCalendarPanelHandle() {
         calendarPanelHandle = new CalendarPanelHandle(getChildNode(CalendarPanelHandle.CALENDAR_PANEL_ID));
     }
+
+    public CalendarPanelHandle getCalendarPanelHandle() {
+        setUpCalendarPanelHandle();
+        return calendarPanelHandle;
+    }
+
+    /**
+     * Sets Up {@code PersonPanelHandle}.
+     * This method is only invoked only after {@code CenterPanel} adds {@code PersonPanel} to its root node.
+     */
+    public void setUpPersonPanelHandle() {
+        personPanelHandle = new PersonPanelHandle(getChildNode(PersonPanelHandle.PERSON_PANEL_ID));
+    }
+
+    public PersonPanelHandle getPersonPanelHandle() {
+        setUpPersonPanelHandle();
+        return personPanelHandle;
+    }
+
+    // CalendarPanelHandle-related operations
 
     /**
      * Returns the current view of the calendar.
@@ -49,4 +69,7 @@ public class CenterPanelHandle extends NodeHandle<StackPane> {
     public LocalDate getCalendarTodayDate() {
         return calendarPanelHandle.getTodayDate();
     }
+
+    // PersonPanelHandle-related operations
+
 }
