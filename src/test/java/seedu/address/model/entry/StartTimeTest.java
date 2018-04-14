@@ -9,6 +9,7 @@ import seedu.address.commons.util.TimeUtil;
 import seedu.address.testutil.Assert;
 
 public class StartTimeTest {
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new StartTime(null));

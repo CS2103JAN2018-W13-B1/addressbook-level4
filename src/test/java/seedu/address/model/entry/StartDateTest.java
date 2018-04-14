@@ -9,6 +9,7 @@ import seedu.address.commons.util.DateUtil;
 import seedu.address.testutil.Assert;
 
 public class StartDateTest {
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new StartDate(null));
