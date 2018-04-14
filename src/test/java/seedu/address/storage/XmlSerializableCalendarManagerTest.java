@@ -38,7 +38,7 @@ public class XmlSerializableCalendarManagerTest {
     }
 
     @Test
-    public void toModelType_invalidEventsFile_throwsIllegalValueException() throws Exception {
+    public void toModelType_invalidEntriesFile_throwsIllegalValueException() throws Exception {
         XmlSerializableCalendarManager dataFromFile = XmlUtil.getDataFromFile(INVALID_EVENT_FILE,
                 XmlSerializableCalendarManager.class);
         thrown.expect(IllegalValueException.class);

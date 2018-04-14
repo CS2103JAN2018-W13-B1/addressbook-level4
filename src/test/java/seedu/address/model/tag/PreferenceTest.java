@@ -7,18 +7,18 @@ import seedu.address.testutil.Assert;
 public class PreferenceTest {
 
     @Test
-    public void constructor_null_throwsNullPointerException() {
+    public void constructor_nullPreferenceTagName_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new Preference(null));
     }
 
     @Test
-    public void constructor_invalidPreferenceName_throwsIllegalArgumentException() {
-        String invalidPreferenceName = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Preference(invalidPreferenceName));
+    public void constructor_invalidPreferenceTagName_throwsIllegalArgumentException() {
+        String invalidPreferenceTagName = "";
+        Assert.assertThrows(IllegalArgumentException.class, () -> new Preference(invalidPreferenceTagName));
     }
 
     @Test
-    public void isValidPreferenceName() {
+    public void isValidPreferenceTagName() {
         // null preference name
         Assert.assertThrows(NullPointerException.class, () -> Preference.isValidTagName(null));
     }

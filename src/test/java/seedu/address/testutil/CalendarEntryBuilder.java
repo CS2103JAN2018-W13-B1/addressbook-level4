@@ -12,7 +12,7 @@ import seedu.address.model.entry.StartTime;
  */
 public class CalendarEntryBuilder {
 
-    public static final String DEFAULT_EVENT_TITLE = "Meeting with boss";
+    public static final String DEFAULT_ENTRY_TITLE = "Meeting with boss";
     public static final String DEFAULT_START_DATE = "10-10-2018";
     public static final String DEFAULT_END_DATE = "10-10-2018";
     public static final String DEFAULT_START_TIME = "10:00";
@@ -25,7 +25,7 @@ public class CalendarEntryBuilder {
     private EndTime endTime;
 
     public CalendarEntryBuilder() {
-        entryTitle = new EntryTitle(DEFAULT_EVENT_TITLE);
+        entryTitle = new EntryTitle(DEFAULT_ENTRY_TITLE);
         startDate = new StartDate(DEFAULT_START_DATE);
         endDate = new EndDate(DEFAULT_END_DATE);
         startTime = new StartTime(DEFAULT_START_TIME);

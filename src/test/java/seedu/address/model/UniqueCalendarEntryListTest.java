@@ -29,7 +29,7 @@ public class UniqueCalendarEntryListTest {
         // different type -> false
         assertFalse(firstEntriesList.equals(1));
 
-        // different objects, same type -> false
+        // different calendar entries, same type -> false
         assertFalse(firstEntriesList.equals(secondEntriesList));
     }
 

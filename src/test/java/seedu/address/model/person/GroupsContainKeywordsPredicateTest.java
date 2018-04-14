@@ -38,13 +38,14 @@ public class GroupsContainKeywordsPredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different person -> returns false
+        // different keywords -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
     public void test_groupsContainsKeywords_returnsTrue() {
         GroupsContainKeywordsPredicate predicate;
+
         // One keyword
         predicate = new GroupsContainKeywordsPredicate(Collections.singletonList(COLLEAGUES.tagName));
         assertTrue(predicate.test(new PersonBuilder().withGroups(COLLEAGUES.tagName).build()));
@@ -63,7 +64,7 @@ public class GroupsContainKeywordsPredicateTest {
     }
 
     @Test
-    public void test_groupsDoesNotContainKeywords_returnsFalse() {
+    public void test_personGroupsDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         GroupsContainKeywordsPredicate predicate =
                 new GroupsContainKeywordsPredicate(Collections.emptyList());

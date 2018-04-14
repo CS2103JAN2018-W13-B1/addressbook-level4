@@ -43,8 +43,8 @@ public class CalendarManagerTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsAssertionError() {
-        // Repeat ALICE twice
+    public void resetData_withDuplicateCalendarEntries_throwsAssertionError() {
+        // Repeat MEETING_BOSS twice
         List<CalendarEntry> newEntries = Arrays.asList(MEETING_BOSS, MEETING_BOSS);
         CalendarManagerStub newData = new CalendarManagerStub(newEntries);
 

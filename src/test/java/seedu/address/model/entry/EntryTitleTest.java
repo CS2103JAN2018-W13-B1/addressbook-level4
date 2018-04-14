@@ -14,13 +14,14 @@ public class EntryTitleTest {
     }
 
     @Test
-    public void constructor_invalidEventTitle_throwsIllegalArgumentException() {
-        String invalidEventTitle = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new EntryTitle(invalidEventTitle));
+    public void constructor_invalidEntryTitle_throwsIllegalArgumentException() {
+        String invalidEntryTitle = "";
+        Assert.assertThrows(IllegalArgumentException.class, () -> new EntryTitle(invalidEntryTitle));
     }
 
     @Test
-    public void isValidEventTitle() {
+    public void isValidEntryTitle() {
+
         // null entry title
         Assert.assertThrows(NullPointerException.class, () -> EntryTitle.isValidEntryTitle(null));
 
