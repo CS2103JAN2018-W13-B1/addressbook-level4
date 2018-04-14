@@ -281,6 +281,7 @@ The `Model` Component does the following:
 . Stores a `UserPref` object that represents the user's preferences.
 . Stores the Address Book data.
 . Exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+. Exposes an unmodifiable `ObservableList<Order>` and `ObservableList<CalendarEntry>` similar to the `ObservableList<Person>` mentioned above.
 
 [[Design-Storage]]
 === Storage Component
