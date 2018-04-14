@@ -1,5 +1,5 @@
 package seedu.address.model;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertEquals;
 import static seedu.address.testutil.TypicalCalendarEntries.MEETING_BOSS;
 import static seedu.address.testutil.TypicalCalendarEntries.getTypicalCalendarManagerWithEntries;

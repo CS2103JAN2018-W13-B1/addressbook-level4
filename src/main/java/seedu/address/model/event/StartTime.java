@@ -13,6 +13,7 @@ import java.time.format.DateTimeParseException;
  * Guarantees: immutable; is valid as declared in {@link seedu.address.commons.util.TimeUtil#isValidTime(String)}
  */
 public class StartTime {
+
     public static final String MESSAGE_START_TIME_CONSTRAINTS =
             "Start Time should be HH:mm (24Hour Format), and it should not be blank";
 

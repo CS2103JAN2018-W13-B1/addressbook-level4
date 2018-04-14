@@ -31,7 +31,6 @@ import guitests.guihandles.CenterPanelHandle;
 public class CalendarPanelTest extends GuiUnitTest {
     private static final Calendar calendar = new Calendar();
 
-
     private CenterPanelHandle centerPanelHandle;
 
     @Before

@@ -1,5 +1,5 @@
 package seedu.address.model;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalCalendarEntries.GET_STOCKS;
@@ -12,7 +12,6 @@ import org.junit.rules.ExpectedException;
 import seedu.address.model.event.UniqueCalendarEntryList;
 import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
 
-//@@author SuxianAlicia
 public class UniqueCalendarEntryListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

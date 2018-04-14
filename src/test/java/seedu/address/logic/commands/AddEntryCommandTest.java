@@ -1,5 +1,5 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -40,7 +40,6 @@ import seedu.address.model.tag.exceptions.GroupNotFoundException;
 import seedu.address.model.tag.exceptions.PreferenceNotFoundException;
 import seedu.address.testutil.CalendarEntryBuilder;
 
-//@@author SuxianAlicia
 public class AddEntryCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

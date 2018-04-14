@@ -1,5 +1,5 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCalendarEntries.getTypicalCalendarManagerWithEntries;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -16,7 +16,6 @@ import seedu.address.model.UserPrefs;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCalendarEntryCommand.
  */
-//@@author SuxianAlicia
 public class ListCalendarEntryCommandTest {
 
     private Model model;

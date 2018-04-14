@@ -1,9 +1,11 @@
 package seedu.address.model.tag;
-
+//@@author SuxianAlicia
 import org.junit.Test;
 
 import seedu.address.testutil.Assert;
+
 public class PreferenceTest {
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new Preference(null));

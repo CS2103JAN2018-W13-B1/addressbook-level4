@@ -1,5 +1,5 @@
 package seedu.address.storage;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertEquals;
 import static seedu.address.storage.XmlAdaptedCalendarEntry.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.TypicalCalendarEntries.MEETING_BOSS;
@@ -14,7 +14,6 @@ import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 import seedu.address.testutil.Assert;
 
-//@@author SuxianAlicia
 public class XmlAdaptedCalendarEntryTest {
     private static final String INVALID_EVENT_TITLE = "M&&ting wi$h b@ss";
     private static final String INVALID_START_DATE = "30-02-2019";

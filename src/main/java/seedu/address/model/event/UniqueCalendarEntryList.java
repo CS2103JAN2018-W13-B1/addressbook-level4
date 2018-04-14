@@ -21,6 +21,7 @@ import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
  * @see CalendarEntry#equals(Object)
  */
 public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
+
     private final ObservableList<CalendarEntry> internalList = FXCollections.observableArrayList();
 
     /**
@@ -32,7 +33,6 @@ public class UniqueCalendarEntryList implements Iterable<CalendarEntry> {
         for (CalendarEntry ce: calendarEntries) {
             replacement.add(ce);
         }
-
         setCalendarEntries(replacement);
     }
 

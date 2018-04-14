@@ -1,5 +1,5 @@
-//@@author SuxianAlicia
 package seedu.address.storage;
+//@@author SuxianAlicia
 
 import static junit.framework.TestCase.assertEquals;
 

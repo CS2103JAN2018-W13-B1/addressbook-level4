@@ -1,5 +1,5 @@
 package seedu.address.model.event;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,8 +8,8 @@ import org.junit.Test;
 import seedu.address.commons.util.DateUtil;
 import seedu.address.testutil.Assert;
 
-//@@author SuxianAlicia
 public class EndDateTest {
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new EndDate(null));

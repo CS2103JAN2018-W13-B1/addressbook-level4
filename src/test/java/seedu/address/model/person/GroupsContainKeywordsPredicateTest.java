@@ -1,5 +1,5 @@
 package seedu.address.model.person;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalGroups.BUDDIES;
@@ -13,7 +13,6 @@ import java.util.List;
 import org.junit.Test;
 
 import seedu.address.testutil.PersonBuilder;
-
 
 public class GroupsContainKeywordsPredicateTest {
 

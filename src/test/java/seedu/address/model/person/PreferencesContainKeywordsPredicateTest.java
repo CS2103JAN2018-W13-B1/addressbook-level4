@@ -1,5 +1,5 @@
 package seedu.address.model.person;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalPreferences.NECKLACES;
@@ -15,6 +15,7 @@ import org.junit.Test;
 import seedu.address.testutil.PersonBuilder;
 
 public class PreferencesContainKeywordsPredicateTest {
+
     @Test
     public void equals() {
         List<String> firstPredicateKeywordList = Arrays.asList(VIDEO_GAMES.tagName, SHOES.tagName);

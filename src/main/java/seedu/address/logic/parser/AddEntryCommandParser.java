@@ -28,7 +28,6 @@ public class AddEntryCommandParser implements Parser<AddEntryCommand> {
 
     public static final String STANDARD_START_TIME = "00:00"; //Start Time of event if StartTime not given
 
-
     /**
      * Parses the given {@code String} of arguments in the context of the AddEntryCommand
      * and returns an AddEntryCommand object for execution.
@@ -46,7 +45,6 @@ public class AddEntryCommandParser implements Parser<AddEntryCommand> {
         }
 
         try {
-
             EntryTitle entryTitle = ParserUtil.parseEventTitle(argMultimap.getValue(PREFIX_ENTRY_TITLE)).get();
             EndDate endDate = ParserUtil.parseEndDate(argMultimap.getValue(PREFIX_END_DATE)).get();
             StartDate startDate;

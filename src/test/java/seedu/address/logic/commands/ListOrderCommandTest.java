@@ -1,5 +1,5 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalOrders.getTypicalAddressBookWithOrders;
 
@@ -15,7 +15,6 @@ import seedu.address.model.UserPrefs;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListOrderCommand.
  */
-//@@author SuxianAlicia
 public class ListOrderCommandTest {
 
     private Model model;

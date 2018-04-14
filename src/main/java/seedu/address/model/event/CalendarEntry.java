@@ -17,7 +17,6 @@ public class CalendarEntry {
     private final StartTime startTime;
     private final EndTime endTime;
 
-
     /**
      * Every field must be present, and not null.
      */

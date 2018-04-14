@@ -1,5 +1,5 @@
 package seedu.address.logic.parser;
-
+//@@author SuxianAlicia
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC_GET_STOCKS;
 import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC_MEET_BOSS;
@@ -41,7 +41,6 @@ import seedu.address.model.event.StartDate;
 import seedu.address.model.event.StartTime;
 import seedu.address.testutil.CalendarEntryBuilder;
 
-//@@author SuxianAlicia
 public class AddEntryCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT =
@@ -97,6 +96,7 @@ public class AddEntryCommandParserTest {
 
     @Test
     public void parse_optionalFieldsMissing_success() {
+
         // No start Date - Start Date should match End Date
         CalendarEntry expectedCalEvent = new CalendarEntryBuilder()
                 .withEntryTitle(VALID_ENTRY_TITLE_MEET_BOSS)
@@ -139,6 +139,7 @@ public class AddEntryCommandParserTest {
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
+
         // Missing Event Title prefix
         assertParseFailure(parser,  VALID_ENTRY_TITLE_MEET_BOSS
                         + START_DATE_DESC_MEET_BOSS + END_DATE_DESC_MEET_BOSS
@@ -166,6 +167,7 @@ public class AddEntryCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
+
         // Invalid Event Title
         assertParseFailure(parser,  INVALID_ENTRY_TITLE_DESC
                         + START_DATE_DESC_MEET_BOSS + END_DATE_DESC_MEET_BOSS

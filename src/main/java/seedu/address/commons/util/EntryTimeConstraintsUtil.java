@@ -77,9 +77,6 @@ public class EntryTimeConstraintsUtil {
 
         if (eventIsShorterThanFifteenMinutes(startDate, endDate, startTime, endTime)) {
             throw new IllegalValueException(ENTRY_DURATION_CONSTRAINTS);
-
         }
-
     }
-
 }

@@ -34,7 +34,6 @@ public class EntryTitle {
         return test.matches(ENTRY_TITLE_VALIDATION_REGEX);
     }
 
-
     @Override
     public String toString() {
         return entryTitle;

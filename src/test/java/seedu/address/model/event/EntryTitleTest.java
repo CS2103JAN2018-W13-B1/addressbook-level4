@@ -1,5 +1,5 @@
 package seedu.address.model.event;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import seedu.address.testutil.Assert;
 
-//@@author SuxianAlicia
 public class EntryTitleTest {
     @Test
     public void constructor_null_throwsNullPointerException() {

@@ -13,6 +13,7 @@ import java.time.format.DateTimeParseException;
  * Guarantees: immutable; is valid as declared in {@link seedu.address.commons.util.DateUtil#isValidDate(String)}
  */
 public class EndDate {
+
     public static final String MESSAGE_END_DATE_CONSTRAINTS =
             "End Date should be DD-MM-YYYY, and it should not be blank";
 

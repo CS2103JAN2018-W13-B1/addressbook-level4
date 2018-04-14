@@ -122,5 +122,4 @@ public class ViewCalendarCommandTest {
                 .getMostRecent();
         assertEquals(MONTH_VIEW, lastEvent.getView());
     }
-
 }
