@@ -537,7 +537,7 @@ It contains the `OrderInformation`, `OrderStatus`, `Price`, `Quantity`, and `Del
 .UML Diagram for an Order object.
 image::OrderUMLDiagram.png[width="300" align="center"]
 
-`Order` objects are kept in-memory with the help of a `UniqueOrderList` object. The `UniqueOrderList` object ensures that
+`Order` objects are kept in-memory during an application session with the help of a `UniqueOrderList` object. The `UniqueOrderList` object ensures that
 ContactSails does not have any duplicate `Order` objects. This object is stored in the `ModelManager`.
 
 .UML Diagram for UniqueOrderList.
@@ -562,6 +562,7 @@ These commands are described in more detail in the sections below. +
 // tag::addingorders[]
 ===== Adding Orders
 
+---
 The `AddOrderCommand` adds an order to list of orders in ContactSails.
 
 The figure below shows the sequence diagram for adding an order.
@@ -595,6 +596,7 @@ The order added will be displayed in the OrderListPanel in ContactSails.
 // tag::editingorders[]
 ===== Editing Orders
 
+---
 The `EditOrderCommand` edits the `targetOrder` with the provided information which is specified by its `index`
 in the last shown listing of orders. The order will be updated with the new values given by the user.
 
@@ -603,7 +605,7 @@ The figure below shows the sequence diagram for editing an order.
 .Sequence Diagram for `EditOrderCommand`.
 image::EditOrderSeqDiagram.png[width="600" align="center"]
 
-In `EditOrderCommand` class, a new class called `EditOrderDescriptor` is defined to create objects
+In the `EditOrderCommand` class, a new class called `EditOrderDescriptor` is defined to create objects
 that will store the new values of the fields that need to be edited in the original order.
 The `createEditedOrder()` method uses the `editOrderDescriptor` object to create the `editedOrder`
 object.
@@ -615,57 +617,86 @@ The new order is now stored in ContactSails in the place of the old order.
 // tag::changeorderstatus[]
 ===== Changing OrderStatus
 
+---
 The `ChangeOrderStatusCommand` changes the `OrderStatus` field of an `Order` object to either `ongoing` or `done`.
+The `order` object is obtained by using its `index` in the last shown listing of orders.
+
 The figure below shows the sequence diagram for changing an order's status.
 
 .Sequence Diagram for `ChangeOrderStatusCommand`.
 image::ChangeOrderStatusSeqDiagram.png[width="600" align="center"]
+
+On changing the order status of an order, the colour of the corresponding `OrderCard` in the `OrderListPanel` also changes.
+This is done by simply removing the existing `CSS` styles associated with the `OrderCard`
+and re-adding a new stylesheet with the appropriate colours to that `OrderCard`.
 // end::changeorderstatus[]
 
 // tag::deletingorders[]
 ===== Deleting Orders
 
+---
 The `DeleteOrderCommand` deletes the order specified by its `index` in the last shown listing of orders.
 The figure below shows the sequence diagram for changing an order's status.
 
 .Sequence Diagram for `DeleteOrderCommand`.
-image::DeleteOrderSeqDiagram.png[width="600"]
+image::DeleteOrderSeqDiagram.png[width="600" align="center"]
 
 The above method deletes `orderToDelete` from the `model` of the address book and the resulting list of orders is displayed.
 // end::deletingorders[]
 
-// tag::storingorders[]
-===== Storing Orders in Storage
+// tag::otherinfo-orders[]
+===== Storing Orders
 
-// tag::storingorders[]
+---
+Storing orders in the application data file is very similar to that of storing persons.
+The `XmlAdaptedOrder` class is used to convert the `Order` objects in the `model` to JAXB-friendly `XmlAdaptedOrder` objects
+that can be stored in the `.xml` data file. When the application starts up, this class is also used to convert the `XmlAdaptedOrder` objects
+into a `model`-friendly `Order` objects.
 
-// tag::displayingorders[]
 ===== Displaying Orders In GUI
 
-A single `Order` is displayed using an `OrderListCard` (refer to Figure 21 below). The list of all orders in the address book is then displayed in a list
-using the `OrderListPanel`.
+---
+A single `Order` is displayed using an `OrderListCard`. The list of all orders in the address book is then displayed in a list
+using the `OrderListPanel`, which contains an `OrderListView` of multiple `OrderListCards`.
+// end::otherinfo-orders[]
 
-.OrderListCard FXML Render
-image::OrderListCardFXMLRender.png[width="150" align="center"]
-// end::displayingorders[]
-
-// tag::designconsorders[]
+// tag::designcons-orders[]
 ==== Design Considerations
 
 ===== Aspect: Data structures to support order operations
 
-* **Alternative 1 (current choice):**
-** Pros:
-** Cons:
-* **Alternative 2:**
-** Pros:
-** Cons:
+* **Alternative 1 (current choice):** Store a UniqueOrderList of orders containing orders of all persons in the application.
+** Pros: Easier to implement. Additionally, all order management operations will be synchronised.
+** Cons: Higher memory usage might affect the performance of the application.
+* **Alternative 2:** Using an association class to store multiple references to the same order.
+** Pros: Duplicate orders (with the same information except the person associated with it) will just be stored as a single order in memory.
+If multiple persons have the same order, there will be multiple references to one Order object. This reduces memory usage.
+** Cons: Harder to implement as updating or deleting orders for one person must not affect orders of another person having the same order.
 // tag::designconsorders[]
 
 // tag::changingthemes[]
 === Changing Themes
 
+The theme of ContactSails can be changed using the `ChangeThemeCommand`.
+Currently, ContactSails supports the `dark` and `light` themes.
+
 ==== Current Implementation
+
+The `Theme` object in the `model` is used to store the current theme version.
+
+The figure below shows the hierarchy of the `Theme` class.
+
+.UML Diagram showing the `Model` component with the `Theme` class.
+image::ThemeClassUMLDiagram.png[width="300" align="center"]
+
+When the `ChangeThemeCommand` is executed, a `ChangeThemeEvent` is raised by `EventsCenter`. The `handleChangeThemeEvent() method in the `MainWindow`
+class subscribes to this particular event and calls the `handleChangeTheme()` FXML controller method. This method changes the theme of the application based on the
+theme version it receives as a parameter.
+
+Given below is a high level sequence diagram for the `ChangeThemeCommand`.
+
+.High-Level Sequence Diagram for `ChangeThemeCommand`.
+image::HighLevelSequenceDiagramChangeTheme.png[width="500" align="center"]
 
 ==== Design Considerations
 
@@ -673,7 +704,7 @@ image::OrderListCardFXMLRender.png[width="150" align="center"]
 
 // end::changingthemes[]
 
-// tag::dataencryption[]
+// tag::proposeddataencryption[]
 === [Proposed] Data Encryption
 
 ==== Proposed Implementation
@@ -695,7 +726,7 @@ The actual encryption/decryption will be done using the `org.apache.xml.security
 * **Alternative 2:** Encrypt/decrypt the file only after a set time interval.
 ** Pros: Performance will be improved.
 ** Cons: Approach might be less secure. Implementation can also be harder.
-// end::dataencryption[]
+// end::proposeddataencryption[]
 
 === Logging
 
@@ -711,7 +742,6 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 * `WARNING` : Can continue, but with caution
 * `INFO` : Information showing the noteworthy actions by the App
 * `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
-
 
 // tag::calendarentries[]
 === Calendar and Entry tracking
@@ -787,8 +817,6 @@ This file is separate from the one storing `Person` and `Order`.
 `CalendarPanel` residing in `Ui` component creates an instance of `CalendarView` to manage the display of the calendar.
 The panel responds to events related to the calendar, such as changing the viewing format or changing the current date displayed.
 Any changes made to `Calendar` in `Model` will automatically be shown via the `CalendarView`.
-
-
 
 ==== Design Considerations
 
