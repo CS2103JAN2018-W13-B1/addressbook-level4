@@ -43,6 +43,7 @@ import seedu.address.model.order.UniqueOrderList;
 import seedu.address.testutil.TypicalCalendarEntries;
 import seedu.address.testutil.TypicalPersons;
 import seedu.address.ui.CommandBox;
+import seedu.address.ui.testutil.GuiTestAssert;
 
 /**
  * A system test class for AddressBook, which provides access to handles of GUI components and helper methods
@@ -196,8 +197,8 @@ public abstract class AddressBookSystemTest {
 
     /**
      * Asserts that the {@code CommandBox} displays {@code expectedCommandInput}, the {@code ResultDisplay} displays
-     * {@code expectedResultMessage}, the model and storage contains the same person objects as {@code expectedModel}
-     * and the person list panel displays the persons in the model correctly.
+     * {@code expectedResultMessage}, the model and storage contains the same person, order and calendar entry objects
+     * as {@code expectedModel} and the person list panel displays the persons in the model correctly.
      */
     protected void assertApplicationDisplaysExpected(String expectedCommandInput, String expectedResultMessage,
             Model expectedModel) {
@@ -205,7 +206,8 @@ public abstract class AddressBookSystemTest {
         assertEquals(expectedResultMessage, getResultDisplay().getText());
         assertEquals(expectedModel, getModel());
         assertEquals(expectedModel.getAddressBook(), testApp.readStorageAddressBook());
-        assertListMatching(getPersonListPanel(), expectedModel.getFilteredPersonList());
+        assertEquals(expectedModel.getCalendarManager(), testApp.readStorageCalendarManager());
+        assertPersonListMatching(getPersonListPanel(), expectedModel.getFilteredPersonList());
     }
 
     /**
