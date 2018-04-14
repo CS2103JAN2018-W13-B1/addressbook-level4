@@ -583,7 +583,6 @@ These commands are described in more detail in the sections below. +
 // tag::addingorders[]
 ===== Adding Orders
 
----
 The `AddOrderCommand` adds an order to list of orders in ContactSails.
 
 The figure below shows the sequence diagram for adding an order.
@@ -617,7 +616,6 @@ The order added will be displayed in the OrderListPanel in ContactSails.
 // tag::editingorders[]
 ===== Editing Orders
 
----
 The `EditOrderCommand` edits the `targetOrder` with the provided information which is specified by its `index`
 in the last shown listing of orders. The order will be updated with the new values given by the user.
 
@@ -638,7 +636,6 @@ The new order is now stored in ContactSails in the place of the old order.
 // tag::changeorderstatus[]
 ===== Changing OrderStatus
 
----
 The `ChangeOrderStatusCommand` changes the `OrderStatus` field of an `Order` object to either `ongoing` or `done`.
 The `order` object is obtained by using its `index` in the last shown listing of orders.
 
@@ -655,7 +652,6 @@ and re-adding a new stylesheet with the appropriate colours to that `OrderCard`.
 // tag::deletingorders[]
 ===== Deleting Orders
 
----
 The `DeleteOrderCommand` deletes the order specified by its `index` in the last shown listing of orders.
 The figure below shows the sequence diagram for changing an order's status.
 
@@ -668,7 +664,6 @@ The above method deletes `orderToDelete` from the `model` of the address book an
 // tag::otherinfo-orders[]
 ===== Storing Orders
 
----
 Storing orders in the application data file is very similar to that of storing persons.
 The `XmlAdaptedOrder` class is used to convert the `Order` objects in the `model` to JAXB-friendly `XmlAdaptedOrder` objects
 that can be stored in the `.xml` data file. When the application starts up, this class is also used to convert the `XmlAdaptedOrder` objects
@@ -676,7 +671,6 @@ into a `model`-friendly `Order` objects.
 
 ===== Displaying Orders In GUI
 
----
 A single `Order` is displayed using an `OrderListCard`. The list of all orders in the address book is then displayed in a list
 using the `OrderListPanel`, which contains an `OrderListView` of multiple `OrderListCards`.
 // end::otherinfo-orders[]
@@ -686,7 +680,6 @@ using the `OrderListPanel`, which contains an `OrderListView` of multiple `Order
 
 ===== Aspect: Data structures to support order operations
 
----
 * **Alternative 1 (current choice):** Store a UniqueOrderList of orders containing orders of all persons in the application.
 ** Pros: Easier to implement. Additionally, all order management operations will be synchronised.
 ** Cons: Higher memory usage might affect the performance of the application.
@@ -723,6 +716,7 @@ Given below is a high level sequence diagram for the `ChangeThemeCommand`.
 image::HighLevelSequenceDiagramChangeTheme.png[width="500" align="center"]
 
 When the user exits the application, the current theme version will be stored in the `preferences.json` file as shown in the code snippet below.
+
 ----
 {
   "guiSettings" : {
@@ -740,7 +734,6 @@ Storing the theme in the `preferences.json` enables the theme change to be persi
 
 ===== Aspect: Storing theme version
 
----
 * **Alternative 1 (current choice):** Encapsulate the theme version in a `Theme` object.
 ** Pros: Relevant attributes and methods will be encapsulated in a single class.
 ** Cons: Higher memory overhead.
