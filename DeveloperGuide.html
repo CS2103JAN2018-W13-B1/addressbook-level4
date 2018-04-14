@@ -47,11 +47,12 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">4.1. Undo/Redo feature</a></li>
 <li><a href="#person-panel">4.2. Person Panel</a></li>
-<li><a href="#orders">4.3. Orders</a></li>
-<li><a href="#data-encryption">4.4. Data Encryption</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#calendar-and-entry-tracking">4.6. Calendar and Entry tracking</a></li>
-<li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
+<li><a href="#order-management">4.3. Order Management</a></li>
+<li><a href="#changing-themes">4.4. Changing Themes</a></li>
+<li><a href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.6. Logging</a></li>
+<li><a href="#calendar-and-entry-tracking">4.7. Calendar and Entry tracking</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -156,7 +157,7 @@ You can download it <a href="http://www.oracle.com/technetwork/java/javase/downl
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This app will not work with earlier versions of Java 8, so ensure that you have installed the right version of Java 8.
+ContactSails will not work with earlier versions of Java 8, so ensure that you have installed the right version of Java 8.
 </td>
 </tr>
 </table>
@@ -195,9 +196,41 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <li>
 <p>Fork this repo, and clone the fork to your computer.</p>
 </li>
+</ol>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ForkAndClone.png" alt="ForkAndClone" width="400">
+</div>
+<div class="title">Figure 1. Forking and cloning the ContactSails repository from its Github page.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
 <li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
+<p>Open IntelliJ. You should see the Welcome Screen (shown in the figure below).</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first.
+</td>
+</tr>
+</table>
+</div>
 </li>
+</ol>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/IntelliJWelcomeScreen.png" alt="IntelliJWelcomeScreen" width="400">
+</div>
+<div class="title">Figure 2. IntelliJ&#8217;s Welcome screen.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
 <li>
 <p>Set up the correct JDK version for Gradle:</p>
 <div class="olist loweralpha">
@@ -215,17 +248,33 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <p>Click <code>Import Project</code>.</p>
 </li>
 <li>
-<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
+<p>Locate the <code>build.gradle</code> file in the ContactSails repository directory and select it. Click <code>OK</code>.</p>
 </li>
 <li>
 <p>Click <code>Open as Project</code>.</p>
 </li>
 <li>
-<p>Click <code>OK</code> to accept the default settings.</p>
+<p>Click <code>OK</code> to accept the default settings. You will now be directed to the <code>Import Project</code> window, as shown below.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ImportWindowFirstScreen.png" alt="ImportWindowFirstScreen" width="400">
+</div>
+<div class="title">Figure 3. The 'Import Project' window.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="8">
+<li>
+<p>Click <code>Next</code> repeatedly to import the project with the default settings until you reach the last window (this window will have a <code>Finish</code> button).</p>
 </li>
 <li>
-<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
-This will generate all resources required by the application and tests.</p>
+<p>Click <code>Finish</code> to finish importing the project.</p>
+</li>
+<li>
+<p>Open the <code>Terminal</code> and run the command <code>gradlew processResources</code> (run <code>./gradlew processResources</code> for Mac/Linux). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+This generates all the resources required by the application and tests.</p>
 </li>
 </ol>
 </div>
@@ -362,7 +411,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
 </div>
-<div class="title">Figure 1. Architecture Diagram</div>
+<div class="title">Figure 4. Architecture Diagram</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -447,7 +496,7 @@ Given below is a description of what each of those classes do:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+<div class="title">Figure 5. Class Diagram of the Logic Component</div>
 </div>
 <h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
 <div class="paragraph">
@@ -457,7 +506,7 @@ Given below is a description of what each of those classes do:</p>
 <div class="content">
 <img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command (part 1)</div>
+<div class="title">Figure 6. Component interactions for <code>delete 1</code> command (part 1)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -478,7 +527,7 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 <div class="content">
 <img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
 </div>
-<div class="title">Figure 4. Component interactions for <code>delete 1</code> command (part 2)</div>
+<div class="title">Figure 7. Component interactions for <code>delete 1</code> command (part 2)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -506,7 +555,7 @@ Figure 5 below shows the structure of the <code>UI</code> component.</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 5. Structure of the UI Component</div>
+<div class="title">Figure 8. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> for the <code>UI</code> Component: <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -541,16 +590,16 @@ Figure 6 below shows the structure of the <code>Logic</code> Component.</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
+<div class="title">Figure 9. Structure of the Logic Component</div>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Structure of Commands in the Logic Component.</div>
+<div class="title">Figure 10. Structure of Commands in the Logic Component.</div>
 </div>
 <div class="paragraph">
-<p>This diagram above (Figure 7) shows the finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the Logic Component&#8221;</a></p>
+<p>This diagram above (Figure 7) shows the finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 9, &#8220;Structure of the Logic Component&#8221;</a></p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> for the <code>Logic</code> Component:
@@ -582,7 +631,7 @@ Figure 6 below shows the structure of the <code>Logic</code> Component.</p>
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 11. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -596,7 +645,7 @@ Figure 9 below shows the structure of the <code>Model</code> Component.</p>
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 9. Structure of the <code>Model</code> Component</div>
+<div class="title">Figure 12. Structure of the <code>Model</code> Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> for the <code>Model</code> Component: <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -615,6 +664,9 @@ Figure 9 below shows the structure of the <code>Model</code> Component.</p>
 <li>
 <p>Exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
+<li>
+<p>Exposes an unmodifiable <code>ObservableList&lt;Order&gt;</code> and <code>ObservableList&lt;CalendarEntry&gt;</code> similar to the <code>ObservableList&lt;Person&gt;</code> mentioned above.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -628,7 +680,7 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 13. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> for the <code>Storage</code> Component: <a href="https://github.com/CS2103JAN2018-W13-B1/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -678,7 +730,7 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 11. Inheritance Diagram for commands in <code>Logic</code> Component</div>
+<div class="title">Figure 14. Inheritance Diagram for commands in <code>Logic</code> Component</div>
 </div>
 <div class="paragraph">
 <p>As you can see from figure 11, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
@@ -728,7 +780,7 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
-<div class="title">Figure 12. UndoRedoStack before and after executing 1 Delete Command</div>
+<div class="title">Figure 15. UndoRedoStack before and after executing 1 Delete Command</div>
 </div>
 <div class="paragraph">
 <p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
@@ -737,7 +789,7 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
-<div class="title">Figure 13. UndoRedoStack before and after Executing 1 Add Command</div>
+<div class="title">Figure 16. UndoRedoStack before and after Executing 1 Add Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -761,7 +813,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
-<div class="title">Figure 14. UndoRedoStack before and after executing Undo Command</div>
+<div class="title">Figure 17. UndoRedoStack before and after executing Undo Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -782,7 +834,7 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 15. Sequence Diagram for executing Undo Command</div>
+<div class="title">Figure 18. Sequence Diagram for executing Undo Command</div>
 </div>
 <div class="paragraph">
 <p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
@@ -806,7 +858,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
-<div class="title">Figure 16. UndoRedoStack before and after executing Clear Command</div>
+<div class="title">Figure 19. UndoRedoStack before and after executing Clear Command</div>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
@@ -815,7 +867,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
 </div>
-<div class="title">Figure 17. UndoRedoStack before and after executing List Command</div>
+<div class="title">Figure 20. UndoRedoStack before and after executing List Command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
@@ -824,7 +876,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
-<div class="title">Figure 18. Execution Path when Undoable Commands</div>
+<div class="title">Figure 21. Execution Path when Undoable Commands</div>
 </div>
 </div>
 <div class="sect3">
@@ -979,7 +1031,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/PersonPanelLayout.png" alt="PersonPanelLayout" width="800">
 </div>
-<div class="title">Figure 19. Visual layout of PersonPanel</div>
+<div class="title">Figure 22. Visual layout of PersonPanel</div>
 </div>
 <div class="paragraph">
 <p>Notably, the contact&#8217;s group and preferences are coloured as these are important information to the user.
@@ -1065,7 +1117,7 @@ selects a contact found in <code>PersonListPanel</code>.</p>
 <div class="content">
 <img src="images/SelectionPersonPanelSequenceDiagram.png" alt="SelectionPersonPanelSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 20. Sequence diagram for selection</div>
+<div class="title">Figure 23. Sequence diagram for selection</div>
 </div>
 <div class="paragraph">
 <p>When a contact is selected using a mouse or a command in <code>PersonListPanel</code>, this will result in <code>EventsCenter</code>
@@ -1143,92 +1195,79 @@ returning a <code>Person</code> of the selected contact, which then displays the
 </div>
 </div>
 <div class="sect2">
-<h3 id="orders"><a class="link" href="#orders">4.3. Orders</a></h3>
+<h3 id="order-management"><a class="link" href="#order-management">4.3. Order Management</a></h3>
 <div class="paragraph">
 <p>Orders refer to the sales orders that are added by the salesperson to ContactSails.
 These orders can be added to any particular person of the address book.
-After being added, orders can be edited and deleted.</p>
+After being added, orders can be edited and deleted. Additionally, orders can be marked as <code>ongoing</code> and <code>done</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>An <code>Order</code> is represented in the application as shown in <em>Figure 19</em> given below.</p>
+<p>An <code>Order</code> is represented in the application as shown in the figure given below.
+It contains the <code>OrderInformation</code>, <code>OrderStatus</code>, <code>Price</code>, <code>Quantity</code>, and <code>DeliveryDate</code> fields.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/OrderUMLDiagram.png" alt="OrderUMLDiagram" width="500">
+<img src="images/OrderUMLDiagram.png" alt="OrderUMLDiagram" width="300">
 </div>
-<div class="title">Figure 21. UML Diagram for Order</div>
-</div>
-<div class="paragraph">
-<p>A brief description of each of the attributes of an <code>Order</code> is given below:<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>OrderInformation: Represents information about the order item.<br></p>
-</li>
-<li>
-<p>OrderStatus: Denotes whether the sales order is ongoing or has been fulfilled by the salesperson.<br></p>
-</li>
-<li>
-<p>Price: Represents the price of a single item of the sales order.<br></p>
-</li>
-<li>
-<p>Quantity: Represents the number of items in the sales order.<br></p>
-</li>
-<li>
-<p>DeliveryDate: Represents the date by which the sales order must be fulfilled.<br></p>
-</li>
-</ul>
+<div class="title">Figure 24. UML Diagram for an Order object.</div>
 </div>
 <div class="paragraph">
-<p>As orders are added to a particular person, there exists an association between a <code>Person</code> object and an <code>Order</code> object.
-This relationship is shown in <em>Figure 20</em> given below.</p>
+<p><code>Order</code> objects are kept in-memory during an application session with the help of a <code>UniqueOrderList</code> object, whose UML diagram is given below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/PersonOrderAssociationUMLDiagram.png" alt="PersonOrderAssociationUMLDiagram" width="500">
+<img src="images/UniqueOrderListUMLDiagram.png" alt="UniqueOrderListUMLDiagram" width="300">
 </div>
-<div class="title">Figure 22. UML Diagram showing association between a Person and an Order</div>
-</div>
-<div class="paragraph">
-<p>The association is implemented in the following manner:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Person</span> {
-
-    <span class="comment">// ... other Person attributes ...</span>
-
-    <span class="directive">private</span> <span class="directive">final</span> UniquePersonOrderList personOrders;
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>public class PersonOrder {
-
-    Person person;
-    Order order;
-
-    // ... PersonOrder attribute getters and setters ...
-}</pre>
-</div>
+<div class="title">Figure 25. UML Diagram for UniqueOrderList.</div>
 </div>
 <div class="paragraph">
-<p>Operations on orders can be done using the <code>AddOrderCommand</code>, <code>EditOrderCommand</code>, and <code>DeleteOrderCommand</code> commands.
-These commands are described in more detail below.<br></p>
+<p>The <code>UniqueOrderList</code> object ensures that ContactSails does not have any duplicate <code>Order</code> objects. This object is stored in the <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ModelManager</code> utilises the <code>UniqueOrderList</code> object for order management related operations.
+An example operation would be adding an order to ContactSails.
+Given below is a high-level sequence diagram for this operation.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/HighLevelSequenceDiagramForOrderAdd.png" alt="HighLevelSequenceDiagramForOrderAdd" width="500">
+</div>
+<div class="title">Figure 26. High-Level Sequence Diagram for adding an order. Other operations follow the same high level sequence diagram.</div>
+</div>
+<div class="paragraph">
+<p>Operations on orders can be done using the <code>AddOrderCommand</code>, <code>EditOrderCommand</code>, <code>ChangeOrderStatusCommand</code>, and <code>DeleteOrderCommand</code> commands.
+The class diagram given below shows how these commands are part of the <code>Logic</code> Component.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/UMLDiagramOrderCommandsLogic.png" alt="UMLDiagramOrderCommandsLogic" width="300">
+</div>
+<div class="title">Figure 27. UML Diagram showing order management related commands in the <code>Logic</code> component.</div>
+</div>
+<div class="paragraph">
+<p>These commands are described in more detail in the sections below.<br></p>
 </div>
 <div class="sect4">
 <h5 id="adding-orders"><a class="link" href="#adding-orders">Adding Orders</a></h5>
+<hr>
 <div class="paragraph">
-<p>The <code>AddOrderCommand</code> adds an order to the person specified by their <code>index</code> in the last shown listing of persons.</p>
+<p>The <code>AddOrderCommand</code> adds an order to list of orders in ContactSails.</p>
 </div>
 <div class="paragraph">
-<p>The following snippet shows how the <code>executeUndoableCommand()</code> method updates the <code>model</code> of the
-application by adding <code>orderToAdd</code> to the list of orders of the <code>person</code> specified. Note that <code>orderToAdd</code> will
-not be added if the <code>person</code> has not been found or a duplicate order has already been assigned to this <code>person</code>.</p>
+<p>The figure below shows the sequence diagram for adding an order.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AddOrderSeqDiagram.png" alt="AddOrderSeqDiagram" width="600">
+</div>
+<div class="title">Figure 28. Sequence Diagram for <code>AddOrderCommand</code>.</div>
+</div>
+<div class="paragraph">
+<p>The following snippet shows how the <code>AddOrderCommand#executeUndoableCommand()</code> method updates the <code>model</code> of the
+application by adding <code>orderToAdd</code> to the list of orders in the application. Note that <code>orderToAdd</code> will
+not be added if a duplicate order has already been added to the list of orders before.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1236,9 +1275,7 @@ not be added if the <code>person</code> has not been found or a duplicate order 
     <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
         requireNonNull(model);
         <span class="keyword">try</span> {
-            model.addOrderToPerson(person, orderToAdd);
-        } <span class="keyword">catch</span> (PersonNotFoundException pnfe) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target person cannot be missing</span><span class="delimiter">&quot;</span></span>);
+            model.addOrderToOrderList(orderToAdd);
         } <span class="keyword">catch</span> (DuplicateOrderException e) {
             <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_ORDER_NOT_ADDED);
         }
@@ -1249,109 +1286,91 @@ not be added if the <code>person</code> has not been found or a duplicate order 
 </div>
 </div>
 <div class="paragraph">
-<p>The order added will be displayed in ContactSails.</p>
+<p>The order added will be displayed in the OrderListPanel in ContactSails.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="editing-orders"><a class="link" href="#editing-orders">Editing Orders</a></h5>
+<hr>
 <div class="paragraph">
 <p>The <code>EditOrderCommand</code> edits the <code>targetOrder</code> with the provided information which is specified by its <code>index</code>
-in the last shown listing of orders. The order will be updated with the information stored in <code>editOrderDescriptor</code>
+in the last shown listing of orders. The order will be updated with the new values given by the user.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the sequence diagram for editing an order.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/EditOrderSeqDiagram.png" alt="EditOrderSeqDiagram" width="600">
+</div>
+<div class="title">Figure 29. Sequence Diagram for <code>EditOrderCommand</code>.</div>
+</div>
+<div class="paragraph">
+<p>In the <code>EditOrderCommand</code> class, a new class called <code>EditOrderDescriptor</code> is defined to create objects
+that will store the new values of the fields that need to be edited in the original order.
+The <code>createEditedOrder()</code> method uses the <code>editOrderDescriptor</code> object to create the <code>editedOrder</code>
 object.</p>
 </div>
 <div class="paragraph">
-<p>A new class called <code>EditOrderDescriptor</code> is defined to create the <code>editOrderDescriptor</code> object that stores the new values
-of the fields that need to be edited. Each non-empty field value will replace the corresponding field value of the <code>order</code>.</p>
+<p>The <code>executeUndoableCommand()</code> method uses this <code>editedOrder</code> object to update the <code>model</code> of the application.
+The new order is now stored in ContactSails in the place of the old order.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="changing-orderstatus"><a class="link" href="#changing-orderstatus">Changing OrderStatus</a></h5>
+<hr>
+<div class="paragraph">
+<p>The <code>ChangeOrderStatusCommand</code> changes the <code>OrderStatus</code> field of an <code>Order</code> object to either <code>ongoing</code> or <code>done</code>.
+The <code>order</code> object is obtained by using its <code>index</code> in the last shown listing of orders.</p>
 </div>
 <div class="paragraph">
-<p>The constructors of this class are shown below:</p>
+<p>The figure below shows the sequence diagram for changing an order&#8217;s status.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">EditOrderDescriptor</span> {
-    <span class="directive">public</span> EditOrderDescriptor() {}
-
-    <span class="comment">/**
-     * Copy constructor.
-     */</span>
-    <span class="directive">public</span> EditOrderDescriptor(EditOrderDescriptor toCopy) {
-        setOrderInformation(toCopy.orderInformation);
-        setOrderStatus(toCopy.orderStatus);
-        setPrice(toCopy.price);
-        setQuantity(toCopy.quantity);
-        setDeliveryDate(toCopy.deliveryDate);
-    }
-}</code></pre>
+<img src="images/ChangeOrderStatusSeqDiagram.png" alt="ChangeOrderStatusSeqDiagram" width="600">
 </div>
+<div class="title">Figure 30. Sequence Diagram for <code>ChangeOrderStatusCommand</code>.</div>
 </div>
 <div class="paragraph">
-<p>The <code>EditOrderDescriptor</code> uses Optionals to return <code>Optional.empty()</code> if any of the field values are null.
-If <code>Optional.empty()</code> is returned for any field, that particular field does not need to be edited.</p>
-</div>
-<div class="paragraph">
-<p>The <code>createEditedOrder()</code> method constructs the edited order. Finally, the <code>executeUndoableCommand()</code> method calls the <code>createEditedOrder()</code> method
-for getting the edited order and updates the <code>model</code> of the application.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">EditOrderCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
-        <span class="keyword">try</span> {
-            model.updateOrder(orderToEdit, editedOrder);
-        } <span class="keyword">catch</span> (DuplicateOrderException doe) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_ORDER);
-        } <span class="keyword">catch</span> (OrderNotFoundException onfe) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target order cannot be missing</span><span class="delimiter">&quot;</span></span>);
-        }
-
-        <span class="comment">// ... display updated address book ...</span>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The new order returned is now stored in the address book in the place of the old order.</p>
+<p>On changing the order status of an order, the colour of the corresponding <code>OrderCard</code> in the <code>OrderListPanel</code> also changes.
+This is done by simply removing the existing <code>CSS</code> styles associated with the <code>OrderCard</code>
+and re-adding a new stylesheet with the appropriate colours to that <code>OrderCard</code>.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="deleting-orders"><a class="link" href="#deleting-orders">Deleting Orders</a></h5>
+<hr>
 <div class="paragraph">
-<p>The <code>DeleteOrderCommand</code> deletes the order specified by its <code>index</code> in the last shown listing of orders.</p>
+<p>The <code>DeleteOrderCommand</code> deletes the order specified by its <code>index</code> in the last shown listing of orders.
+The figure below shows the sequence diagram for changing an order&#8217;s status.</p>
 </div>
-<div class="paragraph">
-<p>The code snippet below shows the <code>executeUndoableMethod()</code> of the <code>DeleteOrderCommand</code> class:</p>
-</div>
-<div class="listingblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteOrderCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        requireNonNull(orderToDelete);
-        <span class="keyword">try</span> {
-            model.deleteOrder(orderToDelete);
-        } <span class="keyword">catch</span> (OrderNotFoundException onfe) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target order cannot be missing</span><span class="delimiter">&quot;</span></span>);
-        }
-
-        <span class="comment">// ... display updated address book ...</span>
-    }
-}</code></pre>
+<img src="images/DeleteOrderSeqDiagram.png" alt="DeleteOrderSeqDiagram" width="600">
 </div>
+<div class="title">Figure 31. Sequence Diagram for <code>DeleteOrderCommand</code>.</div>
 </div>
 <div class="paragraph">
 <p>The above method deletes <code>orderToDelete</code> from the <code>model</code> of the address book and the resulting list of orders is displayed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="displaying-orders-in-gui"><a class="link" href="#displaying-orders-in-gui">Displaying Orders In GUI</a></h5>
+<h5 id="storing-orders"><a class="link" href="#storing-orders">Storing Orders</a></h5>
+<hr>
 <div class="paragraph">
-<p>A single <code>Order</code> is displayed using an <code>OrderListCard</code> (refer to Figure 21 below). The list of all orders in the address book is then displayed in a list
-using the <code>OrderListPanel</code>.</p>
+<p>Storing orders in the application data file is very similar to that of storing persons.
+The <code>XmlAdaptedOrder</code> class is used to convert the <code>Order</code> objects in the <code>model</code> to JAXB-friendly <code>XmlAdaptedOrder</code> objects
+that can be stored in the <code>.xml</code> data file. When the application starts up, this class is also used to convert the <code>XmlAdaptedOrder</code> objects
+into a <code>model</code>-friendly <code>Order</code> objects.</p>
 </div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/OrderListCardFXMLRender.png" alt="OrderListCardFXMLRender" width="150">
 </div>
-<div class="title">Figure 23. OrderListCard FXML Render</div>
+<div class="sect4">
+<h5 id="displaying-orders-in-gui"><a class="link" href="#displaying-orders-in-gui">Displaying Orders In GUI</a></h5>
+<hr>
+<div class="paragraph">
+<p>A single <code>Order</code> is displayed using an <code>OrderListCard</code>. The list of all orders in the address book is then displayed in a list
+using the <code>OrderListPanel</code>, which contains an <code>OrderListView</code> of multiple <code>OrderListCards</code>.</p>
 </div>
 </div>
 </div>
@@ -1362,29 +1381,28 @@ using the <code>OrderListPanel</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Using the <code>PersonOrder</code> association class.</p>
+<p><strong>Alternative 1 (current choice):</strong> Store a UniqueOrderList of orders containing orders of all persons in the application.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Duplicate orders (with the same information except the person associated with it) will just be stored as a
-single order in memory. If multiple persons have the same order, there will be multiple references to one <code>Order</code> object.</p>
+<p>Pros: Easier to implement. Additionally, all order management operations will be synchronised.</p>
 </li>
 <li>
-<p>Cons: Harder to implement as updating or deleting orders for one person must not affect orders of another person having
-the same order.</p>
+<p>Cons: Higher memory usage might affect the performance of the application.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Store a <code>UniqueOrderList</code> of orders in each person.</p>
+<p><strong>Alternative 2:</strong> Using an association class to store multiple references to the same order.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to implement.</p>
+<p>Pros: Duplicate orders (with the same information except the person associated with it) will just be stored as a single order in memory.
+If multiple persons have the same order, there will be multiple references to one Order object. This reduces memory usage.</p>
 </li>
 <li>
-<p>Cons: Higher memory usage might affect the performance of the application.</p>
+<p>Cons: Harder to implement as updating or deleting orders for one person must not affect orders of another person having the same order.</p>
 </li>
 </ul>
 </div>
@@ -1395,28 +1413,121 @@ the same order.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption"><a class="link" href="#data-encryption">4.4. Data Encryption</a></h3>
+<h3 id="changing-themes"><a class="link" href="#changing-themes">4.4. Changing Themes</a></h3>
+<div class="paragraph">
+<p>The theme of ContactSails can be changed using the <code>ChangeThemeCommand</code>.
+Currently, ContactSails supports <code>dark</code> and <code>light</code> themes.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
-being stored.</p>
+<p>The <code>Theme</code> object in the <code>model</code> is used to store the current theme version.</p>
 </div>
 <div class="paragraph">
-<p>The secret key for encryption/decryption is generated using the <code>javax.crypto</code> library.</p>
+<p>The figure below shows the hierarchy of the <code>Theme</code> class.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ThemeClassUMLDiagram.png" alt="ThemeClassUMLDiagram" width="300">
+</div>
+<div class="title">Figure 32. UML Diagram showing the <code>Model</code> component with the <code>Theme</code> class.</div>
 </div>
 <div class="paragraph">
-<p>The actual encryption/decryption is done using the <code>org.apache.xml.security</code> library, specifically the <code>XMLCipher</code> class.</p>
+<p>When the <code>ChangeThemeCommand</code> is executed, a <code>ChangeThemeEvent</code> is raised by <code>EventsCenter</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>handleChangeThemeEvent() method in the `MainWindow</code>
+class subscribes to this particular event and calls the <code>handleChangeTheme()</code> FXML controller method. This method changes the theme of the application based on the
+theme version it receives as a parameter. This is done by attaching the corresponding <code>CSS</code> stylesheet to the <code>MainWindow</code> JavaFX scene of the application.</p>
+</div>
+<div class="paragraph">
+<p>Given below is a high level sequence diagram for the <code>ChangeThemeCommand</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/HighLevelSequenceDiagramChangeTheme.png" alt="HighLevelSequenceDiagramChangeTheme" width="500">
+</div>
+<div class="title">Figure 33. High-Level Sequence Diagram for <code>ChangeThemeCommand</code>.</div>
+</div>
+<div class="paragraph">
+<p>When the user exits the application, the current theme version will be stored in the <code>preferences.json</code> file as shown in the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "guiSettings" : {
+        // ... guiSettings attributes ...
+    },
+    "theme" : "dark"
+  },
+  // ... file management attributes ...
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Storing the theme in the <code>preferences.json</code> enables the theme change to be persistent across different application sessions.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
+<h5 id="aspect-storing-theme-version"><a class="link" href="#aspect-storing-theme-version">Aspect: Storing theme version</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Encapsulate the theme version in a <code>Theme</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Relevant attributes and methods will be encapsulated in a single class.</p>
+</li>
+<li>
+<p>Cons: Higher memory overhead.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Storing the theme version as a string in guiSettings.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement, and lesser memory overhead.</p>
+</li>
+<li>
+<p>Cons: Methods related to changing themes would have to be written in multiple classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.5.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
+being stored.</p>
+</div>
+<div class="paragraph">
+<p>The secret key for encryption/decryption will be generated using the <code>KeyGenerator</code> class in the <code>javax.crypto</code> library.</p>
+</div>
+<div class="paragraph">
+<p>The actual encryption/decryption will be done using the <code>org.apache.xml.security</code> library, specifically the <code>XMLCipher</code> class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.2. Design Considerations</a></h4>
+<div class="sect4">
 <h5 id="aspect-time-of-encryption-of-xml-data-file"><a class="link" href="#aspect-time-of-encryption-of-xml-data-file">Aspect: Time of encryption of XML data file</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Encrypt/decrypt the whole file each time there is an update to what information needs to stored.</p>
+<p><strong>Alternative 1:</strong> Encrypt/decrypt the whole file each time there is an update to what information needs to stored.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1447,14 +1558,14 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1485,14 +1596,14 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">4.6. Calendar and Entry tracking</a></h3>
+<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">4.7. Calendar and Entry tracking</a></h3>
 <div class="paragraph">
 <p>Entries refer to meetings, deadlines and order deliveries created by users in ContactSails.
 Users can create, edit and delete entries.
 ContactSails has a calendar interface that displays existing entries for better visualisation of the user&#8217;s schedule.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>ContactSails uses CalendarFX&#8217;s calendar interface. The <code>Model</code> component manages a list of entries, and this list of entries will synchronise with
 the calendar&#8217;s internal list of entries.</p>
@@ -1555,7 +1666,7 @@ Ongoing orders of a person will also appear as <code>CalendarEntry</code> based 
 <div class="content">
 <img src="images/CalendarEntryClassDiagram.png" alt="CalendarEntryClassDiagram" width="800">
 </div>
-<div class="title">Figure 24. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
+<div class="title">Figure 34. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
 </div>
 <div class="paragraph">
 <p>In the Figure 22, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
@@ -1573,7 +1684,7 @@ Ongoing orders of a person will also appear as <code>CalendarEntry</code> based 
 <div class="content">
 <img src="images/AddEntrySD.png" alt="AddEntrySD" width="800">
 </div>
-<div class="title">Figure 25. Sequence Diagram for adding of an entry into ContactSails</div>
+<div class="title">Figure 35. Sequence Diagram for adding of an entry into ContactSails</div>
 </div>
 <div class="paragraph">
 <p>In Figure 23, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
@@ -1596,7 +1707,7 @@ Any changes made to <code>Calendar</code> in <code>Model</code> will automatical
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-calendar-interface"><a class="link" href="#aspect-implementation-of-calendar-interface">Aspect: Implementation of calendar interface</a></h5>
 <div class="ulist">
@@ -1638,7 +1749,7 @@ Design of features of the calendar have to be decided by developers themselves, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1704,7 +1815,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 26. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 36. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2291,7 +2402,7 @@ contributions of every developer in the team in regards to developing ContactSai
 </div>
 </li>
 <li>
-<p><strong>Minor Feature</strong>: Encryption of application data.</p>
+<p><strong>Minor Feature</strong>: Changing theme of the application.</p>
 </li>
 <li>
 <p><strong>How the above features fit into the product scope:</strong></p>
@@ -2302,7 +2413,7 @@ contributions of every developer in the team in regards to developing ContactSai
 If customers have any issues regarding their orders, salespersons will be able to view all the relevant information in a single place.</p>
 </li>
 <li>
-<p><strong>Minor Feature</strong>: Since ContactSails has a lot of personal details of customers, the owner of the address book would want to encrypt the application data file to prevent outside access to sensitive information.</p>
+<p><strong>Minor Feature</strong>: As a user, the salesperson would want to customise the application to suit their needs.</p>
 </li>
 </ul>
 </div>
@@ -3886,7 +3997,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 14:23:40 UTC
+Last updated 2018-04-14 16:33:22 UTC
 </div>
 </div>
 </body>

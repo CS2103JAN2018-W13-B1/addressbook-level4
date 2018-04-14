@@ -545,26 +545,6 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="data-encryption"><a class="link" href="#data-encryption">Data Encryption</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
-being stored.</p>
-</div>
-<div class="paragraph">
-<p>The secret key for encryption/decryption is generated using the <code>javax.crypto</code> library.</p>
-</div>
-<div class="paragraph">
-<p>The actual encryption/decryption is done using the <code>org.apache.xml.security</code> library, specifically the <code>XMLCipher</code> class.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -579,7 +559,7 @@ being stored.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 14:23:40 UTC
+Last updated 2018-04-14 16:33:22 UTC
 </div>
 </div>
 </body>
