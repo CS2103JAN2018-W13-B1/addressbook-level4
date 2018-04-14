@@ -1,3 +1,4 @@
+//@@author amad-person
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
@@ -9,12 +10,14 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
+import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.DisplayOrderListEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.order.Order;
+import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.person.Person;
-// import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * Adds an order to a person in the address book.
@@ -23,19 +26,24 @@ public class AddOrderCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "orderadd";
     public static final String COMMAND_ALIAS = "oa";
+    public static final String COMMAND_SYNTAX = COMMAND_WORD + " INDEX "
+            + PREFIX_ORDER_INFORMATION + "ORDER_INFO "
+            + PREFIX_PRICE + "PRICE "
+            + PREFIX_QUANTITY + "QUANTITY "
+            + PREFIX_DELIVERY_DATE + "DELIVERY_DATE";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an order to the selected person in the "
             + "address book.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_ORDER_INFORMATION + "ORDER INFO "
+            + PREFIX_ORDER_INFORMATION + "ORDER_INFO "
             + PREFIX_PRICE + "PRICE "
             + PREFIX_QUANTITY + "QUANTITY "
-            + PREFIX_DELIVERY_DATE + "DELIVERY DATE\n"
+            + PREFIX_DELIVERY_DATE + "DELIVERY_DATE\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ORDER_INFORMATION + "Books "
             + PREFIX_PRICE + "10.00 "
             + PREFIX_QUANTITY + "2 "
-            + PREFIX_DELIVERY_DATE + "12/12/2018\n";
+            + PREFIX_DELIVERY_DATE + "12-12-2018\n";
 
     public static final String MESSAGE_ADD_ORDER_SUCCESS = "Added order to %1$s:\n[%2$s]";
     public static final String MESSAGE_ORDER_NOT_ADDED = "Could not add order to Person.";
@@ -61,16 +69,13 @@ public class AddOrderCommand extends UndoableCommand {
     public CommandResult executeUndoableCommand() throws CommandException {
         requireNonNull(model);
         try {
-            // TODO: update model
-            // model.addOrderToPerson(person, orderToAdd);
             model.addOrderToOrderList(orderToAdd);
-        // } catch (PersonNotFoundException pnfe) {
-            // throw new AssertionError("The target person cannot be missing");
-        } catch (Exception e) { // TODO: define more specific exception
+        } catch (UniqueOrderList.DuplicateOrderException doe) {
             throw new CommandException(MESSAGE_ORDER_NOT_ADDED);
         }
 
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        EventsCenter.getInstance().post(new DisplayOrderListEvent());
         return new CommandResult(String.format(MESSAGE_ADD_ORDER_SUCCESS, person.getName(), orderToAdd));
     }
 

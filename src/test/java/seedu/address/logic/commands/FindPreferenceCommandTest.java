@@ -1,11 +1,12 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalPersons.GEORGE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -17,14 +18,19 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.AddressBook;
+import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PreferencesContainKeywordsPredicate;
 
+/**
+ * Contains integration tests (interaction with the Model) for {@code FindPreferenceCommand}.
+ */
 public class FindPreferenceCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+
+    private Model model = new ModelManager(getTypicalAddressBook(), new CalendarManager(), new UserPrefs());
 
     @Test
     public void equals() {
@@ -49,7 +55,7 @@ public class FindPreferenceCommandTest {
         // null -> returns false
         assertFalse(findPreferenceFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different predicates -> returns false
         assertFalse(findPreferenceFirstCommand.equals(findPreferenceSecondCommand));
     }
 
@@ -62,9 +68,9 @@ public class FindPreferenceCommandTest {
 
     @Test
     public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         FindPreferenceCommand command = prepareCommand("videoGames shoes");
-        assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON));
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON, GEORGE));
     }
 
     /**

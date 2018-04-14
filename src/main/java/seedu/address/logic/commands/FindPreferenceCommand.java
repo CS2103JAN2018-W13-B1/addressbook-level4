@@ -1,5 +1,5 @@
 package seedu.address.logic.commands;
-
+//@@author SuxianAlicia
 import seedu.address.model.person.PreferencesContainKeywordsPredicate;
 
 /**
@@ -7,8 +7,9 @@ import seedu.address.model.person.PreferencesContainKeywordsPredicate;
  * Keyword matching is case insensitive.
  */
 public class FindPreferenceCommand extends Command {
-    public static final String COMMAND_WORD = "findpref";
-    public static final String COMMAND_ALIAS = "fp";
+
+    public static final String COMMAND_WORD = "preffind";
+    public static final String COMMAND_ALIAS = "pf";
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
             + "KEYWORD "
             + "[MORE KEYWORDS]";
@@ -37,5 +38,4 @@ public class FindPreferenceCommand extends Command {
                 && this.preferencesContainKeywordsPredicate.equals
                 (((FindPreferenceCommand) other).preferencesContainKeywordsPredicate)); // state check
     }
-
 }

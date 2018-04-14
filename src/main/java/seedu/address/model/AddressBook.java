@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -135,11 +136,37 @@ public class AddressBook implements ReadOnlyAddressBook {
         removeUnusedPreferences();
     }
 
+    //@@author amad-person
+    /**
+     * Replaces the given order {@code target} in the list with {@code editedOrder}.
+     */
+    public void updateOrder(Order target, Order editedOrder)
+        throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+        requireNonNull(editedOrder);
+
+        orders.setOrder(target, editedOrder);
+    }
+    //@@author
+
+    /**
+     * Updates the order status of the given order {@code target}
+     */
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+        requireNonNull(orderStatus);
+
+        Order editedOrder = new Order(target.getOrderInformation(), target.getOrderStatus(),
+                target.getPrice(), target.getQuantity(), target.getDeliveryDate());
+        editedOrder.getOrderStatus().setCurrentOrderStatus(orderStatus);
+
+        orders.setOrder(target, editedOrder);
+    }
+
     /**
      *  Updates the master group list and master preference list to include groups and preferences
      *  in {@code person} that are not in the lists.
      *  @return a copy of this {@code person} such that every group and every preference in this person
-     *  points to a Group object and Preference in the respective master list.
+     *  points to a Group object and Preference object in the respective master list.
      */
     private Person syncWithMasterTagList(Person person) {
         final UniqueGroupList personGroups = new UniqueGroupList(person.getGroupTags());
@@ -193,16 +220,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         prefTags.add(p);
     }
 
+    //@@author SuxianAlicia
     /**
      * Removes group from all persons who has the group
      * @throws GroupNotFoundException if the {@code toRemove} is not in this {@code AddressBook}.
      */
     public void removeGroup(Group toRemove) throws GroupNotFoundException {
         if (groupTags.contains(toRemove)) {
-            ObservableList<Person> list = persons.getInternalList();
-            for (Person p: list) {
-                p.removeGroupTag(toRemove);
-            }
+            persons.removeGroupFromAllPersons(toRemove);
             groupTags.remove(toRemove);
         } else {
             throw new GroupNotFoundException();
@@ -215,10 +240,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removePreference(Preference toRemove) throws PreferenceNotFoundException {
         if (prefTags.contains(toRemove)) {
-            ObservableList<Person> list = persons.getInternalList();
-            for (Person p: list) {
-                p.removePreferenceTag(toRemove);
-            }
+            persons.removePrefFromAllPersons(toRemove);
             prefTags.remove(toRemove);
         } else {
             throw new PreferenceNotFoundException();
@@ -254,7 +276,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
         setPreferenceTags(newList.toSet());
     }
+    //@@author
 
+    //@@author amad-person
     //// order-level operations
 
     /**
@@ -263,6 +287,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
         orders.add(orderToAdd);
     }
+
+    /**
+     * Removes order from list of orders.
+     */
+    public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
+        orders.remove(targetOrder);
+    }
+    //@@author
 
     //// util methods
 
@@ -287,10 +319,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return prefTags.asObservableList();
     }
 
+    //@@author amad-person
     @Override
     public ObservableList<Order> getOrderList() {
         return orders.asObservableList();
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {
