@@ -665,7 +665,7 @@ image::DeleteOrderSeqDiagram.png[width="600" align="center"]
 The above method deletes `orderToDelete` from the `model` of the address book and the resulting list of orders is displayed.
 // end::deletingorders[]
 
-// tag::deletingorders[]
+// tag::otherinfo-orders[]
 ===== Storing Orders
 
 ---
@@ -686,6 +686,7 @@ using the `OrderListPanel`, which contains an `OrderListView` of multiple `Order
 
 ===== Aspect: Data structures to support order operations
 
+---
 * **Alternative 1 (current choice):** Store a UniqueOrderList of orders containing orders of all persons in the application.
 ** Pros: Easier to implement. Additionally, all order management operations will be synchronised.
 ** Cons: Higher memory usage might affect the performance of the application.
@@ -693,7 +694,7 @@ using the `OrderListPanel`, which contains an `OrderListView` of multiple `Order
 ** Pros: Duplicate orders (with the same information except the person associated with it) will just be stored as a single order in memory.
 If multiple persons have the same order, there will be multiple references to one Order object. This reduces memory usage.
 ** Cons: Harder to implement as updating or deleting orders for one person must not affect orders of another person having the same order.
-// tag::designconsorders[]
+// end::designcons-orders[]
 
 // tag::changingthemes[]
 === Changing Themes
@@ -738,6 +739,8 @@ Storing the theme in the `preferences.json` enables the theme change to be persi
 ==== Design Considerations
 
 ===== Aspect: Storing theme version
+
+---
 * **Alternative 1 (current choice):** Encapsulate the theme version in a `Theme` object.
 ** Pros: Relevant attributes and methods will be encapsulated in a single class.
 ** Cons: Higher memory overhead.
@@ -762,6 +765,7 @@ The actual encryption/decryption will be done using the `org.apache.xml.security
 
 ===== Aspect: Time of encryption of XML data file
 
+---
 * **Alternative 1:** Encrypt/decrypt the whole file each time there is an update to what information needs to stored.
 ** Pros: A new secret key can be used for each encryption/decryption, which would make it more secure against tampering or outsider access.
 ** Cons: Encryption of data file for every minor change can reduce the performance of the application.

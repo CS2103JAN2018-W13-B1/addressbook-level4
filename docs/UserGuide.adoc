@@ -531,6 +531,7 @@ This deletes `Books`, the 1st order in the order list from ContactSails. The upd
 [.text-center]
 .Result of deleting 'Books', the 1st order in the order list.
 image::OrderDeleteResult.png[width="200" align="center"]
+// end::userguideorders[]
 
 ==== Listing all orders : `orderlist` `since v1.4`
 
@@ -541,7 +542,6 @@ Format: `orderlist` +
 ****
 
 Command Alias: `ol`
-// end::userguideorders[]
 
 // tag::calendarandentries[]
 === Viewing the Calendar
