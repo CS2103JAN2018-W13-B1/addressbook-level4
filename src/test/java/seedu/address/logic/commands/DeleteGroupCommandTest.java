@@ -42,7 +42,7 @@ public class DeleteGroupCommandTest {
     }
 
     @Test
-    public void execute_unexistingGroup_throwsCommandException() throws Exception {
+    public void execute_nonexistentGroup_throwsCommandException() throws Exception {
         Group groupToDelete = new Group("friend");
         DeleteGroupCommand deleteGroupCommand = prepareCommand(groupToDelete);
 
@@ -88,28 +88,28 @@ public class DeleteGroupCommandTest {
 
     @Test
     public void equals() throws Exception {
-        DeleteGroupCommand deleteFirstCommand = prepareCommand(FRIENDS);
-        DeleteGroupCommand deleteSecondCommand = prepareCommand(COLLEAGUES);
+        DeleteGroupCommand deleteGroupFirstCommand = prepareCommand(FRIENDS);
+        DeleteGroupCommand deleteGroupSecondCommand = prepareCommand(COLLEAGUES);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertTrue(deleteGroupFirstCommand.equals(deleteGroupFirstCommand));
 
         // same values -> returns true
-        DeleteGroupCommand deleteFirstCommandCopy = prepareCommand(FRIENDS);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+        DeleteGroupCommand deleteGroupFirstCommandCopy = prepareCommand(FRIENDS);
+        assertTrue(deleteGroupFirstCommand.equals(deleteGroupFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertFalse(deleteGroupFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
+        assertFalse(deleteGroupFirstCommand.equals(null));
 
         // different preference -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertFalse(deleteGroupFirstCommand.equals(deleteGroupSecondCommand));
     }
 
     /**
-     * Returns a {@code DeleteCommand} with the parameter {@code index}.
+     * Returns a {@code DeleteGroupCommand} with the parameter {@code group}.
      */
     private DeleteGroupCommand prepareCommand(Group group) {
         DeleteGroupCommand deleteGroupCommand = new DeleteGroupCommand(group);
