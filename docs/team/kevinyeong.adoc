@@ -8,14 +8,17 @@
 
 == Overview
 
-== TO EDIT CONTENT
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+ContactSails is a desktop application targeted for use for social media marketers based off AddressBook - Level 4 architecture.
+It includes new features to allow the target group to perform their jobs more efficiently.
+AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is written in Java, and has about 10 kLoC.
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
+* *Major enhancement*: added *features in improving compatibility with other applications such as data handling software by exporting relevant data in compitable file formats*
+** What it does: allows the user to export relevant data to a local file to aid workflow of the target group.
+** Justification: This feature allows the user to export contact data to relevant file formats which can allow an integration of ContactSails into the users preferred workflow applications aiding their productivity and reduce resistance in accepting ContactSails usage in their workflow since the exported file is in a format which many productivity and data handling applications can view and edit.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 ** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
 
