@@ -20,16 +20,21 @@ It also showcases my documentation skills by including relevant extracts written
 
 == 3. Summary of Contributions
 
-* *Major enhancement*: added the ability to *manage customer orders*.
+*Major enhancement*: added the ability to *manage customer orders*.
+
 ** Functionality: Orders can be added, edited, and deleted. A list of current orders can be viewed. Orders can also be marked as ongoing or fulfilled.
 ** Justification: This feature will be essential for salespersons as they would want to keep track of customer orders. Salespersons will be able to view relevant information about customer orders in a single place.
 ** Highlights: This enhancement required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing model and UI of the application.
 Additionally, this enhancement will affect commands to be implemented in the future.
-* *Minor enhancement*: added the ability to *switch between themes* provided in the application.
+
+*Minor enhancement*: added the ability to *switch between themes* provided in the application.
+
 ** Functionality: Theme of the application can be switched between 'light' or 'dark' themes.
 ** Justification: This feature will allow salespersons to customize the application to suit their needs.
-* *Code contributed*: [https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/functional/amad-person.md[Functional code]] [https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/test/amad-person.md[Test code]]
-* *Other contributions*:
+
+*Code contributed*: [https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/functional/amad-person.md[Functional code]] [https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/test/amad-person.md[Test code]]
+
+*Other contributions*:
 
 ** Project management:
 *** Managed releases `v1.2` - `v1.5rc` (4 releases) on GitHub.
