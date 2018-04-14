@@ -547,7 +547,7 @@ The `ModelManager` utilises the `UniqueOrderList` object for order management re
 An example operation would be adding an order to ContactSails.
 Given below is a high-level sequence diagram for this operation.
 
-.High-Level Sequence Diagram for adding an order.
+.High-Level Sequence Diagram for adding an order. Other operations follow the same high level sequence diagram.
 image::HighLevelSequenceDiagramForOrderAdd.png[width="500" align="center"]
 
 Operations on orders can be done using the `AddOrderCommand`, `EditOrderCommand`, `ChangeOrderStatusCommand`, and `DeleteOrderCommand` commands.
@@ -567,7 +567,7 @@ The `AddOrderCommand` adds an order to list of orders in ContactSails.
 The figure below shows the sequence diagram for adding an order.
 
 .Sequence Diagram for `AddOrderCommand`.
-image::AddOrderSeqDiagram.png[width="450" align="center"]
+image::AddOrderSeqDiagram.png[width="600" align="center"]
 
 The following snippet shows how the `AddOrderCommand#executeUndoableCommand()` method updates the `model` of the
 application by adding `orderToAdd` to the list of orders in the application. Note that `orderToAdd` will
@@ -601,7 +601,7 @@ in the last shown listing of orders. The order will be updated with the new valu
 The figure below shows the sequence diagram for editing an order.
 
 .Sequence Diagram for `EditOrderCommand`.
-image::EditOrderSeqDiagram.png[width="450" align="center"]
+image::EditOrderSeqDiagram.png[width="600" align="center"]
 
 In `EditOrderCommand` class, a new class called `EditOrderDescriptor` is defined to create objects
 that will store the new values of the fields that need to be edited in the original order.
@@ -619,7 +619,7 @@ The `ChangeOrderStatusCommand` changes the `OrderStatus` field of an `Order` obj
 The figure below shows the sequence diagram for changing an order's status.
 
 .Sequence Diagram for `ChangeOrderStatusCommand`.
-image::ChangeOrderStatusSeqDiagram.png[width="450" align="center"]
+image::ChangeOrderStatusSeqDiagram.png[width="600" align="center"]
 // end::changeorderstatus[]
 
 // tag::deletingorders[]
@@ -628,7 +628,8 @@ image::ChangeOrderStatusSeqDiagram.png[width="450" align="center"]
 The `DeleteOrderCommand` deletes the order specified by its `index` in the last shown listing of orders.
 The figure below shows the sequence diagram for changing an order's status.
 
-.Sequence Diagram for `ChangeOrderStatusCommand`.
+.Sequence Diagram for `DeleteOrderCommand`.
+image::DeleteOrderSeqDiagram.png[width="600"]
 
 The above method deletes `orderToDelete` from the `model` of the address book and the resulting list of orders is displayed.
 // end::deletingorders[]
