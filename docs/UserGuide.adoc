@@ -79,7 +79,7 @@ This section briefly explains the various panels in the UI interface of ContactS
 
 [.text-center]
 .Breakdown of ContactSails UI.
-image::ContactSails_Interface_Breakdown.png[width="500" align="center"]
+image::ContactSails_Interface_Breakdown.png[width="800" align="center"]
 
 With reference to Figure 2 above, there are 5 important sections in the interface:
 
