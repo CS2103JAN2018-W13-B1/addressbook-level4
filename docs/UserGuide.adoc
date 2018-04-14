@@ -803,6 +803,29 @@ Type `exportListedPersons somePersonFile` OR
 
 This creates a somePersonFile.csv file with the contact details of listed persons.
 
+==== Exporting listed orders : `exportListedOrders`
+
+Description: Exports the current details of the current order listing. +
+
+****
+Format: `exportListedOrders FILENAME` +
+****
+
+Command Alias: `exLO` +
+
+****
+* FILENAME refers to the name of file the user wants to save the exported data to.
+* FILENAME should only contain characters from digits 0-9 and alphabets a-z or A-Z
+* FILENAME should consist of at least 1 character and at most 30 characters.
+****
+
+Example:
+
+Type `exportListedOrders someOrderFile` OR
+`exLO someOrderFile` into the Command Box. +
+
+This creates a someOrderFile.csv file with the details of listed orders.
+
 // end::exportdata[]
 // END EXPORT
 
@@ -1016,6 +1039,7 @@ The following sections summarize the commands you can use in ContactSails.
 |===
 |Function |Command |Alias |Example
 |Export contact details of listed persons. |`exportListedPersons FILENAME` |`exLP` |`exportListedPersons somePersonFile`
+|Export details of listed orders. |`exportListedOrders FILENAME` |`exLO` |`exportListedOrders somePersonFile`
 |===
 
 === Miscellaneous Commands

@@ -16,9 +16,9 @@ It is written in Java, and has about 10 kLoC.
 
 == Summary of contributions
 
-* *Major enhancement*: added *features in improving compatibility with other applications such as data handling software by exporting relevant data in compitable file formats*
+* *Major enhancement*: added *features in improving compatibility with other applications such as data handling software by exporting relevant data in compatible file format*
 ** What it does: allows the user to export relevant data to a local file to aid workflow of the target group.
-** Justification: This feature allows the user to export contact data to relevant file formats which can allow an integration of ContactSails into the users preferred workflow applications aiding their productivity and reduce resistance in accepting ContactSails usage in their workflow since the exported file is in a format which many productivity and data handling applications can view and edit.
+** Justification: This feature allows the user to export contact and order data to relevant file formats which can allow an integration of ContactSails into the users preferred workflow applications aiding their productivity and reduce resistance in accepting ContactSails usage in their workflow since the exported file is in a format which many productivity and data handling applications can view and edit.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 ** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
 
