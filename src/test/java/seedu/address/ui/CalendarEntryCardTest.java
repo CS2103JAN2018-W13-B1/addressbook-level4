@@ -8,7 +8,7 @@ import static seedu.address.ui.testutil.GuiTestAssert.assertCardDisplaysEntry;
 import org.junit.Test;
 
 import guitests.guihandles.CalendarEntryCardHandle;
-import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.entry.CalendarEntry;
 import seedu.address.testutil.CalendarEntryBuilder;
 
 public class CalendarEntryCardTest extends GuiUnitTest {

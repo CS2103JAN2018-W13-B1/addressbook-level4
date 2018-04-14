@@ -8,12 +8,12 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.DateUtil;
 import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.commons.util.TimeUtil;
-import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.EndDate;
-import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EntryTitle;
-import seedu.address.model.event.StartDate;
-import seedu.address.model.event.StartTime;
+import seedu.address.model.entry.CalendarEntry;
+import seedu.address.model.entry.EndDate;
+import seedu.address.model.entry.EndTime;
+import seedu.address.model.entry.EntryTitle;
+import seedu.address.model.entry.StartDate;
+import seedu.address.model.entry.StartTime;
 
 /**
  * JAXB-friendly version of a CalendarEntry.
@@ -39,7 +39,7 @@ public class XmlAdaptedCalendarEntry {
     public XmlAdaptedCalendarEntry() {}
 
     /**
-     * Constructs an {@code XmlAdaptedCalendarEntry} with the given calendar event details.
+     * Constructs an {@code XmlAdaptedCalendarEntry} with the given calendar entry details.
      */
     public XmlAdaptedCalendarEntry(String entryTitle, String startDate, String endDate,
                                    String startTime, String endTime) {
@@ -64,9 +64,9 @@ public class XmlAdaptedCalendarEntry {
     }
 
     /**
-     * Converts the jaxb-friendly adapted calendar event object into the model's CalendarEntry object.
+     * Converts the jaxb-friendly adapted calendar entry object into the model's CalendarEntry object.
      *
-     * @throws IllegalValueException if any data constraints are violated in the adapted calendar event's fields.
+     * @throws IllegalValueException if any data constraints are violated in the adapted calendar entry's fields.
      */
     public CalendarEntry toModelType() throws IllegalValueException {
         if (this.entryTitle == null) {

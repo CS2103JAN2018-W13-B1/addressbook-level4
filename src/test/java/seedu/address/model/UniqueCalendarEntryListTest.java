@@ -9,8 +9,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.address.model.event.UniqueCalendarEntryList;
-import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
+import seedu.address.model.entry.UniqueCalendarEntryList;
+import seedu.address.model.entry.exceptions.DuplicateCalendarEntryException;
 
 public class UniqueCalendarEntryListTest {
     @Rule

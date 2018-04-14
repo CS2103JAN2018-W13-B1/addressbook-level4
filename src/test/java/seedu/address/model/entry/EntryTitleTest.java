@@ -1,4 +1,4 @@
-package seedu.address.model.event;
+package seedu.address.model.entry;
 //@@author SuxianAlicia
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -21,14 +21,14 @@ public class EntryTitleTest {
 
     @Test
     public void isValidEventTitle() {
-        // null event title
+        // null entry title
         Assert.assertThrows(NullPointerException.class, () -> EntryTitle.isValidEntryTitle(null));
 
-        // invalid event title
+        // invalid entry title
         assertFalse(EntryTitle.isValidEntryTitle("")); // empty string
         assertFalse(EntryTitle.isValidEntryTitle(" ")); // spaces only
 
-        // valid event title
+        // valid entry title
         assertTrue(EntryTitle.isValidEntryTitle("Meet with bosses"));
         assertTrue(EntryTitle.isValidEntryTitle("Meet Client for stocks"));
         assertTrue(EntryTitle.isValidEntryTitle("Confectionery Boxes Order"));

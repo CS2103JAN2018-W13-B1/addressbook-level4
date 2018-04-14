@@ -33,12 +33,12 @@ import org.junit.Test;
 
 import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.logic.commands.AddEntryCommand;
-import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.EndDate;
-import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EntryTitle;
-import seedu.address.model.event.StartDate;
-import seedu.address.model.event.StartTime;
+import seedu.address.model.entry.CalendarEntry;
+import seedu.address.model.entry.EndDate;
+import seedu.address.model.entry.EndTime;
+import seedu.address.model.entry.EntryTitle;
+import seedu.address.model.entry.StartDate;
+import seedu.address.model.entry.StartTime;
 import seedu.address.testutil.CalendarEntryBuilder;
 
 public class AddEntryCommandParserTest {
@@ -63,7 +63,7 @@ public class AddEntryCommandParserTest {
                         + END_DATE_DESC_MEET_BOSS + START_TIME_DESC_MEET_BOSS + END_TIME_DESC_MEET_BOSS,
                 new AddEntryCommand(expectedCalEvent));
 
-        // multiple event title strings - last event title string accepted
+        // multiple entry title strings - last entry title string accepted
         assertParseSuccess(parser, ENTRY_TITLE_DESC_GET_STOCKS + START_DATE_DESC_MEET_BOSS
                         + ENTRY_TITLE_DESC_MEET_BOSS + END_DATE_DESC_MEET_BOSS
                         + START_TIME_DESC_MEET_BOSS + END_TIME_DESC_MEET_BOSS,

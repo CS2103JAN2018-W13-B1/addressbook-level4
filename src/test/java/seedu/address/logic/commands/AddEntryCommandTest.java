@@ -25,9 +25,9 @@ import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyCalendarManager;
-import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
-import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
+import seedu.address.model.entry.CalendarEntry;
+import seedu.address.model.entry.exceptions.CalendarEntryNotFoundException;
+import seedu.address.model.entry.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
@@ -98,7 +98,7 @@ public class AddEntryCommandTest {
     }
 
     /**
-     * Generates a new AddEntryCommand with the details of the given calendar event.
+     * Generates a new AddEntryCommand with the details of the given calendar entry.
      */
     private AddEntryCommand getAddEntryCommandForCalendarEvent(CalendarEntry calEvent, Model model) {
         AddEntryCommand command = new AddEntryCommand(calEvent);
@@ -233,7 +233,7 @@ public class AddEntryCommandTest {
     }
 
     /**
-     * A Model stub that always throws a DuplicateCalendarEntryException when trying to add a calendar event.
+     * A Model stub that always throws a DuplicateCalendarEntryException when trying to add a calendar entry.
      */
     private class ModelStubThrowingDuplicateCalendarEventException extends ModelStub {
 

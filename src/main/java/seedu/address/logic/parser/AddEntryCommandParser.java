@@ -13,19 +13,19 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.EntryTimeConstraintsUtil;
 import seedu.address.logic.commands.AddEntryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.EndDate;
-import seedu.address.model.event.EndTime;
-import seedu.address.model.event.EntryTitle;
-import seedu.address.model.event.StartDate;
-import seedu.address.model.event.StartTime;
+import seedu.address.model.entry.CalendarEntry;
+import seedu.address.model.entry.EndDate;
+import seedu.address.model.entry.EndTime;
+import seedu.address.model.entry.EntryTitle;
+import seedu.address.model.entry.StartDate;
+import seedu.address.model.entry.StartTime;
 
 /**
  * Parses input arguments and creates a new AddEntryCommand object
  */
 public class AddEntryCommandParser implements Parser<AddEntryCommand> {
 
-    public static final String STANDARD_START_TIME = "00:00"; //Start Time of event if StartTime not given
+    public static final String STANDARD_START_TIME = "00:00"; //Start Time of entry if StartTime not given
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddEntryCommand

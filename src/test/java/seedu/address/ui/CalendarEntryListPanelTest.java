@@ -11,7 +11,7 @@ import guitests.guihandles.CalendarEntryCardHandle;
 import guitests.guihandles.CalendarEntryListPanelHandle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.event.CalendarEntry;
+import seedu.address.model.entry.CalendarEntry;
 
 public class CalendarEntryListPanelTest extends GuiUnitTest {
     private static final ObservableList<CalendarEntry> TYPICAL_CAL_ENTRIES =

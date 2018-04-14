@@ -6,10 +6,10 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.event.EndDate;
-import seedu.address.model.event.EndTime;
-import seedu.address.model.event.StartDate;
-import seedu.address.model.event.StartTime;
+import seedu.address.model.entry.EndDate;
+import seedu.address.model.entry.EndTime;
+import seedu.address.model.entry.StartDate;
+import seedu.address.model.entry.StartTime;
 
 /**
  * Helper functions for checking StartDate, EndDate, StartTime, EndTime of {@code CalendarEntry}.
@@ -42,7 +42,7 @@ public class EntryTimeConstraintsUtil {
 
     /**
      * Returns true if given start time is later than end time.
-     * Start time cannot be later than End time if event ends on the same date.
+     * Start time cannot be later than End time if entry ends on the same date.
      */
     private static boolean startTimeIsLaterThanEndTime(StartTime startTime, EndTime endTime) {
         requireAllNonNull(startTime, endTime);

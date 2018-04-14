@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.CalendarManager;
-import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.exceptions.DuplicateCalendarEntryException;
+import seedu.address.model.entry.CalendarEntry;
+import seedu.address.model.entry.exceptions.DuplicateCalendarEntryException;
 
 /**
  * A utility class containing a list of {@code CalendarEntry} objects to be used in tests.
