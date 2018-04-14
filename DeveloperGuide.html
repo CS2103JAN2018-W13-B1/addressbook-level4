@@ -46,11 +46,12 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">4.1. Undo/Redo feature</a></li>
-<li><a href="#orders">4.2. Orders</a></li>
-<li><a href="#data-encryption">4.3. Data Encryption</a></li>
-<li><a href="#logging">4.4. Logging</a></li>
-<li><a href="#calendar-and-entry-tracking">4.5. Calendar and Entry tracking</a></li>
-<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
+<li><a href="#person-panel">4.2. Person Panel</a></li>
+<li><a href="#orders">4.3. Orders</a></li>
+<li><a href="#data-encryption">4.4. Data Encryption</a></li>
+<li><a href="#logging">4.5. Logging</a></li>
+<li><a href="#calendar-and-entry-tracking">4.6. Calendar and Entry tracking</a></li>
+<li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -964,14 +965,192 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="orders"><a class="link" href="#orders">4.2. Orders</a></h3>
+<h3 id="person-panel"><a class="link" href="#person-panel">4.2. Person Panel</a></h3>
+<div class="paragraph">
+<p>The <code>PersonPanel</code> replaces the previous <code>BrowserPanel</code>, and is called upon using the methods in <code>CenterPanel</code>.
+<code>PersonPanel</code> will be used to display contact&#8217;s information, groups and preferences depending on user&#8217;s actions.</p>
+</div>
+<div class="sect3">
+<h4 id="layout-implementation"><a class="link" href="#layout-implementation">4.2.1. Layout Implementation</a></h4>
+<div class="paragraph">
+<p>The specifications for the layout of PersonPanel is in <code>PersonPanel.fxml</code>. Figure 19 shows the visual layout of the <code>PersonPanel</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/PersonPanelLayout.png" alt="PersonPanelLayout" width="800">
+</div>
+<div class="title">Figure 19. Visual layout of PersonPanel</div>
+</div>
+<div class="paragraph">
+<p>Notably, the contact&#8217;s group and preferences are coloured as these are important information to the user.
+We plan to implement more features for v2.0, such as a profile picture for the contact.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.2. Current Implementation</a></h4>
+<div class="paragraph">
+<p>By utilising the <code>EventsCenter</code>, PersonPanel is able to display contact&#8217;s particulars, its
+groups and preferences when its respective <code>PersonCard</code> is selected.</p>
+</div>
+<div class="paragraph">
+<p>The following 2 code snippets will show its implementation.</p>
+</div>
+<div class="paragraph">
+<p>Code Snippet 1 : handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+    loadBlankPersonPage();
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    selectedPersonCard = event.getNewSelection();
+    person = selectedPersonCard.person;
+    loadPersonPage(person);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever a contact is selected, the event <code>handlePersonPanelSelectionChangedEvent</code> is triggered. Once the event is triggered,
+the method will obtain its respective <code>PersonCard</code> variable and a <code>Person</code> variable, which
+contains the information of the contact. The <code>person</code> variable will be passed
+into the method <code>loadPersonPage(Person person)</code>, which is code snippet 2.</p>
+</div>
+<div class="paragraph">
+<p>Code Snippet 2: loadPersonPage(Person person)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> loadPersonPage(Person person) {
+    name.setText(person.getName().fullName);
+    phone.setText(person.getPhone().toString());
+    address.setText(person.getAddress().toString());
+    email.setText(person.getEmail().toString());
+    person.getGroupTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.getStyleClass().add(PersonCard.getGroupTagColorStyleFor(tag.tagName));
+        groups.getChildren().add(tagLabel);
+    });
+    person.getPreferenceTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.getStyleClass().add(PersonCard.getPrefTagColorStyleFor(tag.tagName));
+        preferences.getChildren().add(tagLabel);
+    });
+    setIcons();
+    setImageSizeForAllImages();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Person</code> variable that is passed into <code>loadPersonPage</code> will be used to extract the
+contact&#8217;s information for display. After which, the UI of the <code>PersonPanel</code> will be updated
+accordingly to reflect the changes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+No contact information will be displayed upon opening the application as no contact is selected.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To better illustrate the code snippets, the following is a high level sequence diagram when the user
+selects a contact found in <code>PersonListPanel</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/SelectionPersonPanelSequenceDiagram.png" alt="SelectionPersonPanelSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 20. Sequence diagram for selection</div>
+</div>
+<div class="paragraph">
+<p>When a contact is selected using a mouse or a command in <code>PersonListPanel</code>, this will result in <code>EventsCenter</code>
+returning a <code>Person</code> of the selected contact, which then displays the contact information in <code>PersonPanel</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-display-of-tags-in-personpanel-and-personcard"><a class="link" href="#aspect-display-of-tags-in-personpanel-and-personcard">Aspect: Display of tags in PersonPanel (and PersonCard)</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Tags are coloured randomly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It is easier to differentiate between tags through the colours.</p>
+</li>
+<li>
+<p>Cons: It may be confusing as tag colours will be changed for each new instance of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Tags to be kept the same colour as intended.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There is no work to be done.</p>
+</li>
+<li>
+<p>Cons: Users will take a longer time to differentiate the tags.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-display-of-contact-s-information"><a class="link" href="#aspect-display-of-contact-s-information">Aspect: Display of contact&#8217;s information</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> It is to replace BrowserPanel with a PersonPanel which displays all information of the chosen contact.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We can add more features into PersonPanel that the BrowserPanel is unable to achieve.</p>
+</li>
+<li>
+<p>Cons: PersonPanel will not be able to display web pages, for instance the contact&#8217;s social media web page.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> It is to keep the BrowserPanel and use HTML files to display contact&#8217;s information.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There isn&#8217;t a need to modify the existing code but to edit the HTML files to display contact&#8217;s information.</p>
+</li>
+<li>
+<p>Cons: It may take a long time to implement and there are other important issues.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="orders"><a class="link" href="#orders">4.3. Orders</a></h3>
 <div class="paragraph">
 <p>Orders refer to the sales orders that are added by the salesperson to ContactSails.
 These orders can be added to any particular person of the address book.
 After being added, orders can be edited and deleted.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>An <code>Order</code> is represented in the application as shown in <em>Figure 19</em> given below.</p>
 </div>
@@ -979,7 +1158,7 @@ After being added, orders can be edited and deleted.</p>
 <div class="content">
 <img src="images/OrderUMLDiagram.png" alt="OrderUMLDiagram" width="500">
 </div>
-<div class="title">Figure 19. UML Diagram for Order</div>
+<div class="title">Figure 21. UML Diagram for Order</div>
 </div>
 <div class="paragraph">
 <p>A brief description of each of the attributes of an <code>Order</code> is given below:<br></p>
@@ -1011,7 +1190,7 @@ This relationship is shown in <em>Figure 20</em> given below.</p>
 <div class="content">
 <img src="images/PersonOrderAssociationUMLDiagram.png" alt="PersonOrderAssociationUMLDiagram" width="500">
 </div>
-<div class="title">Figure 20. UML Diagram showing association between a Person and an Order</div>
+<div class="title">Figure 22. UML Diagram showing association between a Person and an Order</div>
 </div>
 <div class="paragraph">
 <p>The association is implemented in the following manner:</p>
@@ -1172,12 +1351,12 @@ using the <code>OrderListPanel</code>.</p>
 <div class="content">
 <img src="images/OrderListCardFXMLRender.png" alt="OrderListCardFXMLRender" width="150">
 </div>
-<div class="title">Figure 21. OrderListCard FXML Render</div>
+<div class="title">Figure 23. OrderListCard FXML Render</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structures-to-support-order-operations"><a class="link" href="#aspect-data-structures-to-support-order-operations">Aspect: Data structures to support order operations</a></h5>
 <div class="ulist">
@@ -1216,9 +1395,9 @@ the same order.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption"><a class="link" href="#data-encryption">4.3. Data Encryption</a></h3>
+<h3 id="data-encryption"><a class="link" href="#data-encryption">4.4. Data Encryption</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
 being stored.</p>
@@ -1231,7 +1410,7 @@ being stored.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-time-of-encryption-of-xml-data-file"><a class="link" href="#aspect-time-of-encryption-of-xml-data-file">Aspect: Time of encryption of XML data file</a></h5>
 <div class="ulist">
@@ -1268,14 +1447,14 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1306,14 +1485,14 @@ being stored.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">4.5. Calendar and Entry tracking</a></h3>
+<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">4.6. Calendar and Entry tracking</a></h3>
 <div class="paragraph">
 <p>Entries refer to meetings, deadlines and order deliveries created by users in ContactSails.
 Users can create, edit and delete entries.
 ContactSails has a calendar interface that displays existing entries for better visualisation of the user&#8217;s schedule.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>ContactSails uses CalendarFX&#8217;s calendar interface. The <code>Model</code> component manages a list of entries, and this list of entries will synchronise with
 the calendar&#8217;s internal list of entries.</p>
@@ -1376,7 +1555,7 @@ Ongoing orders of a person will also appear as <code>CalendarEntry</code> based 
 <div class="content">
 <img src="images/CalendarEntryClassDiagram.png" alt="CalendarEntryClassDiagram" width="800">
 </div>
-<div class="title">Figure 22. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
+<div class="title">Figure 24. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
 </div>
 <div class="paragraph">
 <p>In the Figure 22, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
@@ -1394,7 +1573,7 @@ Ongoing orders of a person will also appear as <code>CalendarEntry</code> based 
 <div class="content">
 <img src="images/AddEntrySD.png" alt="AddEntrySD" width="800">
 </div>
-<div class="title">Figure 23. Sequence Diagram for adding of an entry into ContactSails</div>
+<div class="title">Figure 25. Sequence Diagram for adding of an entry into ContactSails</div>
 </div>
 <div class="paragraph">
 <p>In Figure 23, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
@@ -1417,7 +1596,7 @@ Any changes made to <code>Calendar</code> in <code>Model</code> will automatical
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-calendar-interface"><a class="link" href="#aspect-implementation-of-calendar-interface">Aspect: Implementation of calendar interface</a></h5>
 <div class="ulist">
@@ -1459,7 +1638,7 @@ Design of features of the calendar have to be decided by developers themselves, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1525,7 +1704,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 24. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 26. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3707,7 +3886,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 03:06:08 UTC
+Last updated 2018-04-14 05:15:22 UTC
 </div>
 </div>
 </body>
