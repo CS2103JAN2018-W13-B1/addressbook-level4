@@ -408,6 +408,7 @@ To refresh the PersonPanel, `select` another contact, and then `select 2` again.
 .After refreshing the PersonPanel, 'Bernice Yu' will have the updated information.
 image::PreferenceWarning2.png[width="500" align="center"]
 
+// tag::userguideorders[]
 === Managing Orders
 
 This section describes commands you can use to manage order entries in ContactSails. The figure below shows how ContactSails looks currently.
@@ -540,6 +541,7 @@ Format: `orderlist` +
 ****
 
 Command Alias: `ol`
+// end::userguideorders[]
 
 // tag::calendarandentries[]
 === Viewing the Calendar
@@ -790,6 +792,7 @@ Command Alias: `h`
 Pressing the kbd:[Up] and kbd:[Down] arrows will display the previous and next input respectively in the command box.
 ====
 
+// tag::userguidethemes[]
 ==== Changing the theme : `theme` `since v1.3`
 
 Description: Changes the theme of the application. +
@@ -811,6 +814,7 @@ This changes the theme of the application to the light theme. The figure below s
 
 .ContactSails Light Theme
 image::ContactSails_Light_Theme.png[width="500" align="center"]
+// end::userguidethemes[]
 
 // tag::undoredo[]
 ==== Undoing previous command : `undo`
@@ -987,11 +991,12 @@ The following sections summarize the commands you can use in ContactSails.
 |===
 // end::commandsummary[]
 
-// tag::cominginfuture[]
+
 == Coming in v2.0
 
 The following section describes some of the proposed features we are planning to add to ContactSails in `v2.0`.
 
+// tag::customerstats[]
 === Viewing Customer Statistics
 
 One of the features we are planning to add in ContactSails `v2.0` is the ability to view relevant statistics regarding your customers and sales orders.
@@ -1038,7 +1043,9 @@ Example:
 Type `topitems 10` OR `ti 10` into the Command Box. +
 
 This displays the list of the top ten items in ContactSails based on how many of the items have been sold.
+// end::customerstats[]
 
+// tag::sendingpromos[]
 === Sending Promotions
 
 Another proposed feature we are planning to implement is the ability to send promotions to multiple customers based on their groups or preferences.
@@ -1091,7 +1098,7 @@ Type `sendpromopref books sub/Books on SALE` OR +
 `spp books sub/Books on SALE` into the Command Box. +
 
 This opens an email draft in the browser with recipients as all persons tagged with 'books' and subject as 'Books on SALE'. +
-// end::cominginfuture[]
+// end::sendingpromos[]
 
 == Glossary
 

@@ -556,11 +556,12 @@ It contains the `OrderInformation`, `OrderStatus`, `Price`, `Quantity`, and `Del
 .UML Diagram for an Order object.
 image::OrderUMLDiagram.png[width="300" align="center"]
 
-`Order` objects are kept in-memory during an application session with the help of a `UniqueOrderList` object. The `UniqueOrderList` object ensures that
-ContactSails does not have any duplicate `Order` objects. This object is stored in the `ModelManager`.
+`Order` objects are kept in-memory during an application session with the help of a `UniqueOrderList` object, whose UML diagram is given below.
 
 .UML Diagram for UniqueOrderList.
 image::UniqueOrderListUMLDiagram.png[width="300" align="center"]
+
+The `UniqueOrderList` object ensures that ContactSails does not have any duplicate `Order` objects. This object is stored in the `ModelManager`.
 
 The `ModelManager` utilises the `UniqueOrderList` object for order management related operations.
 An example operation would be adding an order to ContactSails.
@@ -663,7 +664,7 @@ image::DeleteOrderSeqDiagram.png[width="600" align="center"]
 The above method deletes `orderToDelete` from the `model` of the address book and the resulting list of orders is displayed.
 // end::deletingorders[]
 
-// tag::otherinfo-orders[]
+// tag::deletingorders[]
 ===== Storing Orders
 
 ---
