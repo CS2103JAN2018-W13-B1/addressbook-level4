@@ -34,7 +34,8 @@ public class DeleteGroupCommandTest {
 
         String expectedMessage = String.format(DeleteGroupCommand.MESSAGE_DELETE_GROUP_SUCCESS, groupToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new CalendarManager(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), model.getCalendarManager(),
+                new UserPrefs());
         expectedModel.deleteGroup(groupToDelete);
 
         assertCommandSuccess(deleteGroupCommand, model, expectedMessage, expectedModel);
@@ -55,7 +56,7 @@ public class DeleteGroupCommandTest {
         RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
         Group groupToDelete = FRIENDS;
         DeleteGroupCommand deleteGroupCommand = prepareCommand(groupToDelete);
-        Model expectedModel = new ModelManager(model.getAddressBook(), new CalendarManager(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), model.getCalendarManager(), new UserPrefs());
 
         // delete -> friends group deleted
         deleteGroupCommand.execute();

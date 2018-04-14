@@ -61,7 +61,7 @@ public class ChangeThemeCommandTest {
                 LIGHT_THEME_KEYWORD
         );
 
-        Model expectedModel = new ModelManager(getTypicalAddressBook(), new CalendarManager(), expectedUserPrefs);
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), model.getCalendarManager(), expectedUserPrefs);
         assertCommandSuccess(changeThemeToLightCommand, model, expectedMessage, expectedModel);
 
         ChangeThemeCommand changeThemeToDarkCommand = prepareCommand(DARK_THEME_KEYWORD);
@@ -77,7 +77,7 @@ public class ChangeThemeCommandTest {
                 DARK_THEME_KEYWORD
         );
 
-        expectedModel = new ModelManager(getTypicalAddressBook(), new CalendarManager(), expectedUserPrefs);
+        expectedModel = new ModelManager(getTypicalAddressBook(), model.getCalendarManager(), expectedUserPrefs);
         assertCommandSuccess(changeThemeToDarkCommand, model, expectedMessage, expectedModel);
     }
 
