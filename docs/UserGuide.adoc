@@ -1015,7 +1015,7 @@ The following sections summarize the commands you can use in ContactSails.
 [width="99%",cols="25%,25%,25%,25%",options="header",]
 |===
 |Function |Command |Alias |Example
-|Export contact details of listed persons. |`exportListedPerson` |`exLP` |`entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00`
+|Export contact details of listed persons. |`exportListedPersons FILENAME` |`exLP` |`exportListedPersons somePersonFile`
 |===
 
 === Miscellaneous Commands
