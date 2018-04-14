@@ -496,7 +496,7 @@ This marks the order status of `Books`, the 1st order in the order list as `done
 
 [.text-center]
 .Result of marking the status of the 'Books' order as 'done'.
-image::OrderStatusResult.png[width="250" align="center"]
+image::OrderStatusResult.png[width="200" align="center"]
 
 ==== Deleting an order : `orderdelete` `since v1.2`
 
@@ -663,7 +663,7 @@ These entries will be displayed in the calendar in the Center Panel and calendar
 Figure 22 below shows how a calendar entry appears in the calendar entry list.
 
 .Calendar Entry Description
-image::Calendar_Entry_Card.png[width]
+image::Calendar_Entry_Card.png[width="300" align="center"]
 
 In Figure 22, calendar entry has an index of 1, indicating its position in the list.
 Beside the index is the title of the calendar entry (Meet Aaron).
@@ -718,7 +718,7 @@ Example:
 The calendar entry list currently has the following calendar entry at index 1:
 
 .Initial state of 'Meet Boss' calendar entry.
-image::Edit_Entry_Before.png[width="200" align="center"]
+image::Edit_Entry_Before.png[width="300" align="center"]
 
 To edit this entry, type `entryedit 1 t/Meeting with Bosses et/14:00` OR `ee 1 t/meet with bosses et/1400` into the Command Box. +
 
@@ -726,7 +726,7 @@ This edits the title and end time of 1st entry in entry list to `Meeting with Bo
 The result is shown in the figure below. +
 
 .Result of editing the 'Meet Boss' calendar entry.
-image::Edit_Entry_After.png[width="200" align="center"]
+image::Edit_Entry_After.png[width="300" align="center"]
 
 ==== Deleting entries in calendar entry list : `entrydelete` `since v1.4`
 
