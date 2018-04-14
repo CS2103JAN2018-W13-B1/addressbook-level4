@@ -697,7 +697,7 @@ If multiple persons have the same order, there will be multiple references to on
 === Changing Themes
 
 The theme of ContactSails can be changed using the `ChangeThemeCommand`.
-Currently, ContactSails supports the `dark` and `light` themes.
+Currently, ContactSails supports `dark` and `light` themes.
 
 ==== Current Implementation
 
