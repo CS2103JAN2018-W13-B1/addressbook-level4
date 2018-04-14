@@ -745,9 +745,9 @@ Storing the theme in the `preferences.json` enables the theme change to be persi
 ** Cons: Methods related to changing themes would have to be written in multiple classes.
 // end::changingthemes[]
 
-// tag::proposeddataencryption[]
 === [Proposed] Data Encryption
 
+// tag::proposeddataencryption[]
 ==== Proposed Implementation
 
 The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
