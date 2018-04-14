@@ -54,7 +54,7 @@ public class FindGroupCommandTest {
         // null -> returns false
         assertFalse(findGroupFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different predicates -> returns false
         assertFalse(findGroupFirstCommand.equals(findGroupSecondCommand));
     }
 

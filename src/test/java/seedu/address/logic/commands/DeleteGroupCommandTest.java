@@ -71,7 +71,7 @@ public class DeleteGroupCommandTest {
     }
 
     @Test
-    public void executeUndoRedo_invalidPreference_failure() {
+    public void executeUndoRedo_invalidGroup_failure() {
         UndoRedoStack undoRedoStack = new UndoRedoStack();
         UndoCommand undoCommand = prepareUndoCommand(model, undoRedoStack);
         RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);

@@ -55,7 +55,7 @@ public class FindPreferenceCommandTest {
         // null -> returns false
         assertFalse(findPreferenceFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different predicates -> returns false
         assertFalse(findPreferenceFirstCommand.equals(findPreferenceSecondCommand));
     }
 
