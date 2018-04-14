@@ -150,6 +150,7 @@ public class XmlUtilTest {
         assertEquals(dataToWrite, dataFromFile);
     }
 
+    //@@author SuxianAlicia
     @Test
     public void saveDateToFile_validCalendarManagerFile_dataSaved() throws Exception {
         TEMP_CALENDARMANAGER_FILE.createNewFile();
@@ -166,6 +167,7 @@ public class XmlUtilTest {
         dataFromFile = XmlUtil.getDataFromFile(TEMP_CALENDARMANAGER_FILE, XmlSerializableCalendarManager.class);
         assertEquals(dataToWrite, dataFromFile);
     }
+    //@@author
 
     /**
      * Test class annotated with {@code XmlRootElement} to allow unmarshalling of .xml data to {@code XmlAdaptedPerson}
