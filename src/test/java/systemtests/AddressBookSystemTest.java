@@ -2,6 +2,7 @@ package systemtests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import static seedu.address.testutil.TypicalOrders.BOOKS;
@@ -11,6 +12,8 @@ import static seedu.address.testutil.TypicalOrders.SHOES;
 
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
+import static seedu.address.ui.testutil.GuiTestAssert.assertCalendarEntryListMatching;
+import static seedu.address.ui.testutil.GuiTestAssert.assertOrderListMatching;
 import static seedu.address.ui.testutil.GuiTestAssert.assertPersonListMatching;
 
 import java.util.Arrays;
@@ -22,9 +25,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 
+import guitests.guihandles.CalendarEntryListPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
+import guitests.guihandles.OrderListPanelHandle;
 import guitests.guihandles.PersonListPanelHandle;
 import guitests.guihandles.PersonPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
@@ -43,7 +48,6 @@ import seedu.address.model.order.UniqueOrderList;
 import seedu.address.testutil.TypicalCalendarEntries;
 import seedu.address.testutil.TypicalPersons;
 import seedu.address.ui.CommandBox;
-import seedu.address.ui.testutil.GuiTestAssert;
 
 /**
  * A system test class for AddressBook, which provides access to handles of GUI components and helper methods
@@ -149,6 +153,14 @@ public abstract class AddressBookSystemTest {
         return mainWindowHandle.getResultDisplay();
     }
 
+    public OrderListPanelHandle getOrderListPanel() {
+        return mainWindowHandle.getOrderListPanel();
+    }
+
+    public CalendarEntryListPanelHandle getCalendarEntryListPanel() {
+        return mainWindowHandle.getCalendarEntryListPanel();
+    }
+
     /**
      * Executes {@code command} in the application's {@code CommandBox}.
      * Method returns after UI components have been updated.
@@ -211,8 +223,24 @@ public abstract class AddressBookSystemTest {
     }
 
     /**
-     * Calls {@code BrowserPanelHandle}, {@code PersonListPanelHandle} and {@code StatusBarFooterHandle} to remember
-     * their current state.
+     * Asserts that {@code OrderListPanel} is displayed, and order list panel displays orders in model correctly.
+     */
+    protected void assertOrderListDisplaysExpected(Model expectedModel) {
+        assertNotNull(getOrderListPanel());
+        assertOrderListMatching(getOrderListPanel(), expectedModel.getFilteredOrderList());
+    }
+
+    /**
+     * Asserts that {@code CalendarEntryListPanel} is displayed, and calendar entry list panel
+     * displays calendar entries in model correctly.
+     */
+    protected void assertCalendarEntryListDisplaysExpected(Model expectedModel) {
+        assertNotNull(getCalendarEntryListPanel());
+        assertCalendarEntryListMatching(getCalendarEntryListPanel(), expectedModel.getFilteredCalendarEntryList());
+    }
+
+    /**
+     * Calls {@code PersonListPanelHandle} and {@code StatusBarFooterHandle} to remember their current state.
      */
     private void rememberStates() {
         StatusBarFooterHandle statusBarFooterHandle = getStatusBarFooter();
