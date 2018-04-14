@@ -3,8 +3,6 @@ package guitests.guihandles;
 
 import java.time.LocalDate;
 
-import com.calendarfx.model.Calendar;
-
 import javafx.scene.layout.StackPane;
 
 /**
