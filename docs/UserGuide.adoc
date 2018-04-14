@@ -78,7 +78,7 @@ This section first describes the various components of ContactSails' User Interf
 This section briefly explains the various panels in the UI interface of ContactSails.
 
 [.text-center]
-.Breakdown of ContactSails UI
+.Breakdown of ContactSails UI.
 image::ContactSails_Interface_Breakdown.png[width="500" align="center"]
 
 With reference to Figure 2 above, there are 5 important sections in the interface:
@@ -133,7 +133,8 @@ Command Alias: `?`
 This section describes commands you can use to manage person entries in ContactSails.
 The figure below shows how ContactSails looks currently.
 
-image::Start.png[width = "500"]
+.Current state of ContactSails.
+image::Start.png[width="500" align="center"]
 
 ==== Adding a person : `add`
 
@@ -157,7 +158,7 @@ This adds a contact `John Doe`, with `98765432` as phone number, `johnd@example.
 and `notebooks` as a preference tag, as shown below.
 
 .Result of executing the 'add' command given above.
-image::AddNewPerson.png[width = "500" align="center"]
+image::AddNewPerson.png[width="500" align="center"]
 
 ==== Editing a person : `edit`
 
@@ -184,7 +185,7 @@ Here's a picture of how the second contact in ContactSails looks currently:
 .Current state of the 2nd contact in ContactSails.
 image::EditPersonBefore.png[width="200" align="center"]
 
-Type `edit 2 n/Betsy Crower g/` OR +
+Type `edit 2 n/Betsy Crower g/` OR
 `e 2 n/Betsy Crower g/` into the Command Box. +
 
 This edits the name of the 2nd person to be `Betsy Crower` and clears all existing groups.
@@ -437,7 +438,7 @@ image::OrderAdd.png[width="500" align="center"]
 
 [NOTE]
 Currently, the orders added will be shown in the list of all orders in the Right Panel.
-We are planning to add the ability to only view orders specific to a person in `v2.0`.
+We are planning to add the ability to only view orders specific to a person in their PersonPanel view in `v2.0`.
 
 ==== Editing an order : `orderedit` `since v1.2`
 
@@ -544,14 +545,14 @@ Command Alias: `ol`
 
 This section describes commands related to viewing the calendar in ContactSails.
 The calendar is displayed at the CenterPanel of the interface when you enter any of the commands in this section.
-Figure 3 below shows how the calendar looks like.
+Figure 20 below shows how the calendar looks like.
 
 [.text-center]
 .ContactSails interface with Calendar and Calendar Entries displayed.
 image::ContactSails_Ui_Calendar.PNG[width="500" align="center"]
 
-In Figure 19, the calendar is set to Day-view, hence it displays all calendar entries that occur in the displayed date (11 April 2018, Wednesday).
-In the calendar, calendar entries appears as colored blocks, such as the green block in Figure 19, indicating the title and starting time of the entry.
+In Figure 20, the calendar is set to Day-view, hence it displays all calendar entries that occur in the displayed date (11 April 2018, Wednesday).
+In the calendar, calendar entries appears as colored blocks, such as the green block in Figure 20, indicating the title and starting time of the entry.
 
 You can change the viewing format of the calendar using `calendar` command to switch to either of the 3 views; Day-view, Week-view and Month-view.
 To change the displayed date, you can enter `calendarjump` command to view your desired date.
@@ -659,12 +660,12 @@ You can use calendar entries to represent events, deadlines or meetings. +
 
 A calendar entry has a title, start date, end date, start time and end time.
 These entries will be displayed in the calendar in the Center Panel and calendar entry list in the Right Panel.
-Figure 21 below shows how a calendar entry appears in the calendar entry list.
+Figure 22 below shows how a calendar entry appears in the calendar entry list.
 
 .Calendar Entry Description
 image::Calendar_Entry_Card.png[width]
 
-In Figure 21, calendar entry has an index of 1, indicating its position in the list.
+In Figure 22, calendar entry has an index of 1, indicating its position in the list.
 Beside the index is the title of the calendar entry (Meet Aaron).
 The description indicates the entry's starting date (11-04-2018) and ending date (11-04-2018).
 The last sentence indicates the starting time (14:00) and ending time. (17:00) of the entry.
