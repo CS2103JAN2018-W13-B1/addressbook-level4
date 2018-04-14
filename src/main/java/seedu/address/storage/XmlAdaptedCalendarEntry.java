@@ -1,7 +1,5 @@
 package seedu.address.storage;
 //@@author SuxianAlicia
-import static seedu.address.commons.util.EntryTimeConstraintsUtil.checkCalendarEntryTimeConstraints;
-
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlElement;
