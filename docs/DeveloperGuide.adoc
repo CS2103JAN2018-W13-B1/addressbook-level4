@@ -2086,3 +2086,52 @@ These instructions only provide a starting point for testers to work on; testers
 .. Other incorrect `theme` commands to try:
     ** `theme` (no version specified) +
    Expected: Similar to previous.
+
+=== Adding a Calendar Entry
+
+. *Adding a Calendar Entry*
+
+.. Prerequisites:
+** List calendar entries using the `entrylist` command.
+.. Test case: `entryadd t/Meet with Supplier sd/04-04-2018 ed/04-04-2018 st/10:00 et/12:00` +
+   Expected: Calendar Entry is added to the Calendar Entry List, appearing at the last index. Details of the added calendar entry shown in the status message. Calendar is displayed. Timestamp in the status bar is updated.
+.. Test case: `entryadd t/Meet with Supplier sd/04-04-2018 ed/04-04-2018 st/10:00 et/12:00` +
+   Expected: Duplicate calendar entry is not added. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `entryadd` commands to try:
+    ** `entryadd sd/10-04-2018 st/10:00 et/12:30` (compulsory fields missing) +
+    ** `entryadd t/Get Books et/10:00 ed/14.04.2018` (invalid date format) +
+    ** `entryadd t/Get Car et/2359 ed/14-04-2018` (invalid time format) +
+    ** `entryadd t/RoadShow at Orchard sd/04-05-2018 ed/05-05-2018 st/23:50 et/00:01` (duration of entry must be at least 15 minutes) +
+   Expected: Similar to previous.
+
+=== Deleting a Calendar Entry
+
+. *Deleting a Calendar Entry*
+
+.. Prerequisites:
+** List calendar entries using the `entrylist` command.
+** There should be at least one calendar entry listed.
+.. Test case: `entrydelete 1` +
+   Expected: Calendar entry is deleted. Details of deleted calendar entry shown in the status message. Timestamp in the status bar is updated.
+.. Test case: `entrydelete 0` +
+   Expected: No calendar entry is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `entrydelete` commands to try:
+    ** `entrydelete` (no index specified) +
+    ** `entrydelete x` (where x is larger than the list size) +
+   Expected: Similar to previous.
+
+=== Editing a Calendar Entry
+
+. *Editing a Calendar Entry*
+
+.. Prerequisites:
+** List calendar entries using the `entrylist` command.
+** There should be at least one calendar entry listed.
+.. Test case: `entryedit 1 t/Meet with Bosses` +
+   Expected: Calendar entry in calendar entry list is edited and and updated calendar entry is displayed. Details of the edited calendar entry is shown in the status message. Timestamp in the status bar is updated.
+.. Incorrect `entryedit` commands to try:
+    ** `entryedit 1 sd/07-06-2018 ed/06-05-2018` (invalid dates, start date cannot be later than end date) +
+    ** `entryedit 1 sd/07-07-2018 ed/07-07-2018 st/12:00 et/08:00` (invalid times, start time cannot be later than end time for entries ending on the same date) +
+    ** `entryedit x t/Stakeholder Meeting` (where x is larger than the list size) +
+   Expected: Command will fail to execute. Error details shown in the status message. Status bar remains the same.
+
