@@ -440,7 +440,8 @@ image::OrderAdd.png[width="500" align="center"]
 
 [NOTE]
 Currently, the orders added will be shown in the list of all orders in the Right Panel. This means that orders with the
-fields can't be added to multiple persons yet. We are planning to add this ability in `v2.0`.
+fields can't be added to multiple persons yet. We are planning to add this ability, and the ability to view orders of a
+person in their PersonPanel in `v2.0`.
 
 ==== Editing an order : `orderedit` `since v1.2`
 
