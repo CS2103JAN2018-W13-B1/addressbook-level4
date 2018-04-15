@@ -85,7 +85,6 @@ public class CalendarPanelTest extends GuiUnitTest {
 
         expectedDate = originalDate.minusDays(1);
         assertEquals(expectedDate, centerPanelHandle.getCalendarCurrentDate());
-
     }
 
     @Test
@@ -99,5 +98,4 @@ public class CalendarPanelTest extends GuiUnitTest {
         assertNotEquals(previousDate, LEAP_YEAR_DATE);
         assertEquals(LEAP_YEAR_DATE, centerPanelHandle.getCalendarCurrentDate());
     }
-
 }
