@@ -25,7 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ContactSails is built upon AddressBook - Level 4. It is a desktop application used for people in sales. The users will benefit from the application through the features in Contact Sails.
+<p>ContactSails is built upon AddressBook - Level 4. It is a desktop application used for people in sales. The users will benefit from the application through the features in ContactSails such as having a calendar and managing orders.
  The user interacts with the application using Command Line Interface (CLI), and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
@@ -52,7 +52,7 @@
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: My minor enhacement is the addition of colours to groups and preferences.</p>
+<p><strong>Minor enhancement</strong>: My minor enhancement is the addition of colours to groups and preferences.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -93,7 +93,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>I have made a minor language update to the Developer Guide. (Pull request <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/195">#195</a>)</p>
 </li>
 </ul>
 </div>
@@ -103,16 +103,8 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>I have reported bugs and suggestions for other teams in the class. (<a href="https://github.com/CS2103JAN2018-W10-B1/main/issues/131">#Issue 131</a>, <a href="https://github.com/CS2103JAN2018-W10-B1/main/issues/134">#Issue 134</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B1/main/issues/136">#Issue 136</a>, <a href="https://github.com/CS2103JAN2018-W10-B1/main/issues/137">#Issue 137</a>)</p>
 </li>
 </ul>
 </div>
@@ -121,9 +113,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -140,6 +129,286 @@
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>I contributed partially to two sections in the User Guide, <strong>Managing Persons</strong> and <strong>Managing Groups and Preferences</strong>.</p>
+</div>
+<div class="paragraph">
+<p>In the section of <strong>Managing Persons</strong>, I contributed through the addition of pictures
+and the writing of example.</p>
+</div>
+<div class="sect2">
+<h3 id="managing-persons"><a class="link" href="#managing-persons">Managing Persons</a></h3>
+<div class="paragraph">
+<p>This section describes commands you can use to manage person entries in ContactSails.
+The figure below shows how ContactSails looks currently.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Start.png" alt="Start" width="500">
+</div>
+<div class="title">Figure 1. Current state of ContactSails.</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">Adding a person : <code>add</code></a></h4>
+<div class="paragraph">
+<p>Description: Adds a person to ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>a</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A person can have any number of groups and preferences (including 0).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Type <code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks</code> OR<br>
+<code>a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pr/notebooks</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This adds a contact <code>John Doe</code>, with <code>98765432</code> as phone number, <code>johnd@example.com</code> as email, <code>John street, block 123, #01-01</code> as address,
+and <code>notebooks</code> as a preference tag, as shown below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/AddNewPerson.png" alt="AddNewPerson" width="500">
+</div>
+<div class="title">Figure 2. Result of executing the 'add' command given above.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">Editing a person : <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Description: Edits an existing person in ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GROUP]&#8230;&#8203; [pr/PREFERENCE]&#8230;&#8203;</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>e</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing groups or preferences, the existing groups and preferences of the person will be removed i.e adding of groups and preferences is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s groups and preferences by typing <code>g/</code> and <code>pr/</code> without specifying any groups and preferences after it respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a picture of how the second contact in ContactSails looks currently:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/EditPersonBefore.png" alt="EditPersonBefore" width="200">
+</div>
+<div class="title">Figure 3. Current state of the 2nd contact in ContactSails.</div>
+</div>
+<div class="paragraph">
+<p>Type <code>edit 2 n/Betsy Crower g/</code> OR
+<code>e 2 n/Betsy Crower g/</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing groups.
+The figure below shows the updated contact.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/EditPersonAfter.png" alt="EditPersonAfter" width="200">
+</div>
+<div class="title">Figure 4. Result of executing the 'edit' command given above.</div>
+</div>
+<div class="paragraph">
+<p>In the section of <strong>Managing Groups and Preferences</strong>, I contributed through the addition of pictures
+and the writing of example.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-groups-and-preferences"><a class="link" href="#managing-groups-and-preferences">Managing Groups and Preferences</a></h3>
+<div class="paragraph">
+<p>This section describes commands you can use to manage preference and group tags in ContactSails.</p>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-group-code-groupdelete-code-code-since-v1-2-code"><a class="link" href="#deleting-a-group-code-groupdelete-code-code-since-v1-2-code">Deleting a group : <code>groupdelete</code> <code>since v1.2</code></a></h4>
+<div class="paragraph">
+<p>Description: Deletes the specified group from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>groupdelete GROUP_NAME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>gd</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the group specified by <code>GROUP_NAME</code>.</p>
+</li>
+<li>
+<p>The group name must be alphanumeric.</p>
+</li>
+<li>
+<p>All persons with specified group will have their group tag removed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows ContactSails, with the 1st contact selected.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/BeforeContacts.png" alt="BeforeContacts" width="500">
+</div>
+<div class="title">Figure 5. ContactSails with the 1st contact selected.</div>
+</div>
+<div class="paragraph">
+<p>Type <code>groupdelete friends</code> OR <code>gd friends</code> into the Command Box.</p>
+</div>
+<div class="paragraph">
+<p>All persons in ContactSails with the group <code>friends</code> will have the group removed from their contact.</p>
+</div>
+<div class="paragraph">
+<p>These changes will be reflected in the list of persons, but the selected contact might still display the <code>friends</code> tag, as shown below.
+This is because the PersonPanel needs to be refreshed after the deletion.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/GroupDeleteWarning.png" alt="GroupDeleteWarning" width="500">
+</div>
+<div class="title">Figure 6. The group 'friends' has been removed but the PersonPanel for 'Alex Yeoh' still shows the tag.</div>
+</div>
+<div class="paragraph">
+<p>To refresh the PersonPanel, <code>select</code> another contact, and then <code>select 1</code> again. The PersonPanel will now have the updated information.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/GroupDeleteRefresh.png" alt="GroupDeleteRefresh" width="500">
+</div>
+<div class="title">Figure 7. After refreshing the PersonPanel, 'Alex Yeoh' will have the updated information.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-preference-code-prefdelete-code-code-since-v1-2-code"><a class="link" href="#deleting-a-preference-code-prefdelete-code-code-since-v1-2-code">Deleting a preference : <code>prefdelete</code> <code>since v1.2</code></a></h4>
+<div class="paragraph">
+<p>Description: Deletes the specified preference from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>prefdelete PREFERENCE_NAME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>pd</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the preference specified by <code>PREFERENCE_NAME</code>.</p>
+</li>
+<li>
+<p>The preference name must be alphanumeric.</p>
+</li>
+<li>
+<p>All persons with specified preference will have their preference tag removed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows ContactSails, with the 2nd contact selected.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Warning3.png" alt="Warning3" width="500">
+</div>
+<div class="title">Figure 8. ContactSails with the 2nd contact selected.</div>
+</div>
+<div class="paragraph">
+<p>Type <code>prefdelete shoes</code> OR <code>pd shoes</code> into the Command Box.</p>
+</div>
+<div class="paragraph">
+<p>All persons in ContactSails with the preference <code>shoes</code> will have the preference removed from their contact.</p>
+</div>
+<div class="paragraph">
+<p>These changes will be reflected in the list of persons, but the selected contact might still display the <code>shoes</code> tag, as shown below.
+This is because the PersonPanel needs to be refreshed after the deletion.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/PreferenceWarning1.png" alt="PreferenceWarning1" width="500">
+</div>
+<div class="title">Figure 9. The preference 'shoes' has been removed but the PersonPanel for 'Bernice Yu' still shows the tag.</div>
+</div>
+<div class="paragraph">
+<p>To refresh the PersonPanel, <code>select</code> another contact, and then <code>select 2</code> again. The PersonPanel will now have the updated information.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/PreferenceWarning2.png" alt="PreferenceWarning2" width="500">
+</div>
+<div class="title">Figure 10. After refreshing the PersonPanel, 'Bernice Yu' will have the updated information.</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -155,12 +424,193 @@
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>I contributed to the writing of <strong>Person Panel</strong> in the developer guide.</p>
+</div>
+<div class="sect2">
+<h3 id="person-panel"><a class="link" href="#person-panel">Person Panel</a></h3>
+<div class="paragraph">
+<p>The <code>PersonPanel</code> replaces the previous <code>BrowserPanel</code>, and is called upon using the methods in <code>CenterPanel</code>.
+<code>PersonPanel</code> will be used to display contact&#8217;s information, groups and preferences depending on user&#8217;s actions.</p>
+</div>
+<div class="sect3">
+<h4 id="layout-implementation"><a class="link" href="#layout-implementation">Layout Implementation</a></h4>
+<div class="paragraph">
+<p>The specifications for the layout of PersonPanel is in <code>PersonPanel.fxml</code>. Figure 19 shows the visual layout of the <code>PersonPanel</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/PersonPanelLayout.png" alt="PersonPanelLayout" width="800">
+</div>
+<div class="title">Figure 11. Visual layout of PersonPanel</div>
+</div>
+<div class="paragraph">
+<p>Notably, the contact&#8217;s group and preferences are coloured as these are important information to the user.
+We plan to implement more features for v2.0, such as a profile picture for the contact.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>By utilising the <code>EventsCenter</code>, PersonPanel is able to display contact&#8217;s particulars, its
+groups and preferences when its respective <code>PersonCard</code> is selected.</p>
+</div>
+<div class="paragraph">
+<p>The following 2 code snippets will show its implementation.</p>
+</div>
+<div class="paragraph">
+<p>Code Snippet 1 : handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+    loadBlankPersonPage();
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    selectedPersonCard = event.getNewSelection();
+    person = selectedPersonCard.person;
+    loadPersonPage(person);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever a contact is selected, the event <code>handlePersonPanelSelectionChangedEvent</code> is triggered. Once the event is triggered,
+the method will obtain its respective <code>PersonCard</code> variable and a <code>Person</code> variable, which
+contains the information of the contact. The <code>person</code> variable will be passed
+into the method <code>loadPersonPage(Person person)</code>, which is code snippet 2.</p>
+</div>
+<div class="paragraph">
+<p>Code Snippet 2: loadPersonPage(Person person)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> loadPersonPage(Person person) {
+    name.setText(person.getName().fullName);
+    phone.setText(person.getPhone().toString());
+    address.setText(person.getAddress().toString());
+    email.setText(person.getEmail().toString());
+    person.getGroupTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.getStyleClass().add(PersonCard.getGroupTagColorStyleFor(tag.tagName));
+        groups.getChildren().add(tagLabel);
+    });
+    person.getPreferenceTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.getStyleClass().add(PersonCard.getPrefTagColorStyleFor(tag.tagName));
+        preferences.getChildren().add(tagLabel);
+    });
+    setIcons();
+    setImageSizeForAllImages();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Person</code> variable that is passed into <code>loadPersonPage</code> will be used to extract the
+contact&#8217;s information for display. After which, the UI of the <code>PersonPanel</code> will be updated
+accordingly to reflect the changes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+No contact information will be displayed upon opening the application as no contact is selected.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To better illustrate the code snippets, the following is a high level sequence diagram when the user
+selects a contact found in <code>PersonListPanel</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SelectionPersonPanelSequenceDiagram.png" alt="SelectionPersonPanelSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 12. Sequence diagram for selection</div>
+</div>
+<div class="paragraph">
+<p>When a contact is selected using a mouse or a command in <code>PersonListPanel</code>, this will result in <code>EventsCenter</code>
+returning a <code>Person</code> of the selected contact, which then displays the contact information in <code>PersonPanel</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-display-of-tags-in-personpanel-and-personcard"><a class="link" href="#aspect-display-of-tags-in-personpanel-and-personcard">Aspect: Display of tags in PersonPanel (and PersonCard)</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Tags are coloured randomly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It is easier to differentiate between tags through the colours.</p>
+</li>
+<li>
+<p>Cons: It may be confusing as tag colours will be changed for each new instance of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Tags to be kept the same colour as intended.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There is no work to be done.</p>
+</li>
+<li>
+<p>Cons: Users will take a longer time to differentiate the tags.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-display-of-contact-s-information"><a class="link" href="#aspect-display-of-contact-s-information">Aspect: Display of contact&#8217;s information</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> It is to replace BrowserPanel with a PersonPanel which displays all information of the chosen contact.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We can add more features into PersonPanel that the BrowserPanel is unable to achieve.</p>
+</li>
+<li>
+<p>Cons: PersonPanel will not be able to display web pages, for instance the contact&#8217;s social media web page.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> It is to keep the BrowserPanel and use HTML files to display contact&#8217;s information.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There isn&#8217;t a need to modify the existing code but to edit the HTML files to display contact&#8217;s information.</p>
+</li>
+<li>
+<p>Cons: It may take a long time to implement and there are other important issues.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:33:22 UTC
+Last updated 2018-04-15 06:31:20 UTC
 </div>
 </div>
 </body>
