@@ -870,7 +870,7 @@ These commands inherit from `UndoableCommand` and are thus can be undone via the
 The sequence diagram below shows how adding an entry works:
 
 .Sequence Diagram for adding an entry into ContactSails
-image::AddEntrySD.png[width="800" align="center]
+image::AddEntrySD.png[width="800" align="center"]
 
 In Figure 23, when a user enters the command to add an entry, `AddEntryCommandParser` is invoked which creates a `CalendarEntry` based on user input. The parser then creates `AddEntryCommand` passing the `CalendarEntry` to it.
 When AddEntryCommand is executed, `CalendarEntry` is passed from `AddEntryCommand` to `ModelManager` and to `CalendarManager`, which adds it to `UniqueCalendarEntryList`.
@@ -969,13 +969,14 @@ If it does not, centerPlaceholder` will clear any existing child nodes and add r
 
 `CenterPanel` displays `CalendarPanel` with `displayCalendarPanel()`, which is written similar to `displayPersonPanel()`.
 
-`CenterPanel` subsribes to `BaseEvents` related to the `CalendarPanel` and `PersonPanel`, such as `ChangeCalendarPageRequestEvent` and `PersonPanelSelectionChangedEvent`.
+`CenterPanel` subscribes to `BaseEvents` related to the `CalendarPanel` and `PersonPanel`, such as `ChangeCalendarPageRequestEvent` and `PersonPanelSelectionChangedEvent`.
 Thus, `BaseEvents` received by `CenterPanel` can be split into two categories, one meant for `CalendarPanel`, and the other for `PersonPanel`.
 The following sequence diagram below shows how `ChangeCalendarPageRequestEvent` is handled by `CenterPanel`.
 
-image
+.Sequence Diagram of `ViewTodayCommand` posting `ChangeCalendarPageRequestEvent`
+image::CalendarPanelSD.png[width="800" align="center"]
 
-In Figure ?, `ViewTodayCommand` posts a new `ChangeCalendarPageRequestEvent` to the `EventsCenter`.
+In Figure 36, `ViewTodayCommand` posts a new `ChangeCalendarPageRequestEvent` to the `EventsCenter`.
 `CenterPanel` handles the event by calling `handleChangeCalendarPageRequestEvent()` in `CalendarPanel` before calling `displayCalendarPanel()`.
 In `CalendarPanel`, `getRequestType()` is called on the event to check the page that is requested.
 Given that `REQUEST_TODAY` is the `requestType` of the event, `CalendarView` will switch the displayed page to today.
@@ -1561,19 +1562,19 @@ Use case ends.
 Use case resumes at step 2.
 
 [discrete]
-=== Use case: Add contact specific tasks
+=== Use case: Add calendar entry
 
 *MSS*
 
-1.  User selects contact to add a task for and enters task description and deadline.
-2.  ContactSails adds task to specified contact and shows a success message.
+1.  User requests to add an entry with specified details.
+2.  ContactSails adds entry to list of entries.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. User selects invalid contact.
+* 1a. User adds entry with invalid details.
 +
 [none]
 ** 1a1. ContactSails shows an error message.
@@ -1581,12 +1582,33 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1b. User enters invalid task details.
+* 1b. User enters duplicate entry.
 +
 [none]
-** 1b1. ContactSails shows en error message.
+** 1b1. ContactSails shows an error message.
 +
 Use case ends.
+
+[discrete]
+=== Use case: Delete calendar entry
+
+*MSS*
+
+1.  User requests to delete an entry at specified index of entry list.
+2.  ContactSails deletes the entry at specified index.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User gives invalid index.
++
+[none]
+** 1a1. ContactSails shows an error message.
++
+Use case ends.
+
 
 [discrete]
 === Use case: Find persons by name
@@ -2159,6 +2181,15 @@ These instructions only provide a starting point for testers to work on; testers
    Expected: Calendar will change its displayed date to 05-05-2018. Details of current date of calendar will be displayed in status message.
 .. Incorrect `calendarjump` commands to try:
     ** `calendarjump 04/04/2018` (No prefix is present) +
-    ** `calendarjump 04.04.2018` (Calendar will display in Day-view if no parameter is given) +
+    ** `calendarjump td/04.04.2018` (Wrong format for date) +
     ** `calendarjump x@@ ` (invalid parameters are entered) +
-   Expected: Same as previous
+   Expected: Command will fail to execute. Error details shown in the status message. Status bar remains the same.
+
+=== Changing displayed page in Calendar
+
+. *Changing displayed page in Calendar*
+
+.. Prerequisites:
+** Calendar is displayed at center of interface, displaying in Day-view.
+.. Test case: `calendarnext` +
+   Expected: Calendar will change its displayed date to the next day (if Day-view is displayed). Command result will be displayed in status message, indicating that calendar has displayed the next page.
