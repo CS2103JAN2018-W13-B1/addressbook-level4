@@ -85,15 +85,21 @@
 <li><a href="#clearing-all-entries-in-list-of-entries-code-entryclear-code-code-since-v1-5-code">5.7.5. Clearing all entries in list of entries : <code>entryclear</code> <code>since v1.5</code></a></li>
 </ul>
 </li>
-<li><a href="#miscellaneous-commands">5.8. Miscellaneous Commands</a>
+<li><a href="#exporting-data">5.8. Exporting Data</a>
 <ul class="sectlevel3">
-<li><a href="#viewing-command-history-code-history-code">5.8.1. Viewing command history : <code>history</code></a></li>
-<li><a href="#changing-the-theme-code-theme-code-code-since-v1-3-code">5.8.2. Changing the theme : <code>theme</code> <code>since v1.3</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">5.8.3. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">5.8.4. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">5.8.5. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#saving-the-data">5.8.6. Saving the data</a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.8.7. Exiting the program : <code>exit</code></a></li>
+<li><a href="#exporting-listed-persons-code-exportlistedpersons-code">5.8.1. Exporting listed persons : <code>exportListedPersons</code></a></li>
+<li><a href="#exporting-listed-orders-code-exportlistedorders-code">5.8.2. Exporting listed orders : <code>exportListedOrders</code></a></li>
+</ul>
+</li>
+<li><a href="#miscellaneous-commands">5.9. Miscellaneous Commands</a>
+<ul class="sectlevel3">
+<li><a href="#viewing-command-history-code-history-code">5.9.1. Viewing command history : <code>history</code></a></li>
+<li><a href="#changing-the-theme-code-theme-code-code-since-v1-3-code">5.9.2. Changing the theme : <code>theme</code> <code>since v1.3</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">5.9.3. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">5.9.4. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">5.9.5. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#saving-the-data">5.9.6. Saving the data</a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.9.7. Exiting the program : <code>exit</code></a></li>
 </ul>
 </li>
 </ul>
@@ -107,7 +113,8 @@
 <li><a href="#managing-orders-2">7.4. Managing Orders</a></li>
 <li><a href="#viewing-calendar">7.5. Viewing Calendar</a></li>
 <li><a href="#managing-calendar-entries-2">7.6. Managing Calendar Entries</a></li>
-<li><a href="#miscellaneous-commands-2">7.7. Miscellaneous Commands</a></li>
+<li><a href="#managing-export">7.7. Managing Export</a></li>
+<li><a href="#miscellaneous-commands-2">7.8. Miscellaneous Commands</a></li>
 </ul>
 </li>
 <li><a href="#coming-in-v2-0">8. Coming in v2.0</a>
@@ -1582,12 +1589,104 @@ This deletes the entry at index 1 of most recent entry listing.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="miscellaneous-commands"><a class="link" href="#miscellaneous-commands">5.8. Miscellaneous Commands</a></h3>
+<h3 id="exporting-data"><a class="link" href="#exporting-data">5.8. Exporting Data</a></h3>
+<div class="paragraph">
+<p>This section describes commands you can use to export data from ContactSails</p>
+</div>
+<div class="sect3">
+<h4 id="exporting-listed-persons-code-exportlistedpersons-code"><a class="link" href="#exporting-listed-persons-code-exportlistedpersons-code">5.8.1. Exporting listed persons : <code>exportListedPersons</code></a></h4>
+<div class="paragraph">
+<p>Description: Exports the current contact details of the current person listing.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>exportListedPersons FILENAME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>exLP</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>FILENAME refers to the name of file the user wants to save the exported data to.</p>
+</li>
+<li>
+<p>FILENAME should only contain characters from digits 0-9 and alphabets a-z or A-Z</p>
+</li>
+<li>
+<p>FILENAME should consist of at least 1 character and at most 30 characters.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Type <code>exportListedPersons somePersonFile</code> OR
+<code>exLP somePersonFile</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This creates a somePersonFile.csv file with the contact details of listed persons.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exporting-listed-orders-code-exportlistedorders-code"><a class="link" href="#exporting-listed-orders-code-exportlistedorders-code">5.8.2. Exporting listed orders : <code>exportListedOrders</code></a></h4>
+<div class="paragraph">
+<p>Description: Exports the current details of the current order listing.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>exportListedOrders FILENAME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>exLO</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>FILENAME refers to the name of file the user wants to save the exported data to.</p>
+</li>
+<li>
+<p>FILENAME should only contain characters from digits 0-9 and alphabets a-z or A-Z</p>
+</li>
+<li>
+<p>FILENAME should consist of at least 1 character and at most 30 characters.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Type <code>exportListedOrders someOrderFile</code> OR
+<code>exLO someOrderFile</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This creates a someOrderFile.csv file with the details of listed orders.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="miscellaneous-commands"><a class="link" href="#miscellaneous-commands">5.9. Miscellaneous Commands</a></h3>
 <div class="paragraph">
 <p>This section describes other commands you can use in ContactSails.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">5.8.1. Viewing command history : <code>history</code></a></h4>
+<h4 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">5.9.1. Viewing command history : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Description: Lists all the commands that you have entered in reverse chronological order.<br></p>
 </div>
@@ -1617,7 +1716,7 @@ This deletes the entry at index 1 of most recent entry listing.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-the-theme-code-theme-code-code-since-v1-3-code"><a class="link" href="#changing-the-theme-code-theme-code-code-since-v1-3-code">5.8.2. Changing the theme : <code>theme</code> <code>since v1.3</code></a></h4>
+<h4 id="changing-the-theme-code-theme-code-code-since-v1-3-code"><a class="link" href="#changing-the-theme-code-theme-code-code-since-v1-3-code">5.9.2. Changing the theme : <code>theme</code> <code>since v1.3</code></a></h4>
 <div class="paragraph">
 <p>Description: Changes the theme of the application.<br></p>
 </div>
@@ -1657,7 +1756,7 @@ This changes the theme of the application to <code>light</code>. The figure belo
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">5.8.3. Undoing previous command : <code>undo</code></a></h4>
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">5.9.3. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Description: Restores ContactSails to the state before the previous <code>undoable</code> command was executed.<br></p>
 </div>
@@ -1699,7 +1798,7 @@ This changes the theme of the application to <code>light</code>. The figure belo
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">5.8.4. Redoing the previously undone command : <code>redo</code></a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">5.9.4. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Description: Reverses the most recent <code>undoable</code> command.<br></p>
 </div>
@@ -1727,7 +1826,7 @@ This changes the theme of the application to <code>light</code>. The figure belo
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">5.8.5. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">5.9.5. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Description: Clears all entries from ContactSails.<br></p>
 </div>
@@ -1743,14 +1842,14 @@ This changes the theme of the application to <code>light</code>. The figure belo
 </div>
 </div>
 <div class="sect3">
-<h4 id="saving-the-data"><a class="link" href="#saving-the-data">5.8.6. Saving the data</a></h4>
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">5.9.6. Saving the data</a></h4>
 <div class="paragraph">
 <p>Data in ContactSails is saved in the hard disk automatically after you execute any command that changes the data.<br>
 There is no need to save the data manually.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.8.7. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.9.7. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Description: Exits the program.<br></p>
 </div>
@@ -2107,7 +2206,40 @@ This ability will be enabled in future versions of ContactSails.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="miscellaneous-commands-2"><a class="link" href="#miscellaneous-commands-2">7.7. Miscellaneous Commands</a></h3>
+<h3 id="managing-export"><a class="link" href="#managing-export">7.7. Managing Export</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Alias</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export contact details of listed persons.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exportListedPersons FILENAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exLP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exportListedPersons somePersonFile</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export details of listed orders.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exportListedOrders FILENAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exLO</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exportListedOrders somePersonFile</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="miscellaneous-commands-2"><a class="link" href="#miscellaneous-commands-2">7.8. Miscellaneous Commands</a></h3>
 <table class="tableblock frame-all grid-all" style="width: 99%;">
 <colgroup>
 <col style="width: 25%;">
@@ -2425,7 +2557,7 @@ The command descriptions for these features are given below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:11:38 UTC
+Last updated 2018-04-15 11:26:13 UTC
 </div>
 </div>
 </body>
