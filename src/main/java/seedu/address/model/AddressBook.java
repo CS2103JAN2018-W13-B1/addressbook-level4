@@ -144,32 +144,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         removeUnusedPreferences();
     }
 
-    //@@author amad-person
-    /**
-     * Replaces the given order {@code target} in the list with {@code editedOrder}.
-     */
-    public void updateOrder(Order target, Order editedOrder)
-        throws DuplicateOrderException, OrderNotFoundException {
-        requireNonNull(editedOrder);
-
-        orders.setOrder(target, editedOrder);
-    }
-    //@@author
-
-    /**
-     * Updates the order status of the given order {@code target}
-     */
-    public void updateOrderStatus(Order target, String orderStatus)
-            throws DuplicateOrderException, OrderNotFoundException {
-        requireNonNull(orderStatus);
-
-        Order editedOrder = new Order(target.getOrderInformation(), target.getOrderStatus(),
-                target.getPrice(), target.getQuantity(), target.getDeliveryDate());
-        editedOrder.getOrderStatus().setCurrentOrderStatus(orderStatus);
-
-        orders.setOrder(target, editedOrder);
-    }
-
     /**
      *  Updates the master group list and master preference list to include groups and preferences
      *  in {@code person} that are not in the lists.
@@ -297,6 +271,39 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the given order {@code target} in the list with {@code editedOrder}.
+     *
+     * @throws DuplicateOrderException if updating the order's details causes the order
+     * to be equivalent to another existing order in the list.
+     * @throws OrderNotFoundException if {@code target} could not be found in the list.
+     */
+    public void updateOrder(Order target, Order editedOrder)
+            throws DuplicateOrderException, OrderNotFoundException {
+        requireNonNull(editedOrder);
+
+        orders.setOrder(target, editedOrder);
+    }
+    //@@author
+
+    /**
+     * Updates the order status of the given order {@code target}.
+     *
+     * @throws DuplicateOrderException if updating the order's details causes the order
+     * to be equivalent to another existing order in the list.
+     * @throws OrderNotFoundException if {@code target} could not be found in the list.
+     */
+    public void updateOrderStatus(Order target, String orderStatus)
+            throws DuplicateOrderException, OrderNotFoundException {
+        requireNonNull(orderStatus);
+
+        Order editedOrder = new Order(target.getOrderInformation(), target.getOrderStatus(),
+                target.getPrice(), target.getQuantity(), target.getDeliveryDate());
+        editedOrder.getOrderStatus().setOrderStatusValue(orderStatus);
+
+        orders.setOrder(target, editedOrder);
+    }
+
+    /**
      * Removes order from list of orders.
      */
     public void deleteOrder(Order targetOrder) throws OrderNotFoundException {
@@ -346,6 +353,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(persons, groupTags, prefTags);
+        return Objects.hash(persons, groupTags, prefTags, orders);
     }
 }

@@ -58,7 +58,7 @@ import seedu.address.testutil.OrderBuilder;
 public class AddOrderCommandTest {
 
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
     private Model model;
 

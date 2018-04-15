@@ -14,8 +14,9 @@ import seedu.address.model.order.UniqueOrderList;
 import seedu.address.model.order.exceptions.DuplicateOrderException;
 
 public class UniqueOrderListTest {
+
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void equals() throws DuplicateOrderException {
@@ -33,7 +34,7 @@ public class UniqueOrderListTest {
         // different objects, same type -> false
         assertFalse(firstOrderList.equals(secondOrderList));
     }
-
+  
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         UniqueOrderList uniqueOrderList = new UniqueOrderList();
