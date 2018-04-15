@@ -19,5 +19,4 @@ public class ExportListedOrdersCommandParserTest {
     public void parse_invalidArgsTooLong_throwsParseException() {
         assertParseFailure(parser, "123451234512345123451234512345X", MESSAGE_FILENAME_CONSTRAINTS);
     }
-	
 }
