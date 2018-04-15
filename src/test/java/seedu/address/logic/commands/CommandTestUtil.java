@@ -245,7 +245,6 @@ public class CommandTestUtil {
             assertEquals(expectedFilteredOrderList, actualModel.getFilteredOrderList());
             assertEquals(expectedCalendarManager, actualModel.getCalendarManager());
             assertEquals(expectedFilteredCalendarEntryList, actualModel.getFilteredCalendarEntryList());
-
         }
     }
 
