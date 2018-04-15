@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Alicia Ho Sor Sian - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Alicia Ho Sor Sian - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-contactsails"><a class="link" href="#project-contactsails">PROJECT: ContactSails</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ContactSails is built upon AddressBook - Level 4, a desktop address book application used for teaching Software Engineering principles.
+It has new features that serve to meet the needs of salespersons from small companies or home-grown businesses with customers from various social media platforms.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: The ability to <strong>display a calendar within the application and manage calendar entries.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Functionality: It allows the user to create, delete and edit entries, which represent events such as meetings or deadlines.
+Existing entries are displayed in the calendar interface at their respective time slots.
+The user can switch between calendar views to view entries within a day, a week or a month.</p>
+</li>
+<li>
+<p>Justification: The calendar can be used to display any incoming events or deadlines to help salespersons to plan their schedules carefully.
+It provides a quicker way for salespersons, who prefer typing to using a mouse, to manage their calendar entries.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+</li>
+<li>
+<p>Credits: CalendarFX is used to provide the calendar to display entries.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Separation of Tag class into child classes, Group and Preference, and ability to find persons based on their groups and preferences.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Justification: Provides a better way to find contacts based on what they tend to buy, or the social media platform they tend to use.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/functional/SuxianAlicia.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/test/SuxianAlicia.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Removed unused tags in tag list of address book (Pull request <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/38">#38</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated images used in Developer Guide. (Pull request <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/173">#173</a>, <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/238">#238</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/165">#165</a>, <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/98">#98</a>, <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/83">#83</a>, <a href="https://github.com/CS2103JAN2018-W13-B1/main/pull/52">#52</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/CS2103JAN2018-W11-B3/main/issues/120">Issue #120</a>, <a href="https://github.com/CS2103JAN2018-W11-B3/main/issues/128">Issue #128</a>, <a href="https://github.com/CS2103JAN2018-W11-B3/main/issues/104">Issue #104</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third party library (CalendarFX) to the project (<a href="https://github.com">#42</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="viewing-the-calendar"><a class="link" href="#viewing-the-calendar">Viewing the Calendar</a></h3>
+<div class="paragraph">
+<p>This section describes commands related to viewing the calendar in ContactSails.
+The calendar is displayed at the CenterPanel of the interface when you enter any of the commands in this section.
+Figure 20 below shows how the calendar looks like.</p>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../images/ContactSails_Ui_Calendar.PNG" alt="ContactSails Ui Calendar" width="500">
+</div>
+<div class="title">Figure 1. ContactSails interface with Calendar and Calendar Entries displayed.</div>
+</div>
+<div class="paragraph">
+<p>In Figure 20, the calendar is set to Day-view, hence it displays all calendar entries that occur in the displayed date (11 April 2018, Wednesday).
+In the calendar, calendar entries appears as colored blocks, such as the green block in Figure 20, indicating the title and starting time of the entry.</p>
+</div>
+<div class="paragraph">
+<p>You can change the viewing format of the calendar using <code>calendar</code> command to switch to either of the 3 views; Day-view, Week-view and Month-view.
+To change the displayed date, you can enter <code>calendarjump</code> command to view your desired date.</p>
+</div>
+<div class="sect3">
+<h4 id="displaying-the-calendar-code-calendar-code-code-since-v1-3-code"><a class="link" href="#displaying-the-calendar-code-calendar-code-code-since-v1-3-code">Displaying the calendar : <code>calendar</code> <code>since v1.3</code></a></h4>
+<div class="paragraph">
+<p>Description: Displays the calendar in the Center Panel in specified viewing format.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendar [VIEW_FORMAT]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>cal</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Calendar can be set to display 1 of the 3 views; Day, Week, and Month.</p>
+</li>
+<li>
+<p><code>VIEW_FORMAT</code> only accepts the keywords, <code>day</code>, <code>week</code> and <code>month</code> to display the calendar in the respective format.</p>
+</li>
+<li>
+<p>Calendar is set to Day-view by default if no parameters are entered or invalid parameters are entered.</p>
+</li>
+<li>
+<p>Calendar will display all entries within timeframe of the specified view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>To set display of calendar to Month-view, execute the following command:</p>
+</div>
+<div class="paragraph">
+<p>Type <code>calendar month</code> OR <code>cal month</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This shows calendar in Month-view as seen in the figure below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Calendar_Month_View.png" alt="Calendar Month View" width="500">
+</div>
+<div class="title">Figure 2. Calendar set to Month-view.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code"><a class="link" href="#go-to-next-page-in-the-calendar-code-calendarnext-code-code-since-v1-5rc-code">Go to next page in the calendar : <code>calendarnext</code> <code>since v1.5rc</code></a></h4>
+<div class="paragraph">
+<p>Description: Displays next page of current displayed date in calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendarnext</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>calnext</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The command has the same effect as pressing the <kbd>&gt;</kbd> button at the top left corner of the calendar.</p>
+</li>
+<li>
+<p>If calendar is displaying in Day-view, command displays the next day of original date in Day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in Week-view, command displays the next week of original date in Week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in Month-view, command displays next month of original date in Month-view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code"><a class="link" href="#go-to-previous-page-in-the-calendar-code-calendarback-code-code-since-v1-5rc-code">Go to previous page in the calendar : <code>calendarback</code> <code>since v1.5rc</code></a></h4>
+<div class="paragraph">
+<p>Description: Displays previous page of current displayed date in calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendarback</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>calback</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The command has the same effect as pressing the <kbd>&lt;</kbd> button at the top left corner of the calendar.</p>
+</li>
+<li>
+<p>If calendar is displaying in Day-view, command displays the previous day of original date in Day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in Week-view, command displays the previous week of original date in Week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in Month-view, command displays previous month of original date in Month-view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code"><a class="link" href="#display-current-day-in-the-calendar-code-calendartoday-code-code-since-v1-5rc-code">Display current day in the calendar : <code>calendartoday</code> <code>since v1.5rc</code></a></h4>
+<div class="paragraph">
+<p>Description: Displays today&#8217;s date in the calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendartoday</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>caltoday</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The command has the same effect as pressing the <kbd>today</kbd> button at the top left corner of the calendar.</p>
+</li>
+<li>
+<p>If calendar is displaying in Day-view, command displays today&#8217;s date in Day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in Week-view, command displays the current week of today in Week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in Month-view, command displays current month of today in Month-view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code"><a class="link" href="#display-given-date-in-the-calendar-code-calendarjump-code-code-since-v1-5-code">Display given date in the calendar : <code>calendarjump</code> <code>since v1.5</code></a></h4>
+<div class="paragraph">
+<p>Description: Displays the given date in calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>calendarjump td/TARGET_DATE</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>caljump</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>TARGET_DATE</code> must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
+</li>
+<li>
+<p>If calendar is displaying in day-view, command displays <code>TARGET_DATE</code> in day-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in week-view, command displays the week of <code>TARGET_DATE</code> in week-view.</p>
+</li>
+<li>
+<p>If calendar is displaying in month-view, command displays the month of <code>TARGET_DATE</code> in month-view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-calendar-entries"><a class="link" href="#managing-calendar-entries">Managing Calendar Entries</a></h3>
+<div class="paragraph">
+<p>This section describes commands you can use to manage calendar entries in ContactSails.
+You can use calendar entries to represent events, deadlines or meetings.<br></p>
+</div>
+<div class="paragraph">
+<p>A calendar entry has a title, start date, end date, start time and end time.
+These entries will be displayed in the calendar in the Center Panel and calendar entry list in the Right Panel.
+Figure 22 below shows how a calendar entry appears in the calendar entry list.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Calendar_Entry_Card.png" alt="Calendar Entry Card" width="300">
+</div>
+<div class="title">Figure 3. Calendar Entry Description</div>
+</div>
+<div class="paragraph">
+<p>In Figure 22, calendar entry has an index of 1, indicating its position in the list.
+Beside the index is the title of the calendar entry (Meet Aaron).
+The description indicates the entry&#8217;s starting date (11-04-2018) and ending date (11-04-2018).
+The last sentence indicates the starting time (14:00) and ending time. (17:00) of the entry.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code"><a class="link" href="#adding-entries-to-calendar-entry-list-code-entryadd-code-code-since-v1-3-code">Adding entries to calendar entry list : <code>entryadd</code> <code>since v1.3</code></a></h4>
+<div class="paragraph">
+<p>Description: Adds an entry to the calendar entry list and displays it in the calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entryadd t/ENTRY_TITLE [sd/START_DATE] ed/END_DATE [st/START_TIME] et/END_TIME</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ea</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>ENTRY_TITLE</code> must be alphanumeric, but whitespaces are allowed in between words.</p>
+</li>
+<li>
+<p>If input does not contain <code>START_DATE</code>, it is assumed that <code>START DATE</code> is the same as <code>END_DATE</code>.</p>
+</li>
+<li>
+<p>If input does not contain <code>START_TIME</code>, it is assumed that <code>START_TIME</code> is 00:00.</p>
+</li>
+<li>
+<p><code>START_DATE</code> and <code>END_DATE</code> must follow the format: DD-MM-YYYY (E.g. 04-04-2020 represents 4 April 2020)</p>
+</li>
+<li>
+<p><code>START_TIME</code> and <code>END_TIME</code> must follow the 24-Hour format: HH:MM (E.g. 23:59)</p>
+</li>
+<li>
+<p>Duration of an entry must be at least 15 minutes.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Type <code>entryadd t/meet with boss ed/05-05-2020 st/10:00 et/12:00</code> OR<br>
+<code>ea t/meet with boss ed/05-05-2020 st/10:00 et/12:00</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This creates a calendar entry with listed title, starts from 10:00 am and ends at 12:00 noon on 5 May 2020.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code"><a class="link" href="#editing-entries-in-calendar-entry-list-code-entryedit-code-code-since-v1-5rc-code">Editing entries in calendar entry list : <code>entryedit</code> <code>since v1.5rc</code></a></h4>
+<div class="paragraph">
+<p>Description: Edits an existing entry in the calendar entry list and displays the edited entry in the calendar.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entryedit ENTRY_INDEX [t/ENTRY_TITLE] [sd/START_DATE] [ed/END_DATE] [st/START_TIME] [et/END_TIME]</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ee</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the entry at specified <code>ENTRY_INDEX</code>. The index refers to the index number shown in the last entry listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>The calendar entry list currently has the following calendar entry at index 1:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Edit_Entry_Before.png" alt="Edit Entry Before" width="300">
+</div>
+<div class="title">Figure 4. Initial state of 'Meet Boss' calendar entry.</div>
+</div>
+<div class="paragraph">
+<p>To edit this entry, type <code>entryedit 1 t/Meeting with Bosses et/14:00</code> OR <code>ee 1 t/meet with bosses et/1400</code> into the Command Box.<br></p>
+</div>
+<div class="paragraph">
+<p>This edits the title and end time of 1st entry in entry list to <code>Meeting with Bosses</code> and <code>1400</code> respectively.
+The result is shown in the figure below.<br></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Edit_Entry_After.png" alt="Edit Entry After" width="300">
+</div>
+<div class="title">Figure 5. Result of editing the 'Meet Boss' calendar entry.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-entries-in-calendar-entry-list-code-entrydelete-code-code-since-v1-4-code"><a class="link" href="#deleting-entries-in-calendar-entry-list-code-entrydelete-code-code-since-v1-4-code">Deleting entries in calendar entry list : <code>entrydelete</code> <code>since v1.4</code></a></h4>
+<div class="paragraph">
+<p>Description: Deletes an existing entry in Calendar entry list.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entrydelete ENTRY_INDEX</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ed</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes entry at specified <code>ENTRY_INDEX</code> of entry list.</p>
+</li>
+<li>
+<p>The index refers to index number shown in the most recent entry listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Type <code>entrydelete 1</code> OR <code>ed 1</code> into the Command Box.<br>
+This deletes the entry at index 1 of most recent entry listing.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-calendar-entries-code-entrylist-code-code-since-v1-4-code"><a class="link" href="#listing-all-calendar-entries-code-entrylist-code-code-since-v1-4-code">Listing all calendar entries : <code>entrylist</code> <code>since v1.4</code></a></h4>
+<div class="paragraph">
+<p>Description: Shows a list of all calendar entries in ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entrylist</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>el</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-all-entries-in-list-of-entries-code-entryclear-code-code-since-v1-5-code"><a class="link" href="#clearing-all-entries-in-list-of-entries-code-entryclear-code-code-since-v1-5-code">Clearing all entries in list of entries : <code>entryclear</code> <code>since v1.5</code></a></h4>
+<div class="paragraph">
+<p>Description: Clears all entry list entries from ContactSails.<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Format: <code>entryclear</code><br></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Command Alias: <code>ec</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">Calendar and Entry tracking</a></h3>
+<div class="paragraph">
+<p>Users can create, edit and delete entries, which can represent events such as meetings or deadlines.
+ContactSails has a calendar interface that displays existing entries for better visualisation of the user&#8217;s schedule.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>ContactSails uses CalendarFX&#8217;s calendar interface. The <code>Model</code> component manages a list of entries, and this list of entries will synchronise with
+the calendar&#8217;s internal list of entries.</p>
+</div>
+<div class="sect4">
+<h5 id="calendar-entries"><a class="link" href="#calendar-entries">Calendar Entries</a></h5>
+<div class="paragraph">
+<p><code>CalendarEntry</code> represents an entry created by users.</p>
+</div>
+<div class="paragraph">
+<p>A <code>CalendarEntry</code> is implemented in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarEntry</span> {
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> entryTitle;
+    <span class="directive">private</span> <span class="directive">final</span> StartDate startDate;
+    <span class="directive">private</span> <span class="directive">final</span> EndDate endDate;
+    <span class="directive">private</span> <span class="directive">final</span> StartTime startTime;
+    <span class="directive">private</span> <span class="directive">final</span> EndTime endTime;
+
+
+    <span class="comment">// ... CalendarEntry attribute getters and setters ...</span>
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is a brief description of the attributes of <code>CalendarEntry</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>entryTitle: Represents title of entry.</p>
+</li>
+<li>
+<p>startDate: Represents starting date of the entry in DD-MM-YYYY format.</p>
+</li>
+<li>
+<p>endDate: Represents ending date of the entry in DD-MM-YYYY format.</p>
+</li>
+<li>
+<p>startTime: Represents starting time of the entry in HH:MM format (24-Hour format).</p>
+</li>
+<li>
+<p>endTime: Represents ending time of the entry in HH:MM format (24-Hour format).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Entry management is facilitated by <code>CalendarManager</code> residing in <code>ModelManager</code>.
+It supports the adding, removing and editing of <code>CalendarEntry</code>(e.g. <code>addCalendarEntry</code>, <code>deleteCalendarEntry</code>) and maintains a <code>UniqueCalendarEntryList</code> to store <code>CalendarEntry</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>CalendarEntry</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/CalendarEntryClassDiagram.png" alt="CalendarEntryClassDiagram" width="800">
+</div>
+<div class="title">Figure 6. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
+</div>
+<div class="paragraph">
+<p>In the Figure 34, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
+<code>CalendarManager</code> in turn calls methods in <code>UniqueCalendarEntryList</code> to add, remove or edit <code>CalendarEntries</code> stored in it.
+<code>CalendarManager</code> contains an instance of <code>Calendar</code> belonging to CalendarFX&#8217;s library. <code>Calendar</code> stores <code>Entry</code>, as defined in CalendarFX&#8217;s library.
+<code>CalendarEntry</code> is converted to <code>Entry</code> before they can be added to <code>Calendar</code> via <code>CalendarEntryConversionUtil</code> in the <code>Commons</code> class.</p>
+</div>
+<div class="paragraph">
+<p><code>Logic</code> Component contains the commands required to manage user&#8217;s entries, which are <code>AddEntryCommand</code>, <code>DeleteEntryCommand</code> and <code>EditEntryCommand</code>.
+These commands inherit from <code>UndoableCommand</code> and are thus can be undone via the <code>UndoCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows how adding an entry works:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/AddEntrySD.png" alt="AddEntrySD" width="800">
+</div>
+<div class="title">Figure 7. Sequence Diagram for adding an entry into ContactSails</div>
+</div>
+<div class="paragraph">
+<p>In Figure 35, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
+When AddEntryCommand is executed, <code>CalendarEntry</code> is passed from <code>AddEntryCommand</code> to <code>ModelManager</code> and to <code>CalendarManager</code>, which adds it to <code>UniqueCalendarEntryList</code>.
+The <code>CalendarEntry</code> is then converted to <code>Entry</code> to be added to <code>Calendar</code> (not shown in diagram) and control is eventually returned to the user.</p>
+</div>
+<div class="paragraph">
+<p>Storing of <code>CalendarEntry</code> data is managed by <code>CalendarManagerStorage</code> within <code>Storage</code> Component.
+<code>CalendarEntry</code> is converted to <code>XmlAdaptedCalendarEntry</code>, which can be stored in <code>XmlSerializableCalendarManager</code>.
+<code>XmlSerializableCalendarManager</code> is stored in a .xml file using <code>XmlFileStorage</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="calendar-interface-and-center-panel"><a class="link" href="#calendar-interface-and-center-panel">Calendar Interface and Center Panel</a></h5>
+<div class="paragraph">
+<p><code>CalendarView</code> within CalendarFX&#8217;s library uses the <code>Calendar</code> within <code>CalendarManager</code> in <code>Model</code> to display all entries stored within <code>Calendar</code>.
+<code>CalendarPanel</code> residing in <code>Ui</code> component creates an instance of <code>CalendarView</code> to manage the display of the calendar.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CalendarPanel</code> is initialised.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarPanel</span> <span class="directive">extends</span> UiPart&lt;<span class="predefined-type">Region</span>&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> FXML = <span class="string"><span class="delimiter">&quot;</span><span class="content">CalendarPanel.fxml</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = LogsCenter.getLogger(<span class="local-variable">this</span>.getClass());
+
+    <span class="directive">private</span> <span class="directive">final</span> CalendarView calendarView;
+    <span class="directive">private</span> <span class="directive">final</span> CalendarSource calendarSource;
+
+    <span class="annotation">@FXML</span>
+    <span class="directive">private</span> StackPane calendarPanelHolder;
+
+    <span class="directive">public</span> CalendarPanel(<span class="predefined-type">Calendar</span> calendar) {
+        <span class="local-variable">super</span>(FXML);
+        calendarView = CalendarFxUtil.returnModifiedCalendarView();
+        calendarSource = <span class="keyword">new</span> CalendarSource();
+
+        initialiseCalendar(calendar);
+        createTimeThread();
+    }
+
+    <span class="comment">// Methods to initialise calendar, change display of calendar, etc.</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>CalendarPanel</code> is initialised, <code>CalendarFxUtil</code> returns an instance of <code>CalendarView</code> that is modified to remove unused features within <code>CalendarView</code>, such as the ability to print the calendar.
+<code>CalendarSource</code> is required to store the <code>Calendar</code> from <code>Model</code> and <code>CalendarView</code> in turn stores <code>CalendarSource</code> before it can display contents of <code>Calendar</code>.<br>
+The setting up of <code>CalendarSource</code> and <code>CalendarView</code> is done by <code>initialiseCalendar(calendar)</code>. <code>createTimeThread()</code> creates a <code>Thread</code> that updates the <code>timeProperty()</code> in <code>CalendarView</code> every 10 seconds,
+ensuring that the current time displayed within the calendar interface matches the actual time the user is using the application.</p>
+</div>
+<div class="paragraph">
+<p>Any changes made to <code>Calendar</code> in <code>Model</code> will automatically be shown via the <code>CalendarView</code> as <code>Calendar</code> is a class-level member in <code>CalendarManager</code> that is passed to <code>CalendarPanel</code>.
+<code>updateCalendar()</code> in <code>CalendarManager</code> clears all entries within <code>Calendar</code> and adds <code>CalendarEntries</code> converted to <code>Entries</code> to <code>Calendar</code>.</p>
+</div>
+<div class="paragraph">
+<p>As the placement of <code>CalendarPanel</code> coincides with that of <code>PersonPanel</code> at the center of the GUI interface of ContactSails, <code>CenterPanel</code> is used in place to switch between displaying contents of the two panels.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CenterPanel</code> is initialised.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CenterPanel</span> <span class="directive">extends</span> UiPart&lt;<span class="predefined-type">Region</span>&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> FXML = <span class="string"><span class="delimiter">&quot;</span><span class="content">CenterPanel.fxml</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">private</span> CalendarPanel calendarPanel;
+
+    <span class="directive">private</span> PersonPanel personPanel;
+
+    <span class="annotation">@FXML</span>
+    <span class="directive">private</span> StackPane centerPlaceholder;
+
+    <span class="directive">public</span> CenterPanel(<span class="predefined-type">Calendar</span> calendar) {
+        <span class="local-variable">super</span>(FXML);
+
+        personPanel = <span class="keyword">new</span> PersonPanel();
+        calendarPanel = <span class="keyword">new</span> CalendarPanel(calendar);
+
+        displayPersonPanel();
+        registerAsAnEventHandler(<span class="local-variable">this</span>);
+    }
+    <span class="comment">// Methods to handle BaseEvents, display either panels, etc.</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>CenterPanel</code> contains one instance of <code>CalendarPanel</code> and <code>PersonPanel</code>. <code>PersonPanel</code> is displayed upon initialising <code>CenterPanel</code> by calling <code>displayPersonPanel()</code>.
+<code>displayPersonPanel()</code> is also called when <code>BaseEvents</code> related to <code>PersonPanel</code> is received by <code>CenterPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet below shows how <code>CenterPanel</code> displays <code>PersonPanel</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> displayPersonPanel() {
+        <span class="keyword">if</span> (!centerPlaceholder.getChildren().contains(personPanel.getRoot())) {
+            centerPlaceholder.getChildren().clear();
+            centerPlaceholder.getChildren().add(personPanel.getRoot());
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Based on the snippet, <code>CenterPanel</code> checks whether <code>centerPlaceholder</code> contains root node of <code>PersonPanel</code>.
+If it does not, centerPlaceholder` will clear any existing child nodes and add root node of <code>PersonPanel</code>, which causes <code>PersonPanel</code> to be displayed.</p>
+</div>
+<div class="paragraph">
+<p><code>CenterPanel</code> displays <code>CalendarPanel</code> with <code>displayCalendarPanel()</code>, which is written similar to <code>displayPersonPanel()</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>CenterPanel</code> subscribes to <code>BaseEvents</code> related to the <code>CalendarPanel</code> and <code>PersonPanel</code>, such as <code>ChangeCalendarPageRequestEvent</code> and <code>PersonPanelSelectionChangedEvent</code>.
+Thus, <code>BaseEvents</code> received by <code>CenterPanel</code> can be split into two categories, one meant for <code>CalendarPanel</code>, and the other for <code>PersonPanel</code>.
+The following sequence diagram below shows how <code>ChangeCalendarPageRequestEvent</code> is handled by <code>CenterPanel</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/CalendarPanelSD.png" alt="CalendarPanelSD" width="800">
+</div>
+<div class="title">Figure 8. Sequence Diagram of <code>ViewTodayCommand</code> posting <code>ChangeCalendarPageRequestEvent</code></div>
+</div>
+<div class="paragraph">
+<p>In Figure 36, <code>ViewTodayCommand</code> posts a new <code>ChangeCalendarPageRequestEvent</code> to the <code>EventsCenter</code>.
+<code>CenterPanel</code> handles the event by calling <code>handleChangeCalendarPageRequestEvent()</code> in <code>CalendarPanel</code> before calling <code>displayCalendarPanel()</code>.
+In <code>CalendarPanel</code>, <code>getRequestType()</code> is called on the event to check the page that is requested.
+Given that <code>REQUEST_TODAY</code> is the <code>requestType</code> of the event, <code>CalendarView</code> will switch the displayed page to today.
+The calendar will be displayed at <code>CenterPanel</code> as control is eventually returned to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-calendar-interface"><a class="link" href="#aspect-implementation-of-calendar-interface">Aspect: Implementation of calendar interface</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Integrate CalendarFX to display entries while all entry data is stored locally.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Doing so does not require constant Internet access to manage data of Calendar. CalendarFX can also synchronise with certain calendar applications such as Google Calendar.
+As less code is written to implement it, the effort required to maintain or debug is potentially lesser.</p>
+</li>
+<li>
+<p>Cons: CalendarFX has many features that are currently not used in ContactSails. Developers who intend to use them need to decide and learn how to implement such features by themselves.
+ContactSails developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
+Bugs present in the library cannot be easily fixed by non-developers of CalendarFX.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a calendar using JavaFX to manage entries.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This option offers greater potential for customisation as code is entirely managed by developers.</p>
+</li>
+<li>
+<p>Cons: There is greater probability of bugs created as implementation have to be created from scratch.
+As compared to using third-party libraries, substantial lines of code has to be written, thus debugging may be harder.
+Design of features of the calendar have to be decided by developers themselves, which requires more time and effort to implement the features.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-switching-between-code-personpanel-code-and-code-calendarpanel-code"><a class="link" href="#aspect-switching-between-code-personpanel-code-and-code-calendarpanel-code">Aspect: Switching between <code>PersonPanel</code> and <code>CalendarPanel</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> An additional panel, <code>CenterPanel</code> is used to switch between the two panels. <code>CenterPanel</code> subscribes <code>BaseEvent</code> meant for the two panels to facilitate the switching of the panels.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: All <code>BaseEvents</code> meant for these two panels can be consolidated in one place.</p>
+</li>
+<li>
+<p>Cons: It may not be intuitive for some developers to have <code>CenterPanel</code> register for <code>BaseEvent</code> meant for <code>PersonPanel</code> and <code>CalendarPanel</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>MainWindow</code> will subscribe to <code>BaseEvent</code> for the two panels and switch between them accordingly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There is no need to create an additional Class to handle the switching, thus saving the resources and memory required.</p>
+</li>
+<li>
+<p>Cons: This would violate the Single Responsibility Principle and Separation of Concerns as <code>MainWindow</code> has to manage other Ui related events such as opening the Help Window.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-15 14:57:30 UTC
+</div>
+</div>
+</body>
+</html>

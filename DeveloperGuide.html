@@ -99,6 +99,12 @@
 <li><a href="#changing-order-status">H.5. Changing Order Status</a></li>
 <li><a href="#deleting-an-order">H.6. Deleting an Order</a></li>
 <li><a href="#changing-the-theme">H.7. Changing the Theme</a></li>
+<li><a href="#adding-a-calendar-entry">H.8. Adding a Calendar Entry</a></li>
+<li><a href="#deleting-a-calendar-entry">H.9. Deleting a Calendar Entry</a></li>
+<li><a href="#editing-a-calendar-entry">H.10. Editing a Calendar Entry</a></li>
+<li><a href="#changing-calendar-view">H.11. Changing Calendar View</a></li>
+<li><a href="#changing-displayed-date-in-calendar">H.12. Changing displayed date in Calendar</a></li>
+<li><a href="#changing-displayed-page-in-calendar">H.13. Changing displayed page in Calendar</a></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +415,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given below (Figure 1) explains the high-level design of the App.</p>
+<p>The <strong><em>Architecture Diagram</em></strong> given below (Figure 4) explains the high-level design of the App.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -494,7 +500,7 @@ Given below is a description of what each of those classes do:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see Figure 2 below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see Figure 5 below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -504,7 +510,7 @@ Given below is a description of what each of those classes do:</p>
 </div>
 <h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> (Figure 3) below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> (Figure 6) below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -525,7 +531,7 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 </table>
 </div>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> (Figure 4) below shows how <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
+<p>The <em>Sequence Diagram</em> (Figure 7) below shows how <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -553,7 +559,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI Component</a></h3>
 <div class="paragraph">
 <p>The <code>UI</code> Component consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.
-Figure 5 below shows the structure of the <code>UI</code> component.</p>
+Figure 8 below shows the structure of the <code>UI</code> component.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -588,7 +594,7 @@ Figure 5 below shows the structure of the <code>UI</code> component.</p>
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic Component</a></h3>
 <div class="paragraph">
 <p>The <code>Logic</code> Component deals with how each command would be parsed and executed in an event-driven design.
-Figure 6 below shows the structure of the <code>Logic</code> Component.</p>
+Figure 9 below shows the structure of the <code>Logic</code> Component.</p>
 </div>
 <div id="fig-LogicClassDiagram" class="imageblock" style="text-align: center">
 <div class="content">
@@ -603,7 +609,7 @@ Figure 6 below shows the structure of the <code>Logic</code> Component.</p>
 <div class="title">Figure 10. Structure of Commands in the Logic Component.</div>
 </div>
 <div class="paragraph">
-<p>This diagram above (Figure 7) shows the finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 9, &#8220;Structure of the Logic Component&#8221;</a></p>
+<p>This diagram above (Figure 10) shows the finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 9, &#8220;Structure of the Logic Component&#8221;</a></p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> for the <code>Logic</code> Component:
@@ -629,7 +635,7 @@ Figure 6 below shows the structure of the <code>Logic</code> Component.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the <em>Sequence Diagram</em> (Figure 8) for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the <em>Sequence Diagram</em> (Figure 11) for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -643,7 +649,7 @@ Figure 6 below shows the structure of the <code>Logic</code> Component.</p>
 <div class="paragraph">
 <p>The <code>Model</code> Component handles the contacts, orders, and events in ContactSails and all their stored details in data structures.
 These structures also provide APIs to create, read, update and delete the details of these objects.
-Figure 9 below shows the structure of the <code>Model</code> Component.</p>
+Figure 12 below shows the structure of the <code>Model</code> Component.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -678,7 +684,7 @@ Figure 9 below shows the structure of the <code>Model</code> Component.</p>
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage Component</a></h3>
 <div class="paragraph">
 <p>The <code>Storage</code> Component handles the storing of data in the address book on the local computer.
-Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
+Figure 13 below shows the structure of the <code>Storage</code> Component.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -728,7 +734,8 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Figure 11 shows the inheritance diagram for commands.</p>
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead.
+Figure 14 shows the inheritance diagram for commands.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -737,10 +744,10 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <div class="title">Figure 14. Inheritance Diagram for commands in <code>Logic</code> Component</div>
 </div>
 <div class="paragraph">
-<p>As you can see from figure 11, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
+<p>As you can see from figure 14, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are implemented this way:</p>
+<p>Commands that are not undoable have similar implementations like the code snippet below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -753,7 +760,7 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>With the extra layer, the commands that are undoable are implemented this way:</p>
+<p>With the extra layer, the commands that are undoable are implemented similarly to the code snippet below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -778,7 +785,9 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in <code>AddressBook</code> residing in <code>Model</code>.
+The current state of the ContactSails is saved before the <code>delete 5</code> command executes.
+Figure 15 below shows the state of <code>UndoRedoStack</code> before and after the execution of <code>delete 5</code> command.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -787,13 +796,22 @@ Figure 10 below shows the structure of the <code>Storage</code> Component.</p>
 <div class="title">Figure 15. UndoRedoStack before and after executing 1 Delete Command</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
+<p>In Figure 15, when <code>delete 5</code> command finishes execution, the command will be pushed onto the <code>undoStack</code> (the state before the execution is saved together with the command).</p>
+</div>
+<div class="paragraph">
+<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>.
+For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.
+Figure 16 below shows the change in <code>undoStack</code> when <code>add</code> command is executed right after <code>delete 5</code> command.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
 <div class="title">Figure 16. UndoRedoStack before and after Executing 1 Add Command</div>
+</div>
+<div class="paragraph">
+<p>In Figure 16, <code>undoStack</code> initially contains <code>delete 5</code> command alongside the state of <code>Model</code> before <code>delete 5</code> was executed.
+Upon executing <code>add</code> command, <code>add</code> command and the state of ContactSails before execution of <code>add</code> command is added to the <code>undoStack</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -811,13 +829,19 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed.</p>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>.
+We will restore <code>Model</code> to the state before the <code>add</code> command executed.
+Figure 17 below shows the change in <code>UndoRedoStack</code> when the <code>undo</code> is performed.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
 <div class="title">Figure 17. UndoRedoStack before and after executing Undo Command</div>
+</div>
+<div class="paragraph">
+<p>In Figure 17, <code>undo</code> results in <code>add</code> command in the <code>undoStack</code> being popped out and pushed into <code>redoStack</code>.
+At the same time, the state of <code>Model</code> before the execution of <code>add</code> command is restored.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -832,13 +856,19 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The sequence diagram in Figure 18 shows how the undo operation works:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
 <div class="title">Figure 18. Sequence Diagram for executing Undo Command</div>
+</div>
+<div class="paragraph">
+<p>In Figure 18, when the user enters the command to <code>undo</code>, <code>AddressBookParser</code> will parse the given command and create an <code>UndoCommand</code> to be returned to <code>LogicManager</code>.
+<code>LogicManager</code> will call <code>execute()</code> method in <code>UndoCommand</code>, which in turn calls <code>popUndo()</code> method in <code>UndoRedoStack</code>.
+<code>UndoRedoStack</code> will return the most recently executed <code>UndoableCommand</code> popped from the <code>undoStack</code> within <code>UndoRedoStack</code>.
+<code>UndoCommand</code> will then call <code>undo()</code> on the <code>XYZCommand</code>, which restores the initial state of <code>Model</code> before <code>XYZCommand</code> was executed.</p>
 </div>
 <div class="paragraph">
 <p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
@@ -856,7 +886,8 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+<p>Suppose the user now decides to execute a new command, <code>clear</code>.
+Figure 19 below shows the change in <code>UndoRedoStack</code> after executing <code>clear</code> command.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -865,7 +896,12 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="title">Figure 19. UndoRedoStack before and after executing Clear Command</div>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
+<p>In Figure 19, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty.
+Its contents are cleared as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+</div>
+<div class="paragraph">
+<p>Commands that are not undoable are not added into the <code>undoStack</code>.
+For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution as seen in Figure 20 below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -874,13 +910,20 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="title">Figure 20. UndoRedoStack before and after executing List Command</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
+<p>In Figure 20, <code>undoStack</code> remained the same even after <code>list</code> command is executed since only commands inherited from <code>UndoableCommand</code> will be pushed to <code>undoStack</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram in Figure 21 summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
-<div class="title">Figure 21. Execution Path when Undoable Commands</div>
+<div class="title">Figure 21. Activity Diagram after a <code>Command</code> is executed</div>
+</div>
+<div class="paragraph">
+<p>In Figure 21, after execution, any <code>Command</code> that is not <code>UndoCommand</code> nor <code>RedoCommand</code> will cause <code>redoStack</code> to be cleared.
+Afterwards, if the <code>Command</code> is an <code>UndoableCommand</code>, it will be pushed to <code>undoStack</code> before control is returned to the user eventually.</p>
 </div>
 </div>
 <div class="sect3">
@@ -897,13 +940,13 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>Pros: We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
 </li>
 <li>
-<p>Cons: It is hard for new developers to understand the template pattern.</p>
+<p>Cons: It is hard for new developers to understand the template pattern used to design this implementation.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Just override <code>execute()</code></p>
+<p><strong>Alternative 2:</strong> Simply override <code>execute()</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -923,14 +966,14 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire <code>Model</code> in terms of saving <code>AddressBook</code> and <code>CalendarManager</code>.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: This method is easy to implement.</p>
 </li>
 <li>
-<p>Cons: This may have performance issues in terms of memory usage.</p>
+<p>Cons: This may cause performance issues in terms of memory usage.</p>
 </li>
 </ul>
 </div>
@@ -1029,7 +1072,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="sect3">
 <h4 id="layout-implementation"><a class="link" href="#layout-implementation">4.2.1. Layout Implementation</a></h4>
 <div class="paragraph">
-<p>The specifications for the layout of PersonPanel is in <code>PersonPanel.fxml</code>. Figure 19 shows the visual layout of the <code>PersonPanel</code>.</p>
+<p>The specifications for the layout of PersonPanel is in <code>PersonPanel.fxml</code>. Figure 22 shows the visual layout of the <code>PersonPanel</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -1597,8 +1640,7 @@ being stored.</p>
 <div class="sect2">
 <h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">4.7. Calendar and Entry tracking</a></h3>
 <div class="paragraph">
-<p>Entries refer to meetings, deadlines and order deliveries created by users in ContactSails.
-Users can create, edit and delete entries.
+<p>Users can create, edit and delete entries, which can represent events such as meetings or deadlines.
 ContactSails has a calendar interface that displays existing entries for better visualisation of the user&#8217;s schedule.</p>
 </div>
 <div class="sect3">
@@ -1655,8 +1697,7 @@ the calendar&#8217;s internal list of entries.</p>
 </div>
 <div class="paragraph">
 <p>Entry management is facilitated by <code>CalendarManager</code> residing in <code>ModelManager</code>.
-It supports the adding, removing and editing of <code>CalendarEntry</code>(e.g. <code>addEntry</code>, <code>deleteEntry</code>) and maintains a <code>UniqueCalendarEntryList</code> to store <code>CalendarEntry</code>.
-Ongoing orders of a person will also appear as <code>CalendarEntry</code> based on the <code>DeliveryDate</code> attribute of the <code>Order</code>.</p>
+It supports the adding, removing and editing of <code>CalendarEntry</code>(e.g. <code>addCalendarEntry</code>, <code>deleteCalendarEntry</code>) and maintains a <code>UniqueCalendarEntryList</code> to store <code>CalendarEntry</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows class diagram of <code>Model</code> Component related to <code>CalendarEntry</code>.</p>
@@ -1668,40 +1709,154 @@ Ongoing orders of a person will also appear as <code>CalendarEntry</code> based 
 <div class="title">Figure 34. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
 </div>
 <div class="paragraph">
-<p>In the Figure 22, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
+<p>In the Figure 34, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
 <code>CalendarManager</code> in turn calls methods in <code>UniqueCalendarEntryList</code> to add, remove or edit <code>CalendarEntries</code> stored in it.
 <code>CalendarManager</code> contains an instance of <code>Calendar</code> belonging to CalendarFX&#8217;s library. <code>Calendar</code> stores <code>Entry</code>, as defined in CalendarFX&#8217;s library.
-<code>CalendarEntry</code> is converted to <code>Entry</code> before they can be added to <code>Calendar</code> via <code>CalendarUtil</code> in the <code>Commons</code> class.</p>
+<code>CalendarEntry</code> is converted to <code>Entry</code> before they can be added to <code>Calendar</code> via <code>CalendarEntryConversionUtil</code> in the <code>Commons</code> class.</p>
 </div>
 <div class="paragraph">
-<p><code>Logic</code> Component contains the commands required to manage user&#8217;s entries (e.g. <code>AddEntryCommand</code>, <code>DeleteEntryCommand</code>).</p>
+<p><code>Logic</code> Component contains the commands required to manage user&#8217;s entries, which are <code>AddEntryCommand</code>, <code>DeleteEntryCommand</code> and <code>EditEntryCommand</code>.
+These commands inherit from <code>UndoableCommand</code> and are thus can be undone via the <code>UndoCommand</code>.</p>
 </div>
 <div class="paragraph">
 <p>The sequence diagram below shows how adding an entry works:</p>
 </div>
-<div class="imageblock" style="text-align: "center">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/AddEntrySD.png" alt="AddEntrySD" width="800">
 </div>
-<div class="title">Figure 35. Sequence Diagram for adding of an entry into ContactSails</div>
+<div class="title">Figure 35. Sequence Diagram for adding an entry into ContactSails</div>
 </div>
 <div class="paragraph">
-<p>In Figure 23, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
+<p>In Figure 35, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
 When AddEntryCommand is executed, <code>CalendarEntry</code> is passed from <code>AddEntryCommand</code> to <code>ModelManager</code> and to <code>CalendarManager</code>, which adds it to <code>UniqueCalendarEntryList</code>.
-The <code>CalendarEntry</code> is then converted to <code>Entry</code> to be added to <code>Calendar</code> and control is eventually returned to the user.</p>
+The <code>CalendarEntry</code> is then converted to <code>Entry</code> to be added to <code>Calendar</code> (not shown in diagram) and control is eventually returned to the user.</p>
 </div>
 <div class="paragraph">
-<p>Storing of <code>CalendarEvent</code> data is managed by <code>CalendarManagerStorage</code> within <code>Storage</code> Component, converting <code>CalendarEntry</code> to <code>XmlAdaptedCalendarEntry</code> to store in a .xml file.
-This file is separate from the one storing <code>Person</code> and <code>Order</code>.</p>
+<p>Storing of <code>CalendarEntry</code> data is managed by <code>CalendarManagerStorage</code> within <code>Storage</code> Component.
+<code>CalendarEntry</code> is converted to <code>XmlAdaptedCalendarEntry</code>, which can be stored in <code>XmlSerializableCalendarManager</code>.
+<code>XmlSerializableCalendarManager</code> is stored in a .xml file using <code>XmlFileStorage</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="calendar-interface"><a class="link" href="#calendar-interface">Calendar Interface</a></h5>
+<h5 id="calendar-interface-and-center-panel"><a class="link" href="#calendar-interface-and-center-panel">Calendar Interface and Center Panel</a></h5>
 <div class="paragraph">
 <p><code>CalendarView</code> within CalendarFX&#8217;s library uses the <code>Calendar</code> within <code>CalendarManager</code> in <code>Model</code> to display all entries stored within <code>Calendar</code>.
-<code>CalendarPanel</code> residing in <code>Ui</code> component creates an instance of <code>CalendarView</code> to manage the display of the calendar.
-The panel responds to events related to the calendar, such as changing the viewing format or changing the current date displayed.
-Any changes made to <code>Calendar</code> in <code>Model</code> will automatically be shown via the <code>CalendarView</code>.</p>
+<code>CalendarPanel</code> residing in <code>Ui</code> component creates an instance of <code>CalendarView</code> to manage the display of the calendar.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CalendarPanel</code> is initialised.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarPanel</span> <span class="directive">extends</span> UiPart&lt;<span class="predefined-type">Region</span>&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> FXML = <span class="string"><span class="delimiter">&quot;</span><span class="content">CalendarPanel.fxml</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = LogsCenter.getLogger(<span class="local-variable">this</span>.getClass());
+
+    <span class="directive">private</span> <span class="directive">final</span> CalendarView calendarView;
+    <span class="directive">private</span> <span class="directive">final</span> CalendarSource calendarSource;
+
+    <span class="annotation">@FXML</span>
+    <span class="directive">private</span> StackPane calendarPanelHolder;
+
+    <span class="directive">public</span> CalendarPanel(<span class="predefined-type">Calendar</span> calendar) {
+        <span class="local-variable">super</span>(FXML);
+        calendarView = CalendarFxUtil.returnModifiedCalendarView();
+        calendarSource = <span class="keyword">new</span> CalendarSource();
+
+        initialiseCalendar(calendar);
+        createTimeThread();
+    }
+
+    <span class="comment">// Methods to initialise calendar, change display of calendar, etc.</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>CalendarPanel</code> is initialised, <code>CalendarFxUtil</code> returns an instance of <code>CalendarView</code> that is modified to remove unused features within <code>CalendarView</code>, such as the ability to print the calendar.
+<code>CalendarSource</code> is required to store the <code>Calendar</code> from <code>Model</code> and <code>CalendarView</code> in turn stores <code>CalendarSource</code> before it can display contents of <code>Calendar</code>.<br>
+The setting up of <code>CalendarSource</code> and <code>CalendarView</code> is done by <code>initialiseCalendar(calendar)</code>. <code>createTimeThread()</code> creates a <code>Thread</code> that updates the <code>timeProperty()</code> in <code>CalendarView</code> every 10 seconds,
+ensuring that the current time displayed within the calendar interface matches the actual time the user is using the application.</p>
+</div>
+<div class="paragraph">
+<p>Any changes made to <code>Calendar</code> in <code>Model</code> will automatically be shown via the <code>CalendarView</code> as <code>Calendar</code> is a class-level member in <code>CalendarManager</code> that is passed to <code>CalendarPanel</code>.
+<code>updateCalendar()</code> in <code>CalendarManager</code> clears all entries within <code>Calendar</code> and adds <code>CalendarEntries</code> converted to <code>Entries</code> to <code>Calendar</code>.</p>
+</div>
+<div class="paragraph">
+<p>As the placement of <code>CalendarPanel</code> coincides with that of <code>PersonPanel</code> at the center of the GUI interface of ContactSails, <code>CenterPanel</code> is used in place to switch between displaying contents of the two panels.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CenterPanel</code> is initialised.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CenterPanel</span> <span class="directive">extends</span> UiPart&lt;<span class="predefined-type">Region</span>&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> FXML = <span class="string"><span class="delimiter">&quot;</span><span class="content">CenterPanel.fxml</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">private</span> CalendarPanel calendarPanel;
+
+    <span class="directive">private</span> PersonPanel personPanel;
+
+    <span class="annotation">@FXML</span>
+    <span class="directive">private</span> StackPane centerPlaceholder;
+
+    <span class="directive">public</span> CenterPanel(<span class="predefined-type">Calendar</span> calendar) {
+        <span class="local-variable">super</span>(FXML);
+
+        personPanel = <span class="keyword">new</span> PersonPanel();
+        calendarPanel = <span class="keyword">new</span> CalendarPanel(calendar);
+
+        displayPersonPanel();
+        registerAsAnEventHandler(<span class="local-variable">this</span>);
+    }
+    <span class="comment">// Methods to handle BaseEvents, display either panels, etc.</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>CenterPanel</code> contains one instance of <code>CalendarPanel</code> and <code>PersonPanel</code>. <code>PersonPanel</code> is displayed upon initialising <code>CenterPanel</code> by calling <code>displayPersonPanel()</code>.
+<code>displayPersonPanel()</code> is also called when <code>BaseEvents</code> related to <code>PersonPanel</code> is received by <code>CenterPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet below shows how <code>CenterPanel</code> displays <code>PersonPanel</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> displayPersonPanel() {
+        <span class="keyword">if</span> (!centerPlaceholder.getChildren().contains(personPanel.getRoot())) {
+            centerPlaceholder.getChildren().clear();
+            centerPlaceholder.getChildren().add(personPanel.getRoot());
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Based on the snippet, <code>CenterPanel</code> checks whether <code>centerPlaceholder</code> contains root node of <code>PersonPanel</code>.
+If it does not, centerPlaceholder` will clear any existing child nodes and add root node of <code>PersonPanel</code>, which causes <code>PersonPanel</code> to be displayed.</p>
+</div>
+<div class="paragraph">
+<p><code>CenterPanel</code> displays <code>CalendarPanel</code> with <code>displayCalendarPanel()</code>, which is written similar to <code>displayPersonPanel()</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>CenterPanel</code> subscribes to <code>BaseEvents</code> related to the <code>CalendarPanel</code> and <code>PersonPanel</code>, such as <code>ChangeCalendarPageRequestEvent</code> and <code>PersonPanelSelectionChangedEvent</code>.
+Thus, <code>BaseEvents</code> received by <code>CenterPanel</code> can be split into two categories, one meant for <code>CalendarPanel</code>, and the other for <code>PersonPanel</code>.
+The following sequence diagram below shows how <code>ChangeCalendarPageRequestEvent</code> is handled by <code>CenterPanel</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/CalendarPanelSD.png" alt="CalendarPanelSD" width="800">
+</div>
+<div class="title">Figure 36. Sequence Diagram of <code>ViewTodayCommand</code> posting <code>ChangeCalendarPageRequestEvent</code></div>
+</div>
+<div class="paragraph">
+<p>In Figure 36, <code>ViewTodayCommand</code> posts a new <code>ChangeCalendarPageRequestEvent</code> to the <code>EventsCenter</code>.
+<code>CenterPanel</code> handles the event by calling <code>handleChangeCalendarPageRequestEvent()</code> in <code>CalendarPanel</code> before calling <code>displayCalendarPanel()</code>.
+In <code>CalendarPanel</code>, <code>getRequestType()</code> is called on the event to check the page that is requested.
+Given that <code>REQUEST_TODAY</code> is the <code>requestType</code> of the event, <code>CalendarView</code> will switch the displayed page to today.
+The calendar will be displayed at <code>CenterPanel</code> as control is eventually returned to the user.</p>
 </div>
 </div>
 </div>
@@ -1721,8 +1876,8 @@ As less code is written to implement it, the effort required to maintain or debu
 </li>
 <li>
 <p>Cons: CalendarFX has many features that are currently not used in ContactSails. Developers who intend to use them need to decide and learn how to implement such features by themselves.
-Developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
-Bugs present in the library cannot be easily fixed by developers.</p>
+ContactSails developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
+Bugs present in the library cannot be easily fixed by non-developers of CalendarFX.</p>
 </li>
 </ul>
 </div>
@@ -1738,6 +1893,39 @@ Bugs present in the library cannot be easily fixed by developers.</p>
 <p>Cons: There is greater probability of bugs created as implementation have to be created from scratch.
 As compared to using third-party libraries, substantial lines of code has to be written, thus debugging may be harder.
 Design of features of the calendar have to be decided by developers themselves, which requires more time and effort to implement the features.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-switching-between-code-personpanel-code-and-code-calendarpanel-code"><a class="link" href="#aspect-switching-between-code-personpanel-code-and-code-calendarpanel-code">Aspect: Switching between <code>PersonPanel</code> and <code>CalendarPanel</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> An additional panel, <code>CenterPanel</code> is used to switch between the two panels. <code>CenterPanel</code> subscribes <code>BaseEvent</code> meant for the two panels to facilitate the switching of the panels.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: All <code>BaseEvents</code> meant for these two panels can be consolidated in one place.</p>
+</li>
+<li>
+<p>Cons: It may not be intuitive for some developers to have <code>CenterPanel</code> register for <code>BaseEvent</code> meant for <code>PersonPanel</code> and <code>CalendarPanel</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>MainWindow</code> will subscribe to <code>BaseEvent</code> for the two panels and switch between them accordingly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There is no need to create an additional Class to handle the switching, thus saving the resources and memory required.</p>
+</li>
+<li>
+<p>Cons: This would violate the Single Responsibility Principle and Separation of Concerns as <code>MainWindow</code> has to manage other Ui related events such as opening the Help Window.</p>
 </li>
 </ul>
 </div>
@@ -1814,7 +2002,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 36. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 37. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2373,7 +2561,7 @@ contributions of every developer in the team in regards to developing ContactSai
 </div>
 <div class="paragraph">
 <p><strong>Value proposition</strong>: ContactSails serve as the consolidation platform for all contacts from different platforms for
- users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.</p>
+ users to communicate with them more easily, analyse and apply their marketing strategies more effectively and efficiently.</p>
 </div>
 <div class="paragraph">
 <p><strong>Feature Contribution:</strong></p>
@@ -2432,10 +2620,10 @@ If customers have any issues regarding their orders, salespersons will be able t
 <p>Allows users to add, edit or delete entries, which can represent events or deadlines including order deliveries.</p>
 </li>
 <li>
-<p>Once set, the event will be displayed in ContactSails' calendar, which shows all incoming events for the current month and after.</p>
+<p>Once set, the entry will be displayed in ContactSails' calendar, which shows all incoming events for the current date.</p>
 </li>
 <li>
-<p>Orders set by users will automatically appear in the calendar without the user having to create an event for it.</p>
+<p>The calendar can be displayed in Day-view, Week-view or Month-view, depending on the user.</p>
 </li>
 </ul>
 </div>
@@ -2624,7 +2812,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">task-oriented user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">implement meetings or deadlines for contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of tasks to do for the contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2659,7 +2847,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view a list of current orders</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of which customers I might need to contact at that point in time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2701,7 +2889,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit specific details of contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">update my customers' information more conveniently</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2715,7 +2903,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">export contacts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">share my customers' public details with concerned businesses</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2729,7 +2917,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who prefers visual imagery</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use a calendar to know if there are any tasks or deadlines</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clearer view on how to prioritise my work</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2757,7 +2945,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add contact details in any order</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need to remember the order to enter the details</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2778,7 +2966,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">group contacts using tags</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">categorize my customers as needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -3092,17 +3280,17 @@ Release indicates the version of ContactSails that has already implemented the u
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-contact-specific-tasks" class="discrete">Use case: Add contact specific tasks</h3>
+<h3 id="use-case-add-calendar-entry" class="discrete">Use case: Add calendar entry</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects contact to add a task for and enters task description and deadline.</p>
+<p>User requests to add an entry with specified details.</p>
 </li>
 <li>
-<p>ContactSails adds task to specified contact and shows a success message.</p>
+<p>ContactSails adds entry to list of entries.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3115,7 +3303,7 @@ Release indicates the version of ContactSails that has already implemented the u
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User selects invalid contact.</p>
+<p>1a. User adds entry with invalid details.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -3132,11 +3320,48 @@ Release indicates the version of ContactSails that has already implemented the u
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. User enters invalid task details.</p>
+<p>1b. User enters duplicate entry.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. ContactSails shows en error message.</p>
+<p>1b1. ContactSails shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-calendar-entry" class="discrete">Use case: Delete calendar entry</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete an entry at specified index of entry list.</p>
+</li>
+<li>
+<p>ContactSails deletes the entry at specified index.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User gives invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ContactSails shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -4255,12 +4480,279 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-calendar-entry"><a class="link" href="#adding-a-calendar-entry">H.8. Adding a Calendar Entry</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Adding a Calendar Entry</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List calendar entries using the <code>entrylist</code> command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>entryadd t/Meet with Supplier sd/04-04-2018 ed/04-04-2018 st/10:00 et/12:00</code><br>
+Expected: Calendar Entry is added to the Calendar Entry List, appearing at the last index. Details of the added calendar entry shown in the status message. Calendar is displayed. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>entryadd t/Meet with Supplier sd/04-04-2018 ed/04-04-2018 st/10:00 et/12:00</code><br>
+Expected: Duplicate calendar entry is not added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>entryadd</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>entryadd sd/10-04-2018 st/10:00 et/12:30</code> (compulsory fields missing)<br></p>
+</li>
+<li>
+<p><code>entryadd t/Get Books et/10:00 ed/14.04.2018</code> (invalid date format)<br></p>
+</li>
+<li>
+<p><code>entryadd t/Get Car et/2359 ed/14-04-2018</code> (invalid time format)<br></p>
+</li>
+<li>
+<p><code>entryadd t/RoadShow at Orchard sd/04-05-2018 ed/05-05-2018 st/23:50 et/00:01</code> (duration of entry must be at least 15 minutes)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-calendar-entry"><a class="link" href="#deleting-a-calendar-entry">H.9. Deleting a Calendar Entry</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Deleting a Calendar Entry</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List calendar entries using the <code>entrylist</code> command.</p>
+</li>
+<li>
+<p>There should be at least one calendar entry listed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>entrydelete 1</code><br>
+Expected: Calendar entry is deleted. Details of deleted calendar entry shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>entrydelete 0</code><br>
+Expected: No calendar entry is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>entrydelete</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>entrydelete</code> (no index specified)<br></p>
+</li>
+<li>
+<p><code>entrydelete x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-calendar-entry"><a class="link" href="#editing-a-calendar-entry">H.10. Editing a Calendar Entry</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Editing a Calendar Entry</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List calendar entries using the <code>entrylist</code> command.</p>
+</li>
+<li>
+<p>There should be at least one calendar entry listed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>entryedit 1 t/Meet with Bosses</code><br>
+Expected: Calendar entry in calendar entry list is edited and and updated calendar entry is displayed. Details of the edited calendar entry is shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Incorrect <code>entryedit</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>entryedit 1 sd/07-06-2018 ed/06-05-2018</code> (invalid dates, start date cannot be later than end date)<br></p>
+</li>
+<li>
+<p><code>entryedit 1 sd/07-07-2018 ed/07-07-2018 st/12:00 et/08:00</code> (invalid times, start time cannot be later than end time for entries ending on the same date)<br></p>
+</li>
+<li>
+<p><code>entryedit x t/Stakeholder Meeting</code> (where x is larger than the list size)<br>
+Expected: Command will fail to execute. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-calendar-view"><a class="link" href="#changing-calendar-view">H.11. Changing Calendar View</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Changing Calendar View</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Calendar is displayed at center of interface, displaying in Day-view.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>calendar month</code><br>
+Expected: Calendar will change its current view to Month-view. Details of current view of calendar will be displayed in status message.</p>
+</li>
+<li>
+<p>Correct <code>calendar</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar week</code> (Calendar will display in Week-view)<br></p>
+</li>
+<li>
+<p><code>calendar</code> (Calendar will display in Day-view if no parameter is given)<br></p>
+</li>
+<li>
+<p>`calendar x@@ ` (Calendar will display in Day-view even if invalid parameters are entered)<br>
+Expected: Same as previous</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-displayed-date-in-calendar"><a class="link" href="#changing-displayed-date-in-calendar">H.12. Changing displayed date in Calendar</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Changing displayed date in Calendar</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Calendar is displayed at center of interface, displaying in Day-view.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>calendarjump td/05-05-2018</code><br>
+Expected: Calendar will change its displayed date to 05-05-2018. Details of current date of calendar will be displayed in status message.</p>
+</li>
+<li>
+<p>Incorrect <code>calendarjump</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendarjump 04/04/2018</code> (No prefix is present)<br></p>
+</li>
+<li>
+<p><code>calendarjump td/04.04.2018</code> (Wrong format for date)<br></p>
+</li>
+<li>
+<p>`calendarjump x@@ ` (invalid parameters are entered)<br>
+Expected: Command will fail to execute. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-displayed-page-in-calendar"><a class="link" href="#changing-displayed-page-in-calendar">H.13. Changing displayed page in Calendar</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Changing displayed page in Calendar</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Calendar is displayed at center of interface, displaying in Day-view.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>calendarnext</code><br>
+Expected: Calendar will change its displayed date to the next day (if Day-view is displayed). Command result will be displayed in status message, indicating that calendar has displayed the next page.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:15:25 UTC
+Last updated 2018-04-15 14:57:30 UTC
 </div>
 </div>
 </body>
