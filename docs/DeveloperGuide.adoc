@@ -2135,3 +2135,30 @@ These instructions only provide a starting point for testers to work on; testers
     ** `entryedit x t/Stakeholder Meeting` (where x is larger than the list size) +
    Expected: Command will fail to execute. Error details shown in the status message. Status bar remains the same.
 
+=== Changing Calendar View
+
+. *Changing Calendar View*
+
+.. Prerequisites:
+** Calendar is displayed at center of interface, displaying in Day-view.
+.. Test case: `calendar month` +
+   Expected: Calendar will change its current view to Month-view. Details of current view of calendar will be displayed in status message.
+.. Correct `calendar` commands to try:
+    ** `calendar week` (Calendar will display in Week-view) +
+    ** `calendar` (Calendar will display in Day-view if no parameter is given) +
+    ** `calendar x@@ ` (Calendar will display in Day-view even if invalid parameters are entered) +
+   Expected: Same as previous
+
+=== Changing displayed date in Calendar
+
+. *Changing displayed date in Calendar*
+
+.. Prerequisites:
+** Calendar is displayed at center of interface, displaying in Day-view.
+.. Test case: `calendarjump td/05-05-2018` +
+   Expected: Calendar will change its displayed date to 05-05-2018. Details of current date of calendar will be displayed in status message.
+.. Incorrect `calendarjump` commands to try:
+    ** `calendarjump 04/04/2018` (No prefix is present) +
+    ** `calendarjump 04.04.2018` (Calendar will display in Day-view if no parameter is given) +
+    ** `calendarjump x@@ ` (invalid parameters are entered) +
+   Expected: Same as previous
