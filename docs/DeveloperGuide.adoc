@@ -981,7 +981,9 @@ image
 
 In Figure ?, `ViewTodayCommand` posts a new `ChangeCalendarPageRequestEvent` to the `EventsCenter`.
 `CenterPanel` handles the event by calling `handleChangeCalendarPageRequestEvent()` in `CalendarPanel` before calling `displayCalendarPanel()`.
-In `CalendarPanel`, `getRequestType()` is called on event to check the
+In `CalendarPanel`, `getRequestType()` is called on the event to check the page that is requested.
+Given that `REQUEST_TODAY` is the `requestType` of the event, `CalendarView` will switch the displayed page to today.
+The calendar will be displayed at `CenterPanel` as control is eventually returned to the user.
 
 ==== Design Considerations
 
@@ -999,6 +1001,16 @@ Bugs present in the library cannot be easily fixed by non-developers of Calendar
 ** Cons: There is greater probability of bugs created as implementation have to be created from scratch.
 As compared to using third-party libraries, substantial lines of code has to be written, thus debugging may be harder.
 Design of features of the calendar have to be decided by developers themselves, which requires more time and effort to implement the features.
+
+===== Aspect: Switching between `PersonPanel` and `CalendarPanel`
+* **Alternative 1 (current choice):** An additional panel, `CenterPanel` is used to switch between the two panels. `CenterPanel` subscribes `BaseEvent` meant for the two panels to facilitate the switching of the panels.
+** Pros: All `BaseEvents` meant for these two panels can be consolidated in one place.
+** Cons: It may not be intuitive for some developers to have `CenterPanel` register for `BaseEvent` meant for `PersonPanel` and `CalendarPanel`.
+
+
+* **Alternative 2:** `MainWindow` will subscribe to `BaseEvent` for the two panels and switch between them accordingly.
+** Pros: There is no need to create an additional Class to handle the switching, thus saving the resources and memory required.
+** Cons: This would violate the Single Responsibility Principle and Separation of Concerns as `MainWindow` has to manage other Ui related events such as opening the Help Window.
 // end::calendarentries[]
 
 [[Implementation-Configuration]]
@@ -1282,7 +1294,7 @@ A typical user from our target user profile:
 * is reasonably comfortable using CLI apps.
 
 *Value proposition*: ContactSails serve as the consolidation platform for all contacts from different platforms for
- users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.
+ users to communicate with them more easily, analyse and apply their marketing strategies more effectively and efficiently.
 
 *Feature Contribution:*
 
@@ -1300,8 +1312,8 @@ If customers have any issues regarding their orders, salespersons will be able t
 2. *Alicia Ho Sor Sian*
 * *Major Feature*: Ability to manage entries which are displayed in a calendar.
 ** Allows users to add, edit or delete entries, which can represent events or deadlines including order deliveries.
-** Once set, the event will be displayed in ContactSails' calendar, which shows all incoming events for the current month and after.
-** Orders set by users will automatically appear in the calendar without the user having to create an event for it.
+** Once set, the entry will be displayed in ContactSails' calendar, which shows all incoming events for the current date.
+** The calendar can be displayed in Day-view, Week-view or Month-view, depending on the user.
 * *Minor Feature*: Classifying tags into two categories, groups and preferences.
 ** Create 2 distinct categories of tags representing groups that a contact belongs to and preferences that a contact has.
 ** Each category is displayed at a separate location in the Ui.
@@ -1357,7 +1369,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |lazy user |use short-forms for commands |execute commands more quickly |1.0
 
-|`* * *` |task-oriented user |implement meetings or deadlines for contacts |keep track of tasks to do for the contacts |1.5
+|`* * *` |task-oriented user |implement meetings or deadlines for contacts |keep track of tasks to do for the contacts |1.3
 
 |`* * *` |organized user |delete multiple contacts at a time |remove the contacts I no longer need quickly |2.0
 
@@ -1367,7 +1379,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user with many contacts |sort the contacts by last contacted time |find contacts I corresponded with recently |2.0
 
-|`* * *` |salesperson |view a list of current orders| keep track of which customers I might need to contact at that point in time |2.0
+|`* * *` |salesperson |view a list of current orders| keep track of which customers I might need to contact at that point in time |1.2
 
 |`* * *` |salesperson |see a list of current customers |view necessary information about current customers more quickly |2.0
 
@@ -1379,15 +1391,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |salesperson |see the top preference among all contacts |know what products I should focus on |2.0
 
-|`* * *` |salesperson |edit specific details of contacts |update my customers' information more conveniently |2.0
+|`* * *` |salesperson |edit specific details of contacts |update my customers' information more conveniently |1.0
 
 |`* * *` |salesperson |see top contacts |divide my attention among my customers as needed |2.0
 
-|`* *` |salesperson |export contacts |share my customers' public details with concerned businesses |2.0
+|`* *` |salesperson |export contacts |share my customers' public details with concerned businesses |1.5
 
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident |1.0
 
-|`* *` |user who prefers visual imagery |use a calendar to know if there are any tasks or deadlines |clearer view on how to prioritise my work |1.5
+|`* *` |user who prefers visual imagery |use a calendar to know if there are any tasks or deadlines |clearer view on how to prioritise my work |1.3
 
 |`* *` |user |access and change my preferred Email Service provider within the ContactSails |look at my emails and my contacts at the same time |2.0
 
@@ -1395,13 +1407,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user who is fast at typing |copy a contact's email to the clipboard without using a mouse |save time in emailing a contact |2.0
 
-|`* *` |lazy user |add contact details in any order |don't need to remember the order to enter the details |1.5
+|`* *` |lazy user |add contact details in any order |don't need to remember the order to enter the details |1.0
 
 |`* *` |lazy user |auto-completion of commands |execute commands quickly |1.1
 
 |`* *` |user |add notes to a contact |have a clearer description about the contact |2.0
 
-|`* *` |user |group contacts using tags |categorize my customers as needed |1.5
+|`* *` |user |group contacts using tags |categorize my customers as needed |1.0
 
 |`* *` |user |change the theme and font of the application |personalize my AddressBook |1.5
 
