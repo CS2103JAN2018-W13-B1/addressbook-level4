@@ -5,11 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import static seedu.address.testutil.TypicalOrders.BOOKS;
-import static seedu.address.testutil.TypicalOrders.CHOCOLATES;
-import static seedu.address.testutil.TypicalOrders.FACEWASH;
-import static seedu.address.testutil.TypicalOrders.SHOES;
-
+import static seedu.address.testutil.TypicalOrders.getTypicalOrders;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 import static seedu.address.ui.testutil.GuiTestAssert.assertCalendarEntryListMatching;
@@ -38,12 +34,14 @@ import seedu.address.TestApp;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.EntryListClearCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
+import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
 import seedu.address.testutil.TypicalCalendarEntries;
 import seedu.address.testutil.TypicalPersons;
@@ -91,15 +89,13 @@ public abstract class AddressBookSystemTest {
      */
     protected AddressBook getInitialData() {
         AddressBook ab = TypicalPersons.getTypicalAddressBook();
-        try {
-            ab.addOrderToOrderList(FACEWASH);
-            ab.addOrderToOrderList(SHOES);
-            ab.addOrderToOrderList(BOOKS);
-            ab.addOrderToOrderList(CHOCOLATES);
-        } catch (UniqueOrderList.DuplicateOrderException doe) {
-            throw new AssertionError("not possible");
+        for (Order order : getTypicalOrders()) {
+            try {
+                ab.addOrderToOrderList(order);
+            } catch (UniqueOrderList.DuplicateOrderException doe) {
+                throw new AssertionError("not possible");
+            }
         }
-
         return ab;
     }
 
@@ -207,6 +203,16 @@ public abstract class AddressBookSystemTest {
         assertEquals(0, getModel().getAddressBook().getPersonList().size());
     }
 
+    //@@author SuxianAlicia
+    /**
+     * Deletes all calendar entries in the calendar manager.
+     */
+    protected void deleteAllCalendarEntries() {
+        executeCommand(EntryListClearCommand.COMMAND_WORD);
+        assertEquals(0, getModel().getCalendarManager().getCalendarEntryList().size());
+    }
+    //@@author
+
     /**
      * Asserts that the {@code CommandBox} displays {@code expectedCommandInput}, the {@code ResultDisplay} displays
      * {@code expectedResultMessage}, the model and storage contains the same person, order and calendar entry objects
@@ -222,6 +228,7 @@ public abstract class AddressBookSystemTest {
         assertPersonListMatching(getPersonListPanel(), expectedModel.getFilteredPersonList());
     }
 
+    //@@author SuxianAlicia
     /**
      * Asserts that {@code OrderListPanel} is displayed, and order list panel displays orders in model correctly.
      */
@@ -238,6 +245,7 @@ public abstract class AddressBookSystemTest {
         assertNotNull(getCalendarEntryListPanel());
         assertCalendarEntryListMatching(getCalendarEntryListPanel(), expectedModel.getFilteredCalendarEntryList());
     }
+    //@@author
 
     /**
      * Calls {@code PersonListPanelHandle} and {@code StatusBarFooterHandle} to remember their current state.
