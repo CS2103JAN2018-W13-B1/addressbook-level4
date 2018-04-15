@@ -12,7 +12,7 @@ import seedu.address.logic.commands.ChangeThemeCommand;
 
 public class ChangeThemeCommandParserTest {
 
-    private ChangeThemeCommandParser parser = new ChangeThemeCommandParser();
+    private final ChangeThemeCommandParser parser = new ChangeThemeCommandParser();
 
     @Test
     public void parse_validArgs_returnsChangeThemeCommand() {

@@ -48,7 +48,7 @@ public class EditOrderCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditOrderCommand.MESSAGE_USAGE);
 
-    private EditOrderCommandParser parser = new EditOrderCommandParser();
+    private final EditOrderCommandParser parser = new EditOrderCommandParser();
 
     @Test
     public void parse_missingParts_failure() {

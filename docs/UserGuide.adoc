@@ -439,8 +439,8 @@ This adds the `NBA 2k18` order to `Noel Tay`, the 2nd person, as shown in the fi
 image::OrderAdd.png[width="500" align="center"]
 
 [NOTE]
-Currently, the orders added will be shown in the list of all orders in the Right Panel.
-We are planning to add the ability to only view orders specific to a person in their PersonPanel view in `v2.0`.
+Currently, the orders added will be shown in the list of all orders in the Right Panel. This means that orders with the
+fields can't be added to multiple persons yet. We are planning to add this ability in `v2.0`.
 
 ==== Editing an order : `orderedit` `since v1.2`
 
