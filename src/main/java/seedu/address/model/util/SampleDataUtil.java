@@ -13,7 +13,6 @@ import seedu.address.model.entry.EndTime;
 import seedu.address.model.entry.EntryTitle;
 import seedu.address.model.entry.StartDate;
 import seedu.address.model.entry.StartTime;
-import seedu.address.model.entry.exceptions.CalendarEntryNotFoundException;
 import seedu.address.model.entry.exceptions.DuplicateCalendarEntryException;
 import seedu.address.model.order.DeliveryDate;
 import seedu.address.model.order.Order;
@@ -81,86 +80,86 @@ public class SampleDataUtil {
 
     public static CalendarEntry[] getSampleCalendarEntries() {
         return new CalendarEntry[] {
-                new CalendarEntry(
-                        new EntryTitle("Meeting with Boss"), new StartDate("20-04-2018"), new EndDate("20-04-2018"),
-                        new StartTime("08:00"), new EndTime("12:00")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meeting with Books Supplier"), new StartDate("22-04-2018"),
-                        new EndDate("22-04-2018"), new StartTime("10:00"), new EndTime("12:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meeting with Cars Supplier"), new StartDate("23-04-2018"),
-                        new EndDate("23-04-2018"), new StartTime("15:00"), new EndTime("18:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Deliver Books"), new StartDate("28-04-2018"),
-                        new EndDate("28-04-2018"), new StartTime("13:00"), new EndTime("14:00")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("RoadShow at VivoCity"), new StartDate("20-05-2018"),
-                        new EndDate("22-05-2018"), new StartTime("12:00"), new EndTime("18:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Get comicbooks from Supplier"), new StartDate("02-05-2018"),
-                        new EndDate("02-05-2018"), new StartTime("18:00"), new EndTime("20:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Design promo poster for Cars"), new StartDate("20-04-2018"),
-                        new EndDate("22-05-2018"), new StartTime("00:00"), new EndTime("12:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Import cosmetics"), new StartDate("23-04-2018"),
-                        new EndDate("15-05-2018"), new StartTime("00:00"), new EndTime("18:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meet Stakeholders"), new StartDate("06-06-2018"),
-                        new EndDate("06-06-2018"), new StartTime("10:00"), new EndTime("14:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meeting with Chocolate Supplier"), new StartDate("22-07-2018"),
-                        new EndDate("22-07-2018"), new StartTime("14:00"), new EndTime("16:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Find Supplier for Cars"), new StartDate("22-04-2018"),
-                        new EndDate("22-05-2018"), new StartTime("00:00"), new EndTime("23:59")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Create Website for products"), new StartDate("20-03-2018"),
-                        new EndDate("22-04-2018"), new StartTime("08:00"), new EndTime("17:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meet Supplier for History Books"), new StartDate("01-05-2018"),
-                        new EndDate("01-05-2018"), new StartTime("18:00"), new EndTime("19:00")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meet bosses for monthly review"), new StartDate("30-04-2018"),
-                        new EndDate("30-04-2018"), new StartTime("10:00"), new EndTime("17:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Prepare for monthly review"), new StartDate("22-04-2018"),
-                        new EndDate("29-04-2018"), new StartTime("00:00"), new EndTime("23:59")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meeting new Client Roy"), new StartDate("24-04-2018"),
-                        new EndDate("24-04-2018"), new StartTime("20:00"), new EndTime("22:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Prepare for July Roadshow"), new StartDate("26-05-2018"),
-                        new EndDate("02-07-2018"), new StartTime("10:00"), new EndTime("23:59")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("July Roadshow at Orchard"), new StartDate("03-07-2018"),
-                        new EndDate("13-07-2018"), new StartTime("10:00"), new EndTime("20:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Meet Charlotte"), new StartDate("15-05-2018"),
-                        new EndDate("15-05-2018"), new StartTime("12:00"), new EndTime("12:30")
-                ),
-                new CalendarEntry(
-                        new EntryTitle("Trip to Europe"), new StartDate("29-07-2018"),
-                        new EndDate("28-08-2018"), new StartTime("10:00"), new EndTime("22:30")
-                ),
+            new CalendarEntry(
+                    new EntryTitle("Meeting with Boss"), new StartDate("20-04-2018"), new EndDate("20-04-2018"),
+                    new StartTime("08:00"), new EndTime("12:00")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meeting with Books Supplier"), new StartDate("22-04-2018"),
+                    new EndDate("22-04-2018"), new StartTime("10:00"), new EndTime("12:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meeting with Cars Supplier"), new StartDate("23-04-2018"),
+                    new EndDate("23-04-2018"), new StartTime("15:00"), new EndTime("18:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Deliver Books"), new StartDate("28-04-2018"),
+                    new EndDate("28-04-2018"), new StartTime("13:00"), new EndTime("14:00")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("RoadShow at VivoCity"), new StartDate("20-05-2018"),
+                    new EndDate("22-05-2018"), new StartTime("12:00"), new EndTime("18:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Get comicbooks from Supplier"), new StartDate("02-05-2018"),
+                    new EndDate("02-05-2018"), new StartTime("18:00"), new EndTime("20:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Design promo poster for Cars"), new StartDate("20-04-2018"),
+                    new EndDate("22-05-2018"), new StartTime("00:00"), new EndTime("12:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Import cosmetics"), new StartDate("23-04-2018"),
+                    new EndDate("15-05-2018"), new StartTime("00:00"), new EndTime("18:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meet Stakeholders"), new StartDate("06-06-2018"),
+                    new EndDate("06-06-2018"), new StartTime("10:00"), new EndTime("14:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meeting with Chocolate Supplier"), new StartDate("22-07-2018"),
+                    new EndDate("22-07-2018"), new StartTime("14:00"), new EndTime("16:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Find Supplier for Cars"), new StartDate("22-04-2018"),
+                    new EndDate("22-05-2018"), new StartTime("00:00"), new EndTime("23:59")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Create Website for products"), new StartDate("20-03-2018"),
+                    new EndDate("22-04-2018"), new StartTime("08:00"), new EndTime("17:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meet Supplier for History Books"), new StartDate("01-05-2018"),
+                    new EndDate("01-05-2018"), new StartTime("18:00"), new EndTime("19:00")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meet bosses for monthly review"), new StartDate("30-04-2018"),
+                    new EndDate("30-04-2018"), new StartTime("10:00"), new EndTime("17:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Prepare for monthly review"), new StartDate("22-04-2018"),
+                    new EndDate("29-04-2018"), new StartTime("00:00"), new EndTime("23:59")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meeting new Client Roy"), new StartDate("24-04-2018"),
+                    new EndDate("24-04-2018"), new StartTime("20:00"), new EndTime("22:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Prepare for July Roadshow"), new StartDate("26-05-2018"),
+                    new EndDate("02-07-2018"), new StartTime("10:00"), new EndTime("23:59")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("July Roadshow at Orchard"), new StartDate("03-07-2018"),
+                    new EndDate("13-07-2018"), new StartTime("10:00"), new EndTime("20:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Meet Charlotte"), new StartDate("15-05-2018"),
+                    new EndDate("15-05-2018"), new StartTime("12:00"), new EndTime("12:30")
+            ),
+            new CalendarEntry(
+                    new EntryTitle("Trip to Europe"), new StartDate("29-07-2018"),
+                    new EndDate("28-08-2018"), new StartTime("10:00"), new EndTime("22:30")
+            ),
         };
     }
 
@@ -213,7 +212,7 @@ public class SampleDataUtil {
     public static ReadOnlyCalendarManager getSampleCalendarManager() {
         CalendarManager sampleCm = new CalendarManager();
         try {
-            for(CalendarEntry sampleEntry: getSampleCalendarEntries()) {
+            for (CalendarEntry sampleEntry: getSampleCalendarEntries()) {
                 sampleCm.addCalendarEntry(sampleEntry);
             }
         } catch (DuplicateCalendarEntryException dcee) {
