@@ -15,8 +15,8 @@ import seedu.address.logic.commands.DeleteEntryCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.event.CalendarEntry;
-import seedu.address.model.event.exceptions.CalendarEntryNotFoundException;
+import seedu.address.model.entry.CalendarEntry;
+import seedu.address.model.entry.exceptions.CalendarEntryNotFoundException;
 
 public class DeleteEntryCommandSystemTest extends AddressBookSystemTest {
 

@@ -62,7 +62,7 @@ public class AddEntryCommandParserTest {
                         + START_DATE_DESC_MEET_SUPPLIER + ENTRY_TITLE_DESC_MEET_SUPPLIER
                         + END_DATE_DESC_MEET_SUPPLIER + START_TIME_DESC_MEET_SUPPLIER + END_TIME_DESC_MEET_SUPPLIER,
                 new AddEntryCommand(expectedCalEvent));
-        
+
         // multiple entry title strings - last entry title string accepted
         assertParseSuccess(parser, ENTRY_TITLE_DESC_GET_BOOKS + START_DATE_DESC_MEET_SUPPLIER
                         + ENTRY_TITLE_DESC_MEET_SUPPLIER + END_DATE_DESC_MEET_SUPPLIER
