@@ -439,7 +439,7 @@ This adds the `NBA 2k18` order to `Noel Tay`, the 2nd person, as shown in the fi
 image::OrderAdd.png[width="500" align="center"]
 
 [NOTE]
-Currently, the orders added will be shown in the list of all orders in the Right Panel. This means that orders with the
+Currently, the orders added will be shown in the list of all orders in the Right Panel. This means that orders with same
 fields can't be added to multiple persons yet. We are planning to add this ability, and the ability to view orders of a
 person in their PersonPanel in `v2.0`.
 
@@ -811,9 +811,9 @@ Command Alias: `t`
 Examples:
 
 Type `theme light` OR `t light` into the Command Box. +
-This changes the theme of the application to the light theme. The figure below shows the ContactSails UI with the light theme.
+This changes the theme of the application to `light`. The figure below shows the ContactSails UI with the light theme.
 
-.ContactSails Light Theme
+.ContactSails Light Theme.
 image::ContactSails_Light_Theme.png[width="500" align="center"]
 // end::userguidethemes[]
 
