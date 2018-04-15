@@ -184,7 +184,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
         }
         assertStatusBarUnchangedExceptSyncStatus();
     }
-    //@@author amad-person
+    //@@author
 
     /**
      * Executes {@code command} and in addition,<br>
