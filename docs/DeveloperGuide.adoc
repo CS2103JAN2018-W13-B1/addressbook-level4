@@ -1885,8 +1885,10 @@ These instructions only provide a starting point for testers to work on; testers
 ** There should be at least one order listed.
 .. Test case: `orderedit 1 q/10 d/16-04-2018` +
    Expected: Order in order list is edited and and updated order is displayed. Details of the edited order shown in the status message. Timestamp in the status bar is updated.
-.. Test case: `orderedit 2 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018` +
-   Expected: Duplicate order is not added. Error details shown in the status message. Status bar remains the same.
+.. Test case: `orderedit 2 i/NBA 2k18 pr/59.99 q/1 d/16-04-2018` +
+   Expected: Assuming you have successfully edited the `NBA 2k18` order with the command in Step 1.b., this command will not
+   execute as it would result in a duplicate order.
+   Error details shown in the status message. Status bar remains the same.
 .. Other incorrect `orderedit` commands to try:
     ** `orderedit 1 pr/12.34.56` (invalid price) +
     ** `orderedit 1 d/29-02-2018` (invalid date) +
