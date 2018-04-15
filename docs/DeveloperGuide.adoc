@@ -818,8 +818,7 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 // tag::calendarentries[]
 === Calendar and Entry tracking
 
-Entries refer to meetings, deadlines and order deliveries created by users in ContactSails.
-Users can create, edit and delete entries.
+Users can create, edit and delete entries, which can represent events such as meetings or deadlines.
 ContactSails has a calendar interface that displays existing entries for better visualisation of the user's schedule.
 
 ==== Current Implementation
@@ -828,6 +827,7 @@ ContactSails uses CalendarFX's calendar interface. The `Model` component manages
 the calendar's internal list of entries.
 
 ===== Calendar Entries
+
 `CalendarEntry` represents an entry created by users.
 
 A `CalendarEntry` is implemented in the following manner:
@@ -856,8 +856,7 @@ The following is a brief description of the attributes of `CalendarEntry`:
 * endTime: Represents ending time of the entry in HH:MM format (24-Hour format).
 
 Entry management is facilitated by `CalendarManager` residing in `ModelManager`.
-It supports the adding, removing and editing of `CalendarEntry`(e.g. `addEntry`, `deleteEntry`) and maintains a `UniqueCalendarEntryList` to store `CalendarEntry`.
-Ongoing orders of a person will also appear as `CalendarEntry` based on the `DeliveryDate` attribute of the `Order`.
+It supports the adding, removing and editing of `CalendarEntry`(e.g. `addCalendarEntry`, `deleteCalendarEntry`) and maintains a `UniqueCalendarEntryList` to store `CalendarEntry`.
 
 The following diagram shows class diagram of `Model` Component related to `CalendarEntry`.
 
@@ -867,28 +866,122 @@ image::CalendarEntryClassDiagram.png[width="800" align="center"]
 In the Figure 22, `ModelManager` contains an instance of `CalendarManager`. `ModelManager` calls the functions in `CalendarManager` to manage `CalendarEntries` stored in it.
 `CalendarManager` in turn calls methods in `UniqueCalendarEntryList` to add, remove or edit `CalendarEntries` stored in it.
 `CalendarManager` contains an instance of `Calendar` belonging to CalendarFX's library. `Calendar` stores `Entry`, as defined in CalendarFX's library.
-`CalendarEntry` is converted to `Entry` before they can be added to `Calendar` via `CalendarUtil` in the `Commons` class.
+`CalendarEntry` is converted to `Entry` before they can be added to `Calendar` via `CalendarEntryConversionUtil` in the `Commons` class.
 
-`Logic` Component contains the commands required to manage user's entries (e.g. `AddEntryCommand`, `DeleteEntryCommand`).
+`Logic` Component contains the commands required to manage user's entries, which are `AddEntryCommand`, `DeleteEntryCommand` and `EditEntryCommand`.
+These commands inherit from `UndoableCommand` and are thus can be undone via the `UndoCommand`.
 
 The sequence diagram below shows how adding an entry works:
 
-.Sequence Diagram for adding of an entry into ContactSails
+.Sequence Diagram for adding an entry into ContactSails
 image::AddEntrySD.png[width="800" align="center]
 
 In Figure 23, when a user enters the command to add an entry, `AddEntryCommandParser` is invoked which creates a `CalendarEntry` based on user input. The parser then creates `AddEntryCommand` passing the `CalendarEntry` to it.
 When AddEntryCommand is executed, `CalendarEntry` is passed from `AddEntryCommand` to `ModelManager` and to `CalendarManager`, which adds it to `UniqueCalendarEntryList`.
-The `CalendarEntry` is then converted to `Entry` to be added to `Calendar` and control is eventually returned to the user.
+The `CalendarEntry` is then converted to `Entry` to be added to `Calendar` (not shown in diagram) and control is eventually returned to the user.
 
-Storing of `CalendarEvent` data is managed by `CalendarManagerStorage` within `Storage` Component, converting `CalendarEntry` to `XmlAdaptedCalendarEntry` to store in a .xml file.
-This file is separate from the one storing `Person` and `Order`.
+Storing of `CalendarEntry` data is managed by `CalendarManagerStorage` within `Storage` Component.
+`CalendarEntry` is converted to `XmlAdaptedCalendarEntry`, which can be stored in `XmlSerializableCalendarManager`.
+`XmlSerializableCalendarManager` is stored in a .xml file using `XmlFileStorage`.
 
-===== Calendar Interface
+===== Calendar Interface and Center Panel
 
 `CalendarView` within CalendarFX's library uses the `Calendar` within `CalendarManager` in `Model` to display all entries stored within `Calendar`.
 `CalendarPanel` residing in `Ui` component creates an instance of `CalendarView` to manage the display of the calendar.
-The panel responds to events related to the calendar, such as changing the viewing format or changing the current date displayed.
-Any changes made to `Calendar` in `Model` will automatically be shown via the `CalendarView`.
+
+The following code snippet shows how `CalendarPanel` is initialised.
+[source,java]
+----
+public class CalendarPanel extends UiPart<Region> {
+
+    private static final String FXML = "CalendarPanel.fxml";
+
+    private final Logger logger = LogsCenter.getLogger(this.getClass());
+
+    private final CalendarView calendarView;
+    private final CalendarSource calendarSource;
+
+    @FXML
+    private StackPane calendarPanelHolder;
+
+    public CalendarPanel(Calendar calendar) {
+        super(FXML);
+        calendarView = CalendarFxUtil.returnModifiedCalendarView();
+        calendarSource = new CalendarSource();
+
+        initialiseCalendar(calendar);
+        createTimeThread();
+    }
+
+    // Methods to initialise calendar, change display of calendar, etc.
+}
+----
+
+When `CalendarPanel` is initialised, `CalendarFxUtil` returns an instance of `CalendarView` that is modified to remove unused features within `CalendarView`, such as the ability to print the calendar.
+`CalendarSource` is required to store the `Calendar` from `Model` and `CalendarView` in turn stores `CalendarSource` before it can display contents of `Calendar`. +
+The setting up of `CalendarSource` and `CalendarView` is done by `initialiseCalendar(calendar)`. `createTimeThread()` creates a `Thread` that updates the `timeProperty()` in `CalendarView` every 10 seconds,
+ensuring that the current time displayed within the calendar interface matches the actual time the user is using the application.
+
+Any changes made to `Calendar` in `Model` will automatically be shown via the `CalendarView` as `Calendar` is a class-level member in `CalendarManager` that is passed to `CalendarPanel`.
+`updateCalendar()` in `CalendarManager` clears all entries within `Calendar` and adds `CalendarEntries` converted to `Entries` to `Calendar`.
+
+As the placement of `CalendarPanel` coincides with that of `PersonPanel` at the center of the GUI interface of ContactSails, `CenterPanel` is used in place to switch between displaying contents of the two panels.
+
+The following code snippet shows how `CenterPanel` is initialised.
+[source, java]
+----
+public class CenterPanel extends UiPart<Region> {
+
+    private static final String FXML = "CenterPanel.fxml";
+
+    private CalendarPanel calendarPanel;
+
+    private PersonPanel personPanel;
+
+    @FXML
+    private StackPane centerPlaceholder;
+
+    public CenterPanel(Calendar calendar) {
+        super(FXML);
+
+        personPanel = new PersonPanel();
+        calendarPanel = new CalendarPanel(calendar);
+
+        displayPersonPanel();
+        registerAsAnEventHandler(this);
+    }
+    // Methods to handle BaseEvents, display either panels, etc.
+}
+----
+
+`CenterPanel` contains one instance of `CalendarPanel` and `PersonPanel`. `PersonPanel` is displayed upon initialising `CenterPanel` by calling `displayPersonPanel()`.
+`displayPersonPanel()` is also called when `BaseEvents` related to `PersonPanel` is received by `CenterPanel`.
+
+The following code snippet below shows how `CenterPanel` displays `PersonPanel`.
+[source, java]
+----
+public void displayPersonPanel() {
+        if (!centerPlaceholder.getChildren().contains(personPanel.getRoot())) {
+            centerPlaceholder.getChildren().clear();
+            centerPlaceholder.getChildren().add(personPanel.getRoot());
+        }
+    }
+----
+
+Based on the snippet, `CenterPanel` checks whether `centerPlaceholder` contains root node of `PersonPanel`.
+If it does not, centerPlaceholder` will clear any existing child nodes and add root node of `PersonPanel`, which causes `PersonPanel` to be displayed.
+
+`CenterPanel` displays `CalendarPanel` with `displayCalendarPanel()`, which is written similar to `displayPersonPanel()`.
+
+`CenterPanel` subsribes to `BaseEvents` related to the `CalendarPanel` and `PersonPanel`, such as `ChangeCalendarPageRequestEvent` and `PersonPanelSelectionChangedEvent`.
+Thus, `BaseEvents` received by `CenterPanel` can be split into two categories, one meant for `CalendarPanel`, and the other for `PersonPanel`.
+The following sequence diagram below shows how `ChangeCalendarPageRequestEvent` is handled by `CenterPanel`.
+
+image
+
+In Figure ?, `ViewTodayCommand` posts a new `ChangeCalendarPageRequestEvent` to the `EventsCenter`.
+`CenterPanel` handles the event by calling `handleChangeCalendarPageRequestEvent()` in `CalendarPanel` before calling `displayCalendarPanel()`.
+In `CalendarPanel`, `getRequestType()` is called on event to check the
 
 ==== Design Considerations
 
@@ -897,8 +990,8 @@ Any changes made to `Calendar` in `Model` will automatically be shown via the `C
 ** Pros: Doing so does not require constant Internet access to manage data of Calendar. CalendarFX can also synchronise with certain calendar applications such as Google Calendar.
 As less code is written to implement it, the effort required to maintain or debug is potentially lesser.
 ** Cons: CalendarFX has many features that are currently not used in ContactSails. Developers who intend to use them need to decide and learn how to implement such features by themselves.
-Developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
-Bugs present in the library cannot be easily fixed by developers.
+ContactSails developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
+Bugs present in the library cannot be easily fixed by non-developers of CalendarFX.
 
 
 * **Alternative 2:** Create a calendar using JavaFX to manage entries.

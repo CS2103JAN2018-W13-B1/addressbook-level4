@@ -47,6 +47,7 @@ It provides a quicker way for salespersons, who prefer typing to using a mouse, 
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
+include::../UserGuide.adoc[tag=calendarandentries]
 
 == Contributions to the Developer Guide
 
