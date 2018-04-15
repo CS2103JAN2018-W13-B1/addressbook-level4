@@ -1841,7 +1841,6 @@ These instructions only provide a starting point for testers to work on; testers
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
 
 === Deleting a person
 
@@ -1854,15 +1853,104 @@ _{ more test cases ... }_
    Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 .. Test case: `delete 0` +
    Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
+.. Other incorrect `delete` commands to try:
+   ** `delete` (no index specified) +
+   ** `delete x` (where x is larger than the list size) +
    Expected: Similar to previous.
 
-_{ more test cases ... }_
+=== Adding an Order
 
-=== Saving data
+. *Adding an order*
 
-. *Dealing with missing/corrupted data files*
+.. Prerequisites:
+** List persons using the `list` or `find` commands.
+** There should be at least one person listed.
+.. Test case: `orderadd 1 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018` +
+   Expected: Order is added to order list and displayed. Details of the added order shown in the status message. Timestamp in the status bar is updated.
+.. Test case: `orderadd 1 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018` +
+   Expected: Duplicate order is not added. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `orderadd` commands to try:
+    ** `orderadd 1 pr/59.99 q/1 d/14-04-2018` (compulsory field missing) +
+    ** `orderadd 1 i/NBA 2k18 pr/12.34.56 q/1 d/14-04-2018` (invalid price) +
+    ** `orderadd 1 i/NBA 2k18 pr/59.99 q/1 d/29-02-2018` (invalid date) +
+    ** `orderadd 2 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018` (duplicate order not added to different person) +
+   Expected: Similar to previous.
 
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
+=== Editing an Order
 
-_{ more test cases ... }_
+. *Editing an order*
+
+.. Prerequisites:
+** List orders using the `orderlist` command.
+** There should be at least one order listed.
+.. Test case: `orderedit 1 q/10 d/16-04-2018` +
+   Expected: Order in order list is edited and and updated order is displayed. Details of the edited order shown in the status message. Timestamp in the status bar is updated.
+.. Test case: `orderedit 2 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018` +
+   Expected: Duplicate order is not added. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `orderedit` commands to try:
+    ** `orderedit 1 pr/12.34.56` (invalid price) +
+    ** `orderedit 1 d/29-02-2018` (invalid date) +
+    ** `orderedit x q/15` (where x is larger than the list size) +
+   Expected: Similar to previous.
+
+=== Changing Order Status
+
+. *Changing status of an order*
+
+.. Prerequisites:
+** List orders using the `orderlist` command.
+** There should be at least one order listed.
+.. Test case: `orderstatus 1 os/done` (if the current order status is `ongoing`) +
+   Expected: Order status of order is updated and and order card colour is changed to green. Success message shown in the status message. Timestamp in the status bar is updated.
+.. Test case: `orderstatus 1 os/ongoing` (if the current order status is `done`) +
+   Expected: Order status of order is updated and and order card colour is changed to red. Success message shown in the status message. Timestamp in the status bar is updated.
+.. Test case: `orderstatus 1 os/fulfilled` +
+   Expected: Order status not updated. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `orderstatus` commands to try:
+    ** `orderstatus 1 os/` (empty status) +
+    ** `orderstatus x os/done` (where x is larger than the list size) +
+   Expected: Similar to previous.
+
+=== Deleting an Order
+
+. *Deleting an order*
+
+.. Prerequisites:
+** List orders using the `orderlist` command.
+** There should be at least one order listed.
+.. Test case: `orderdelete 1` +
+   Expected: Order is deleted. Details of deleted order shown in the status message. Timestamp in the status bar is updated.
+.. Test case: `orderdelete 0` +
+   Expected: No order is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `orderdelete` commands to try:
+    ** `orderdelete` (no index specified) +
+    ** `orderdelete x` (where x is larger than the list size) +
+   Expected: Similar to previous.
+
+=== Changing the Theme
+
+. *Changing to light theme*
+
+.. Prerequisites:
+** Current theme should not be the light theme.
+** Use `theme dark` to switch to the dark theme.
+.. Test case: `theme light` +
+   Expected: Theme changed to light version. Success message shown in status message. Status bar is not updated.
+.. Test case: `theme day` +
+   Expected: Theme not changed. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `theme` commands to try:
+    ** `theme` (no version specified) +
+   Expected: Similar to previous.
+
+. *Changing to dark theme*
+
+.. Prerequisites:
+** Current theme should not be the dark theme.
+** Use `theme light` to switch to the light theme.
+.. Test case: `theme dark` +
+   Expected: Theme changed to dark version. Success message shown in status message. Status bar is not updated.
+.. Test case: `theme night` +
+   Expected: Theme not changed. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect `theme` commands to try:
+    ** `theme` (no version specified) +
+   Expected: Similar to previous.
