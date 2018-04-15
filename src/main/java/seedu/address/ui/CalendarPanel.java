@@ -83,7 +83,7 @@ public class CalendarPanel extends UiPart<Region> {
                     }
 
                 }
-            };
+            }
         };
 
         updateTimeThread.setPriority(Thread.MIN_PRIORITY);

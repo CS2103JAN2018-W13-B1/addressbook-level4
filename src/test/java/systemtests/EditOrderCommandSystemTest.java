@@ -31,7 +31,7 @@ import seedu.address.model.order.Order;
 import seedu.address.model.order.OrderInformation;
 import seedu.address.model.order.Price;
 import seedu.address.model.order.Quantity;
-import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.DuplicateOrderException;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.testutil.OrderBuilder;
 
@@ -124,7 +124,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
     }
 
     /**
-     * Performs the same verification as {@code assertCommandSuccess(String, Index, Person, Index)} except that
+     * Performs the same verification as {@code assertCommandSuccess(String, Index, Order, Index)} except that
      * the selected card remains unchanged.
      * @param toEdit the index of the current model's filtered list
      * @see EditOrderCommandSystemTest#assertCommandSuccess(String, Index, Order, Index)
@@ -148,7 +148,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
             expectedModel.updateOrder(
                     expectedModel.getFilteredOrderList().get(toEdit.getZeroBased()), editedOrder);
             expectedModel.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
-        } catch (UniqueOrderList.DuplicateOrderException | OrderNotFoundException e) {
+        } catch (DuplicateOrderException | OrderNotFoundException e) {
             throw new IllegalArgumentException(
                     "editedOrder is a duplicate in expectedModel, or it isn't found in the model.");
         }
@@ -176,6 +176,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
         executeCommand(command);
         expectedModel.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertCommandBoxShowsDefaultStyle();
         if (expectedSelectedCardIndex != null) {
             assertSelectedCardChanged(expectedSelectedCardIndex);
@@ -184,6 +185,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
         }
         assertStatusBarUnchangedExceptSyncStatus();
     }
+    //@@author
 
     /**
      * Executes {@code command} and in addition,<br>
@@ -201,6 +203,7 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
 
         executeCommand(command);
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
         assertStatusBarUnchanged();

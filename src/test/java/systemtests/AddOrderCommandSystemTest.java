@@ -39,7 +39,7 @@ import seedu.address.model.order.Order;
 import seedu.address.model.order.OrderInformation;
 import seedu.address.model.order.Price;
 import seedu.address.model.order.Quantity;
-import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.DuplicateOrderException;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.OrderBuilder;
 import seedu.address.testutil.OrderUtil;
@@ -62,12 +62,12 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
                 + DELIVERY_DATE_DESC_COMPUTER + "   ";
         assertCommandSuccess(command, index, toAdd);
 
-        /* Case: undo adding Books to the list -> Books deleted */
+        /* Case: undo adding Computer to the list -> Computer deleted */
         command = UndoCommand.COMMAND_WORD;
         String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, model, expectedResultMessage);
 
-        /* Case: redo adding Books to the list -> Books added again */
+        /* Case: redo adding Computer to the list -> Computer added again */
         command = RedoCommand.COMMAND_WORD;
         model.addOrderToOrderList(toAdd);
         expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
@@ -186,6 +186,7 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
                 + QUANTITY_DESC_COMPUTER + INVALID_DELIVERY_DATE_DESC;
         assertCommandFailure(command, DeliveryDate.MESSAGE_DELIVERY_DATE_CONSTRAINTS);
     }
+    //@@author
 
     /**
      * Executes the {@code AddOrderCommand} that adds {@code toAdd} to the model and asserts that the:<br>
@@ -205,6 +206,7 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(OrderUtil.getAddOrderCommand(index.getZeroBased(), toAdd), index, toAdd);
     }
 
+    //@@author amad-person
     /**
      * Performs the same verification as {@code assertCommandSuccess(Index, Order)}. Executes {@code command}
      * instead.
@@ -216,7 +218,7 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
 
         try {
             expectedModel.addOrderToOrderList(toAdd);
-        } catch (UniqueOrderList.DuplicateOrderException dpe) {
+        } catch (DuplicateOrderException dpe) {
             throw new IllegalArgumentException("toAdd already exists in the model.");
         }
         String expectedResultMessage = String.format(
@@ -224,6 +226,7 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
 
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
     }
+    //@@author
 
     /**
      * Performs the same verification as {@code assertCommandSuccess(String, Index, Order)} except asserts that
@@ -231,11 +234,13 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
      * 1. Result display box displays {@code expectedResultMessage}.<br>
      * 2. {@code Model}, {@code Storage} and {@code PersonListPanel} equal to the corresponding components in
      * {@code expectedModel}.<br>
+     * 3. {@code OrderListPanel} is equal to the corresponding order list in {@code expectedModel}.<br>
      * @see AddOrderCommandSystemTest#assertCommandSuccess(String, Index, Order)
      */
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsDefaultStyle();
         assertStatusBarUnchangedExceptSyncStatus();
@@ -257,6 +262,7 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
 
         executeCommand(command);
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
+        assertOrderListDisplaysExpected(expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
         assertStatusBarUnchanged();

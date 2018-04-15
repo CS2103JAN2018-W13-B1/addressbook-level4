@@ -6,12 +6,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.commons.exceptions.DuplicateDataException;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.model.order.exceptions.DuplicateOrderException;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
 
 /**
@@ -33,7 +34,7 @@ public class UniqueOrderList implements Iterable<Order> {
      * Creates a UniqueOrderList using given orders.
      * Enforces no nulls.
      */
-    public UniqueOrderList(Set<Order> orders) {
+    public UniqueOrderList(List<Order> orders) {
         requireAllNonNull(orders);
         internalList.addAll(orders);
 
@@ -74,10 +75,17 @@ public class UniqueOrderList implements Iterable<Order> {
     /**
      * Replaces the Orders in this list with those in the argument order list.
      */
-    public void setOrders(Set<Order> orders) {
+    public void setOrders(List<Order> orders) throws DuplicateOrderException {
         requireAllNonNull(orders);
-        internalList.setAll(orders);
-        assert CollectionUtil.elementsAreUnique(internalList);
+        final UniqueOrderList replacement = new UniqueOrderList();
+        for (final Order order : orders) {
+            replacement.add(order);
+        }
+        setOrders(replacement);
+    }
+
+    public void setOrders(UniqueOrderList replacement) {
+        this.internalList.setAll(replacement.internalList);
     }
 
     /**
@@ -147,29 +155,9 @@ public class UniqueOrderList implements Iterable<Order> {
                 && this.internalList.equals(((UniqueOrderList) other).internalList));
     }
 
-    /**
-     * Returns true if the element in this list is equal to the elements in {@code other}.
-     * The elements do not have to be in the same order.
-     */
-    public boolean equalsOrderInsensitive(UniqueOrderList other) {
-        assert CollectionUtil.elementsAreUnique(internalList);
-        assert CollectionUtil.elementsAreUnique(other.internalList);
-        return this == other || new HashSet<>(this.internalList).equals(new HashSet<>(other.internalList));
-    }
-
     @Override
     public int hashCode() {
         assert CollectionUtil.elementsAreUnique(internalList);
         return internalList.hashCode();
     }
-
-    /**
-     * Signals that an operation would have violated the 'no duplicates' property of the list.
-     */
-    public static class DuplicateOrderException extends DuplicateDataException {
-        public DuplicateOrderException() {
-            super("Operation would result in duplicate orders");
-        }
-    }
-
 }
