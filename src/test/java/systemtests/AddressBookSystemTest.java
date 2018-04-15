@@ -42,7 +42,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.CalendarManager;
 import seedu.address.model.Model;
 import seedu.address.model.order.Order;
-import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.DuplicateOrderException;
 import seedu.address.testutil.TypicalCalendarEntries;
 import seedu.address.testutil.TypicalPersons;
 import seedu.address.ui.CommandBox;
@@ -92,7 +92,7 @@ public abstract class AddressBookSystemTest {
         for (Order order : getTypicalOrders()) {
             try {
                 ab.addOrderToOrderList(order);
-            } catch (UniqueOrderList.DuplicateOrderException doe) {
+            } catch (DuplicateOrderException doe) {
                 throw new AssertionError("not possible");
             }
         }

@@ -39,7 +39,7 @@ import seedu.address.model.order.Order;
 import seedu.address.model.order.OrderInformation;
 import seedu.address.model.order.Price;
 import seedu.address.model.order.Quantity;
-import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.DuplicateOrderException;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.OrderBuilder;
 import seedu.address.testutil.OrderUtil;
@@ -216,7 +216,7 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
 
         try {
             expectedModel.addOrderToOrderList(toAdd);
-        } catch (UniqueOrderList.DuplicateOrderException dpe) {
+        } catch (DuplicateOrderException dpe) {
             throw new IllegalArgumentException("toAdd already exists in the model.");
         }
         String expectedResultMessage = String.format(

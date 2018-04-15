@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import seedu.address.model.order.Order;
 import seedu.address.model.order.UniqueOrderList;
+import seedu.address.model.order.exceptions.DuplicateOrderException;
 import seedu.address.model.order.exceptions.OrderNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -76,7 +77,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.prefTags.setTags(prefTags);
     }
 
-    public void setOrders(List<Order> orders) throws UniqueOrderList.DuplicateOrderException {
+    public void setOrders(List<Order> orders) throws DuplicateOrderException {
         this.orders.setOrders(orders);
     }
 
@@ -101,7 +102,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         try {
             setOrders(orderList);
-        } catch (UniqueOrderList.DuplicateOrderException e) {
+        } catch (DuplicateOrderException e) {
             throw new AssertionError("AddressBooks should not have duplicate orders");
         }
     }
@@ -148,7 +149,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Replaces the given order {@code target} in the list with {@code editedOrder}.
      */
     public void updateOrder(Order target, Order editedOrder)
-        throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+        throws DuplicateOrderException, OrderNotFoundException {
         requireNonNull(editedOrder);
 
         orders.setOrder(target, editedOrder);
@@ -159,7 +160,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Updates the order status of the given order {@code target}
      */
     public void updateOrderStatus(Order target, String orderStatus)
-            throws UniqueOrderList.DuplicateOrderException, OrderNotFoundException {
+            throws DuplicateOrderException, OrderNotFoundException {
         requireNonNull(orderStatus);
 
         Order editedOrder = new Order(target.getOrderInformation(), target.getOrderStatus(),
@@ -291,7 +292,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Adds order to list of orders.
      */
-    public void addOrderToOrderList(Order orderToAdd) throws UniqueOrderList.DuplicateOrderException {
+    public void addOrderToOrderList(Order orderToAdd) throws DuplicateOrderException {
         orders.add(orderToAdd);
     }
 
