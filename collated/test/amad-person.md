@@ -1103,6 +1103,168 @@ public class EditOrderCommandTest {
     }
 }
 ```
+###### /java/seedu/address/logic/parser/AddOrderCommandParserTest.java
+``` java
+package seedu.address.logic.parser;
+
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.DELIVERY_DATE_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.DELIVERY_DATE_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DELIVERY_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ORDER_INFORMATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRICE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_QUANTITY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.ORDER_INFORMATION_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.ORDER_INFORMATION_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.PRICE_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.PRICE_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DATE_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_INFORMATION_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_STATUS_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_CHOC;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import org.junit.Test;
+
+import seedu.address.logic.commands.AddOrderCommand;
+import seedu.address.model.order.DeliveryDate;
+import seedu.address.model.order.Order;
+import seedu.address.model.order.OrderInformation;
+import seedu.address.model.order.Price;
+import seedu.address.model.order.Quantity;
+import seedu.address.testutil.OrderBuilder;
+
+public class AddOrderCommandParserTest {
+
+    private static final String MESSAGE_INVALID_FORMAT =
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddOrderCommand.MESSAGE_USAGE);
+
+    private final AddOrderCommandParser parser = new AddOrderCommandParser();
+
+    @Test
+    public void parse_allFieldsPresent_success() {
+        Order expectedOrder = new OrderBuilder()
+                .withOrderInformation(VALID_ORDER_INFORMATION_CHOC)
+                .withOrderStatus(VALID_ORDER_STATUS_CHOC)
+                .withPrice(VALID_PRICE_CHOC)
+                .withQuantity(VALID_QUANTITY_CHOC)
+                .withDeliveryDate(VALID_DELIVERY_DATE_CHOC)
+                .build();
+
+        // whitespace only preamble
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE
+                        + INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC + DELIVERY_DATE_DESC_CHOC,
+                new AddOrderCommand(INDEX_FIRST_PERSON, expectedOrder));
+
+        // multiple order information strings - last order information string accepted
+        assertParseSuccess(parser, INDEX_FIRST_PERSON.getOneBased()
+                        + ORDER_INFORMATION_DESC_BOOKS + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC + DELIVERY_DATE_DESC_CHOC,
+                new AddOrderCommand(INDEX_FIRST_PERSON, expectedOrder));
+
+        // multiple prices - last price accepted
+        assertParseSuccess(parser, INDEX_FIRST_PERSON.getOneBased()
+                        + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_BOOKS + PRICE_DESC_CHOC
+                        + QUANTITY_DESC_CHOC + DELIVERY_DATE_DESC_CHOC,
+                new AddOrderCommand(INDEX_FIRST_PERSON, expectedOrder));
+
+        // multiple quantities - last quantity accepted
+        assertParseSuccess(parser, INDEX_FIRST_PERSON.getOneBased()
+                        + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC
+                        + QUANTITY_DESC_BOOKS + QUANTITY_DESC_CHOC
+                        + DELIVERY_DATE_DESC_CHOC,
+                new AddOrderCommand(INDEX_FIRST_PERSON, expectedOrder));
+
+        // multiple delivery dates - last delivery date accepted
+        assertParseSuccess(parser, INDEX_FIRST_PERSON.getOneBased()
+                        + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC
+                        + DELIVERY_DATE_DESC_BOOKS + DELIVERY_DATE_DESC_CHOC,
+                new AddOrderCommand(INDEX_FIRST_PERSON, expectedOrder));
+    }
+
+    @Test
+    public void parse_compulsoryFieldMissing_failure() {
+        // missing order information prefix
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + VALID_ORDER_INFORMATION_CHOC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC
+                        + DELIVERY_DATE_DESC_CHOC,
+                MESSAGE_INVALID_FORMAT);
+
+        // missing price prefix
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + VALID_PRICE_CHOC + QUANTITY_DESC_CHOC
+                        + DELIVERY_DATE_DESC_CHOC,
+                MESSAGE_INVALID_FORMAT);
+
+        // missing quantity prefix
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + VALID_QUANTITY_CHOC
+                        + DELIVERY_DATE_DESC_CHOC,
+                MESSAGE_INVALID_FORMAT);
+
+        // missing delivery date prefix
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC
+                        + VALID_DELIVERY_DATE_CHOC,
+                MESSAGE_INVALID_FORMAT);
+
+        // all prefixes missing
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + VALID_ORDER_INFORMATION_CHOC
+                        + VALID_PRICE_CHOC + VALID_QUANTITY_CHOC
+                        + VALID_DELIVERY_DATE_CHOC,
+                MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidValue_failure() {
+        // invalid order information
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + INVALID_ORDER_INFORMATION_DESC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC
+                        + DELIVERY_DATE_DESC_CHOC,
+                OrderInformation.MESSAGE_ORDER_INFORMATION_CONSTRAINTS);
+
+        // invalid price
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + INVALID_PRICE_DESC + QUANTITY_DESC_CHOC
+                        + DELIVERY_DATE_DESC_CHOC,
+                Price.MESSAGE_PRICE_CONSTRAINTS);
+
+        // invalid quantity
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + INVALID_QUANTITY_DESC
+                        + DELIVERY_DATE_DESC_CHOC,
+                Quantity.MESSAGE_QUANTITY_CONSTRAINTS);
+
+        // invalid delivery date
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + ORDER_INFORMATION_DESC_CHOC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC
+                        + INVALID_DELIVERY_DATE_DESC,
+                DeliveryDate.MESSAGE_DELIVERY_DATE_CONSTRAINTS);
+
+        // two invalid values, only first invalid value reported
+        assertParseFailure(parser, INDEX_FIRST_PERSON.getOneBased() + INVALID_ORDER_INFORMATION_DESC
+                        + PRICE_DESC_CHOC + QUANTITY_DESC_CHOC
+                        + INVALID_DELIVERY_DATE_DESC,
+                OrderInformation.MESSAGE_ORDER_INFORMATION_CONSTRAINTS);
+
+        // non-empty preamble
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + INDEX_FIRST_PERSON.getOneBased()
+                + ORDER_INFORMATION_DESC_CHOC + PRICE_DESC_CHOC
+                + QUANTITY_DESC_CHOC + DELIVERY_DATE_DESC_CHOC, MESSAGE_INVALID_FORMAT);
+    }
+}
+```
 ###### /java/seedu/address/logic/parser/AddressBookParserTest.java
 ``` java
     @Test
@@ -1323,6 +1485,257 @@ public class ChangeOrderStatusCommandParserTest {
     public void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 ChangeOrderStatusCommand.MESSAGE_USAGE));
+    }
+}
+```
+###### /java/seedu/address/logic/parser/ChangeThemeCommandParserTest.java
+``` java
+package seedu.address.logic.parser;
+
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.model.theme.Theme.DARK_THEME_KEYWORD;
+import static seedu.address.model.theme.Theme.LIGHT_THEME_KEYWORD;
+
+import org.junit.Test;
+
+import seedu.address.logic.commands.ChangeThemeCommand;
+
+public class ChangeThemeCommandParserTest {
+
+    private final ChangeThemeCommandParser parser = new ChangeThemeCommandParser();
+
+    @Test
+    public void parse_validArgs_returnsChangeThemeCommand() {
+        assertParseSuccess(parser, "light", new ChangeThemeCommand(LIGHT_THEME_KEYWORD));
+
+        assertParseSuccess(parser, "dark", new ChangeThemeCommand(DARK_THEME_KEYWORD));
+    }
+
+    @Test
+    public void parse_invalidArgs_throwsParseException() {
+        assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                ChangeThemeCommand.MESSAGE_USAGE));
+    }
+}
+```
+###### /java/seedu/address/logic/parser/DeleteOrderCommandParserTest.java
+``` java
+package seedu.address.logic.parser;
+
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import org.junit.Test;
+
+import seedu.address.logic.commands.DeleteOrderCommand;
+
+public class DeleteOrderCommandParserTest {
+
+    private final DeleteOrderCommandParser parser = new DeleteOrderCommandParser();
+
+    @Test
+    public void parse_validArgs_returnsDeleteCommand() {
+        assertParseSuccess(parser, "1", new DeleteOrderCommand(INDEX_FIRST_PERSON));
+    }
+
+    @Test
+    public void parse_invalidArgs_throwsParseException() {
+        assertParseFailure(parser, "a",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteOrderCommand.MESSAGE_USAGE));
+    }
+}
+```
+###### /java/seedu/address/logic/parser/EditOrderCommandParserTest.java
+``` java
+package seedu.address.logic.parser;
+
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.DELIVERY_DATE_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.DELIVERY_DATE_DESC_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DELIVERY_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ORDER_INFORMATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRICE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_QUANTITY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.ORDER_INFORMATION_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.ORDER_INFORMATION_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.ORDER_INFORMATION_DESC_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.PRICE_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.PRICE_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.PRICE_DESC_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DATE_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DATE_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_INFORMATION_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_INFORMATION_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_COMPUTER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_BOOKS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_CHOC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_COMPUTER;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ORDER;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_ORDER;
+
+import org.junit.Test;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditOrderCommand;
+import seedu.address.logic.commands.EditOrderCommand.EditOrderDescriptor;
+import seedu.address.model.order.DeliveryDate;
+import seedu.address.model.order.OrderInformation;
+import seedu.address.model.order.Price;
+import seedu.address.model.order.Quantity;
+import seedu.address.testutil.EditOrderDescriptorBuilder;
+
+public class EditOrderCommandParserTest {
+
+    private static final String MESSAGE_INVALID_FORMAT =
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditOrderCommand.MESSAGE_USAGE);
+
+    private final EditOrderCommandParser parser = new EditOrderCommandParser();
+
+    @Test
+    public void parse_missingParts_failure() {
+        // no index specified
+        assertParseFailure(parser, VALID_ORDER_INFORMATION_COMPUTER, MESSAGE_INVALID_FORMAT);
+
+        // no field specified
+        assertParseFailure(parser, "1", EditOrderCommand.MESSAGE_NOT_EDITED);
+
+        // no index and no field specified
+        assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidPreamble_failure() {
+        // negative index
+        assertParseFailure(parser, "-5" + ORDER_INFORMATION_DESC_COMPUTER, MESSAGE_INVALID_FORMAT);
+
+        // zero index
+        assertParseFailure(parser, "0" + ORDER_INFORMATION_DESC_COMPUTER, MESSAGE_INVALID_FORMAT);
+
+        // invalid arguments being parsed as preamble
+        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
+
+        // invalid prefix being parsed as preamble
+        assertParseFailure(parser, "1 o/ string", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidValue_failure() {
+        assertParseFailure(parser, "1" + INVALID_ORDER_INFORMATION_DESC,
+                OrderInformation.MESSAGE_ORDER_INFORMATION_CONSTRAINTS); // invalid order information
+        assertParseFailure(parser, "1" + INVALID_PRICE_DESC, Price.MESSAGE_PRICE_CONSTRAINTS); // invalid price
+        assertParseFailure(parser, "1" + INVALID_QUANTITY_DESC,
+                Quantity.MESSAGE_QUANTITY_CONSTRAINTS); // invalid quantity
+        assertParseFailure(parser, "1" + INVALID_DELIVERY_DATE_DESC,
+                DeliveryDate.MESSAGE_DELIVERY_DATE_CONSTRAINTS); // invalid address
+
+        // invalid order information followed by valid price
+        assertParseFailure(parser, "1" + INVALID_ORDER_INFORMATION_DESC + PRICE_DESC_COMPUTER,
+                OrderInformation.MESSAGE_ORDER_INFORMATION_CONSTRAINTS);
+
+        // valid quantity followed by invalid quantity. The test case for invalid quantity followed by valid quantity
+        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
+        assertParseFailure(parser, "1" + QUANTITY_DESC_COMPUTER + INVALID_QUANTITY_DESC,
+                Quantity.MESSAGE_QUANTITY_CONSTRAINTS);
+
+        // multiple invalid values, but only the first invalid value is captured
+        assertParseFailure(parser, "1" + INVALID_PRICE_DESC + INVALID_QUANTITY_DESC
+                + VALID_ORDER_INFORMATION_COMPUTER, Price.MESSAGE_PRICE_CONSTRAINTS);
+    }
+```
+###### /java/seedu/address/logic/parser/EditOrderCommandParserTest.java
+``` java
+    @Test
+    public void parse_someFieldsSpecified_success() {
+        Index targetIndex = INDEX_FIRST_ORDER;
+        String userInput = targetIndex.getOneBased() + PRICE_DESC_BOOKS + DELIVERY_DATE_DESC_COMPUTER;
+
+        EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withPrice(VALID_PRICE_BOOKS)
+                .withDeliveryDate(VALID_DELIVERY_DATE_COMPUTER).build();
+        EditOrderCommand expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_oneFieldSpecified_success() {
+        Index targetIndex = INDEX_THIRD_ORDER;
+
+        // order information
+        String userInput = targetIndex.getOneBased() + ORDER_INFORMATION_DESC_CHOC;
+        EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withOrderInformation(VALID_ORDER_INFORMATION_CHOC).build();
+        EditOrderCommand expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // price
+        userInput = targetIndex.getOneBased() + PRICE_DESC_CHOC;
+        descriptor = new EditOrderDescriptorBuilder()
+                .withPrice(VALID_PRICE_CHOC).build();
+        expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // quantity
+        userInput = targetIndex.getOneBased() + QUANTITY_DESC_CHOC;
+        descriptor = new EditOrderDescriptorBuilder()
+                .withQuantity(VALID_QUANTITY_CHOC).build();
+        expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // delivery date
+        userInput = targetIndex.getOneBased() + DELIVERY_DATE_DESC_CHOC;
+        descriptor = new EditOrderDescriptorBuilder()
+                .withDeliveryDate(VALID_DELIVERY_DATE_CHOC).build();
+        expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_multipleRepeatedFields_acceptsLast() {
+        Index targetIndex = INDEX_SECOND_ORDER;
+        String userInput = targetIndex.getOneBased() + ORDER_INFORMATION_DESC_CHOC + ORDER_INFORMATION_DESC_BOOKS
+                + ORDER_INFORMATION_DESC_COMPUTER + PRICE_DESC_CHOC + PRICE_DESC_BOOKS + QUANTITY_DESC_COMPUTER
+                + QUANTITY_DESC_CHOC + DELIVERY_DATE_DESC_COMPUTER;
+
+        EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
+                .withOrderInformation(VALID_ORDER_INFORMATION_COMPUTER).withPrice(VALID_PRICE_BOOKS)
+                .withQuantity(VALID_QUANTITY_CHOC).withDeliveryDate(VALID_DELIVERY_DATE_COMPUTER)
+                .build();
+
+        EditOrderCommand expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void invalidValueFollowedByValidValue_success() {
+        // no other valid values specified
+        Index targetIndex = INDEX_FIRST_ORDER;
+        String userInput = targetIndex.getOneBased() + INVALID_QUANTITY_DESC + QUANTITY_DESC_CHOC;
+        EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder().withQuantity(VALID_QUANTITY_CHOC).build();
+        EditOrderCommand expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // other valid values specified
+        userInput = targetIndex.getOneBased() + PRICE_DESC_BOOKS + INVALID_QUANTITY_DESC + DELIVERY_DATE_DESC_COMPUTER
+                + QUANTITY_DESC_BOOKS;
+        descriptor = new EditOrderDescriptorBuilder()
+                .withPrice(VALID_PRICE_BOOKS).withQuantity(VALID_QUANTITY_BOOKS)
+                .withDeliveryDate(VALID_DELIVERY_DATE_COMPUTER).build();
+        expectedCommand = new EditOrderCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
     }
 }
 ```
@@ -2751,25 +3164,9 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
                 + QUANTITY_DESC_COMPUTER + INVALID_DELIVERY_DATE_DESC;
         assertCommandFailure(command, DeliveryDate.MESSAGE_DELIVERY_DATE_CONSTRAINTS);
     }
-
-    /**
-     * Executes the {@code AddOrderCommand} that adds {@code toAdd} to the model and asserts that the:<br>
-     * 1. Command box displays an empty string.<br>
-     * 2. Command box has the default style class.<br>
-     * 3. Result display box displays the success message of executing {@code AddOrderCommand} with details of
-     * {@code toAdd}.<br>
-     * 4. {@code Model}, {@code Storage} and {@code PersonListPanel} equal to the corresponding components in
-     * the current model added with {@code toAdd}.<br>
-     * 5. Browser url and selected card remain unchanged.<br>
-     * 6. Status bar's sync status changes.<br>
-     * Verifications 1, 3 and 4 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     */
-    private void assertCommandSuccess(Index index, Order toAdd) {
-        assertCommandSuccess(OrderUtil.getAddOrderCommand(index.getZeroBased(), toAdd), index, toAdd);
-    }
-
+```
+###### /java/systemtests/AddOrderCommandSystemTest.java
+``` java
     /**
      * Performs the same verification as {@code assertCommandSuccess(Index, Order)}. Executes {@code command}
      * instead.
@@ -2789,44 +3186,6 @@ public class AddOrderCommandSystemTest extends AddressBookSystemTest {
 
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
     }
-
-    /**
-     * Performs the same verification as {@code assertCommandSuccess(String, Index, Order)} except asserts that
-     * the:<br>
-     * 1. Result display box displays {@code expectedResultMessage}.<br>
-     * 2. {@code Model}, {@code Storage} and {@code PersonListPanel} equal to the corresponding components in
-     * {@code expectedModel}.<br>
-     * @see AddOrderCommandSystemTest#assertCommandSuccess(String, Index, Order)
-     */
-    private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
-        executeCommand(command);
-        assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
-        assertSelectedCardUnchanged();
-        assertCommandBoxShowsDefaultStyle();
-        assertStatusBarUnchangedExceptSyncStatus();
-    }
-
-    /**
-     * Executes {@code command} and asserts that the:<br>
-     * 1. Command box displays {@code command}.<br>
-     * 2. Command box has the error style class.<br>
-     * 3. Result display box displays {@code expectedResultMessage}.<br>
-     * 4. {@code Model}, {@code Storage} and {@code PersonListPanel} remain unchanged.<br>
-     * 5. Browser url, selected card and status bar remain unchanged.<br>
-     * Verifications 1, 3 and 4 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     */
-    private void assertCommandFailure(String command, String expectedResultMessage) {
-        Model expectedModel = getModel();
-
-        executeCommand(command);
-        assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
-        assertSelectedCardUnchanged();
-        assertCommandBoxShowsErrorStyle();
-        assertStatusBarUnchanged();
-    }
-}
 ```
 ###### /java/systemtests/DeleteOrderCommandSystemTest.java
 ``` java
@@ -2948,7 +3307,7 @@ public class DeleteOrderCommandSystemTest extends AddressBookSystemTest {
      * 1. Asserts that the command box displays an empty string.<br>
      * 2. Asserts that the result display box displays {@code expectedResultMessage}.<br>
      * 3. Asserts that the model related components equal to {@code expectedModel}.<br>
-     * 4. Asserts that the browser url and selected card remains unchanged.<br>
+     * 4. Asserts that the selected card remains unchanged.<br>
      * 5. Asserts that the status bar's sync status changes.<br>
      * 6. Asserts that the command box has the default style class.<br>
      * Verifications 1 to 3 are performed by
@@ -2958,49 +3317,6 @@ public class DeleteOrderCommandSystemTest extends AddressBookSystemTest {
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         assertCommandSuccess(command, expectedModel, expectedResultMessage, null);
     }
-
-    /**
-     * Performs the same verification as {@code assertCommandSuccess(String, Model, String)} except that the browser url
-     * and selected card are expected to update accordingly depending on the card at {@code expectedSelectedCardIndex}.
-     * @see DeleteOrderCommandSystemTest#assertCommandSuccess(String, Model, String)
-     * @see AddressBookSystemTest#assertSelectedCardChanged(Index)
-     */
-    private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage,
-                                      Index expectedSelectedCardIndex) {
-        executeCommand(command);
-        assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
-
-        if (expectedSelectedCardIndex != null) {
-            assertSelectedCardChanged(expectedSelectedCardIndex);
-        } else {
-            assertSelectedCardUnchanged();
-        }
-
-        assertCommandBoxShowsDefaultStyle();
-        assertStatusBarUnchangedExceptSyncStatus();
-    }
-
-    /**
-     * Executes {@code command} and in addition,<br>
-     * 1. Asserts that the command box displays {@code command}.<br>
-     * 2. Asserts that result display box displays {@code expectedResultMessage}.<br>
-     * 3. Asserts that the model related components equal to the current model.<br>
-     * 4. Asserts that the browser url, selected card and status bar remain unchanged.<br>
-     * 5. Asserts that the command box has the error style.<br>
-     * Verifications 1 to 3 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     */
-    private void assertCommandFailure(String command, String expectedResultMessage) {
-        Model expectedModel = getModel();
-
-        executeCommand(command);
-        assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
-        assertSelectedCardUnchanged();
-        assertCommandBoxShowsErrorStyle();
-        assertStatusBarUnchanged();
-    }
-}
 ```
 ###### /java/systemtests/EditOrderCommandSystemTest.java
 ``` java
@@ -3189,6 +3505,9 @@ public class EditOrderCommandSystemTest extends AddressBookSystemTest {
         }
         assertStatusBarUnchangedExceptSyncStatus();
     }
+```
+###### /java/systemtests/EditOrderCommandSystemTest.java
+``` java
 
     /**
      * Executes {@code command} and in addition,<br>
