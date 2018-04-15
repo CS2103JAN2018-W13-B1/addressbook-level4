@@ -44,10 +44,9 @@ It also showcases my documentation skills by including relevant extracts written
 <div class="sect1">
 <h2 id="3-summary-of-contributions"><a class="link" href="#3-summary-of-contributions">3. Summary of Contributions</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p><strong>Major enhancement</strong>: added the ability to <strong>manage customer orders</strong>.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -57,29 +56,30 @@ It also showcases my documentation skills by including relevant extracts written
 <p>Justification: This feature will be essential for salespersons as they would want to keep track of customer orders. Salespersons will be able to view relevant information about customer orders in a single place.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing model and UI of the application.</p>
+<p>Highlights: This enhancement required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing model and UI of the application.
+Additionally, this enhancement will affect commands to be implemented in the future.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: added the ability to switch between themes provided in the application.</p>
+<div class="paragraph">
+<p><strong>Minor enhancement</strong>: added the ability to <strong>switch between themes</strong> provided in the application.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p>Functionality: Theme of the application can be switched between 'light' or 'dark' themes.</p>
 </li>
 <li>
-<p>Justification: This feature will allow the salesperson to customize the application to suit their needs.</p>
+<p>Justification: This feature will allow salespersons to customize the application to suit their needs.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
+<div class="paragraph">
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/functional/amad-person.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W13-B1/main/blob/master/collated/test/amad-person.md">Test code</a>]</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p><strong>Other contributions</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -130,9 +130,6 @@ It also showcases my documentation skills by including relevant extracts written
 </li>
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-W15-B4/main/issues/196">1</a>, <a href="https://github.com/CS2103JAN2018-W15-B4/main/issues/191">2</a>, <a href="https://github.com/CS2103JAN2018-W15-B4/main/issues/199">3</a>)</p>
-</li>
-</ul>
-</div>
 </li>
 </ul>
 </div>
@@ -212,8 +209,9 @@ It also showcases my documentation skills by including relevant extracts written
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Currently, the orders added will be shown in the list of all orders in the Right Panel.
-We are planning to add the ability to only view orders specific to a person in their PersonPanel view in <code>v2.0</code>.
+Currently, the orders added will be shown in the list of all orders in the Right Panel. This means that orders with same
+fields can&#8217;t be added to multiple persons yet. We are planning to add this ability, and the ability to view orders of a
+person in their PersonPanel in <code>v2.0</code>.
 </td>
 </tr>
 </table>
@@ -377,25 +375,10 @@ We are planning to add the ability to only view orders specific to a person in t
 </div>
 <div class="title">Figure 7. Result of deleting 'Books', the 1st order in the order list.</div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="listing-all-orders-code-orderlist-code-code-since-v1-4-code"><a class="link" href="#listing-all-orders-code-orderlist-code-code-since-v1-4-code">Listing all orders : <code>orderlist</code> <code>since v1.4</code></a></h4>
-<div class="paragraph">
-<p>Description: Shows a list of all orders in ContactSails.<br></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>Format: <code>orderlist</code><br></p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Command Alias: <code>ol</code></p>
-</div>
 <div class="paragraph">
 <p><mark>End of Extract (from User Guide)</mark></p>
 </div>
+<hr>
 </div>
 </div>
 <div class="sect2">
@@ -437,13 +420,13 @@ We are planning to add the ability to only view orders specific to a person in t
 </div>
 <div class="paragraph">
 <p>Type <code>theme light</code> OR <code>t light</code> into the Command Box.<br>
-This changes the theme of the application to the light theme. The figure below shows the ContactSails UI with the light theme.</p>
+This changes the theme of the application to <code>light</code>. The figure below shows the ContactSails UI with the light theme.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/ContactSails_Light_Theme.png" alt="ContactSails Light Theme" width="500">
 </div>
-<div class="title">Figure 8. ContactSails Light Theme</div>
+<div class="title">Figure 8. ContactSails Light Theme.</div>
 </div>
 <div class="paragraph">
 <p><mark>Start of Extract (from User Guide)</mark></p>
@@ -465,8 +448,14 @@ This changes the theme of the application to the light theme. The figure below s
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="5-1-major-enhancement-order-management"><a class="link" href="#5-1-major-enhancement-order-management">5.1. Major Enhancement : Order Management</a></h3>
 <div class="paragraph">
-<p><mark>Start of Extract (from Developer Guide)</mark></p>
+<p>This section contains extracts from the DeveloperGuide related to order management.</p>
+</div>
+<div class="paragraph">
+<p><mark>Start of Extract 1 (from Developer Guide)</mark></p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="order-management"><a class="link" href="#order-management">Order Management</a></h3>
@@ -523,9 +512,14 @@ The class diagram given below shows how these commands are part of the <code>Log
 <div class="paragraph">
 <p>These commands are described in more detail in the sections below.<br></p>
 </div>
+<div class="paragraph">
+<p><mark>End of Extract 1 (from Developer Guide)</mark></p>
+</div>
+<div class="paragraph">
+<p><mark>Start of Extract 2 (from Developer Guide)</mark></p>
+</div>
 <div class="sect4">
 <h5 id="adding-orders"><a class="link" href="#adding-orders">Adding Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>AddOrderCommand</code> adds an order to list of orders in ContactSails.</p>
 </div>
@@ -563,6 +557,155 @@ not be added if a duplicate order has already been added to the list of orders b
 <p>The order added will be displayed in the OrderListPanel in ContactSails.</p>
 </div>
 <div class="paragraph">
+<p><mark>End of Extract 2 (from Developer Guide)</mark></p>
+</div>
+<div class="paragraph">
+<p><mark>Start of Extract 3 (from Developer Guide)</mark></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structures-to-support-order-operations"><a class="link" href="#aspect-data-structures-to-support-order-operations">Aspect: Data structures to support order operations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store a UniqueOrderList of orders containing orders of all persons in the application.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement. Additionally, all order management operations will be synchronised.</p>
+</li>
+<li>
+<p>Cons: Higher memory usage might affect the performance of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using an association class to store multiple references to the same order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Duplicate orders (with the same information except the person associated with it) will just be stored as a single order in memory.
+If multiple persons have the same order, there will be multiple references to one Order object. This reduces memory usage.</p>
+</li>
+<li>
+<p>Cons: Harder to implement as updating or deleting orders for one person must not affect orders of another person having the same order.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract 3 (from Developer Guide)</mark></p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-minor-enhancement-change-themes"><a class="link" href="#5-2-minor-enhancement-change-themes">5.2. Minor Enhancement : Change Themes</a></h3>
+<div class="paragraph">
+<p>This section contains extracts from the DeveloperGuide related to changing themes.</p>
+</div>
+<div class="paragraph">
+<p><mark>Start of Extract (from Developer Guide)</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-themes"><a class="link" href="#changing-themes">Changing Themes</a></h3>
+<div class="paragraph">
+<p>The theme of ContactSails can be changed using the <code>ChangeThemeCommand</code>.
+Currently, ContactSails supports <code>dark</code> and <code>light</code> themes.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Theme</code> object in the <code>model</code> is used to store the current theme version.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the hierarchy of the <code>Theme</code> class.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ThemeClassUMLDiagram.png" alt="ThemeClassUMLDiagram" width="300">
+</div>
+<div class="title">Figure 14. UML Diagram showing the <code>Model</code> component with the <code>Theme</code> class.</div>
+</div>
+<div class="paragraph">
+<p>When the <code>ChangeThemeCommand</code> is executed, a <code>ChangeThemeEvent</code> is raised by <code>EventsCenter</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>handleChangeThemeEvent() method in the `MainWindow</code>
+class subscribes to this particular event and calls the <code>handleChangeTheme()</code> FXML controller method. This method changes the theme of the application based on the
+theme version it receives as a parameter. This is done by attaching the corresponding <code>CSS</code> stylesheet to the <code>MainWindow</code> JavaFX scene of the application.</p>
+</div>
+<div class="paragraph">
+<p>Given below is a high level sequence diagram for the <code>ChangeThemeCommand</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/HighLevelSequenceDiagramChangeTheme.png" alt="HighLevelSequenceDiagramChangeTheme" width="500">
+</div>
+<div class="title">Figure 15. High-Level Sequence Diagram for <code>ChangeThemeCommand</code>.</div>
+</div>
+<div class="paragraph">
+<p>When the user exits the application, the current theme version will be stored in the <code>preferences.json</code> file as shown in the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "guiSettings" : {
+        // ... guiSettings attributes ...
+    },
+    "theme" : "dark"
+  },
+  // ... file management attributes ...
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Storing the theme in the <code>preferences.json</code> enables the theme change to be persistent across different application sessions.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-theme-version"><a class="link" href="#aspect-storing-theme-version">Aspect: Storing theme version</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Encapsulate the theme version in a <code>Theme</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Relevant attributes and methods will be encapsulated in a single class.</p>
+</li>
+<li>
+<p>Cons: Higher memory overhead.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Storing the theme version as a string in guiSettings.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement, and lesser memory overhead.</p>
+</li>
+<li>
+<p>Cons: Methods related to changing themes would have to be written in multiple classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p><mark>End of Extract (from Developer Guide)</mark></p>
 </div>
 </div>
@@ -584,7 +727,10 @@ not be added if a duplicate order has already been added to the list of orders b
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-feature-viewing-customer-statistics"><a class="link" href="#proposed-feature-viewing-customer-statistics">Proposed Feature : Viewing Customer Statistics</a></h3>
+<h3 id="a-1-proposed-feature-viewing-customer-statistics"><a class="link" href="#a-1-proposed-feature-viewing-customer-statistics">A.1. Proposed Feature : Viewing Customer Statistics</a></h3>
+<div class="paragraph">
+<p>This section contains extracts from the UserGuide related to a proposed feature for displaying customer statistics.</p>
+</div>
 <div class="paragraph">
 <p><mark>Start of Extract (from User Guide)</mark></p>
 </div>
@@ -678,7 +824,10 @@ The command descriptions for these features are given below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-feature-sending-promotions"><a class="link" href="#proposed-feature-sending-promotions">Proposed Feature : Sending Promotions</a></h3>
+<h3 id="a-2-proposed-feature-sending-promotions"><a class="link" href="#a-2-proposed-feature-sending-promotions">A.2. Proposed Feature : Sending Promotions</a></h3>
+<div class="paragraph">
+<p>This section contains extracts from the UserGuide related to a proposed feature for sending promotions to customers.</p>
+</div>
 <div class="paragraph">
 <p><mark>Start of Extract (from User Guide)</mark></p>
 </div>
@@ -801,13 +950,15 @@ The command descriptions for these features are given below.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="major-enhancement-order-management"><a class="link" href="#major-enhancement-order-management">Major Enhancement : Order Management</a></h3>
+<h3 id="b-1-major-enhancement-order-management"><a class="link" href="#b-1-major-enhancement-order-management">B.1. Major Enhancement : Order Management</a></h3>
+<div class="paragraph">
+<p>This section contains other extracts from the DeveloperGuide related to order management.</p>
+</div>
 <div class="paragraph">
 <p><mark>Start of Extract (from Developer Guide)</mark></p>
 </div>
 <div class="sect4">
 <h5 id="editing-orders"><a class="link" href="#editing-orders">Editing Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>EditOrderCommand</code> edits the <code>targetOrder</code> with the provided information which is specified by its <code>index</code>
 in the last shown listing of orders. The order will be updated with the new values given by the user.</p>
@@ -819,7 +970,7 @@ in the last shown listing of orders. The order will be updated with the new valu
 <div class="content">
 <img src="../images/EditOrderSeqDiagram.png" alt="EditOrderSeqDiagram" width="600">
 </div>
-<div class="title">Figure 14. Sequence Diagram for <code>EditOrderCommand</code>.</div>
+<div class="title">Figure 16. Sequence Diagram for <code>EditOrderCommand</code>.</div>
 </div>
 <div class="paragraph">
 <p>In the <code>EditOrderCommand</code> class, a new class called <code>EditOrderDescriptor</code> is defined to create objects
@@ -834,7 +985,6 @@ The new order is now stored in ContactSails in the place of the old order.</p>
 </div>
 <div class="sect4">
 <h5 id="changing-orderstatus"><a class="link" href="#changing-orderstatus">Changing OrderStatus</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>ChangeOrderStatusCommand</code> changes the <code>OrderStatus</code> field of an <code>Order</code> object to either <code>ongoing</code> or <code>done</code>.
 The <code>order</code> object is obtained by using its <code>index</code> in the last shown listing of orders.</p>
@@ -846,7 +996,7 @@ The <code>order</code> object is obtained by using its <code>index</code> in the
 <div class="content">
 <img src="../images/ChangeOrderStatusSeqDiagram.png" alt="ChangeOrderStatusSeqDiagram" width="600">
 </div>
-<div class="title">Figure 15. Sequence Diagram for <code>ChangeOrderStatusCommand</code>.</div>
+<div class="title">Figure 17. Sequence Diagram for <code>ChangeOrderStatusCommand</code>.</div>
 </div>
 <div class="paragraph">
 <p>On changing the order status of an order, the colour of the corresponding <code>OrderCard</code> in the <code>OrderListPanel</code> also changes.
@@ -856,7 +1006,6 @@ and re-adding a new stylesheet with the appropriate colours to that <code>OrderC
 </div>
 <div class="sect4">
 <h5 id="deleting-orders"><a class="link" href="#deleting-orders">Deleting Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>DeleteOrderCommand</code> deletes the order specified by its <code>index</code> in the last shown listing of orders.
 The figure below shows the sequence diagram for changing an order&#8217;s status.</p>
@@ -865,13 +1014,14 @@ The figure below shows the sequence diagram for changing an order&#8217;s status
 <div class="content">
 <img src="../images/DeleteOrderSeqDiagram.png" alt="DeleteOrderSeqDiagram" width="600">
 </div>
-<div class="title">Figure 16. Sequence Diagram for <code>DeleteOrderCommand</code>.</div>
+<div class="title">Figure 18. Sequence Diagram for <code>DeleteOrderCommand</code>.</div>
 </div>
 <div class="paragraph">
-<p>The above method deletes <code>orderToDelete</code> from the <code>model</code> of the address book and the resulting list of orders is displayed.
-===== Storing Orders</p>
+<p>The above method deletes <code>orderToDelete</code> from the <code>model</code> of the address book and the resulting list of orders is displayed.</p>
 </div>
-<hr>
+</div>
+<div class="sect4">
+<h5 id="storing-orders"><a class="link" href="#storing-orders">Storing Orders</a></h5>
 <div class="paragraph">
 <p>Storing orders in the application data file is very similar to that of storing persons.
 The <code>XmlAdaptedOrder</code> class is used to convert the <code>Order</code> objects in the <code>model</code> to JAXB-friendly <code>XmlAdaptedOrder</code> objects
@@ -881,145 +1031,23 @@ into a <code>model</code>-friendly <code>Order</code> objects.</p>
 </div>
 <div class="sect4">
 <h5 id="displaying-orders-in-gui"><a class="link" href="#displaying-orders-in-gui">Displaying Orders In GUI</a></h5>
-<hr>
 <div class="paragraph">
 <p>A single <code>Order</code> is displayed using an <code>OrderListCard</code>. The list of all orders in the address book is then displayed in a list
 using the <code>OrderListPanel</code>, which contains an <code>OrderListView</code> of multiple <code>OrderListCards</code>.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structures-to-support-order-operations"><a class="link" href="#aspect-data-structures-to-support-order-operations">Aspect: Data structures to support order operations</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Store a UniqueOrderList of orders containing orders of all persons in the application.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement. Additionally, all order management operations will be synchronised.</p>
-</li>
-<li>
-<p>Cons: Higher memory usage might affect the performance of the application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Using an association class to store multiple references to the same order.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Duplicate orders (with the same information except the person associated with it) will just be stored as a single order in memory.
-If multiple persons have the same order, there will be multiple references to one Order object. This reduces memory usage.</p>
-</li>
-<li>
-<p>Cons: Harder to implement as updating or deleting orders for one person must not affect orders of another person having the same order.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<div class="paragraph">
+<p><mark>End of Extract (from Developer Guide)</mark></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="changing-themes"><a class="link" href="#changing-themes">Changing Themes</a></h3>
+<h3 id="b-2-proposed-feature-data-encryption"><a class="link" href="#b-2-proposed-feature-data-encryption">B.2. Proposed Feature : Data Encryption</a></h3>
 <div class="paragraph">
-<p>The theme of ContactSails can be changed using the <code>ChangeThemeCommand</code>.
-Currently, ContactSails supports <code>dark</code> and <code>light</code> themes.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>Theme</code> object in the <code>model</code> is used to store the current theme version.</p>
+<p>This section contains extracts from the DeveloperGuide related to a proposed feature for encrypting application data.</p>
 </div>
 <div class="paragraph">
-<p>The figure below shows the hierarchy of the <code>Theme</code> class.</p>
+<p><mark>Start of Extract (from Developer Guide)</mark></p>
 </div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/ThemeClassUMLDiagram.png" alt="ThemeClassUMLDiagram" width="300">
-</div>
-<div class="title">Figure 17. UML Diagram showing the <code>Model</code> component with the <code>Theme</code> class.</div>
-</div>
-<div class="paragraph">
-<p>When the <code>ChangeThemeCommand</code> is executed, a <code>ChangeThemeEvent</code> is raised by <code>EventsCenter</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>handleChangeThemeEvent() method in the `MainWindow</code>
-class subscribes to this particular event and calls the <code>handleChangeTheme()</code> FXML controller method. This method changes the theme of the application based on the
-theme version it receives as a parameter. This is done by attaching the corresponding <code>CSS</code> stylesheet to the <code>MainWindow</code> JavaFX scene of the application.</p>
-</div>
-<div class="paragraph">
-<p>Given below is a high level sequence diagram for the <code>ChangeThemeCommand</code>.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/HighLevelSequenceDiagramChangeTheme.png" alt="HighLevelSequenceDiagramChangeTheme" width="500">
-</div>
-<div class="title">Figure 18. High-Level Sequence Diagram for <code>ChangeThemeCommand</code>.</div>
-</div>
-<div class="paragraph">
-<p>When the user exits the application, the current theme version will be stored in the <code>preferences.json</code> file as shown in the code snippet below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>{
-  "guiSettings" : {
-        // ... guiSettings attributes ...
-    },
-    "theme" : "dark"
-  },
-  // ... file management attributes ...
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Storing the theme in the <code>preferences.json</code> enables the theme change to be persistent across different application sessions.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-storing-theme-version"><a class="link" href="#aspect-storing-theme-version">Aspect: Storing theme version</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Encapsulate the theme version in a <code>Theme</code> object.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Relevant attributes and methods will be encapsulated in a single class.</p>
-</li>
-<li>
-<p>Cons: Higher memory overhead.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Storing the theme version as a string in guiSettings.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement, and lesser memory overhead.</p>
-</li>
-<li>
-<p>Cons: Methods related to changing themes would have to be written in multiple classes.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
 <div class="paragraph">
@@ -1037,2499 +1065,7 @@ being stored.</p>
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-time-of-encryption-of-xml-data-file"><a class="link" href="#aspect-time-of-encryption-of-xml-data-file">Aspect: Time of encryption of XML data file</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1:</strong> Encrypt/decrypt the whole file each time there is an update to what information needs to stored.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: A new secret key can be used for each encryption/decryption, which would make it more secure against tampering or outsider access.</p>
-</li>
-<li>
-<p>Cons: Encryption of data file for every minor change can reduce the performance of the application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Encrypt/decrypt the file only after a set time interval.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Performance will be improved.</p>
-</li>
-<li>
-<p>Cons: Approach might be less secure. Implementation can also be harder.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="calendar-and-entry-tracking"><a class="link" href="#calendar-and-entry-tracking">Calendar and Entry tracking</a></h3>
-<div class="paragraph">
-<p>Entries refer to meetings, deadlines and order deliveries created by users in ContactSails.
-Users can create, edit and delete entries.
-ContactSails has a calendar interface that displays existing entries for better visualisation of the user&#8217;s schedule.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
-<div class="paragraph">
-<p>ContactSails uses CalendarFX&#8217;s calendar interface. The <code>Model</code> component manages a list of entries, and this list of entries will synchronise with
-the calendar&#8217;s internal list of entries.</p>
-</div>
-<div class="sect4">
-<h5 id="calendar-entries"><a class="link" href="#calendar-entries">Calendar Entries</a></h5>
-<div class="paragraph">
-<p><code>CalendarEntry</code> represents an entry created by users.</p>
-</div>
-<div class="paragraph">
-<p>A <code>CalendarEntry</code> is implemented in the following manner:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CalendarEntry</span> {
-
-    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> entryTitle;
-    <span class="directive">private</span> <span class="directive">final</span> StartDate startDate;
-    <span class="directive">private</span> <span class="directive">final</span> EndDate endDate;
-    <span class="directive">private</span> <span class="directive">final</span> StartTime startTime;
-    <span class="directive">private</span> <span class="directive">final</span> EndTime endTime;
-
-
-    <span class="comment">// ... CalendarEntry attribute getters and setters ...</span>
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following is a brief description of the attributes of <code>CalendarEntry</code>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>entryTitle: Represents title of entry.</p>
-</li>
-<li>
-<p>startDate: Represents starting date of the entry in DD-MM-YYYY format.</p>
-</li>
-<li>
-<p>endDate: Represents ending date of the entry in DD-MM-YYYY format.</p>
-</li>
-<li>
-<p>startTime: Represents starting time of the entry in HH:MM format (24-Hour format).</p>
-</li>
-<li>
-<p>endTime: Represents ending time of the entry in HH:MM format (24-Hour format).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Entry management is facilitated by <code>CalendarManager</code> residing in <code>ModelManager</code>.
-It supports the adding, removing and editing of <code>CalendarEntry</code>(e.g. <code>addEntry</code>, <code>deleteEntry</code>) and maintains a <code>UniqueCalendarEntryList</code> to store <code>CalendarEntry</code>.
-Ongoing orders of a person will also appear as <code>CalendarEntry</code> based on the <code>DeliveryDate</code> attribute of the <code>Order</code>.</p>
-</div>
-<div class="paragraph">
-<p>The following diagram shows class diagram of <code>Model</code> Component related to <code>CalendarEntry</code>.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/CalendarEntryClassDiagram.png" alt="CalendarEntryClassDiagram" width="800">
-</div>
-<div class="title">Figure 19. Classes related to entry management in <code>Model</code> and <code>Commons</code></div>
-</div>
-<div class="paragraph">
-<p>In the Figure 22, <code>ModelManager</code> contains an instance of <code>CalendarManager</code>. <code>ModelManager</code> calls the functions in <code>CalendarManager</code> to manage <code>CalendarEntries</code> stored in it.
-<code>CalendarManager</code> in turn calls methods in <code>UniqueCalendarEntryList</code> to add, remove or edit <code>CalendarEntries</code> stored in it.
-<code>CalendarManager</code> contains an instance of <code>Calendar</code> belonging to CalendarFX&#8217;s library. <code>Calendar</code> stores <code>Entry</code>, as defined in CalendarFX&#8217;s library.
-<code>CalendarEntry</code> is converted to <code>Entry</code> before they can be added to <code>Calendar</code> via <code>CalendarUtil</code> in the <code>Commons</code> class.</p>
-</div>
-<div class="paragraph">
-<p><code>Logic</code> Component contains the commands required to manage user&#8217;s entries (e.g. <code>AddEntryCommand</code>, <code>DeleteEntryCommand</code>).</p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below shows how adding an entry works:</p>
-</div>
-<div class="imageblock" style="text-align: "center">
-<div class="content">
-<img src="../images/AddEntrySD.png" alt="AddEntrySD" width="800">
-</div>
-<div class="title">Figure 20. Sequence Diagram for adding of an entry into ContactSails</div>
-</div>
-<div class="paragraph">
-<p>In Figure 23, when a user enters the command to add an entry, <code>AddEntryCommandParser</code> is invoked which creates a <code>CalendarEntry</code> based on user input. The parser then creates <code>AddEntryCommand</code> passing the <code>CalendarEntry</code> to it.
-When AddEntryCommand is executed, <code>CalendarEntry</code> is passed from <code>AddEntryCommand</code> to <code>ModelManager</code> and to <code>CalendarManager</code>, which adds it to <code>UniqueCalendarEntryList</code>.
-The <code>CalendarEntry</code> is then converted to <code>Entry</code> to be added to <code>Calendar</code> and control is eventually returned to the user.</p>
-</div>
-<div class="paragraph">
-<p>Storing of <code>CalendarEvent</code> data is managed by <code>CalendarManagerStorage</code> within <code>Storage</code> Component, converting <code>CalendarEntry</code> to <code>XmlAdaptedCalendarEntry</code> to store in a .xml file.
-This file is separate from the one storing <code>Person</code> and <code>Order</code>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="calendar-interface"><a class="link" href="#calendar-interface">Calendar Interface</a></h5>
-<div class="paragraph">
-<p><code>CalendarView</code> within CalendarFX&#8217;s library uses the <code>Calendar</code> within <code>CalendarManager</code> in <code>Model</code> to display all entries stored within <code>Calendar</code>.
-<code>CalendarPanel</code> residing in <code>Ui</code> component creates an instance of <code>CalendarView</code> to manage the display of the calendar.
-The panel responds to events related to the calendar, such as changing the viewing format or changing the current date displayed.
-Any changes made to <code>Calendar</code> in <code>Model</code> will automatically be shown via the <code>CalendarView</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-calendar-interface"><a class="link" href="#aspect-implementation-of-calendar-interface">Aspect: Implementation of calendar interface</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Integrate CalendarFX to display entries while all entry data is stored locally.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Doing so does not require constant Internet access to manage data of Calendar. CalendarFX can also synchronise with certain calendar applications such as Google Calendar.
-As less code is written to implement it, the effort required to maintain or debug is potentially lesser.</p>
-</li>
-<li>
-<p>Cons: CalendarFX has many features that are currently not used in ContactSails. Developers who intend to use them need to decide and learn how to implement such features by themselves.
-Developers cannot customise the calendar itself to implement features not present in the library or modify existing features.
-Bugs present in the library cannot be easily fixed by developers.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Create a calendar using JavaFX to manage entries.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This option offers greater potential for customisation as code is entirely managed by developers.</p>
-</li>
-<li>
-<p>Cons: There is greater probability of bugs created as implementation have to be created from scratch.
-As compared to using third-party libraries, substantial lines of code has to be written, thus debugging may be harder.
-Design of features of the calendar have to be decided by developers themselves, which requires more time and effort to implement the features.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We use asciidoc for writing documentation.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">Editing Documentation</a></h3>
-<div class="paragraph">
-<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
-Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">Publishing Documentation</a></h3>
-<div class="paragraph">
-<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></h3>
-<div class="paragraph">
-<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
-</div>
-<div class="paragraph">
-<p>Here are the steps to convert the project documentation files to PDF format.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
-</li>
-<li>
-<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
-</li>
-<li>
-<p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
-</li>
-<li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
-</div>
-<div class="title">Figure 21. Saving documentation as PDF files in Chrome</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">Running Tests</a></h3>
-<div class="paragraph">
-<p>There are three ways to run tests.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
-</li>
-<li>
-<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Method 2: Using Gradle</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>)</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Method 3: Using Gradle (headless)</strong></p>
-</div>
-<div class="paragraph">
-<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.</p>
-</div>
-<div class="paragraph">
-<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">Types of tests</a></h3>
-<div class="paragraph">
-<p>We have two types of tests:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include,</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
-</li>
-<li>
-<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>seedu.address.commons.StringUtilTest</code></p>
-</li>
-<li>
-<p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
-e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
-</li>
-<li>
-<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
-e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">Troubleshooting Testing</a></h3>
-<div class="paragraph">
-<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Reason: One of its dependencies, <code>UserGuide.html</code> in <code>src/main/resources/docs</code> is missing.</p>
-</li>
-<li>
-<p>Solution: Execute Gradle task <code>processResources</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section covers the build automation tools, coverage reporting tools and other tools used in ContactSails.
-It also covers the steps required to create new releases and manage dependencies.</p>
-</div>
-<div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">Build Automation</a></h3>
-<div class="paragraph">
-<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">Continuous Integration</a></h3>
-<div class="paragraph">
-<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">Coverage Reporting</a></h3>
-<div class="paragraph">
-<p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">Documentation Previews</a></h3>
-<div class="paragraph">
-<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">Making a Release</a></h3>
-<div class="paragraph">
-<p>Here are the steps to create a new release.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Update the version number in <a href="{repoURL}/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
-</li>
-<li>
-<p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
-</li>
-<li>
-<p>Tag the repo with the version number. e.g. <code>v0.1</code></p>
-</li>
-<li>
-<p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub</a> and upload the JAR file you created.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">Managing Dependencies</a></h3>
-<div class="paragraph">
-<p>A project often depends on third-party libraries. For example, ContactSails depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Include those libraries in the repo. (this bloats the repo size)<br></p>
-</li>
-<li>
-<p>Require developers to download those libraries manually. (this creates extra work for developers)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="GetStartedProgramming"><a class="link" href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Suggested path for new programmers:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>First, add small local-impact (i.e. the impact of the change does not go beyond the component) enhancements to one component at a time.</p>
-</li>
-<li>
-<p>Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <a href="#GetStartedProgramming-RemarkCommand">Creating a new command: <code>remark</code></a> explains how to go about adding such a feature.</p>
-</li>
-</ol>
-</div>
-<div class="sect2">
-<h3 id="GetStartedProgramming-RemarkCommand"><a class="link" href="#GetStartedProgramming-RemarkCommand">Creating a new command: <code>remark</code></a></h3>
-<div class="paragraph">
-<p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
-</div>
-<div class="paragraph">
-<p><strong>Scenario:</strong> You are a software maintainer for <code>addressbook</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular contact, by providing a flexible <code>remark</code> field for each contact, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
-</div>
-<div class="sect3">
-<h4 id="description"><a class="link" href="#description">Description</a></h4>
-<div class="paragraph">
-<p>Edits the remark for a person specified in the <code>INDEX</code>.<br>
-Format: <code>remark INDEX r/[REMARK]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>remark 1 r/Likes to drink coffee.</code><br>
-Edits the remark for the first person to <code>Likes to drink coffee.</code></p>
-</li>
-<li>
-<p><code>remark 1 r/</code><br>
-Removes the remark for the first person.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="step-by-step-instructions"><a class="link" href="#step-by-step-instructions">Step-by-step Instructions</a></h4>
-<div class="sect4">
-<h5 id="step-1-logic-teach-the-app-to-accept-remark-which-does-nothing"><a class="link" href="#step-1-logic-teach-the-app-to-accept-remark-which-does-nothing">[Step 1] Logic: Teach the app to accept 'remark' which does nothing</a></h5>
-<div class="paragraph">
-<p>Let&#8217;s start by teaching the application how to parse a <code>remark</code> command. We will add the logic of <code>remark</code> later.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a <code>RemarkCommand</code> that extends <a href="{repoURL}/src/main/java/seedu/address/logic/commands/UndoableCommand.java"><code>UndoableCommand</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
-</li>
-<li>
-<p>Modify <a href="{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add <code>RemarkCommandTest</code> that tests that <code>executeUndoableCommand()</code> throws an Exception.</p>
-</li>
-<li>
-<p>Add new test method to <a href="{repoURL}/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-2-logic-teach-the-app-to-accept-remark-arguments"><a class="link" href="#step-2-logic-teach-the-app-to-accept-remark-arguments">[Step 2] Logic: Teach the app to accept 'remark' arguments</a></h5>
-<div class="paragraph">
-<p>Let&#8217;s teach the application to parse arguments that our <code>remark</code> command will accept. E.g. <code>1 r/Likes to drink coffee.</code></p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <code>RemarkCommand</code> to take in an <code>Index</code> and <code>String</code> and print those two parameters as the error message.</p>
-</li>
-<li>
-<p>Add <code>RemarkCommandParser</code> that knows how to parse two arguments, one index and one with prefix 'r/'.</p>
-</li>
-<li>
-<p>Modify <a href="{repoURL}/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <code>RemarkCommandTest</code> to test the <code>RemarkCommand#equals()</code> method.</p>
-</li>
-<li>
-<p>Add <code>RemarkCommandParserTest</code> that tests different boundary values
-for <code>RemarkCommandParser</code>.</p>
-</li>
-<li>
-<p>Modify <a href="{repoURL}/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
-<div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a <code>Label</code> with any random text inside <a href="{repoURL}/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
-</li>
-<li>
-<p>Add FXML annotation in <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <a href="{repoURL}/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
-<div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="{repoURL}/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
-</li>
-<li>
-<p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add test for <code>Remark</code>, to test the <code>Remark#equals()</code> method.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
-<div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add <code>getRemark()</code> in <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
-</li>
-<li>
-<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
-</li>
-<li>
-<p>Modify <a href="{repoURL}/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>XmlAdaptedPerson</code> class</a></h5>
-<div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="{repoURL}/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a new Xml field for <code>Remark</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Fix <code>invalidAndValidPersonAddressBook.xml</code>, <code>typicalPersonsAddressBook.xml</code>, <code>validAddressBook.xml</code> etc., such that the XML tests will not fail due to a missing <code>&lt;remark&gt;</code> element.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
-<div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="{repoURL}/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="{repoURL}/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add a new method <code>withRemark()</code> for <a href="{repoURL}/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
-</li>
-<li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="{repoURL}/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-7-ui-connect-code-remark-code-field-to-code-personcard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-personcard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>PersonCard</code></a></h5>
-<div class="paragraph">
-<p>Our remark label in <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <a href="{repoURL}/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify <a href="{repoURL}/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="step-8-logic-implement-code-remarkcommand-execute-code-logic"><a class="link" href="#step-8-logic-implement-code-remarkcommand-execute-code-logic">[Step 8] Logic: Implement <code>RemarkCommand#execute()</code> logic</a></h5>
-<div class="paragraph">
-<p>We now have everything set up&#8230;&#8203; but we still can&#8217;t modify the remarks. Let&#8217;s finish it up by adding in actual logic for our <code>remark</code> command.</p>
-</div>
-<div class="paragraph">
-<p><strong>Main:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Replace the logic in <code>RemarkCommand#execute()</code> (that currently just throws an <code>Exception</code>), with the actual logic to modify the remarks of a person.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Tests:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Update <code>RemarkCommandTest</code> to test that the <code>execute()</code> logic works.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="full-solution"><a class="link" href="#full-solution">Full Solution</a></h4>
-<div class="paragraph">
-<p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/599">PR</a> for the step-by-step solution.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix B: Product Scope</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section states the intended users of ContactSails, the value ContactSails should bring to them and
-contributions of every developer in the team in regards to developing ContactSails to meet the proposed value.</p>
-</div>
-<div class="paragraph">
-<p><strong>Target user profile</strong>: ContactSails is meant for salespersons from small companies or home-grown businesses with customers from various social media platforms.</p>
-</div>
-<div class="paragraph">
-<p>A typical user from our target user profile:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>promotes and sells products or services through social media.</p>
-</li>
-<li>
-<p>works in a small company or runs his/her own business.</p>
-</li>
-<li>
-<p>has limited applications to support their marketing strategies.</p>
-</li>
-<li>
-<p>has a need to manage a large number of contacts.</p>
-</li>
-<li>
-<p>has many contacts spread across many social media platforms such as Facebook, Twitter, Instagram, etc.</p>
-</li>
-<li>
-<p>has many contacts with volatile details.</p>
-</li>
-<li>
-<p>has many contacts that can be grouped together based on type of products purchased by contacts.</p>
-</li>
-<li>
-<p>prefer desktop apps over other types.</p>
-</li>
-<li>
-<p>can type fast.</p>
-</li>
-<li>
-<p>prefers typing over mouse input.</p>
-</li>
-<li>
-<p>is reasonably comfortable using CLI apps.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Value proposition</strong>: ContactSails serve as the consolidation platform for all contacts from different platforms for
- users to communicate with customers more easily, analyse and apply their marketing strategies more effectively and efficiently.</p>
-</div>
-<div class="paragraph">
-<p><strong>Feature Contribution:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Aadyaa Maddi</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: Ability to manage customer orders.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Orders can be added, edited, and deleted.</p>
-</li>
-<li>
-<p>A list of current orders can be viewed.</p>
-</li>
-<li>
-<p>Orders can also be marked as ongoing or fulfilled.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: Changing theme of the application.</p>
-</li>
-<li>
-<p><strong>How the above features fit into the product scope:</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: For salespersons, this feature will be essential to have as they would want to keep track of what their customers are ordering and what they have ordered already.
-If customers have any issues regarding their orders, salespersons will be able to view all the relevant information in a single place.</p>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: As a user, the salesperson would want to customise the application to suit their needs.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alicia Ho Sor Sian</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: Ability to manage entries which are displayed in a calendar.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Allows users to add, edit or delete entries, which can represent events or deadlines including order deliveries.</p>
-</li>
-<li>
-<p>Once set, the event will be displayed in ContactSails' calendar, which shows all incoming events for the current month and after.</p>
-</li>
-<li>
-<p>Orders set by users will automatically appear in the calendar without the user having to create an event for it.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: Classifying tags into two categories, groups and preferences.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Create 2 distinct categories of tags representing groups that a contact belongs to and preferences that a contact has.</p>
-</li>
-<li>
-<p>Each category is displayed at a separate location in the Ui.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>How the above features fit into the product scope:</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: The calendar can remind salespersons any impending meetings or deadlines especially order deliveries to save time in planning their next course of action carefully.
-It provides a quicker way to manage events compared to using other calendar applications that mainly relies on GUI input.</p>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: Groups can be used to indicate which social media platform does the salesperson use to communicate with a particular contact, while preferences indicates the products and services a contact usually purchases.
-Using separate labels for groups and preferences placed at separate locations in the Ui display gives a more organised display of a contact&#8217;s information, allowing salespersons to derive important information of their contacts quickly.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Ang Jing Zhe</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: Addition of person panel to the user interface.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>It allows users to see their contacts' information in a neater and more detailed manner.</p>
-</li>
-<li>
-<p>An alternative consideration is to vary the amount of information put up at the panel.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: Adding colours to tags.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Putting colours to tags so that it looks more user friendly.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>How the above features fit into the product scope:</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: Users can see their contacts' information more clearly and neatly.</p>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: Colours are more eye-catching and help users to identify different tags.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Kevin Yeong Yu Heng</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: Ability to import and export contacts from and to other formats.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Allows user to export contacts to a local contact files and import contacts from local contact files.</p>
-</li>
-<li>
-<p>The exported file can integrate in the users' workflow which might include external manipulation of the data such as printing a hardcopy of the contact list or using it in an external spreadsheet software.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: Ability to generate and display a list of relevant fields of multiple contacts.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Ability to only show certain fields associated to contacts selected by filters.</p>
-</li>
-<li>
-<p>Displays the information in a list rather and excludes other information which is not needed by the user.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>How the above features fit into the product scope:</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major Feature</strong>: The export and import facility enables users to use the data from ContactSails solely as an addressbook, but gives them the option to more easily integrate it to their current application processes which might allow them to be more efficient in their work.</p>
-</li>
-<li>
-<p><strong>Minor Feature</strong>: The more targeted listing feature allows users fit more relevant data into their screen which helps them to focus on the data they need while minimising other non essential information.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix C: User Stories</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The following table shows all user stories collected thus far.
-Priority indicates importance of implementing the user story.
-Release indicates the version of ContactSails that has already implemented the user story.</p>
-</div>
-<div class="paragraph">
-<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">Release</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add new entries</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep an offline back up</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">download and access a local copy of the application data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use short-forms for commands</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">execute commands more quickly</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">task-oriented user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">implement meetings or deadlines for contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of tasks to do for the contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">organized user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete multiple contacts at a time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove the contacts I no longer need quickly</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove a specific tag</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all contacts with that tag will have the tag removed instead of removing the tag from from every one of them</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find contacts based on the group they are in</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see all contacts belonging to a certain group</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort the contacts by last contacted time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find contacts I corresponded with recently</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view a list of current orders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of which customers I might need to contact at that point in time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see a list of current customers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view necessary information about current customers more quickly</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">send promotions to a group of contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ensure my differentiated marketing strategies work</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a list of preferences to contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know what my customers are interested in</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit contact’s preferences</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">update my customers' changing interests</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see the top preference among all contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know what products I should focus on</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit specific details of contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">update my customers' information more conveniently</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see top contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">divide my attention among my customers as needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">export contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">share my customers' public details with concerned businesses</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who prefers visual imagery</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use a calendar to know if there are any tasks or deadlines</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clearer view on how to prioritise my work</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">access and change my preferred Email Service provider within the ContactSails</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">look at my emails and my contacts at the same time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">synchronise the ContactSails with Google Contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">save time importing contacts from Google Contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who is fast at typing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">copy a contact&#8217;s email to the clipboard without using a mouse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">save time in emailing a contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add contact details in any order</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need to remember the order to enter the details</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lazy user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auto-completion of commands</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">execute commands quickly</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add notes to a contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have a clearer description about the contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group contacts using tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">categorize my customers as needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the theme and font of the application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">personalize my AddressBook</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see contact statistics</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">more informed about my customer demographic</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">export contacts in different formats</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">share contacts to other software</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who likes personalising contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add profile photos to each contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">recognise the customer easily based on their photo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see a list of tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need to remember all existing tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The below use cases indicate how ContactSails and its users should interact in each use case.</p>
-</div>
-<div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>ContactSails</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
-</div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list persons.</p>
-</li>
-<li>
-<p>ContactSails shows a list of persons.</p>
-</li>
-<li>
-<p>User requests to delete a specific person in the list.</p>
-</li>
-<li>
-<p>ContactSails deletes the person.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-add-person" class="discrete">Use case: Add person</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to add specific person.</p>
-</li>
-<li>
-<p>ContactSails adds the person.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User enters invalid format for the Add feature.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. User enters exact details of person existing in ContactSails.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-list-current-customers" class="discrete">Use case: List current customers</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests for current customers.</p>
-</li>
-<li>
-<p>ContactSails finds and displays a list of the list of customers whose orders are currently being fulfilled by user.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty as there are no current orders.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-edit-specific-details-of-contacts" class="discrete">Use case: Edit specific details of contacts</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User selects contact to edit from the current list of contacts.</p>
-</li>
-<li>
-<p>ContactSails shows the selected contact.</p>
-</li>
-<li>
-<p>User requests to edit a certain field of the contact.</p>
-</li>
-<li>
-<p>ContactSails updates the contact details and shows contact details after the changes made.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User selects invalid contact.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. User selects invalid field to edit.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-add-notes-to-contacts" class="discrete">Use case: Add notes to contacts</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list persons.</p>
-</li>
-<li>
-<p>ContactSails shows a list of persons.</p>
-</li>
-<li>
-<p>User requests to add notes to specific person in the list.</p>
-</li>
-<li>
-<p>ContactSails adds notes to the specified person.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-add-contact-specific-tasks" class="discrete">Use case: Add contact specific tasks</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User selects contact to add a task for and enters task description and deadline.</p>
-</li>
-<li>
-<p>ContactSails adds task to specified contact and shows a success message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User selects invalid contact.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. User enters invalid task details.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. ContactSails shows en error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-find-persons-by-name" class="discrete">Use case: Find persons by name</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to find persons with specific names.</p>
-</li>
-<li>
-<p>ContactSails shows list of persons with specified names.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User does not specify any name.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. ContactSails does not have any names specified by user.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1b1. ContactSails shows empty list.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-find-persons-by-groups" class="discrete">Use case: Find persons by groups</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to find persons with specific groups.</p>
-</li>
-<li>
-<p>ContactSails shows list of persons with specified groups.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User does not specify any group.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. ContactSails does not have any groups specified by user.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. ContactSails shows empty list.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-find-persons-by-preferences" class="discrete">Use case: Find persons by preferences</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to find persons with specific preferences.</p>
-</li>
-<li>
-<p>ContactSails shows list of persons with specified preferences.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User does not specify any preference.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. ContactSails does not have any preference specified by user.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. ContactSails shows empty list.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-remove-specific-group" class="discrete">Use case: Remove specific group</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to remove a group and enters group they want to remove.</p>
-</li>
-<li>
-<p>ContactSails removes the specific group from all contacts who have this group assigned to them.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. There are no groups.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. User enters invalid group.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-remove-specific-preference" class="discrete">Use case: Remove specific preference</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to remove a preference enters the preference they want to remove.</p>
-</li>
-<li>
-<p>ContactSails removes the specific preference from all contacts who have this group assigned to them.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. There are no preferences.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. User enters invalid preference.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-add-order" class="discrete">Use case: Add order</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to add order to a specific person.</p>
-</li>
-<li>
-<p>ContactSails adds the order.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User enters invalid format for the AddOrder command.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User adds a duplicate order.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-delete-order" class="discrete">Use case: Delete order</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list orders.</p>
-</li>
-<li>
-<p>ContactSails shows a list of orders.</p>
-</li>
-<li>
-<p>User requests to delete a specific order in the list.</p>
-</li>
-<li>
-<p>ContactSails deletes the order from the application.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-export-contacts" class="discrete">Use case: Export contacts</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User selects contacts to export from the current list of contacts.</p>
-</li>
-<li>
-<p>ContactSails stores the selection and processes the contacts to export.</p>
-</li>
-<li>
-<p>User requests to create a file containing the selected contacts.</p>
-</li>
-<li>
-<p>ContactSails creates the file and prompts for save location of file.</p>
-</li>
-<li>
-<p>User specifies location of file to be saved.</p>
-</li>
-<li>
-<p>ContactSails saves the file and shows a success message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User does not select any contact.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b. User makes an invalid selection.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. ContactSails is unable to create the file with selected contacts.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>6a. ContactSails is unable to save the file in the specified location.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>6a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 5.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>*a. User cancels the operation at any time.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>*a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-store-a-local-backup-of-contacts" class="discrete">Use case: Store a local backup of contacts</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to create a backup file containing all the data stored in the application.</p>
-</li>
-<li>
-<p>ContactSails prompts user to indicate save location.</p>
-</li>
-<li>
-<p>User specifies location of file to be saved.</p>
-</li>
-<li>
-<p>ContactSails saves the file in the location specified and shows a success message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. ContactSails is unable to create the file.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. ContactSails is unable to save the file in the specified location.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. ContactSails shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 3.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The requirements indicate the constraints that ContactSails have to be developed with.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>ContactSails should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
-</li>
-<li>
-<p>ContactSails should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
-</li>
-<li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
-</li>
-<li>
-<p>ContactSails should be usable even for users without experience in using command line applications.</p>
-</li>
-<li>
-<p>Users should be able to download ContactSails for free as ContactSails is modified from an open-source software.</p>
-</li>
-<li>
-<p>ContactSails should continue to run the original, intended functions, even when problems occur during execution.</p>
-</li>
-<li>
-<p>In sessions when ContactSails has crashed, changes made to it during those sessions should not be lost.</p>
-</li>
-<li>
-<p>Size of ContactSails should not exceed 1GB even with many contacts stored in it (maximum number of contacts allowed is 1000)</p>
-</li>
-<li>
-<p>ContactSails should take up to 2 seconds to execute any command except for commands that are reliant on internet connectivity.</p>
-</li>
-<li>
-<p>ContactSails can still work even if there is limited internet connectivity when executed commands open websites.</p>
-</li>
-<li>
-<p>Users can use ContactSails without requiring an installer.</p>
-</li>
-<li>
-<p>Data of ContactSails should be stored locally and in a human editable text file.</p>
-</li>
-<li>
-<p>Data of ContactSails should be able to be encrypted such that only the user can see it when text file containing the data is directly accessed.</p>
-</li>
-<li>
-<p>ContactSails should not be required to print any detailed reports of contacts.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix F: Glossary</a></h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
-<dd>
-<p>Windows, Linux, Unix, OS-X</p>
-</dd>
-<dt class="hdlist1"><a id="contacts"></a> Contacts</dt>
-<dd>
-<p>People whose details are present in ContactSails.</p>
-</dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others.</p>
-</dd>
-<dt class="hdlist1"><a id="groups"></a> Group</dt>
-<dd>
-<p>A label attached to a person&#8217;s contact information for the purpose of grouping persons.</p>
-</dd>
-<dt class="hdlist1"><a id="preferences"></a> Preference</dt>
-<dd>
-<p>A label attached to a person&#8217;s contact information for the purpose of providing more specific details of person&#8217;s interests.</p>
-</dd>
-<dt class="hdlist1"><a id="tasks"></a> Tasks</dt>
-<dd>
-<p>A deadline, reminder, or a general note that can be added to keep track of things needed to be done.</p>
-</dd>
-<dt class="hdlist1"><a id="mss"></a> MSS</dt>
-<dd>
-<p>Represents the most straightforward interaction between System and User where nothing goes wrong, in a use case.</p>
-</dd>
-<dt class="hdlist1"><a id="extenstions"></a> Extensions</dt>
-<dd>
-<p>Represents interactions between System and User where something might have gone wrong.</p>
-</dd>
-<dt class="hdlist1"><a id="profile-photo"></a> Profile Photo</dt>
-<dd>
-<p>A photograph attached to a certain contact to represent the person.</p>
-</dd>
-<dt class="hdlist1"><a id="backup-file"></a> Backup File</dt>
-<dd>
-<p>An XML data file that stores all data in the application in a local copy on my computer.</p>
-</dd>
-<dt class="hdlist1"><a id="java-fx"></a> Java FX</dt>
-<dd>
-<p>A software platform that contains a set of packages for graphics that enables developers to develop rich cross-platform applications.</p>
-</dd>
-<dt class="hdlist1"><a id="travis"></a> Travis</dt>
-<dd>
-<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Linux virtual machine.</p>
-</dd>
-<dt class="hdlist1"><a id="appveyor"></a> AppVeyor</dt>
-<dd>
-<p>A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub on a Windows virtual machine.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The following indicates the structure that product surveys should have.</p>
-</div>
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Initial launch</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Download the jar file and copy into an empty folder.</p>
-</li>
-<li>
-<p>Double-click the jar file.<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Saving window preferences</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
-</li>
-<li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Deleting a person while all persons are listed</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>List all persons using the <code>list</code> command.</p>
-</li>
-<li>
-<p>There should be multiple persons in the list.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Dealing with missing/corrupted data files</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-<div class="paragraph">
-<p><mark>End of Extract (from Developer Guide)</mark></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-feature-data-encryption"><a class="link" href="#proposed-feature-data-encryption">Proposed Feature : Data Encryption</a></h3>
-<div class="paragraph">
-<p><mark>Start of Extract (from Developer Guide)</mark></p>
-</div>
-<div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>The address book will decrypt and encrypt the XML data file every time there is an update that needs to be made to the data
-being stored.</p>
-</div>
-<div class="paragraph">
-<p>The secret key for encryption/decryption will be generated using the <code>KeyGenerator</code> class in the <code>javax.crypto</code> library.</p>
-</div>
-<div class="paragraph">
-<p>The actual encryption/decryption will be done using the <code>org.apache.xml.security</code> library, specifically the <code>XMLCipher</code> class.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-time-of-encryption-of-xml-data-file-2"><a class="link" href="#aspect-time-of-encryption-of-xml-data-file-2">Aspect: Time of encryption of XML data file</a></h5>
+<hr>
 <div class="ulist">
 <ul>
 <li>
@@ -3571,7 +1107,7 @@ being stored.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:31:20 UTC
+Last updated 2018-04-15 07:49:38 UTC
 </div>
 </div>
 </body>

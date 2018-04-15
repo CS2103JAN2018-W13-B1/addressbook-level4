@@ -94,7 +94,11 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#adding-an-order">H.3. Adding an Order</a></li>
+<li><a href="#editing-an-order">H.4. Editing an Order</a></li>
+<li><a href="#changing-order-status">H.5. Changing Order Status</a></li>
+<li><a href="#deleting-an-order">H.6. Deleting an Order</a></li>
+<li><a href="#changing-the-theme">H.7. Changing the Theme</a></li>
 </ul>
 </li>
 </ul>
@@ -1251,7 +1255,6 @@ The class diagram given below shows how these commands are part of the <code>Log
 </div>
 <div class="sect4">
 <h5 id="adding-orders"><a class="link" href="#adding-orders">Adding Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>AddOrderCommand</code> adds an order to list of orders in ContactSails.</p>
 </div>
@@ -1291,7 +1294,6 @@ not be added if a duplicate order has already been added to the list of orders b
 </div>
 <div class="sect4">
 <h5 id="editing-orders"><a class="link" href="#editing-orders">Editing Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>EditOrderCommand</code> edits the <code>targetOrder</code> with the provided information which is specified by its <code>index</code>
 in the last shown listing of orders. The order will be updated with the new values given by the user.</p>
@@ -1318,7 +1320,6 @@ The new order is now stored in ContactSails in the place of the old order.</p>
 </div>
 <div class="sect4">
 <h5 id="changing-orderstatus"><a class="link" href="#changing-orderstatus">Changing OrderStatus</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>ChangeOrderStatusCommand</code> changes the <code>OrderStatus</code> field of an <code>Order</code> object to either <code>ongoing</code> or <code>done</code>.
 The <code>order</code> object is obtained by using its <code>index</code> in the last shown listing of orders.</p>
@@ -1340,7 +1341,6 @@ and re-adding a new stylesheet with the appropriate colours to that <code>OrderC
 </div>
 <div class="sect4">
 <h5 id="deleting-orders"><a class="link" href="#deleting-orders">Deleting Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>The <code>DeleteOrderCommand</code> deletes the order specified by its <code>index</code> in the last shown listing of orders.
 The figure below shows the sequence diagram for changing an order&#8217;s status.</p>
@@ -1357,7 +1357,6 @@ The figure below shows the sequence diagram for changing an order&#8217;s status
 </div>
 <div class="sect4">
 <h5 id="storing-orders"><a class="link" href="#storing-orders">Storing Orders</a></h5>
-<hr>
 <div class="paragraph">
 <p>Storing orders in the application data file is very similar to that of storing persons.
 The <code>XmlAdaptedOrder</code> class is used to convert the <code>Order</code> objects in the <code>model</code> to JAXB-friendly <code>XmlAdaptedOrder</code> objects
@@ -1367,7 +1366,6 @@ into a <code>model</code>-friendly <code>Order</code> objects.</p>
 </div>
 <div class="sect4">
 <h5 id="displaying-orders-in-gui"><a class="link" href="#displaying-orders-in-gui">Displaying Orders In GUI</a></h5>
-<hr>
 <div class="paragraph">
 <p>A single <code>Order</code> is displayed using an <code>OrderListCard</code>. The list of all orders in the address book is then displayed in a list
 using the <code>OrderListPanel</code>, which contains an <code>OrderListView</code> of multiple <code>OrderListCards</code>.</p>
@@ -1524,6 +1522,7 @@ being stored.</p>
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-time-of-encryption-of-xml-data-file"><a class="link" href="#aspect-time-of-encryption-of-xml-data-file">Aspect: Time of encryption of XML data file</a></h5>
+<hr>
 <div class="ulist">
 <ul>
 <li>
@@ -3926,9 +3925,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
@@ -3960,36 +3956,319 @@ Expected: First contact is deleted from the list. Details of the deleted contact
 Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect <code>delete</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete</code> (no index specified)<br></p>
+</li>
+<li>
+<p><code>delete x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
-</ol>
+</ul>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="adding-an-order"><a class="link" href="#adding-an-order">H.3. Adding an Order</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Dealing with missing/corrupted data files</strong></p>
+<p><strong>Adding an order</strong></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List persons using the <code>list</code> or <code>find</code> commands.</p>
 </li>
-</ol>
+<li>
+<p>There should be at least one person listed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>orderadd 1 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018</code><br>
+Expected: Order is added to order list and displayed. Details of the added order shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>orderadd 1 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018</code><br>
+Expected: Duplicate order is not added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>orderadd</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orderadd 1 pr/59.99 q/1 d/14-04-2018</code> (compulsory field missing)<br></p>
+</li>
+<li>
+<p><code>orderadd 1 i/NBA 2k18 pr/12.34.56 q/1 d/14-04-2018</code> (invalid price)<br></p>
+</li>
+<li>
+<p><code>orderadd 1 i/NBA 2k18 pr/59.99 q/1 d/29-02-2018</code> (invalid date)<br></p>
+</li>
+<li>
+<p><code>orderadd 2 i/NBA 2k18 pr/59.99 q/1 d/14-04-2018</code> (duplicate order not added to different person)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-order"><a class="link" href="#editing-an-order">H.4. Editing an Order</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Editing an order</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List orders using the <code>orderlist</code> command.</p>
+</li>
+<li>
+<p>There should be at least one order listed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>orderedit 1 q/10 d/16-04-2018</code><br>
+Expected: Order in order list is edited and and updated order is displayed. Details of the edited order shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>orderedit 2 i/NBA 2k18 pr/59.99 q/1 d/16-04-2018</code><br>
+Expected: Assuming you have successfully edited the <code>NBA 2k18</code> order with the command in Step 1.b., this command will not
+execute as it would result in a duplicate order.
+Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>orderedit</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orderedit 1 pr/12.34.56</code> (invalid price)<br></p>
+</li>
+<li>
+<p><code>orderedit 1 d/29-02-2018</code> (invalid date)<br></p>
+</li>
+<li>
+<p><code>orderedit x q/15</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-order-status"><a class="link" href="#changing-order-status">H.5. Changing Order Status</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Changing status of an order</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List orders using the <code>orderlist</code> command.</p>
+</li>
+<li>
+<p>There should be at least one order listed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>orderstatus 1 os/done</code> (if the current order status is <code>ongoing</code>)<br>
+Expected: Order status of order is updated and and order card colour is changed to green. Success message shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>orderstatus 1 os/ongoing</code> (if the current order status is <code>done</code>)<br>
+Expected: Order status of order is updated and and order card colour is changed to red. Success message shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>orderstatus 1 os/fulfilled</code><br>
+Expected: Order status not updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>orderstatus</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orderstatus 1 os/</code> (empty status)<br></p>
+</li>
+<li>
+<p><code>orderstatus x os/done</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-order"><a class="link" href="#deleting-an-order">H.6. Deleting an Order</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Deleting an order</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List orders using the <code>orderlist</code> command.</p>
+</li>
+<li>
+<p>There should be at least one order listed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>orderdelete 1</code><br>
+Expected: Order is deleted. Details of deleted order shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>orderdelete 0</code><br>
+Expected: No order is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>orderdelete</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orderdelete</code> (no index specified)<br></p>
+</li>
+<li>
+<p><code>orderdelete x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-the-theme"><a class="link" href="#changing-the-theme">H.7. Changing the Theme</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Changing to light theme</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Current theme should not be the light theme.</p>
+</li>
+<li>
+<p>Use <code>theme dark</code> to switch to the dark theme.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>theme light</code><br>
+Expected: Theme changed to light version. Success message shown in status message. Status bar is not updated.</p>
+</li>
+<li>
+<p>Test case: <code>theme day</code><br>
+Expected: Theme not changed. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>theme</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>theme</code> (no version specified)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Changing to dark theme</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Current theme should not be the dark theme.</p>
+</li>
+<li>
+<p>Use <code>theme light</code> to switch to the light theme.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>theme dark</code><br>
+Expected: Theme changed to dark version. Success message shown in status message. Status bar is not updated.</p>
+</li>
+<li>
+<p>Test case: <code>theme night</code><br>
+Expected: Theme not changed. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect <code>theme</code> commands to try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>theme</code> (no version specified)<br>
+Expected: Similar to previous.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -3997,7 +4276,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:31:20 UTC
+Last updated 2018-04-15 07:49:38 UTC
 </div>
 </div>
 </body>
