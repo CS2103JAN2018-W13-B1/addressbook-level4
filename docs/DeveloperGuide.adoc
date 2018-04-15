@@ -154,7 +154,7 @@ The following section provides information about the software architecture of Co
 [[Design-Architecture]]
 === Architecture
 
-The *_Architecture Diagram_* given below (Figure 1) explains the high-level design of the App.
+The *_Architecture Diagram_* given below (Figure 4) explains the high-level design of the App.
 
 .Architecture Diagram
 image::Architecture.png[width="600" align="center"]
@@ -189,7 +189,7 @@ Each of the four components does the following:
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see Figure 2 below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component (see Figure 5 below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width="800" align="center"]
@@ -197,7 +197,7 @@ image::LogicClassDiagram.png[width="800" align="center"]
 [discrete]
 ==== Events-Driven nature of the design
 
-The _Sequence Diagram_ (Figure 3) below shows how the components interact for the scenario where the user issues the command `delete 1`.
+The _Sequence Diagram_ (Figure 6) below shows how the components interact for the scenario where the user issues the command `delete 1`.
 
 .Component interactions for `delete 1` command (part 1)
 image::SDforDeletePerson.png[width="800" align="center"]
@@ -205,7 +205,7 @@ image::SDforDeletePerson.png[width="800" align="center"]
 [NOTE]
 Note how the `Model` simply raises a `AddressBookChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-The _Sequence Diagram_ (Figure 4) below shows how `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+The _Sequence Diagram_ (Figure 7) below shows how `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
 .Component interactions for `delete 1` command (part 2)
 image::SDforDeletePersonEventHandling.png[width="800" align="center"]
@@ -219,7 +219,7 @@ The sections from 3.2 to 3.5 below give more details of each component.
 === UI Component
 
 The `UI` Component consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-Figure 5 below shows the structure of the `UI` component.
+Figure 8 below shows the structure of the `UI` component.
 
 .Structure of the UI Component
 image::UiClassDiagram.png[width="800" align="center"]
@@ -238,7 +238,7 @@ The `UI` Component does the following:
 === Logic Component
 
 The `Logic` Component deals with how each command would be parsed and executed in an event-driven design.
-Figure 6 below shows the structure of the `Logic` Component.
+Figure 9 below shows the structure of the `Logic` Component.
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
@@ -247,7 +247,7 @@ image::LogicClassDiagram.png[width="800" align="center"]
 .Structure of Commands in the Logic Component.
 image::LogicCommandClassDiagram.png[width="800" align="center"]
 
-This diagram above (Figure 7) shows the finer details concerning `XYZCommand` and `Command` in <<fig-LogicClassDiagram>>
+This diagram above (Figure 10) shows the finer details concerning `XYZCommand` and `Command` in <<fig-LogicClassDiagram>>
 
 *API* for the `Logic` Component:
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
@@ -259,7 +259,7 @@ The `Logic` Component does the following:
 .  The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
-Given below is the _Sequence Diagram_ (Figure 8) for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the _Sequence Diagram_ (Figure 11) for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
 image::DeletePersonSdForLogic.png[width="800" align="center"]
@@ -269,7 +269,7 @@ image::DeletePersonSdForLogic.png[width="800" align="center"]
 
 The `Model` Component handles the contacts, orders, and events in ContactSails and all their stored details in data structures.
 These structures also provide APIs to create, read, update and delete the details of these objects.
-Figure 9 below shows the structure of the `Model` Component.
+Figure 12 below shows the structure of the `Model` Component.
 
 .Structure of the `Model` Component
 image::ModelClassDiagram.png[width="800" align="center"]
@@ -287,7 +287,7 @@ The `Model` Component does the following:
 === Storage Component
 
 The `Storage` Component handles the storing of data in the address book on the local computer.
-Figure 10 below shows the structure of the `Storage` Component.
+Figure 13 below shows the structure of the `Storage` Component.
 
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800" align="center"]
@@ -318,12 +318,12 @@ This feature allows users to undo and redo certain commands executed in the curr
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
 `UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead.
-Figure 11 shows the inheritance diagram for commands.
+Figure 14 shows the inheritance diagram for commands.
 
 .Inheritance Diagram for commands in `Logic` Component
 image::LogicCommandClassDiagram.png[width="800" align="center"]
 
-As you can see from figure 11, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
+As you can see from figure 14, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the address book before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
 
 Commands that are not undoable have similar implementations like the code snippet below:
 [source,java]
@@ -483,7 +483,7 @@ The `PersonPanel` replaces the previous `BrowserPanel`, and is called upon using
 `PersonPanel` will be used to display contact's information, groups and preferences depending on user's actions.
 
 ==== Layout Implementation
-The specifications for the layout of PersonPanel is in `PersonPanel.fxml`. Figure 19 shows the visual layout of the `PersonPanel`.
+The specifications for the layout of PersonPanel is in `PersonPanel.fxml`. Figure 22 shows the visual layout of the `PersonPanel`.
 
 .Visual layout of PersonPanel
 image::PersonPanelLayout.png[width="800" align="center"]
@@ -859,7 +859,7 @@ The following diagram shows class diagram of `Model` Component related to `Calen
 .Classes related to entry management in `Model` and `Commons`
 image::CalendarEntryClassDiagram.png[width="800" align="center"]
 
-In the Figure 22, `ModelManager` contains an instance of `CalendarManager`. `ModelManager` calls the functions in `CalendarManager` to manage `CalendarEntries` stored in it.
+In the Figure 34, `ModelManager` contains an instance of `CalendarManager`. `ModelManager` calls the functions in `CalendarManager` to manage `CalendarEntries` stored in it.
 `CalendarManager` in turn calls methods in `UniqueCalendarEntryList` to add, remove or edit `CalendarEntries` stored in it.
 `CalendarManager` contains an instance of `Calendar` belonging to CalendarFX's library. `Calendar` stores `Entry`, as defined in CalendarFX's library.
 `CalendarEntry` is converted to `Entry` before they can be added to `Calendar` via `CalendarEntryConversionUtil` in the `Commons` class.
@@ -872,7 +872,7 @@ The sequence diagram below shows how adding an entry works:
 .Sequence Diagram for adding an entry into ContactSails
 image::AddEntrySD.png[width="800" align="center"]
 
-In Figure 23, when a user enters the command to add an entry, `AddEntryCommandParser` is invoked which creates a `CalendarEntry` based on user input. The parser then creates `AddEntryCommand` passing the `CalendarEntry` to it.
+In Figure 35, when a user enters the command to add an entry, `AddEntryCommandParser` is invoked which creates a `CalendarEntry` based on user input. The parser then creates `AddEntryCommand` passing the `CalendarEntry` to it.
 When AddEntryCommand is executed, `CalendarEntry` is passed from `AddEntryCommand` to `ModelManager` and to `CalendarManager`, which adds it to `UniqueCalendarEntryList`.
 The `CalendarEntry` is then converted to `Entry` to be added to `Calendar` (not shown in diagram) and control is eventually returned to the user.
 
