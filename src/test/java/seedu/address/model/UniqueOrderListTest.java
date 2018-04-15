@@ -34,7 +34,7 @@ public class UniqueOrderListTest {
         // different objects, same type -> false
         assertFalse(firstOrderList.equals(secondOrderList));
     }
-  
+
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         UniqueOrderList uniqueOrderList = new UniqueOrderList();
